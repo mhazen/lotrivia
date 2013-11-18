@@ -17,6 +17,24 @@ import "Carentil.LOTRivia.Resources.Questions";
   ]]--
 
 
+  --[[
+
+	To-Do List:
+		- build the game window
+			- needs:
+				question display
+				answer display
+				send question control
+					-clicking starts timer and sets update event
+				listbox displaying current answers from people in order received
+					-clicking will set a background color for highlighting purposes
+				control to "accept answer"
+					-will send to channel
+					-disables timer update event
+				send rules button
+
+  ]]--
+
 
 	-- Initialize plugin constants
 
@@ -499,6 +517,7 @@ Report Bugs on LotroInterface.com
 			self:SetVisible(false)
 		end
 
+		-- This window should have a high Z order to pop over background windows
 		self:SetZOrder(50);
 		self:SetVisible(false);
 	end
@@ -761,7 +780,7 @@ Report Bugs on LotroInterface.com
 			if (#sortedScores) then
 				for i=1,#sortedScores do
 					LT_announceAll = LT_announceAll ..
-					LT_scoreColor[1] ..  "[" .. sortedScores[i][1] .. ": "  .. sortedScores[i][2] .. "]</rgb> "
+					LT_scoreColor[1] ..  "[" .. sortedScores[i][1] .. ":"  .. sortedScores[i][2] .. "]</rgb> "
 				end
 			else
 				LT_announceAll = "No points awarded."
@@ -770,9 +789,9 @@ Report Bugs on LotroInterface.com
 
 			if (#sortedScores >2) then
 				LT_announceTopThree =
-				LT_scoreColor[1] ..  "[" .. sortedScores[1][1] .. ": "  .. sortedScores[1][2] .. "</rgb>" .. sortedScores[1][3] .. LT_scoreColor[1] .. "]</rgb>" ..
-				LT_scoreColor[2] .. " [" ..	sortedScores[2][1] .. ": "  .. sortedScores[2][2] .. "</rgb>" .. sortedScores[2][3] .. LT_scoreColor[2] .. "]</rgb>" ..
-				LT_scoreColor[3] .. " [" ..	sortedScores[3][1] .. ": "  .. sortedScores[3][2] .. "</rgb>" .. sortedScores[3][3] .. LT_scoreColor[3] .. "]</rgb>"
+				LT_scoreColor[1] ..  "[" .. sortedScores[1][1] .. ":"  .. sortedScores[1][2] .. "</rgb>" .. sortedScores[1][3] .. LT_scoreColor[1] .. "]</rgb>" ..
+				LT_scoreColor[2] .. " [" ..	sortedScores[2][1] .. ":"  .. sortedScores[2][2] .. "</rgb>" .. sortedScores[2][3] .. LT_scoreColor[2] .. "]</rgb>" ..
+				LT_scoreColor[3] .. " [" ..	sortedScores[3][1] .. ":"  .. sortedScores[3][2] .. "</rgb>" .. sortedScores[3][3] .. LT_scoreColor[3] .. "]</rgb>"
 
 
 				-- If our score for fourth+ place are the same as the third place,
@@ -781,7 +800,7 @@ Report Bugs on LotroInterface.com
 					for i=4,#sortedScores do
 						if (sortedScores[i][2] == sortedScores[3][2]) then
 							LT_announceTopThree = LT_announceTopThree ..
-								LT_scoreColor[3] .. " [" ..	sortedScores[i][1] .. ": "  .. sortedScores[i][2] .. "</rgb>" .. sortedScores[i][3] .. LT_scoreColor[3] .. "]</rgb>"
+								LT_scoreColor[3] .. " [" ..	sortedScores[i][1] .. ":"  .. sortedScores[i][2] .. "</rgb>" .. sortedScores[i][3] .. LT_scoreColor[3] .. "]</rgb>"
 						end
 					end
 				end
