@@ -124,6 +124,8 @@ Report Bugs on LotroInterface.com
 	LT_scoreColor[4] = "<rgb=#7F7F7F>"
 	LT_tieColor =  "<rgb=#00D0FF>"
 
+	LT_color_gold = Turbine.UI.Color(1,.8,.4)
+
 	-- initialize options windows
 
 	optionsWindow=class(Turbine.UI.Lotro.Window);
@@ -399,9 +401,10 @@ Report Bugs on LotroInterface.com
 
 		self:SetPosition(Turbine.UI.Display:GetWidth()-450,Turbine.UI.Display:GetHeight()/2-250);
 		self:SetText("Edit Score");
-		self:SetSize(300, 150);
+		self:SetSize(300, 130);
 		self:SetResizable(false);
 
+		self.originalScore = 6;
 		-- define child Elements
 
 		self.headerText = Turbine.UI.Label()
@@ -411,42 +414,93 @@ Report Bugs on LotroInterface.com
 		self.headerText:SetForeColor( Turbine.UI.Color(1,1,1) )
 		self.headerText:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
 		self.headerText:SetMultiline( true )
-		self.headerText:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		--self.headerText:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
 		self.headerText:SetText( "Use + and - to adjust player's score" )
 		self.headerText:SetVisible( true )
 		self.headerText:SetParent( self )
 
 		self.playerName = Turbine.UI.Label()
-		self.playerName:SetSize(150,20)
+		self.playerName:SetSize(180,20)
 		self.playerName:SetPosition(18,64)
 		self.playerName:SetFont( Turbine.UI.Lotro.Font.TrajanPro18 )
 		self.playerName:SetForeColor( Turbine.UI.Color(1,1,1) )
-		self.playerName:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		self.playerName:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
 		self.playerName:SetMultiline( false )
-		self.playerName:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
-		self.playerName:SetText( "PlayerName" )
+		--self.playerName:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.playerName:SetText( "Versus" )
 		self.playerName:SetVisible( true )
 		self.playerName:SetParent( self )
 
+		self.playerScore = Turbine.UI.Label()
+		self.playerScore:SetSize(40,20)
+		self.playerScore:SetPosition(200,64)
+		self.playerScore:SetFont( Turbine.UI.Lotro.Font.TrajanPro18 )
+		self.playerScore:SetForeColor( LT_color_gold )
+		self.playerScore:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
+		self.playerScore:SetMultiline( false )
+		--self.playerScore:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.playerScore:SetText( LT_playerScores[self.playerName:GetText()] )
+		self.playerScore:SetVisible( true )
+		self.playerScore:SetParent( self )
 
-		-- Send Top 3 Scores Button
-		self.increment_button = Turbine.UI.Lotro.Button();
+		-- Increment control
+		self.increment_button = Turbine.UI.Control();
 		self.increment_button:SetParent(self);
-		self.increment_button:SetText("+");
-		self.increment_button:SetSize(30,30);
-		self.increment_button:SetPosition(210,64);
+		self.increment_button:SetBackground("Carentil/LOTRivia/Resources/inc.jpg");
+		self.increment_button:SetSize(19,18);
+		self.increment_button:SetPosition(245,64);
 		self.increment_button:SetVisible(true)
 
-		-- Send Top 3 Scores Button
-		self.decrement_button = Turbine.UI.Lotro.Button();
+		-- Decrement control
+		self.decrement_button = Turbine.UI.Control();
 		self.decrement_button:SetParent(self);
-		self.decrement_button:SetSize(30,30);
-		self.decrement_button:SetText("-");
-		self.decrement_button:SetPosition(250,64);
+		self.decrement_button:SetBackground("Carentil/LOTRivia/Resources/dec.jpg");
+		self.decrement_button:SetSize(19,18);
+		self.decrement_button:SetPosition(270,64);
 		self.decrement_button:SetVisible(true)
 
+		-- Revert Button
+		self.revertButton = Turbine.UI.Lotro.Button();
+		self.revertButton:SetParent(self);
+		self.revertButton:SetHeight(30);
+		self.revertButton:SetWidth(120);
+		self.revertButton:SetText("Revert Score");
+		self.revertButton:SetPosition(30,92);
+		self.revertButton:SetVisible(true)
 
-		self:SetVisible(true);
+		-- Save Button
+		self.saveButton = Turbine.UI.Lotro.Button();
+		self.saveButton:SetParent(self);
+		self.saveButton:SetHeight(30);
+		self.saveButton:SetWidth(120);
+		self.saveButton:SetText("Save Score");
+		self.saveButton:SetPosition(152,92);
+		self.saveButton:SetVisible(true)
+
+
+
+		self.increment_button.MouseUp = function(sender,args)
+			LT_playerScores[self.playerName:GetText()] = tonumber(LT_playerScores[self.playerName:GetText()])+1
+			self.playerScore:SetText( LT_playerScores[self.playerName:GetText()] )
+		end
+
+		self.decrement_button.MouseUp = function(sender,args)
+			LT_playerScores[self.playerName:GetText()] = tonumber(LT_playerScores[self.playerName:GetText()])-1
+			self.playerScore:SetText( LT_playerScores[self.playerName:GetText()] )
+		end
+
+		self.revertButton.MouseUp = function(sender,args)
+			LT_playerScores[self.playerName:GetText()] = tonumber(self.originalScore)
+			self.playerScore:SetText( tonumber(self.originalScore) )
+		end
+
+		self.saveButton.MouseUp = function(sender,args)
+			myScores:updateList()
+			self:SetVisible(false)
+		end
+
+		self:SetZOrder(50);
+		self:SetVisible(false);
 	end
 
 
@@ -659,7 +713,7 @@ Report Bugs on LotroInterface.com
 				tmpItem:SetSize(200,24)
 				tmpItem:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 )
 				tmpItem:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight )
-				tmpItem:SetForeColor( Turbine.UI.Color( 1, 0.8, 0.4 ) )
+				tmpItem:SetForeColor( LT_color_gold )
 				local labelText = "  " ..name .. "   " .. score
 				scoreRL[labelText] = score
 				tmpItem:SetText( labelText )
@@ -758,5 +812,9 @@ Report Bugs on LotroInterface.com
 
 
 	function playerEdit(name)
+		myEdit.playerName:SetText( name );
+		myEdit.playerScore:SetText( LT_playerScores[name] );
+		myEdit.originalScore = LT_playerScores[name];
+		myEdit:SetVisible(true);
 		ltprint("Editing "..name)
 	end
