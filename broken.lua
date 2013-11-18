@@ -4,7 +4,7 @@
 --[[
 		-- Edit Player window class
 	--
-	local LTEditPlayerWindow = class(Turbine.UI.Lotro.Window);
+	LTEditPlayerWindow = class(Turbine.UI.Lotro.Window);
 
 	function LTEditPlayerWindow:Constructor()
 		Turbine.UI.Lotro.Window.Constructor(self);

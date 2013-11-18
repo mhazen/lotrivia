@@ -337,7 +337,7 @@ Report Bugs on LotroInterface.com
 		-- Send Scores Button
 		self.AnnounceAll_button = Turbine.UI.Lotro.Button();
 		self.AnnounceAll_button:SetParent(self);
-		self.AnnounceAll_button:SetHeight(30);
+		--self.AnnounceAll_button:SetHeight(30);
 		self.AnnounceAll_button:SetWidth(110);
 		self.AnnounceAll_button:SetText("Announce All");
 		self.AnnounceAll_button:SetPosition(30,360);
@@ -346,7 +346,7 @@ Report Bugs on LotroInterface.com
 		-- Send Top 3 Scores Button
 		self.Announce3_button = Turbine.UI.Lotro.Button();
 		self.Announce3_button:SetParent(self);
-		self.Announce3_button:SetHeight(320);
+		--self.Announce3_button:SetHeight(30);
 		self.Announce3_button:SetWidth(60);
 		self.Announce3_button:SetText("Top 3");
 		self.Announce3_button:SetPosition(30,360);
@@ -390,6 +390,65 @@ Report Bugs on LotroInterface.com
 	end
 
 
+			-- Edit Player window class
+	--
+	editWindow = class(Turbine.UI.Lotro.Window);
+
+	function editWindow:Constructor()
+		Turbine.UI.Lotro.Window.Constructor(self);
+
+		self:SetPosition(Turbine.UI.Display:GetWidth()-450,Turbine.UI.Display:GetHeight()/2-250);
+		self:SetText("Edit Score");
+		self:SetSize(300, 150);
+		self:SetResizable(false);
+
+		-- define child Elements
+
+		self.headerText = Turbine.UI.Label()
+		self.headerText:SetSize(260,20)
+		self.headerText:SetPosition(18,34)
+		self.headerText:SetFont( Turbine.UI.Lotro.Font.TrajanPro14 )
+		self.headerText:SetForeColor( Turbine.UI.Color(1,1,1) )
+		self.headerText:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
+		self.headerText:SetMultiline( true )
+		self.headerText:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.headerText:SetText( "Use + and - to adjust player's score" )
+		self.headerText:SetVisible( true )
+		self.headerText:SetParent( self )
+
+		self.playerName = Turbine.UI.Label()
+		self.playerName:SetSize(150,20)
+		self.playerName:SetPosition(18,64)
+		self.playerName:SetFont( Turbine.UI.Lotro.Font.TrajanPro18 )
+		self.playerName:SetForeColor( Turbine.UI.Color(1,1,1) )
+		self.playerName:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		self.playerName:SetMultiline( false )
+		self.playerName:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.playerName:SetText( "PlayerName" )
+		self.playerName:SetVisible( true )
+		self.playerName:SetParent( self )
+
+
+		-- Send Top 3 Scores Button
+		self.increment_button = Turbine.UI.Lotro.Button();
+		self.increment_button:SetParent(self);
+		self.increment_button:SetText("+");
+		self.increment_button:SetSize(30,30);
+		self.increment_button:SetPosition(210,64);
+		self.increment_button:SetVisible(true)
+
+		-- Send Top 3 Scores Button
+		self.decrement_button = Turbine.UI.Lotro.Button();
+		self.decrement_button:SetParent(self);
+		self.decrement_button:SetSize(30,30);
+		self.decrement_button:SetText("-");
+		self.decrement_button:SetPosition(250,64);
+		self.decrement_button:SetVisible(true)
+
+
+		self:SetVisible(true);
+	end
+
 
 
 
@@ -403,6 +462,7 @@ Report Bugs on LotroInterface.com
 	-- Instantiate Windows
 	myOptions = optionsWindow();
 	myScores = scoresWindow();
+	myEdit = editWindow();
 
 
 
