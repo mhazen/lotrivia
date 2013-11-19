@@ -215,7 +215,7 @@ LT_Question[51] = "What class acquires the title \"Ward of Justice\"?"
 LT_Answer[51] = "Warden"
 LT_QuestionCommentary[51] = ""
 
-LT_Question[52] = "What region is Annúminas found in?"
+LT_Question[52] = "What region is Annuminas found in?"
 LT_Answer[52] = "Evendim"
 LT_QuestionCommentary[52] = ""
 
@@ -424,7 +424,7 @@ LT_Answer[103] = "Bosi"
 LT_QuestionCommentary[103] = ""
 
 LT_Question[104] = "Who is thought lost, but found trapped, with the axe Zigilburk?"
-LT_Answer[104] = "Bróin"
+LT_Answer[104] = "Broin"
 LT_QuestionCommentary[104] = ""
 
 LT_Question[105] = "Which craft makes Burglar Tools?"

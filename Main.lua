@@ -32,6 +32,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 					-will send to channel
 					-disables timer update event
 				send rules button
+				buttons to convert: announce time, ask question
 
   ]]--
 
@@ -110,12 +111,54 @@ Report Bugs on LotroInterface.com
 	LT_playerScores = {}
 	LT_questionWinners = {}
 	LT_UsedQuestions = {}
-	LT_currentQuestion = 1
+	LT_currentQuestionId = 1
+	LT_questionCount = 1
+	LT_sendQuestion = ""
 	LT_answeringPlayer = ""
 	LT_haveStoredAnswers = false
 	LT_gameActive = false
 	LT_questionActive = false
-	LT_channelNames = {"Kinship","Fellowship","Raid","Officer","Say","Regional","Roleplay","UserChat1","UserChat1","UserChat2","UserChat3","UserChat4"}
+	LT_channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
+
+	LT_channelMethods = {
+		["Kinship"] = {
+					["to"] = "[To Kinship]",
+					["from"] = "[Kinship]",
+					["cmd"] = "/k",
+					["match"] = "%[Kinship%]",
+					["to_match"] = "%[To Kinship%]"
+					},
+		["Fellowship"] = {
+					["to"] = "[To Fellowship]",
+					["from"] = "[Fellowship]",
+					["cmd"] = "/f",
+					["to_match"] = "%[To Fellowship%]",
+					["match"] = "%[Fellowship%]"
+					},
+		["Raid"] = {
+					["to"] = "[To Raid]",
+					["from"] = "[Raid]",
+					["cmd"] = "/ra",
+					["to_match"] = "%[To Raid%]",
+					["match"] = "%[Raid%]"
+					},
+		["Officer"] = {
+					["to"] = "[To Officer]",
+					["from"] = "[Officer]",
+					["cmd"] = "/o",
+					["to_match"] = "%[To Officer%]",
+					["match"] = "%[Officer%]"
+					},
+		["Regional"] = {
+					["to"] = "%[To Regional%]",
+					["from"] = "%[Regional%]",
+					["cmd"] = "/regional",
+					["to_match"] = "%[To Regional%]",
+					["match"] = "%[Regional%]"
+					}
+
+		}
+
 	LT_announceAll = ""
 	LT_announceTopThree = ""
 
@@ -415,7 +458,6 @@ Report Bugs on LotroInterface.com
 			self.VScroll:SetPosition(width-34,58);
 			self.VScroll:SetHeight(height-98);
 		end
-
 	end
 
 
@@ -572,13 +614,60 @@ Report Bugs on LotroInterface.com
 		self.questionText:SetParent( self )
 
 		-- Ask Question Button
-		self.askButton = Turbine.UI.Lotro.Button();
+	--[[	self.askButton = Turbine.UI.Lotro.Button();
 		self.askButton:SetParent(self);
 		self.askButton:SetHeight(30);
 		self.askButton:SetWidth(120);
 		self.askButton:SetText("Ask Question");
 		self.askButton:SetPosition(467,74);
 		self.askButton:SetVisible(true)
+]]--
+		-- pseudo-button for ask question
+		--
+		self.askAlias=Turbine.UI.Lotro.Quickslot();
+		self.askAlias:SetParent(self);
+		self.askAlias:SetSize(117,18);
+		self.askAlias:SetPosition(467,74);
+		self.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.askAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.askAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.askAlias.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
+			sc:SetData(self.askAlias.ShortcutData);
+			self.askAlias:SetShortcut(sc);
+		end
+		--[[self.askAlias.Backdrop=Turbine.UI.Control(); -- note, if the icon has no transparencies then this backdrop is not needed
+		self.askAlias.Backdrop:SetParent(self);
+		self.askAlias.Backdrop:SetSize(117,18);
+		self.askAlias.Backdrop:SetPosition(467,74);
+		self.askAlias.Backdrop:SetZOrder(self.askAlias:GetZOrder()+1); -- force the icon to be displayed above the quickslot
+		self.askAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/ask.jpg");
+		self.askAlias.Backdrop:SetBackColor(Turbine.UI.Color(1,0,0,0))
+		self.askAlias.Backdrop:SetMouseVisible(false);
+]]--
+		self.askAlias.Icon=Turbine.UI.Control();
+		self.askAlias.Icon:SetParent(self);
+		self.askAlias.Icon:SetSize(117,18);
+		self.askAlias.Icon:SetPosition(467, 74);
+		self.askAlias.Icon:SetZOrder(self.askAlias:GetZOrder()+2);
+		self.askAlias.Icon:SetMouseVisible(false);
+		self.askAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+		self.askAlias.MouseEnter=function()
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion_sel.jpg")
+		end
+		self.askAlias.MouseLeave=function()
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+		end
+		self.askAlias.MouseDown=function()
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+		end
+		self.askAlias.MouseUp=function()
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+		end
+
+
 
 		-- Skip Question Button
 		self.skipButton = Turbine.UI.Lotro.Button();
@@ -627,7 +716,7 @@ Report Bugs on LotroInterface.com
 		-- current answer text box
 		--
 		self.answerText = Turbine.UI.Label()
-		self.answerText:SetSize(440,60)
+		self.answerText:SetSize(440,90)
 		self.answerText:SetPosition(18,185)
 		self.answerText:SetFont( Turbine.UI.Lotro.Font.TrajanPro18 )
 		self.answerText:SetForeColor( Turbine.UI.Color(1,1,1) )
@@ -642,7 +731,7 @@ Report Bugs on LotroInterface.com
 		self.guessesLabel = Turbine.UI.Label()
 		self.guessesLabel:SetParent(self);
 		self.guessesLabel:SetSize(260,30)
-		self.guessesLabel:SetPosition(22,250)
+		self.guessesLabel:SetPosition(22,280)
 		self.guessesLabel:SetMultiline(false);
 		self.guessesLabel:SetForeColor( LT_color_gold )
 		self.guessesLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro20 );
@@ -656,28 +745,64 @@ Report Bugs on LotroInterface.com
 		-- Listbox for current guesses
 		self.guessesListBox = Turbine.UI.ListBox();
 		self.guessesListBox:SetParent(self);
-		self.guessesListBox:SetSize(440,270);
-		self.guessesListBox:SetPosition(16,280);
+		self.guessesListBox:SetSize(440,240);
+		self.guessesListBox:SetPosition(16,310);
 		self.guessesListBox:SetBackColor( LT_color_darkgray );
 
 		-- Bind a vertical scrollbar to the listbox
 		self.VScroll = Turbine.UI.Lotro.ScrollBar();
 		self.VScroll:SetOrientation(Turbine.UI.Orientation.Vertical);
 		self.VScroll:SetParent(self.guessesListBox);
-		self.VScroll:SetPosition(450,320);
+		self.VScroll:SetPosition(440,240);
 		self.VScroll:SetWidth(12);
 		self.VScroll:SetHeight(self.guessesListBox:GetHeight());
 		self.VScroll:SetVisible(true);
 		self.guessesListBox:SetVerticalScrollBar(self.VScroll);
 
-		-- Accept Answer Button
-		self.acceptAnswerButton = Turbine.UI.Lotro.Button();
-		self.acceptAnswerButton:SetParent(self);
-		self.acceptAnswerButton:SetHeight(30);
-		self.acceptAnswerButton:SetWidth(120);
-		self.acceptAnswerButton:SetText("Accept Answer");
-		self.acceptAnswerButton:SetPosition(467,320);
-		self.acceptAnswerButton:SetVisible(true)
+		-- pseudo-button for accept answer
+		--
+		self.acceptAlias=Turbine.UI.Lotro.Quickslot();
+		self.acceptAlias:SetParent(self);
+		self.acceptAlias:SetSize(117,18);
+		self.acceptAlias:SetPosition(467,320);
+		self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.acceptAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.acceptAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.acceptAlias.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
+			sc:SetData(self.acceptAlias.ShortcutData);
+			self.acceptAlias:SetShortcut(sc);
+		end
+		self.acceptAlias.Backdrop=Turbine.UI.Control(); -- note, if the icon has no transparencies then this backdrop is not needed
+		self.acceptAlias.Backdrop:SetParent(self);
+		self.acceptAlias.Backdrop:SetSize(117,18);
+		self.acceptAlias.Backdrop:SetPosition(467,320);
+		self.acceptAlias.Backdrop:SetZOrder(self.acceptAlias:GetZOrder()+1); -- force the icon to be displayed above the quickslot
+		self.acceptAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/accept.jpg");
+		self.acceptAlias.Backdrop:SetBackColor(Turbine.UI.Color(1,0,0,0))
+		self.acceptAlias.Backdrop:SetMouseVisible(false);
+
+		self.acceptAlias.Icon=Turbine.UI.Control();
+		self.acceptAlias.Icon:SetParent(self);
+		self.acceptAlias.Icon:SetSize(117,18);
+		self.acceptAlias.Icon:SetPosition(467,320);
+		self.acceptAlias.Icon:SetZOrder(self.acceptAlias:GetZOrder()+2);
+		self.acceptAlias.Icon:SetMouseVisible(false);
+		self.acceptAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+		self.acceptAlias.MouseEnter=function()
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+		end
+		self.acceptAlias.MouseLeave=function()
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+		end
+		self.acceptAlias.MouseDown=function()
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+		end
+		self.acceptAlias.MouseUp=function()
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+		end
 
 
 		-- Time Remaining text
@@ -708,6 +833,7 @@ Report Bugs on LotroInterface.com
 		self.timeRemaining:SetVisible( true )
 		self.timeRemaining:SetParent( self )
 
+--[[
 		-- Announce Time Remaining Button
 		self.timeButton = Turbine.UI.Lotro.Button();
 		self.timeButton:SetParent(self);
@@ -716,6 +842,44 @@ Report Bugs on LotroInterface.com
 		self.timeButton:SetText("Announce Time");
 		self.timeButton:SetPosition(467,510);
 		self.timeButton:SetVisible(true)
+]]--
+
+		-- pseudo-button for announceTime answer
+		--
+		self.announceTimeAlias=Turbine.UI.Lotro.Quickslot();
+		self.announceTimeAlias:SetParent(self);
+		self.announceTimeAlias:SetSize(117,18);
+		self.announceTimeAlias:SetPosition(467,510);
+		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.announceTimeAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.announceTimeAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.announceTimeAlias.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say announceTime");
+			sc:SetData(self.announceTimeAlias.ShortcutData);
+			self.announceTimeAlias:SetShortcut(sc);
+		end
+
+		self.announceTimeAlias.Icon=Turbine.UI.Control();
+		self.announceTimeAlias.Icon:SetParent(self);
+		self.announceTimeAlias.Icon:SetSize(117,18);
+		self.announceTimeAlias.Icon:SetPosition(467,510);
+		self.announceTimeAlias.Icon:SetZOrder(self.announceTimeAlias:GetZOrder()+2);
+		self.announceTimeAlias.Icon:SetMouseVisible(false);
+		self.announceTimeAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+		self.announceTimeAlias.MouseEnter=function()
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime_sel.jpg")
+		end
+		self.announceTimeAlias.MouseLeave=function()
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+		end
+		self.announceTimeAlias.MouseDown=function()
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+		end
+		self.announceTimeAlias.MouseUp=function()
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime_sel.jpg")
+		end
 
 		-- Bottom panel buttons
 		--
@@ -909,25 +1073,25 @@ Report Bugs on LotroInterface.com
 
 			if (msgKey=="Message") then
 
+				-- Remove XML elements
+				msgVal = string.gsub(tostring(msgVal), "<[^>]+>",'')
+
 
 				-- Note: Kinship messages  also include login notifications which do
 				-- NOT start with "[Kinship]", hence we have to search for the entire
 				-- format from a normal message.
 
-				local channelNameStart,channelNameEnd = string.find(tostring(msgVal),"%[".. lotrivia.config.sendToChannel .."%]")
+				local channelNameStart,channelNameEnd = string.find(msgVal,LT_channelMethods[lotrivia.config.sendToChannel]["match"])
 
 				if (channelNameStart ~= nil ) then
 					-- The current text was from our trivia channel
 
 					-- Strip out any leading text (timestamps, if there) the channel name, and eol
-					local channelStrippedMessage = string.sub(tostring(msgVal),channelNameEnd+2)
+					local channelStrippedMessage = string.sub(msgVal,channelNameEnd+2)
 					channelStrippedMessage = string.gsub(channelStrippedMessage,"\n",'')
 
 					-- Now, the message looks something like this:
 					-- <Select:IID:0x0206000000FFFFFFF>Joeschmoe<\Select>: Message Text Here"
-
-					-- Remove XML elements
-					channelStrippedMessage = string.gsub(channelStrippedMessage, "<[^>]+>",'')
 
 					-- Grab sender and message
 					currSender,currMessage = string.match(channelStrippedMessage,"(%a+):%s(.+)")
@@ -938,11 +1102,27 @@ Report Bugs on LotroInterface.com
 						LT_haveStoredAnswers = true
 						-- push the answer to the answers listbox
 						-- if (LT_questionActive)
-							addToAnswers(currSender,currMessage);
+							addToGuesses(currSender,currMessage);
 						-- end
 					end
 
+				-- This is somewhat backhanded, but we need to trigger score updates when we accept an answer,
+				-- and the easiest way is to catch ourselves sending a "got the question right" message to
+				-- trigger our updates.
+				--
+				else
+					foundAnnounce = string.match(tostring(msgVal),LT_channelMethods[lotrivia.config.sendToChannel]["to_match"] .." %a+ got the question right!")
+					if (foundAnnounce ~= nil) then
+						-- We found the announcement, so update and sort scores
+						if (LT_playerScores[LT_answeringPlayer] == nil) then
+							LT_playerScores[LT_answeringPlayer] = 0
+						end
+						LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
+						myScores:updateList();
+						scoresWindow.SizeChanged();
+					end
 				end
+
 
 			elseif (msgKey=="ChatType") then
 				currType=tonumber(msgVal)
@@ -953,7 +1133,9 @@ Report Bugs on LotroInterface.com
 
 	end
 
-	function addToAnswers(player,answer)
+
+	-- Add an item to the game guesses listbox
+	function addToGuesses(player,answer)
 		local tmpItem = Turbine.UI.Label()
 
 		tmpItem:SetMultiline(false)
@@ -977,10 +1159,16 @@ Report Bugs on LotroInterface.com
 
 	function pickQuestion()
 		local q = math.random(#LT_Question)
-		LT_currentQuestion = nextFree(q)
+		LT_currentQuestionId = nextFree(q)
 		-- Update the game window
-		myGame.questionText:SetText(LT_Question[LT_currentQuestion]);
-		myGame.answerText:SetText(LT_Answer[LT_currentQuestion]);
+		myGame.questionText:SetText(LT_Question[LT_currentQuestionId]);
+		myGame.answerText:SetText(LT_Answer[LT_currentQuestionId]);
+
+		-- Update the alias for sending the question
+		--
+		LT_sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. LT_questionCount .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
+		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
+
 	end
 
 	function nextFree(x)
@@ -1023,6 +1211,7 @@ Report Bugs on LotroInterface.com
 				tmpItem:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 )
 				tmpItem:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleRight )
 				tmpItem:SetForeColor( LT_color_gold )
+				tmpItem:SetVisible( true )
 				local labelText = "  " ..name .. "   " .. score
 				scoreRL[labelText] = score
 				tmpItem:SetText( labelText )
@@ -1118,9 +1307,16 @@ Report Bugs on LotroInterface.com
 			item:SetBackColor( LT_color_darkgray );
 		end
 
+		-- Tint the selected item
 		local selected = myGame.guessesListBox:GetSelectedItem();
 		LT_answeringPlayer=string.match(tostring(selected:GetText()),"^%s*([^:]+)");
 		selected:SetBackColor( Turbine.UI.Color( .1,.4,.1 ) );
 
+		-- Set up the alias for the "accept answer" quickslot faux button
+		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
+		local sendText = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#00FFC0>" .. name ..
+		" got the question right!</rgb>\n" .. "<rgb=#A000FF>" .. LT_Answer[LT_currentQuestionId] .. "</rgb>"
+		-- Bind to alias button
+		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 	end
 
