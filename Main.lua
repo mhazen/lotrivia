@@ -22,7 +22,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 	To-Do List:
 		- build the game window
 			- needs:
-				question display
+				question display tied to picking a question
 				answer display
 				send question control
 					-clicking starts timer and sets update event
@@ -119,12 +119,11 @@ Report Bugs on LotroInterface.com
 	local LT_announceAll = ""
 	local LT_announceTopThree = ""
 
-
 	LT_playerScores["Joeschmoe"] = 9
 	LT_playerScores["KimiaKane"] = 7
 	LT_playerScores["Carentil"] = 1
 	LT_playerScores["Rotifano"] = 4
-	LT_playerScores["Shockforwords"] = 6
+	LT_playerScores["KonaKona"] = 6
 	LT_playerScores["Nimdollas"] = 4
 	LT_playerScores["Argonauts"] = 6
 	LT_playerScores["Meriaegar"] = 3
@@ -142,10 +141,19 @@ Report Bugs on LotroInterface.com
 	LT_scoreColor[4] = "<rgb=#7F7F7F>"
 	LT_tieColor =  "<rgb=#00D0FF>"
 
-	LT_color_gold = Turbine.UI.Color(1,.8,.4)
+	LT_color_gold = Turbine.UI.Color(1,.8,.4);
+	LT_color_goldOutline = Turbine.UI.Color( .8, .7, 0 );
 
-	-- initialize options windows
+	function getChannelIndex(x)
+		for k, v in pairs(LT_channelNames) do
+			if v == x then
+				return k
+			end
+		end
+	end
 
+	-- options window class
+	--
 	optionsWindow=class(Turbine.UI.Lotro.Window);
 
 	function optionsWindow:Constructor()
@@ -153,7 +161,8 @@ Report Bugs on LotroInterface.com
 		Turbine.UI.Lotro.Window.Constructor(self);
 
 		self:SetSize(300,400);
-		self:SetPosition(30,Turbine.UI.Display:GetHeight()/2-100);
+		self:SetPosition(Turbine.UI.Display:GetWidth()/2-200,Turbine.UI.Display:GetHeight()/2-300);
+		self:SetZOrder(40);
 		self:SetText("LOTRivia Options");
 
 		-- todo: add an option for how many questionsPerRound
@@ -189,8 +198,6 @@ Report Bugs on LotroInterface.com
 		self.LT_timeperq_label:SetTextAlignment(Turbine.UI.ContentAlignment.MiddleLeft);
 		self.LT_timeperq_label:SetText(" Timer length (seconds)");
 
-
-
 		-- Questions Per Round Control
 		self.LT_questionsperround_tb = Turbine.UI.Lotro.TextBox();
 		self.LT_questionsperround_tb:SetParent(self);
@@ -214,7 +221,7 @@ Report Bugs on LotroInterface.com
 
 
 		-- Channel Selection Control
-		self.LT_channelselection = DropDown.Create(LT_channelNames);
+		self.LT_channelselection = DropDown.Create(LT_channelNames,lotrivia.config.sendToChannel);
 		self.LT_channelselection:SetParent(self);
 		self.LT_channelselection:SetPosition(20,144)
 		self.LT_channelselection:SetVisible(true);
@@ -410,7 +417,7 @@ Report Bugs on LotroInterface.com
 	end
 
 
-			-- Edit Player window class
+	-- Edit Player window class
 	--
 	editWindow = class(Turbine.UI.Lotro.Window);
 
@@ -495,8 +502,6 @@ Report Bugs on LotroInterface.com
 		self.saveButton:SetPosition(152,92);
 		self.saveButton:SetVisible(true)
 
-
-
 		self.increment_button.MouseUp = function(sender,args)
 			LT_playerScores[self.playerName:GetText()] = tonumber(LT_playerScores[self.playerName:GetText()])+1
 			self.playerScore:SetText( LT_playerScores[self.playerName:GetText()] )
@@ -523,20 +528,250 @@ Report Bugs on LotroInterface.com
 	end
 
 
+	-- Class for the main game window
+	--
+	gameWindow = class(Turbine.UI.Lotro.Window)
+	function gameWindow:Constructor()
+		Turbine.UI.Lotro.Window.Constructor(self);
+
+		self:SetPosition(Turbine.UI.Display:GetWidth()/2-300,Turbine.UI.Display:GetHeight()/2-400);
+		self:SetText("LOTRivia " .. lotrivia.version);
+		self:SetSize(600, 500);
+
+		-- define child Elements
+
+		-- question box header text
+		self.currentQuestionLabel = Turbine.UI.Label()
+		self.currentQuestionLabel:SetParent(self);
+		self.currentQuestionLabel:SetSize(260,30)
+		self.currentQuestionLabel:SetPosition(22,40)
+		self.currentQuestionLabel:SetMultiline(false);
+		self.currentQuestionLabel:SetForeColor( LT_color_gold )
+		self.currentQuestionLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro20 );
+		self.currentQuestionLabel:SetFontStyle( Turbine.UI.FontStyle.Outline )
+		self.currentQuestionLabel:SetOutlineColor( LT_color_goldOutline )
+		self.currentQuestionLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		--self.currentQuestionLabel:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.currentQuestionLabel:SetText( "Current Question" )
+		self.currentQuestionLabel:SetVisible( true )
+
+		-- current question text box
+		--
+		self.questionText = Turbine.UI.Label()
+		self.questionText:SetSize(440,100)
+		self.questionText:SetPosition(18,74)
+		self.questionText:SetFont( Turbine.UI.Lotro.Font.TrajanPro18 )
+		self.questionText:SetForeColor( Turbine.UI.Color(1,1,1) )
+		self.questionText:SetTextAlignment( Turbine.UI.ContentAlignment.TopLeft)
+		self.questionText:SetMultiline( true )
+		self.questionText:SetBackColor( Turbine.UI.Color(0, 0, .3) )
+		self.questionText:SetText( "The questions will be shown here before sending them to the channel. " )
+		self.questionText:SetVisible( true )
+		self.questionText:SetParent( self )
+
+		-- Ask Question Button
+		self.askButton = Turbine.UI.Lotro.Button();
+		self.askButton:SetParent(self);
+		self.askButton:SetHeight(30);
+		self.askButton:SetWidth(120);
+		self.askButton:SetText("Ask Question");
+		self.askButton:SetPosition(467,74);
+		self.askButton:SetVisible(true)
+
+		-- Skip Question Button
+		self.skipButton = Turbine.UI.Lotro.Button();
+		self.skipButton:SetParent(self);
+		self.skipButton:SetHeight(30);
+		self.skipButton:SetWidth(120);
+		self.skipButton:SetText("Skip Question");
+		self.skipButton:SetPosition(467,104);
+		self.skipButton:SetVisible(true)
+
+		-- answers box header text
+		self.currentAnswersLabel = Turbine.UI.Label()
+		self.currentAnswersLabel:SetParent(self);
+		self.currentAnswersLabel:SetSize(260,30)
+		self.currentAnswersLabel:SetPosition(22,180)
+		self.currentAnswersLabel:SetMultiline(false);
+		self.currentAnswersLabel:SetForeColor( LT_color_gold )
+		self.currentAnswersLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro20 );
+		self.currentAnswersLabel:SetFontStyle( Turbine.UI.FontStyle.Outline )
+		self.currentAnswersLabel:SetOutlineColor( LT_color_goldOutline )
+		self.currentAnswersLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		--self.currentAnswersLabel:SetBackColor( Turbine.UI.Color(.2, .2, .2) )
+		self.currentAnswersLabel:SetText( "Current Answers" )
+		self.currentAnswersLabel:SetVisible( true )
+
+
+		self.answersListBox = Turbine.UI.ListBox();
+
+		self.answersListBox:SetParent(self);
+		self.answersListBox:SetSize(440,240);
+		self.answersListBox:SetPosition(16,210);
+		self.answersListBox:SetBackColor(Turbine.UI.Color(.1,.1,.1));
+
+		-- Bind a vertical scrollbar to the listbox
+		self.VScroll = Turbine.UI.Lotro.ScrollBar();
+		self.VScroll:SetOrientation(Turbine.UI.Orientation.Vertical);
+		self.VScroll:SetParent(self.answersListBox);
+		self.VScroll:SetPosition(450,250);
+		self.VScroll:SetWidth(12);
+		self.VScroll:SetHeight(self.answersListBox:GetHeight());
+		self.VScroll:SetVisible(true);
+		self.answersListBox:SetVerticalScrollBar(self.VScroll);
+
+		-- Accept Answer Button
+		self.acceptAnswerButton = Turbine.UI.Lotro.Button();
+		self.acceptAnswerButton:SetParent(self);
+		self.acceptAnswerButton:SetHeight(30);
+		self.acceptAnswerButton:SetWidth(120);
+		self.acceptAnswerButton:SetText("Accept Answer");
+		self.acceptAnswerButton:SetPosition(467,220);
+		self.acceptAnswerButton:SetVisible(true)
+
+
+
+		-- Time Remaining text
+		self.timeRemainingLabel = Turbine.UI.Label()
+		self.timeRemainingLabel:SetParent(self);
+		self.timeRemainingLabel:SetSize(120,30)
+		self.timeRemainingLabel:SetPosition(467,340)
+		self.timeRemainingLabel:SetMultiline(false);
+		self.timeRemainingLabel:SetForeColor( LT_color_gold )
+		self.timeRemainingLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
+		self.timeRemainingLabel:SetFontStyle( Turbine.UI.FontStyle.Outline )
+		self.timeRemainingLabel:SetOutlineColor( LT_color_goldOutline )
+		self.timeRemainingLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		self.timeRemainingLabel:SetText( "Time Remaining:" )
+		self.timeRemainingLabel:SetVisible( true )
+
+		-- Time Remaining text box
+		--
+		self.timeRemaining = Turbine.UI.Label()
+		self.timeRemaining:SetSize(60,30)
+		self.timeRemaining:SetPosition(500,368)
+		self.timeRemaining:SetFont( Turbine.UI.Lotro.Font.TrajanPro24 )
+		self.timeRemaining:SetForeColor( LT_color_gold )
+		self.timeRemaining:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter)
+		self.timeRemaining:SetMultiline( true )
+		self.timeRemaining:SetBackColor( Turbine.UI.Color(.1, .1, .1) )
+		self.timeRemaining:SetText( lotrivia.config.timePerQuestion )
+		self.timeRemaining:SetVisible( true )
+		self.timeRemaining:SetParent( self )
+
+		-- Announce Time Remaining Button
+		self.timeButton = Turbine.UI.Lotro.Button();
+		self.timeButton:SetParent(self);
+		self.timeButton:SetHeight(30);
+		self.timeButton:SetWidth(120);
+		self.timeButton:SetText("Announce Time");
+		self.timeButton:SetPosition(467,410);
+		self.timeButton:SetVisible(true)
+
+		-- Bottom panel buttons
+		--
+
+		-- Scores Button
+		self.scoresButton = Turbine.UI.Lotro.Button();
+		self.scoresButton:SetParent(self);
+		self.scoresButton:SetHeight(30);
+		self.scoresButton:SetWidth(120);
+		self.scoresButton:SetText("Scores");
+		self.scoresButton:SetPosition(30,460);
+		self.scoresButton:SetVisible(true)
+
+		-- Options Button
+		self.optionsButton = Turbine.UI.Lotro.Button();
+		self.optionsButton:SetParent(self);
+		self.optionsButton:SetHeight(30);
+		self.optionsButton:SetWidth(120);
+		self.optionsButton:SetText("Options");
+		self.optionsButton:SetPosition(152,460);
+		self.optionsButton:SetVisible(true)
+
+		-- Start/Stop Game Button
+		self.gamestateButton = Turbine.UI.Lotro.Button();
+		self.gamestateButton:SetParent(self);
+		self.gamestateButton:SetHeight(30);
+		self.gamestateButton:SetWidth(120);
+		self.gamestateButton:SetText("Start Game");
+		self.gamestateButton:SetPosition(274,460);
+		self.gamestateButton:SetVisible(true)
+
+		self.optionsButton.MouseUp = function(sender,args)
+			myOptions:SetVisible(not myOptions:IsVisible())
+		end
+
+		self.scoresButton.MouseUp = function(sender,args)
+			myScores:SetVisible(not myScores:IsVisible())
+		end
+
+		self.gamestateButton.MouseUp = function(sender,args)
+			if (self.gamestateButton:GetText() == "Start Game") then
+				ltprint("Starting a new game!")
+				self.gamestateButton:SetText("Finish Game")
+				LT_playerScores = {};
+				myScores:updateList()
+			else
+				ltprint("Ending the current game.")
+				self.gamestateButton:SetText("Start Game")
+				-- do other game-finish things
+			end
+		end
+
+
+		self:SetResizable(false);
+		self:SetVisible(true);
+	end
 
 
 
 
 
 
+	-- function to compare scores when sorting out the top ranks
+	--
+	function cmpScore(a,b)
+		if (a[2] > b[2]) then
+			return true
+		end
+	end
 
+
+	-- function to fire when clicking player names in the socres list
+	--
+	function playerEdit(name)
+		myEdit.playerName:SetText( name );
+		myEdit.playerScore:SetText( LT_playerScores[name] );
+		myEdit.originalScore = LT_playerScores[name];
+		myEdit:SetVisible(true);
+		ltprint("Editing "..name)
+	end
+
+	-- populate option controls to match config
+	--
+	function populateOptions()
+		myOptions.LT_timed_cb:SetChecked( lotrivia.config.timed )
+		myOptions.LT_timeperq_tb:SetText( lotrivia.config.timePerQuestion );
+		myOptions.LT_questionsperround_tb:SetText( lotrivia.config.questionsPerRound );
+
+		myOptions.LT_channelselection:SetText( lotrivia.config.sendToChannel )
+
+		ltprint("Sending to "..lotrivia.config.sendToChannel )
+		ltprint(myOptions.LT_channelselection:GetText())
+
+		if (not lotrivia.config.timed) then
+				myOptions.LT_timeperq_tb:SetEnabled(false)
+		end
+	end
 
 
 	-- Instantiate Windows
 	myOptions = optionsWindow();
+	populateOptions();
 	myScores = scoresWindow();
 	myEdit = editWindow();
-
+	myGame = gameWindow()
 
 
 	-- Announce load to chat window
@@ -584,7 +819,8 @@ Report Bugs on LotroInterface.com
 
 
 		elseif (args=="options") then
-			LT_showOptions()
+			LT_setOptions()
+			myOptions:SetVisible(not myOptions:IsVisible())
 
 		elseif (args=="pq") then
 			ltprint( pickQuestion() )
@@ -609,9 +845,6 @@ Report Bugs on LotroInterface.com
 	end
 
 	Turbine.Shell.AddCommand( "lotrivia;lt", LT_Command)
-
-
-
 
 
 
@@ -697,20 +930,7 @@ Report Bugs on LotroInterface.com
 		return x
 	end
 
-	function LT_showOptions()
 
-		-- Change options to match config
-
-		myOptions.LT_timed_cb:SetChecked( false )
-
-		if ( lotrivia.config.timed ) then
-			myOptions.LT_timed_cb:SetChecked( true )
-		end
-
-		myOptions.LT_timeperq_tb:SetText( lotrivia.config.timePerQuestion );
-		myOptions.LT_questionsperround_tb:SetText( lotrivia.config.questionsPerRound );
-		myOptions:SetVisible( true )
-	end
 
 
 	function scoresWindow:updateList()
@@ -820,20 +1040,4 @@ Report Bugs on LotroInterface.com
 	end
 
 
-	-- function to compare scores when sorting out the top ranks
-	--
-	function cmpScore(a,b)
-		if (a[2] > b[2]) then
-			return true
-		end
-	end
 
-
-
-	function playerEdit(name)
-		myEdit.playerName:SetText( name );
-		myEdit.playerScore:SetText( LT_playerScores[name] );
-		myEdit.originalScore = LT_playerScores[name];
-		myEdit:SetVisible(true);
-		ltprint("Editing "..name)
-	end
