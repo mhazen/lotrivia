@@ -413,8 +413,8 @@ Report Bugs on LotroInterface.com
 		self.announceAll:SetParent(self);
 		self.announceAll:SetSize(107,18);
 		self.announceAll:SetPosition(30,360);
-		self.announceAll:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
-		self.announceAll.ShortcutData="/say lol"; --save the alias text for later
+		self.announceAll:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.announceAll.ShortcutData=""; --save the alias text for later
 		self.announceAll:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.announceAll.DragDrop=function()
 			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
@@ -451,8 +451,8 @@ Report Bugs on LotroInterface.com
 		self.top3:SetParent(self);
 		self.top3:SetSize(57,18);
 		self.top3:SetPosition(30,360);
-		self.top3:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
-		self.top3.ShortcutData="/say lol"; --save the alias text for later
+		self.top3:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.top3.ShortcutData=""; --save the alias text for later
 		self.top3:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.top3.DragDrop=function()
 			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
@@ -674,8 +674,8 @@ Report Bugs on LotroInterface.com
 		self.askAlias:SetParent(self);
 		self.askAlias:SetSize(117,18);
 		self.askAlias:SetPosition(467,74);
-		self.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
-		self.askAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.askAlias.ShortcutData=""; --save the alias text for later
 		self.askAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.askAlias.DragDrop=function()
 			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
@@ -802,8 +802,8 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias:SetParent(self);
 		self.acceptAlias:SetSize(117,18);
 		self.acceptAlias:SetPosition(467,320);
-		self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
-		self.acceptAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.acceptAlias.ShortcutData=""; --save the alias text for later
 		self.acceptAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.acceptAlias.DragDrop=function()
 			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
@@ -877,11 +877,11 @@ Report Bugs on LotroInterface.com
 		self.announceTimeAlias:SetParent(self);
 		self.announceTimeAlias:SetSize(117,18);
 		self.announceTimeAlias:SetPosition(467,510);
-		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say announceTime"))
-		self.announceTimeAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.announceTimeAlias.ShortcutData=""; --save the alias text for later
 		self.announceTimeAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.announceTimeAlias.DragDrop=function()
-			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say announceTime");
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
 			sc:SetData(self.announceTimeAlias.ShortcutData);
 			self.announceTimeAlias:SetShortcut(sc);
 		end
@@ -935,11 +935,11 @@ Report Bugs on LotroInterface.com
 		self.sendRulesAlias:SetParent(self);
 		self.sendRulesAlias:SetSize(117,18);
 		self.sendRulesAlias:SetPosition(274,561);
-		self.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say sendrules"))
-		self.sendRulesAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.sendRulesAlias.ShortcutData=""; --save the alias text for later
 		self.sendRulesAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.sendRulesAlias.DragDrop=function()
-			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say sendrules");
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
 			sc:SetData(self.sendRulesAlias.ShortcutData);
 			self.sendRulesAlias:SetShortcut(sc);
 		end
@@ -985,23 +985,34 @@ Report Bugs on LotroInterface.com
 		end
 
 		self.gamestateButton.MouseUp = function(sender,args)
+
 			if ( not LT_gameActive ) then
 				ltprint("Starting a new game!")
 				self.gamestateButton:SetText("Finish Game")
+
 				-- reset game data
 				setUpDataStores();
+
 				-- clear the questions and guesses
 				self.resetGameWindow();
 				myScores:updateList();
-				-- Pick the first question
-				pickQuestion();
+
 				-- Set the game state
 				LT_gameActive = true
+
+				-- Pick the first question
+				pickQuestion();
+
 			else
 				ltprint("Ending the current game.");
 				self.gamestateButton:SetText("Start Game");
+
 				-- Reset game window
 				self.resetGameWindow();
+
+				-- set game state
+				LT_gameActive = false
+
 				-- !! HERE
 				-- do other game-finishy things
 			end
@@ -1168,6 +1179,7 @@ Report Bugs on LotroInterface.com
 				if (channelNameStart ~= nil ) then
 					-- The current text was from our trivia channel
 
+
 					-- Strip out any leading text (timestamps, if there) the channel name, and eol
 					local channelStrippedMessage = string.sub(msgVal,channelNameEnd+2)
 					channelStrippedMessage = string.gsub(channelStrippedMessage,"\n",'')
@@ -1202,7 +1214,8 @@ Report Bugs on LotroInterface.com
 						end
 
 						-- Add question to used question list
-						table.push(LT_UsedQuestions,LT_currentQuestionId);
+						LT_UsedQuestions[#LT_UsedQuestions+1] = LT_currentQuestionId;
+
 						for a in items(LT_UsedQuestions) do
 							ltprint("used: " .. a);
 						end
@@ -1275,9 +1288,12 @@ Report Bugs on LotroInterface.com
 
 		-- Update the alias for sending the question
 		--
-		LT_sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. LT_questionCount .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
-		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
-
+		if (LT_gameActive) then
+			LT_sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. LT_questionCount .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
+			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
+		else
+			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		end
 	end
 
 	function nextFree(x)
