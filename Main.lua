@@ -27,10 +27,8 @@ import "Carentil.LOTRivia.Resources.Questions";
 					-clicking starts timer and sets update event
 				control to "accept answer"
 					-disables timer update event
-				send rules button
 				seeing a question asked in chat will add that question number to the asked list
-
-	Bugs: Why does the scores list not display scores until resized?
+				send scores to chat buttons need their actions
   ]]--
 
 
@@ -103,18 +101,22 @@ Report Bugs on LotroInterface.com
 
 	Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", LT_loadOptions)
 
-	-- Set up data stores
-	LT_storedAnswers = {}
-	LT_playerScores = {}
-	LT_questionWinners = {}
-	LT_UsedQuestions = {}
-	LT_currentQuestionId = 1
-	LT_questionCount = 1
-	LT_sendQuestion = ""
-	LT_answeringPlayer = ""
-	LT_haveStoredAnswers = false
-	LT_gameActive = false
-	LT_questionActive = false
+	function setUpDataStores()
+		LT_storedAnswers = {}
+		LT_playerScores = {}
+		LT_questionWinners = {}
+		LT_UsedQuestions = {}
+		LT_currentQuestionId = 1
+		LT_questionCount = 1
+		LT_sendQuestion = ""
+		LT_answeringPlayer = ""
+		LT_haveStoredAnswers = false
+		LT_gameActive = false
+		LT_questionActive = false
+	end
+
+	setUpDataStores();
+
 	LT_channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
 
 	LT_channelMethods = {
@@ -147,13 +149,12 @@ Report Bugs on LotroInterface.com
 					["match"] = "%[Officer%]"
 					},
 		["Regional"] = {
-					["to"] = "%[To Regional%]",
-					["from"] = "%[Regional%]",
+					["to"] = "[To Regional]",
+					["from"] = "[Regional]",
 					["cmd"] = "/regional",
 					["to_match"] = "%[To Regional%]",
 					["match"] = "%[Regional%]"
 					}
-
 		}
 
 	LT_announceAll = ""
@@ -785,14 +786,15 @@ Report Bugs on LotroInterface.com
 		self.guessesListBox:SetBackColor( LT_color_darkgray );
 
 		-- Bind a vertical scrollbar to the listbox
-		self.VScroll = Turbine.UI.Lotro.ScrollBar();
-		self.VScroll:SetOrientation(Turbine.UI.Orientation.Vertical);
-		self.VScroll:SetParent(self.guessesListBox);
-		self.VScroll:SetPosition(440,240);
-		self.VScroll:SetWidth(12);
-		self.VScroll:SetHeight(self.guessesListBox:GetHeight());
-		self.VScroll:SetVisible(true);
-		self.guessesListBox:SetVerticalScrollBar(self.VScroll);
+		self.guessesScroll = Turbine.UI.Lotro.ScrollBar();
+		self.guessesScroll:SetOrientation(Turbine.UI.Orientation.Vertical);
+		self.guessesScroll:SetParent(self);
+		self.guessesScroll:SetPosition(445,310);
+		self.guessesScroll:SetBackColor( LT_color_darkgray );
+		self.guessesScroll:SetWidth(12);
+		self.guessesScroll:SetHeight(self.guessesListBox:GetHeight());
+		self.guessesScroll:SetVisible(true);
+		self.guessesListBox:SetVerticalScrollBar(self.guessesScroll);
 
 		-- pseudo-button for accept answer
 		--
@@ -983,25 +985,38 @@ Report Bugs on LotroInterface.com
 		end
 
 		self.gamestateButton.MouseUp = function(sender,args)
-			if (self.gamestateButton:GetText() == "Start Game") then
+			if ( not LT_gameActive ) then
 				ltprint("Starting a new game!")
 				self.gamestateButton:SetText("Finish Game")
-				LT_playerScores = {};
-				myScores:updateList()
+				-- reset game data
+				setUpDataStores();
+				-- clear the questions and guesses
+				self.resetGameWindow();
+				myScores:updateList();
+				-- Pick the first question
+				pickQuestion();
+				-- Set the game state
+				LT_gameActive = true
 			else
-				ltprint("Ending the current game.")
-				self.gamestateButton:SetText("Start Game")
-				-- do other game-finish things
+				ltprint("Ending the current game.");
+				self.gamestateButton:SetText("Start Game");
+				-- Reset game window
+				self.resetGameWindow();
+				-- !! HERE
+				-- do other game-finishy things
 			end
+		end
+
+		self.resetGameWindow = function ()
+			self.questionText:SetText( "The questions will be shown here before sending them to the channel. " )
+			self.answerText:SetText( "Answers will be shown here." )
+			self.guessesListBox:ClearItems();
 		end
 
 
 		self:SetResizable(false);
 		self:SetVisible(true);
 	end
-
-
-
 
 
 
@@ -1181,9 +1196,31 @@ Report Bugs on LotroInterface.com
 					foundAnnounce = string.match(tostring(msgVal),LT_channelMethods[lotrivia.config.sendToChannel]["to_match"] .." %a+ got the question right!")
 					if (foundAnnounce ~= nil) then
 						-- We found the announcement, so update and sort scores
+
 						if (LT_playerScores[LT_answeringPlayer] == nil) then
 							LT_playerScores[LT_answeringPlayer] = 0
 						end
+
+						-- Add question to used question list
+						table.push(LT_UsedQuestions,LT_currentQuestionId);
+						for a in items(LT_UsedQuestions) do
+							ltprint("used: " .. a);
+						end
+						-- Reset player answers
+						LT_storedAnswers = {};
+						-- !! HERE
+						-- If we are not at the max questions, pick a new question
+						if (#LT_UsedQuestions < lotrivia.config.questionsPerRound) then
+							pickQuestion();
+						end
+						-- If we are at the max questions, reset the game window
+						if (#LT_UsedQuestions == lotrivia.config.questionsPerRound) then
+							myGame.ResetWindow();
+						end
+						-- Clear the answering player field
+						-- Clear the current question ID
+						--
+						-- Update scores and scores window
 						LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
 						myScores:updateList();
 						scoresWindow.SizeChanged();
@@ -1202,11 +1239,14 @@ Report Bugs on LotroInterface.com
 
 
 	-- Add an item to the game guesses listbox
+	--
 	function addToGuesses(player,answer)
 		local tmpItem = Turbine.UI.Label()
 
-		tmpItem:SetMultiline(false)
-		tmpItem:SetSize(440,18)
+		tmpItem:SetMultiline(true)
+		tmpItem:SetSize(432,32)
+		--tmpItem:SetSize(432,96)
+		tmpItem:SetLeft(0);
 		tmpItem:SetFont( Turbine.UI.Lotro.Font.Verdana14 )
 		tmpItem:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
 		tmpItem:SetForeColor( LT_color_ltgray );
