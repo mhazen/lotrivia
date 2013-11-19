@@ -23,17 +23,14 @@ import "Carentil.LOTRivia.Resources.Questions";
 		- build the game window
 			- needs:
 				question display tied to picking a question
-				answer display
 				send question control
 					-clicking starts timer and sets update event
-				listbox displaying current answers from people in order received
-					-clicking will set a background color for highlighting purposes
 				control to "accept answer"
-					-will send to channel
 					-disables timer update event
 				send rules button
-				buttons to convert: announce time, ask question
+				seeing a question asked in chat will add that question number to the asked list
 
+	Bugs: Why does the scores list not display scores until resized?
   ]]--
 
 
@@ -52,7 +49,6 @@ import "Carentil.LOTRivia.Resources.Questions";
 	lotrivia.config.timed = true
 	lotrivia.config.showRules = true
 
-
 	function ltprint(text)
 		Turbine.Shell.WriteLine("<rgb=#A000FF>LOTRivia:</rgb> <rgb=#40FFFF>" .. text .. "</rgb>")
 	end
@@ -61,23 +57,24 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 		-- todo
 
-	local helptext = [[Commands
+	helptext = [[Commands
  /lt help -- this message
  /lt guesses -- lists the guesses made on the current question
  /lt options -- shows the options window
  /lt resetanswers -- clears answers from all players for the current question
  /lt show -- shows game windows (if you close one by accident)]]
 
-	local creditstext = [[written by Carentil of Windfola
-Dropdown Library by Galuhad
-Questions collected by multiple members of The Oathsworn of Windfola
-Books written by J.R.R. Tolkien
-Movies directed by Peter Jackson
-Ring forged by Sauron
+	creditstext = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
 
 Report Bugs on LotroInterface.com
 ]]
 
+	rulesText = "<rgb=#A000FF>The Official LOTRivia Rules:</rgb>\n" .. [[
+<rgb=#20A0FF>1. I will ask a question. Answer in this chat.
+2. One answer per player per question. Your first answer is your final answer!
+3. Best-effort spellings will be accepted, subject to the ruling of the quizmaster.
+4. The quizmaster may award extra points for harder questions.</rgb>
+]]
 	-- Load saved configuration
 
 	function LT_loadOptions(LT_loaded)
@@ -351,6 +348,9 @@ Report Bugs on LotroInterface.com
 
 			-- save channel choice option
 			lotrivia.config.sendToChannel = self.LT_channelselection:GetText();
+			-- update the game panel's Send Rules action to match the saved channel
+			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " " .. rulesText))
+
 			self:SetVisible(false)
 			LT_saveOptions();
 		end
@@ -406,31 +406,81 @@ Report Bugs on LotroInterface.com
 		self.VScroll:SetVisible(true);
 		self.scoresListBox:SetVerticalScrollBar(self.VScroll);
 
-		-- Send Scores Button
-		self.AnnounceAll_button = Turbine.UI.Lotro.Button();
-		self.AnnounceAll_button:SetParent(self);
-		--self.AnnounceAll_button:SetHeight(30);
-		self.AnnounceAll_button:SetWidth(110);
-		self.AnnounceAll_button:SetText("Announce All");
-		self.AnnounceAll_button:SetPosition(30,360);
-		self.AnnounceAll_button:SetVisible(true)
 
-		-- Send Top 3 Scores Button
-		self.Announce3_button = Turbine.UI.Lotro.Button();
-		self.Announce3_button:SetParent(self);
-		--self.Announce3_button:SetHeight(30);
-		self.Announce3_button:SetWidth(60);
-		self.Announce3_button:SetText("Top 3");
-		self.Announce3_button:SetPosition(30,360);
-		self.Announce3_button:SetVisible(true)
-
-		self.AnnounceAll_button.MouseUp = function(sender,args)
-			ltprint("Announce all")
+		-- pseudo button for announce all
+		self.announceAll=Turbine.UI.Lotro.Quickslot();
+		self.announceAll:SetParent(self);
+		self.announceAll:SetSize(107,18);
+		self.announceAll:SetPosition(30,360);
+		self.announceAll:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.announceAll.ShortcutData="/say lol"; --save the alias text for later
+		self.announceAll:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.announceAll.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
+			sc:SetData(self.announceAll.ShortcutData);
+			self.announceAll:SetShortcut(sc);
 		end
 
-		self.Announce3_button.MouseUp = function(sender,args)
-			ltprint("announce top three")
+		self.announceAll.Icon=Turbine.UI.Control();
+		self.announceAll.Icon:SetParent(self);
+		self.announceAll.Icon:SetSize(107,18);
+		self.announceAll.Icon:SetPosition(30,360);
+		self.announceAll.Icon:SetZOrder(self.announceAll:GetZOrder()+2);
+		self.announceAll.Icon:SetMouseVisible(false);
+		self.announceAll.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.announceAll.Icon:SetBackground("Carentil/LOTRivia/Resources/announceall.jpg")
+		self.announceAll.MouseEnter=function()
+			self.announceAll.Icon:SetBackground("Carentil/LOTRivia/Resources/announceall_sel.jpg")
 		end
+		self.announceAll.MouseLeave=function()
+			self.announceAll.Icon:SetBackground("Carentil/LOTRivia/Resources/announceall.jpg")
+		end
+		self.announceAll.MouseDown=function()
+			self.announceAll.Icon:SetBackground("Carentil/LOTRivia/Resources/announceall.jpg")
+		end
+		self.announceAll.MouseUp=function()
+			self.announceAll.Icon:SetBackground("Carentil/LOTRivia/Resources/announceall_sel.jpg")
+		end
+
+
+		-- pseudo button for announce top 3
+		--
+		self.top3=Turbine.UI.Lotro.Quickslot();
+		self.top3:SetParent(self);
+		self.top3:SetSize(57,18);
+		self.top3:SetPosition(30,360);
+		self.top3:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.top3.ShortcutData="/say lol"; --save the alias text for later
+		self.top3:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.top3.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
+			sc:SetData(self.top3.ShortcutData);
+			self.top3:SetShortcut(sc);
+		end
+
+		self.top3.Icon=Turbine.UI.Control();
+		self.top3.Icon:SetParent(self);
+		self.top3.Icon:SetSize(57,18);
+		self.top3.Icon:SetPosition(30,360);
+		self.top3.Icon:SetZOrder(self.top3:GetZOrder()+2);
+		self.top3.Icon:SetMouseVisible(false);
+		self.top3.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+		self.top3.MouseEnter=function()
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3_sel.jpg")
+		end
+		self.top3.MouseLeave=function()
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+		end
+		self.top3.MouseDown=function()
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+		end
+		self.top3.MouseUp=function()
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3_sel.jpg")
+		end
+
 
 		self:SetVisible(true);
 		self:SetSize(270, 400);
@@ -445,8 +495,12 @@ Report Bugs on LotroInterface.com
 			-- Resize child elements
 			self.headerText:SetSize(width-32,20)
 			self.scoresListBox:SetSize(width-32,height-98);
-			self.AnnounceAll_button:SetPosition(30,height-32);
-			self.Announce3_button:SetPosition(width-90,height-32);
+			self.announceAll:SetPosition(30,height-32);
+			self.announceAll.Icon:SetPosition(30,height-32);
+
+			self.top3:SetPosition(width-90,height-32);
+			self.top3.Icon:SetPosition(width-90,height-32);
+
 			-- alter elements in listbox
 			--
 			for i=1,self.scoresListBox:GetItemCount() do
@@ -613,15 +667,6 @@ Report Bugs on LotroInterface.com
 		self.questionText:SetVisible( true )
 		self.questionText:SetParent( self )
 
-		-- Ask Question Button
-	--[[	self.askButton = Turbine.UI.Lotro.Button();
-		self.askButton:SetParent(self);
-		self.askButton:SetHeight(30);
-		self.askButton:SetWidth(120);
-		self.askButton:SetText("Ask Question");
-		self.askButton:SetPosition(467,74);
-		self.askButton:SetVisible(true)
-]]--
 		-- pseudo-button for ask question
 		--
 		self.askAlias=Turbine.UI.Lotro.Quickslot();
@@ -636,15 +681,7 @@ Report Bugs on LotroInterface.com
 			sc:SetData(self.askAlias.ShortcutData);
 			self.askAlias:SetShortcut(sc);
 		end
-		--[[self.askAlias.Backdrop=Turbine.UI.Control(); -- note, if the icon has no transparencies then this backdrop is not needed
-		self.askAlias.Backdrop:SetParent(self);
-		self.askAlias.Backdrop:SetSize(117,18);
-		self.askAlias.Backdrop:SetPosition(467,74);
-		self.askAlias.Backdrop:SetZOrder(self.askAlias:GetZOrder()+1); -- force the icon to be displayed above the quickslot
-		self.askAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/ask.jpg");
-		self.askAlias.Backdrop:SetBackColor(Turbine.UI.Color(1,0,0,0))
-		self.askAlias.Backdrop:SetMouseVisible(false);
-]]--
+
 		self.askAlias.Icon=Turbine.UI.Control();
 		self.askAlias.Icon:SetParent(self);
 		self.askAlias.Icon:SetSize(117,18);
@@ -666,8 +703,6 @@ Report Bugs on LotroInterface.com
 		self.askAlias.MouseUp=function()
 			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
 		end
-
-
 
 		-- Skip Question Button
 		self.skipButton = Turbine.UI.Lotro.Button();
@@ -833,16 +868,6 @@ Report Bugs on LotroInterface.com
 		self.timeRemaining:SetVisible( true )
 		self.timeRemaining:SetParent( self )
 
---[[
-		-- Announce Time Remaining Button
-		self.timeButton = Turbine.UI.Lotro.Button();
-		self.timeButton:SetParent(self);
-		self.timeButton:SetHeight(30);
-		self.timeButton:SetWidth(120);
-		self.timeButton:SetText("Announce Time");
-		self.timeButton:SetPosition(467,510);
-		self.timeButton:SetVisible(true)
-]]--
 
 		-- pseudo-button for announceTime answer
 		--
@@ -850,7 +875,7 @@ Report Bugs on LotroInterface.com
 		self.announceTimeAlias:SetParent(self);
 		self.announceTimeAlias:SetSize(117,18);
 		self.announceTimeAlias:SetPosition(467,510);
-		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say omg"))
+		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say announceTime"))
 		self.announceTimeAlias.ShortcutData="/say lol"; --save the alias text for later
 		self.announceTimeAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
 		self.announceTimeAlias.DragDrop=function()
@@ -902,13 +927,51 @@ Report Bugs on LotroInterface.com
 		self.optionsButton:SetPosition(152,560);
 		self.optionsButton:SetVisible(true)
 
+		-- pseudo-button for send rules
+		--
+		self.sendRulesAlias=Turbine.UI.Lotro.Quickslot();
+		self.sendRulesAlias:SetParent(self);
+		self.sendRulesAlias:SetSize(117,18);
+		self.sendRulesAlias:SetPosition(274,561);
+		self.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say sendrules"))
+		self.sendRulesAlias.ShortcutData="/say lol"; --save the alias text for later
+		self.sendRulesAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.sendRulesAlias.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say sendrules");
+			sc:SetData(self.sendRulesAlias.ShortcutData);
+			self.sendRulesAlias:SetShortcut(sc);
+		end
+
+		self.sendRulesAlias.Icon=Turbine.UI.Control();
+		self.sendRulesAlias.Icon:SetParent(self);
+		self.sendRulesAlias.Icon:SetSize(117,18);
+		self.sendRulesAlias.Icon:SetPosition(274,561);
+		self.sendRulesAlias.Icon:SetZOrder(self.sendRulesAlias:GetZOrder()+2);
+		self.sendRulesAlias.Icon:SetMouseVisible(false);
+		self.sendRulesAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+		self.sendRulesAlias.MouseEnter=function()
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules_sel.jpg")
+		end
+		self.sendRulesAlias.MouseLeave=function()
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+		end
+		self.sendRulesAlias.MouseDown=function()
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+		end
+		self.sendRulesAlias.MouseUp=function()
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules_sel.jpg")
+		end
+
+
 		-- Start/Stop Game Button
 		self.gamestateButton = Turbine.UI.Lotro.Button();
 		self.gamestateButton:SetParent(self);
 		self.gamestateButton:SetHeight(30);
 		self.gamestateButton:SetWidth(120);
 		self.gamestateButton:SetText("Start Game");
-		self.gamestateButton:SetPosition(274,560);
+		self.gamestateButton:SetPosition(394,560);
 		self.gamestateButton:SetVisible(true)
 
 		self.optionsButton.MouseUp = function(sender,args)
@@ -982,6 +1045,10 @@ Report Bugs on LotroInterface.com
 	myScores = scoresWindow();
 	myEdit = editWindow();
 	myGame = gameWindow()
+
+	-- Set up rules alias
+	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
+
 
 
 	-- Announce load to chat window
@@ -1157,6 +1224,8 @@ Report Bugs on LotroInterface.com
 		LT_haveStoredAnswers = false
 	end
 
+	-- Function to pick a question we haven't used yet
+	--
 	function pickQuestion()
 		local q = math.random(#LT_Question)
 		LT_currentQuestionId = nextFree(q)
@@ -1251,11 +1320,9 @@ Report Bugs on LotroInterface.com
 				end
 			end
 
-
 			LT_announceAll = ""
 			LT_announceTopThree = ""
 
-			ltprint("score count: " .. #sortedScores)
 			if (#sortedScores) then
 				for i=1,#sortedScores do
 					LT_announceAll = LT_announceAll ..
@@ -1265,13 +1332,11 @@ Report Bugs on LotroInterface.com
 				LT_announceAll = "No points awarded."
 			end
 
-
 			if (#sortedScores >2) then
 				LT_announceTopThree =
 				LT_scoreColor[1] ..  "[" .. sortedScores[1][1] .. ":"  .. sortedScores[1][2] .. "</rgb>" .. sortedScores[1][3] .. LT_scoreColor[1] .. "]</rgb>" ..
 				LT_scoreColor[2] .. " [" ..	sortedScores[2][1] .. ":"  .. sortedScores[2][2] .. "</rgb>" .. sortedScores[2][3] .. LT_scoreColor[2] .. "]</rgb>" ..
 				LT_scoreColor[3] .. " [" ..	sortedScores[3][1] .. ":"  .. sortedScores[3][2] .. "</rgb>" .. sortedScores[3][3] .. LT_scoreColor[3] .. "]</rgb>"
-
 
 				-- If our score for fourth+ place are the same as the third place,
 				-- include them as a tie
@@ -1284,7 +1349,6 @@ Report Bugs on LotroInterface.com
 					end
 				end
 
-
 			else
 				LT_announceTopThree = LT_announceAll
 			end
@@ -1292,12 +1356,8 @@ Report Bugs on LotroInterface.com
 			LT_announceAll = "Scores: " .. LT_announceAll
 			LT_announceTopThree = "Top Three Scorers: " .. LT_announceTopThree
 
-			ltprint("top three: " .. LT_announceTopThree)
-			ltprint("all scores: " .. LT_announceAll)
-
 		end
 	end
-
 
 	-- function to handle events when a guess is clicked
 	--
