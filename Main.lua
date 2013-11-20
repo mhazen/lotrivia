@@ -20,11 +20,8 @@ import "Carentil.LOTRivia.Resources.Questions";
   --[[
 
 	To-Do List:
-		Ask question control starts timer and sets update event
-		Stop Game needs to disable countdown
-		If question active, skip question button should do nothing
+
 	Bugs:
-		"accept answer" needs to stop countdown
 
   ]]--
 
@@ -45,13 +42,12 @@ import "Carentil.LOTRivia.Resources.Questions";
 	lotrivia.config.timed = true
 	lotrivia.config.showRules = true
 
+	-- Local print wrapper
+	--
 	function ltprint(text)
 		Turbine.Shell.WriteLine("<rgb=#A000FF>LOTRivia:</rgb> <rgb=#40FFFF>" .. text .. "</rgb>")
 	end
 
-	-- look for stored config to override base
-
-		-- todo
 
 	helptext = [[Commands
  /lt help -- this message
@@ -787,12 +783,12 @@ Report Bugs on LotroInterface.com
 				LT_questionActive=true;
 
 				-- Set up and start the countdown
-				--
 				LT_countdown = tonumber(lotrivia.config.timePerQuestion);
-
 				AddCallback(myTimer,"TimeReached",timerEvent);
 				myTimer:SetTime(1,true);
 				self.timeRemaining:SetText(LT_countdown);
+
+				-- Reset the stored answers and the listbox
 				self.guessesListBox:ClearItems();
 				LT_storedAnswers = {}
 			end
@@ -808,7 +804,11 @@ Report Bugs on LotroInterface.com
 		self.skipButton:SetVisible(true)
 
 		self.skipButton.MouseUp = function(sender,args)
-			pickQuestion();
+			if (LT_questionActive) then
+				ltprint("Can't skip to the next question until you finish this one!")
+			else
+				pickQuestion();
+			end
 		end
 
 		-- question box header text
