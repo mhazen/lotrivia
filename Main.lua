@@ -20,9 +20,9 @@ import "Carentil.LOTRivia.Resources.Questions";
   --[[
 
 	To-Do List:
-		Make an unload handler
-			-clear globals (questions, answers, commentary)
-	Bugs:
+		Add a question counter
+
+	Known Bugs:
 
   ]]--
 
@@ -803,6 +803,9 @@ Report Bugs on LotroInterface.com
 			if (gameActive) then
 				questionActive=true;
 
+				-- Add the current question to the used questions pile
+				usedQuestions[#usedQuestions+1] = questionId;
+
 				-- Set up and start the countdown
 				countdownTime = tonumber(lotrivia.config.timePerQuestion);
 				AddCallback(myTimer,"TimeReached",timerEvent);
@@ -958,21 +961,51 @@ Report Bugs on LotroInterface.com
 			if (gameActive and questionActive) then
 				stopCountdown();
 				awardPoints();
+				self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
 			end
 		end
+
+		-- questions Remaining text
+		self.questionsRemainingLabel = Turbine.UI.Label()
+		self.questionsRemainingLabel:SetParent(self);
+		self.questionsRemainingLabel:SetSize(120,30)
+		self.questionsRemainingLabel:SetPosition(467,190)
+		self.questionsRemainingLabel:SetMultiline(false);
+		self.questionsRemainingLabel:SetForeColor( LT_color_gold )
+		self.questionsRemainingLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro14 );
+		self.questionsRemainingLabel:SetFontStyle( Turbine.UI.FontStyle.Outline )
+		self.questionsRemainingLabel:SetOutlineColor( LT_color_goldOutline )
+		self.questionsRemainingLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
+		self.questionsRemainingLabel:SetText( "Questions Left:" )
+		self.questionsRemainingLabel:SetVisible( true )
+
+		-- questions Remaining text box
+		--
+		self.questionsRemaining = Turbine.UI.Label()
+		self.questionsRemaining:SetSize(60,30)
+		self.questionsRemaining:SetPosition(500,218)
+		self.questionsRemaining:SetFont( Turbine.UI.Lotro.Font.TrajanPro24 )
+		self.questionsRemaining:SetForeColor( LT_color_gold )
+		self.questionsRemaining:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter)
+		self.questionsRemaining:SetMultiline( true )
+		self.questionsRemaining:SetBackColor( Turbine.UI.Color(.1, .1, .1) )
+		self.questionsRemaining:SetText( lotrivia.config.questionsPerRound )
+		self.questionsRemaining:SetVisible( true )
+		self.questionsRemaining:SetParent( self )
+
 
 
 		-- Time Remaining text
 		self.timeRemainingLabel = Turbine.UI.Label()
 		self.timeRemainingLabel:SetParent(self);
 		self.timeRemainingLabel:SetSize(120,30)
-		self.timeRemainingLabel:SetPosition(467,440)
+		self.timeRemainingLabel:SetPosition(467,400)
 		self.timeRemainingLabel:SetMultiline(false);
 		self.timeRemainingLabel:SetForeColor( LT_color_gold )
 		self.timeRemainingLabel:SetFont( Turbine.UI.Lotro.Font.TrajanPro16 );
 		self.timeRemainingLabel:SetFontStyle( Turbine.UI.FontStyle.Outline )
 		self.timeRemainingLabel:SetOutlineColor( LT_color_goldOutline )
-		self.timeRemainingLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleLeft )
+		self.timeRemainingLabel:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter )
 		self.timeRemainingLabel:SetText( "Time Remaining:" )
 		self.timeRemainingLabel:SetVisible( true )
 
@@ -980,7 +1013,7 @@ Report Bugs on LotroInterface.com
 		--
 		self.timeRemaining = Turbine.UI.Label()
 		self.timeRemaining:SetSize(60,30)
-		self.timeRemaining:SetPosition(500,468)
+		self.timeRemaining:SetPosition(500,428)
 		self.timeRemaining:SetFont( Turbine.UI.Lotro.Font.TrajanPro24 )
 		self.timeRemaining:SetForeColor( LT_color_gold )
 		self.timeRemaining:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter)
@@ -995,7 +1028,7 @@ Report Bugs on LotroInterface.com
 		self.announceTimeAlias=Turbine.UI.Lotro.Quickslot();
 		self.announceTimeAlias:SetParent(self);
 		self.announceTimeAlias:SetSize(117,18);
-		self.announceTimeAlias:SetPosition(467,510);
+		self.announceTimeAlias:SetPosition(467,470);
 		self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 		self.announceTimeAlias.ShortcutData=""; --save the alias text for later
 		self.announceTimeAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
@@ -1008,7 +1041,7 @@ Report Bugs on LotroInterface.com
 		self.announceTimeAlias.Icon=Turbine.UI.Control();
 		self.announceTimeAlias.Icon:SetParent(self);
 		self.announceTimeAlias.Icon:SetSize(117,18);
-		self.announceTimeAlias.Icon:SetPosition(467,510);
+		self.announceTimeAlias.Icon:SetPosition(467,470);
 		self.announceTimeAlias.Icon:SetZOrder(self.announceTimeAlias:GetZOrder()+2);
 		self.announceTimeAlias.Icon:SetMouseVisible(false);
 		self.announceTimeAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
@@ -1215,11 +1248,20 @@ Report Bugs on LotroInterface.com
 		if (countdownTime == 0) then
 			questionActive=false;
 			RemoveCallback(myTimer,"TimeReached",timerEvent);
-			-- Disable the timer
+
+			-- Disable the timer repeat
 			myTimer.Repeat = false;
-			ltprint("Time's up!");
-			-- clear the announce time aliases
+
+			-- pick another question to ask
+			pickQuestion();
+
+			-- clear the announce time alias
 			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+
+			-- Update the question count
+			myGame.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+
+			ltprint("Time's up!");
 		end
 	end
 
@@ -1430,9 +1472,6 @@ Report Bugs on LotroInterface.com
 		if (playerScores[answeringPlayer] == nil) then
 			playerScores[answeringPlayer] = 0
 		end
-
-		-- Add question to used question list
-		usedQuestions[#usedQuestions+1] = questionId;
 
 		-- If we are not at the max questions, pick a new question
 		--
