@@ -1106,8 +1106,9 @@ Report Bugs on LotroInterface.com
 				-- Reset game window
 				self.resetGameWindow();
 
-				-- set game state
+				-- set game and question state
 				LT_gameActive = false
+				LT_questionActive = false
 
 				-- end the countdown, if it's active
 				if (LT_questionActive) then
