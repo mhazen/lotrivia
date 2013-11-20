@@ -20,7 +20,6 @@ import "Carentil.LOTRivia.Resources.Questions";
   --[[
 
 	To-Do List:
-		Add a question counter
 
 	Known Bugs:
 
@@ -426,9 +425,13 @@ Report Bugs on LotroInterface.com
 			end
 			-- save questions per round choice
 			if (tonumber(self.questionsPerRound:GetText()) ~= nil) then
+				if ( #usedQuestions > tonumber(self.questionsPerRound) ) then
+					self.questionsPerRound:SetText(#usedQuestions+1);
+					ltprint("Increasing questions per round to cover the number of questions already asked.")
+				end
 				lotrivia.config.questionsPerRound = tonumber( self.questionsPerRound:GetText() );
 				-- Also update the panel
-				myGame.questionsRemaining:SetText( lotrivia.config.questionsPerRound );
+				myGame.questionsRemaining:SetText( lotrivia.config.questionsPerRound-#usedQuestions );
 			end
 
 			-- save channel choice option
