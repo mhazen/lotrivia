@@ -21,9 +21,10 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 	To-Do List:
 		Ask question control starts timer and sets update event
-		"accept answer" disables timer update event
-
+		Stop Game needs to disable countdown
+		If question active, skip question button should do nothing
 	Bugs:
+		"accept answer" needs to stop countdown
 
   ]]--
 
@@ -70,8 +71,91 @@ Report Bugs on LotroInterface.com
 3. Best-effort spellings will be accepted, subject to the ruling of the quizmaster.
 4. The quizmaster may award extra points for harder questions.</rgb>
 ]]
-	-- Load saved configuration
 
+
+	-- Standard add and remove callback functions
+	--
+	function AddCallback(object, event, callback)
+		if (object[event] == nil) then
+			object[event] = callback;
+		else
+			if (type(object[event]) == "table") then
+				table.insert(object[event], callback);
+			else
+				object[event] = {object[event], callback};
+			end
+		end
+		return callback;
+	end
+
+	function RemoveCallback(object, event, callback)
+		if (object[event] == callback) then
+			object[event] = nil;
+		else
+			if (type(object[event]) == "table") then
+				local size = table.getn(object[event]);
+				for i = 1, size do
+					if (object[event][i] == callback) then
+						table.remove(object[event], i);
+						break;
+					end
+				end
+			end
+		end
+	end
+
+	-- Basic timer class from LotroInterface (Garan)
+	--
+	Timer = class( Turbine.UI.Control );
+	function Timer:Constructor()
+		Turbine.UI.Control.Constructor( self );
+		self.EndTime=Turbine.Engine.GetGameTime();
+		self.Repeat=false;
+
+		self.SetTime=function(sender, numSeconds, setRepeat)
+			numSeconds=tonumber(numSeconds);
+			if numSeconds==nil or numSeconds<=0 then
+				numSeconds=0;
+			end
+			self.EndTime=Turbine.Engine.GetGameTime()+numSeconds;
+			self.Repeat=false; -- default
+			self.NumSeconds=numSeconds;
+			if setRepeat~=nil and setRepeat~=false then
+				-- any non-false value will trigger a repeat
+				self.Repeat=true;
+			end
+			self:SetWantsUpdates(true);
+--			self.TimeReached = timerCallback;
+		end
+
+		self.Update=function()
+			if self.EndTime~=nil and Turbine.Engine.GetGameTime()>=self.EndTime then
+				-- turn off timer to avoid firing again while processing
+				self:SetWantsUpdates(false);
+				-- fire whatever event you are trying to trigger
+				if self.TimeReached~=nil then
+					if type(self.TimeReached)=="function" then
+						self.TimeReached();
+					elseif type(self.TimeReached)=="table"  then
+						for k,v in pairs(self.TimeReached) do
+							if type(v)=="function" then
+								v();
+							end
+						end
+					end
+				end
+
+				if self.Repeat then
+					self.EndTime=Turbine.Engine.GetGameTime()+self.NumSeconds;
+					self:SetWantsUpdates(true);
+				end
+			end
+		end
+	end
+
+
+	-- Load saved configuration
+	--
 	function LT_loadOptions(LT_loaded)
 
 		if (LT_loaded == nil) then
@@ -109,12 +193,12 @@ Report Bugs on LotroInterface.com
 		LT_haveStoredAnswers = false
 		LT_gameActive = false
 		LT_questionActive = false
+		LT_countdown = 0;
 	end
 
 	setUpDataStores();
 
 	LT_channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
-
 	LT_channelMethods = {
 		["Kinship"] = {
 					["to"] = "[To Kinship]",
@@ -701,7 +785,14 @@ Report Bugs on LotroInterface.com
 			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
 			if (LT_gameActive) then
 				LT_questionActive=true;
-				ltprint("Setting question active status to true");
+
+				-- Set up and start the countdown
+				--
+				LT_countdown = tonumber(lotrivia.config.timePerQuestion);
+
+				AddCallback(myTimer,"TimeReached",timerEvent);
+				myTimer:SetTime(1,true);
+				self.timeRemaining:SetText(LT_countdown);
 				self.guessesListBox:ClearItems();
 				LT_storedAnswers = {}
 			end
@@ -842,6 +933,7 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
 			if (LT_gameActive and LT_questionActive) then
+				stopCountdown();
 				awardPoints();
 			end
 		end
@@ -871,10 +963,9 @@ Report Bugs on LotroInterface.com
 		self.timeRemaining:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter)
 		self.timeRemaining:SetMultiline( true )
 		self.timeRemaining:SetBackColor( Turbine.UI.Color(.1, .1, .1) )
-		self.timeRemaining:SetText( lotrivia.config.timePerQuestion )
+		self.timeRemaining:SetText( "--" )
 		self.timeRemaining:SetVisible( true )
 		self.timeRemaining:SetParent( self )
-
 
 		-- pseudo-button for announceTime answer
 		--
@@ -1018,8 +1109,15 @@ Report Bugs on LotroInterface.com
 				-- set game state
 				LT_gameActive = false
 
-				-- !! HERE
-				-- do other game-finishy things
+				-- end the countdown, if it's active
+				if (LT_questionActive) then
+					stopCountdown();
+				end
+
+				-- clear pseudo button aliases
+				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+				self.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+				self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 			end
 		end
 
@@ -1074,6 +1172,32 @@ Report Bugs on LotroInterface.com
 	myScores = scoresWindow();
 	myEdit = editWindow();
 	myGame = gameWindow()
+
+	-- Set up timer
+	myTimer = Timer();
+
+	-- Set up the countdown timer events
+	--
+	timerEvent = function()
+		if (LT_countdown == nil) then
+			return
+		end
+		-- Update the countdown clock
+		LT_countdown = LT_countdown-1;
+		myGame.timeRemaining:SetText(LT_countdown);
+		local timeAnnounce = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#A000FF>LOTRivia: </rgb><rgb=#20FFFF>" .. LT_countdown .. " seconds remain!</rgb>"
+		myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
+		-- If we've hit zero, we need to do a number of things.
+		if (LT_countdown == 0) then
+			LT_questionActive=false;
+			RemoveCallback(myTimer,"TimeReached",timerEvent);
+			-- Disable the timer
+			myTimer.Repeat = false;
+			ltprint("Time's up!");
+			-- clear the announce time aliases
+			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		end
+	end
 
 	-- Set up Send Rules alias
 	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
@@ -1133,7 +1257,6 @@ Report Bugs on LotroInterface.com
 			LT_saveOptions()
 
 		elseif (args=="load") then
-		ltprint("trying to load data")
 			Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", LT_loadOptions)
 
 		elseif (args=="show") then
@@ -1254,7 +1377,10 @@ Report Bugs on LotroInterface.com
 		--
 		if (LT_gameActive) then
 			sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#LT_UsedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
-			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
+-- Debugging
+--		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
+		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say testing"))
+
 		else
 			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 		end
@@ -1286,10 +1412,10 @@ Report Bugs on LotroInterface.com
 		-- Add question to used question list
 		LT_UsedQuestions[#LT_UsedQuestions+1] = LT_currentQuestionId;
 
-		for i,a in ipairs(LT_UsedQuestions) do
+--[[		for i,a in ipairs(LT_UsedQuestions) do
 			ltprint("used: " .. a);
 		end
-
+]]--
 		-- If we are not at the max questions, pick a new question
 		--
 		if (#LT_UsedQuestions < lotrivia.config.questionsPerRound) then
@@ -1303,6 +1429,13 @@ Report Bugs on LotroInterface.com
 
 		-- Update scores and scores window
 		LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
+--[[ ltprint("Added one to " .. LT_answeringPlayer);
+local scorLis = "";
+for k,v in pairs(LT_playerScores) do
+	scorLis = scorLis .. k .. "= " ..v;
+end
+ltprint("scores: " .. scorLis);
+]]--
 		myScores:updateList();
 		myScores.SizeChanged();
 
@@ -1311,6 +1444,9 @@ Report Bugs on LotroInterface.com
 
 		-- Clear the answering player field
 		LT_answeringPlayer = ""
+
+		-- Clear the accept answer button alias text
+		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 
 		-- Set question state to inactive
 		LT_questionActive = false;
@@ -1419,6 +1555,15 @@ Report Bugs on LotroInterface.com
 		end
 	end
 
+	-- function to stop countdown
+	--
+	function stopCountdown()
+		RemoveCallback(myTimer,"TimedReached",timerEvent);
+		myTimer.Repeat = false;
+		myGame.timeRemaining:SetText("--");
+		LT_countdown = nil
+	end
+
 	-- function to handle events when a guess is clicked in the guessesListBox
 	--
 	function pickPlayer(sender,args,name)
@@ -1434,9 +1579,10 @@ Report Bugs on LotroInterface.com
 
 		-- Set up the alias for the "accept answer" quickslot faux button
 		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
-		local sendText = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#00FFC0>" .. name ..
-		" got the question right!</rgb>\n" .. "<rgb=#A000FF>" .. LT_Answer[LT_currentQuestionId] .. "</rgb>"
+-- DEBUGGING
+		local sendText = "/say <rgb=#00FFC0>" .. name .. " got the right answer!</rgb>\n" .. "<rgb=#A000FF> >> " .. LT_Answer[LT_currentQuestionId] .. " << </rgb>"
+--		local sendText = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#00FFC0>" .. name ..
+--		" got the right answer!</rgb>\n" .. "<rgb=#A000FF> >> " .. LT_Answer[LT_currentQuestionId] .. " << </rgb>"
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 	end
-
