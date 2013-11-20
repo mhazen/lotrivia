@@ -191,8 +191,7 @@ Report Bugs on LotroInterface.com
 		playerScores = {}
 		questionId = 1
 		usedQuestions = {}
-		LT_sendQuestion = ""
-		answeringPlayer = ""
+		answeringPlayer = nil
 		haveStoredAnswers = false
 		gameActive = false
 		questionActive = false
@@ -428,12 +427,17 @@ Report Bugs on LotroInterface.com
 			-- save questions per round choice
 			if (tonumber(self.questionsPerRound:GetText()) ~= nil) then
 				lotrivia.config.questionsPerRound = tonumber( self.questionsPerRound:GetText() );
+				-- Also update the panel
+				myGame.questionsRemaining:SetText( lotrivia.config.questionsPerRound );
 			end
 
 			-- save channel choice option
 			lotrivia.config.sendToChannel = self.channelSelection:GetText();
+
 			-- update the game panel's Send Rules action to match the saved channel
 			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. rulesText))
+
+
 
 			self:SetVisible(false)
 			LT_saveOptions();
@@ -958,10 +962,13 @@ Report Bugs on LotroInterface.com
 		end
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+
 			if (gameActive and questionActive) then
-				stopCountdown();
-				awardPoints();
-				self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+				if (answeringPlayer ~= nil) then
+					stopCountdown();
+					awardPoints();
+					self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+				end
 			end
 		end
 
@@ -1244,6 +1251,7 @@ Report Bugs on LotroInterface.com
 		myGame.timeRemaining:SetText(countdownTime);
 		local timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#A000FF>LOTRivia: </rgb><rgb=#20FFFF>" .. countdownTime .. " seconds remain!</rgb>"
 		myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
+
 		-- If we've hit zero, we need to do a number of things.
 		if (countdownTime == 0) then
 			questionActive=false;
@@ -1252,16 +1260,36 @@ Report Bugs on LotroInterface.com
 			-- Disable the timer repeat
 			myTimer.Repeat = false;
 
+			-- Let the user know time has expired
+			ltprint("Time's up!");
+
 			-- pick another question to ask
-			pickQuestion();
+			prepareQuestion();
 
 			-- clear the announce time alias
-			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- Update the question count
 			myGame.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+		end
+	end
 
-			ltprint("Time's up!");
+
+	-- prepares another question, unless we don't need more questions
+	-- (end of game)
+	function prepareQuestion()
+		if (#usedQuestions < lotrivia.config.questionsPerRound) then
+			pickQuestion();
+		else
+			-- If we ARE at the max questions, reset the game window
+			myGame.resetGameWindow();
+			ltprint("Game completed!");
+			gameActive = false;
+			questionActive = false;
+
+			-- reset the Start Game button TextBox
+			myGame.gamestateButton:SetText("Start Game");
+
 		end
 	end
 
@@ -1473,27 +1501,13 @@ Report Bugs on LotroInterface.com
 			playerScores[answeringPlayer] = 0
 		end
 
-		-- If we are not at the max questions, pick a new question
+		-- Get another question ready, if need be
 		--
-		if (#usedQuestions < lotrivia.config.questionsPerRound) then
-			pickQuestion();
-		else
-			-- If we ARE at the max questions, reset the game window
-			myGame.ResetGameWindow();
-			ltprint("Game completed!");
-			gameActive = false;
-			questionActive = false;
-		end
+		prepareQuestion();
 
 		-- Update scores and scores window
 		playerScores[answeringPlayer] = playerScores[answeringPlayer]+1
---[[ ltprint("Added one to " .. answeringPlayer);
-local scorLis = "";
-for k,v in pairs(playerScores) do
-	scorLis = scorLis .. k .. "= " ..v;
-end
-ltprint("scores: " .. scorLis);
-]]--
+
 		myScores:updateList();
 		myScores.SizeChanged();
 
@@ -1501,7 +1515,7 @@ ltprint("scores: " .. scorLis);
 		storedAnswers = {};
 
 		-- Clear the answering player field
-		answeringPlayer = ""
+		answeringPlayer = nil
 
 		-- Clear the accept answer button alias text
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
@@ -1637,7 +1651,7 @@ ltprint("scores: " .. scorLis);
 		selected:SetBackColor( Turbine.UI.Color( .1,.4,.1 ) );
 
 		-- Set up the alias for the "accept answer" quickslot faux button
-		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
+		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 -- DEBUGGING
 		local sendText = "/say <rgb=#00FFC0>" .. name .. " got the right answer!</rgb>\n" .. "<rgb=#A000FF> >> " .. LT_Answer[questionId] .. " << </rgb>"
 --		local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#00FFC0>" .. name ..
