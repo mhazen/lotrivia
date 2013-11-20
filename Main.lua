@@ -1106,14 +1106,14 @@ Report Bugs on LotroInterface.com
 				-- Reset game window
 				self.resetGameWindow();
 
-				-- set game and question state
-				LT_gameActive = false
-				LT_questionActive = false
-
 				-- end the countdown, if it's active
 				if (LT_questionActive) then
 					stopCountdown();
 				end
+
+				-- set game and question state
+				LT_gameActive = false
+				LT_questionActive = false
 
 				-- clear pseudo button aliases
 				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
