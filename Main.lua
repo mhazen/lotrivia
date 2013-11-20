@@ -24,8 +24,6 @@ import "Carentil.LOTRivia.Resources.Questions";
 		"accept answer" disables timer update event
 
 	Bugs:
-		Question counter is counting by twos
-
 
   ]]--
 
@@ -104,9 +102,8 @@ Report Bugs on LotroInterface.com
 		LT_storedAnswers = {}
 		LT_playerScores = {}
 		LT_questionWinners = {}
-		LT_UsedQuestions = {}
 		LT_currentQuestionId = 1
-		LT_questionCount = 1
+		LT_UsedQuestions = {}
 		LT_sendQuestion = ""
 		LT_answeringPlayer = ""
 		LT_haveStoredAnswers = false
@@ -1256,8 +1253,8 @@ Report Bugs on LotroInterface.com
 		-- Update the alias for sending the question
 		--
 		if (LT_gameActive) then
-			LT_sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. LT_questionCount .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
-			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_sendQuestion))
+			sendQuestion = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#LT_UsedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[LT_currentQuestionId] .. "</rgb>"
+			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
 		else
 			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 		end
@@ -1308,9 +1305,6 @@ Report Bugs on LotroInterface.com
 		LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
 		myScores:updateList();
 		myScores.SizeChanged();
-
-		-- Update question count
-		LT_questionCount = LT_questionCount + 1
 
 		-- Reset player answers for the next question
 		LT_storedAnswers = {};
@@ -1425,7 +1419,7 @@ Report Bugs on LotroInterface.com
 		end
 	end
 
-	-- function to handle events when a guess is clicked
+	-- function to handle events when a guess is clicked in the guessesListBox
 	--
 	function pickPlayer(sender,args,name)
 		for i=1,myGame.guessesListBox:GetItemCount() do
