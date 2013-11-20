@@ -128,7 +128,7 @@ LT_Answer[29] = "Sir Ian Holm"
 LT_QuestionCommentary[29] = ""
 
 LT_Question[30] = "Who was the nephew of King Theoden of Rohan?"
-LT_Answer[30] = "Éomer"
+LT_Answer[30] = "Eomer"
 LT_QuestionCommentary[30] = ""
 
 LT_Question[31] = "In the LOTR Trilogy, the actor Sala Baker portrayed three major characters. Name any of them."
@@ -155,7 +155,7 @@ LT_Question[36] = "Who is the barman at the Prancing Pony Inn, in Bree?"
 LT_Answer[36] = "Barliman Butterbur"
 LT_QuestionCommentary[36] = ""
 
-LT_Question[37] = "In LOTRO, the frost giant Núrzum is found in what region?"
+LT_Question[37] = "In LOTRO, the frost giant Nurzum is found in what region?"
 LT_Answer[37] = "Wildermore"
 LT_QuestionCommentary[37] = ""
 

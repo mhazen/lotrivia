@@ -20,16 +20,15 @@ import "Carentil.LOTRivia.Resources.Questions";
   --[[
 
 	To-Do List:
-		- build the game window
-			- needs:
-				question display tied to picking a question
-				send question control
-					-clicking starts timer and sets update event
-				control to "accept answer"
-					-disables timer update event
-				seeing a question asked in chat will add that question number to the asked list
-				send scores to chat buttons need their actions
+		Ask question control starts timer and sets update event
+		"accept answer" disables timer update event
+
+	Bugs:
+		Question counter is counting by twos
+
+
   ]]--
+
 
 
 	-- Initialize plugin constants
@@ -703,6 +702,12 @@ Report Bugs on LotroInterface.com
 		end
 		self.askAlias.MouseUp=function()
 			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+			if (LT_gameActive) then
+				LT_questionActive=true;
+				ltprint("Setting question active status to true");
+				self.guessesListBox:ClearItems();
+				LT_storedAnswers = {}
+			end
 		end
 
 		-- Skip Question Button
@@ -839,6 +844,9 @@ Report Bugs on LotroInterface.com
 		end
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+			if (LT_gameActive and LT_questionActive) then
+				awardPoints();
+			end
 		end
 
 
@@ -1029,8 +1037,6 @@ Report Bugs on LotroInterface.com
 		self:SetVisible(true);
 	end
 
-
-
 	-- function to compare scores when sorting out the top ranks
 	--
 	function cmpScore(a,b)
@@ -1072,10 +1078,8 @@ Report Bugs on LotroInterface.com
 	myEdit = editWindow();
 	myGame = gameWindow()
 
-	-- Set up rules alias
+	-- Set up Send Rules alias
 	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
-
-
 
 	-- Announce load to chat window
 
@@ -1194,50 +1198,13 @@ Report Bugs on LotroInterface.com
 					if (LT_storedAnswers[currSender] == nil) then
 						LT_storedAnswers[currSender] = currMessage
 						LT_haveStoredAnswers = true
-						-- push the answer to the answers listbox
-						-- if (LT_questionActive)
-							addToGuesses(currSender,currMessage);
-						-- end
-					end
-
-				-- This is somewhat backhanded, but we need to trigger score updates when we accept an answer,
-				-- and the easiest way is to catch ourselves sending a "got the question right" message to
-				-- trigger our updates.
-				--
-				else
-					foundAnnounce = string.match(tostring(msgVal),LT_channelMethods[lotrivia.config.sendToChannel]["to_match"] .." %a+ got the question right!")
-					if (foundAnnounce ~= nil) then
-						-- We found the announcement, so update and sort scores
-
-						if (LT_playerScores[LT_answeringPlayer] == nil) then
-							LT_playerScores[LT_answeringPlayer] = 0
-						end
-
-						-- Add question to used question list
-						LT_UsedQuestions[#LT_UsedQuestions+1] = LT_currentQuestionId;
-
-						for a in items(LT_UsedQuestions) do
-							ltprint("used: " .. a);
-						end
-						-- Reset player answers
-						LT_storedAnswers = {};
-						-- !! HERE
-						-- If we are not at the max questions, pick a new question
-						if (#LT_UsedQuestions < lotrivia.config.questionsPerRound) then
-							pickQuestion();
-						end
-						-- If we are at the max questions, reset the game window
-						if (#LT_UsedQuestions == lotrivia.config.questionsPerRound) then
-							myGame.ResetWindow();
-						end
-						-- Clear the answering player field
-						-- Clear the current question ID
+						-- push the answer to the answers listbox, but only if there's an active question
 						--
-						-- Update scores and scores window
-						LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
-						myScores:updateList();
-						scoresWindow.SizeChanged();
+						if (LT_questionActive) then
+							addToGuesses(currSender,currMessage);
+						end
 					end
+
 				end
 
 
@@ -1312,7 +1279,48 @@ Report Bugs on LotroInterface.com
 		return x
 	end
 
+	-- Award a question to a player
+	--
+	function awardPoints()
+		if (LT_playerScores[LT_answeringPlayer] == nil) then
+			LT_playerScores[LT_answeringPlayer] = 0
+		end
 
+		-- Add question to used question list
+		LT_UsedQuestions[#LT_UsedQuestions+1] = LT_currentQuestionId;
+
+		for i,a in ipairs(LT_UsedQuestions) do
+			ltprint("used: " .. a);
+		end
+
+		-- If we are not at the max questions, pick a new question
+		--
+		if (#LT_UsedQuestions < lotrivia.config.questionsPerRound) then
+			pickQuestion();
+		else
+			-- If we ARE at the max questions, reset the game window
+			myGame.ResetWindow();
+			ltprint("Game completed!");
+			LT_gameActive = false;
+		end
+
+		-- Update scores and scores window
+		LT_playerScores[LT_answeringPlayer] = LT_playerScores[LT_answeringPlayer]+1
+		myScores:updateList();
+		myScores.SizeChanged();
+
+		-- Update question count
+		LT_questionCount = LT_questionCount + 1
+
+		-- Reset player answers for the next question
+		LT_storedAnswers = {};
+
+		-- Clear the answering player field
+		LT_answeringPlayer = ""
+
+		-- Set question state to inactive
+		LT_questionActive = false;
+	end
 
 
 	function scoresWindow:updateList()
@@ -1320,7 +1328,6 @@ Report Bugs on LotroInterface.com
 		local scoreRL = {}
 
 		if (#LT_playerScores ~= nil) then
-
 
 			-- Remove the existing list entries
 			--
@@ -1346,7 +1353,6 @@ Report Bugs on LotroInterface.com
 				self.scoresListBox:AddItem(tmpItem)
 			end
 
-
 			-- Sort the elements in the listbox
 			--
 			self.scoresListBox:Sort(
@@ -1360,11 +1366,11 @@ Report Bugs on LotroInterface.com
 			local sortedScores = {}
 			local i=1
 
+			-- build a table for scores with a "tie" field
 			for name,score in pairs(LT_playerScores) do
 				sortedScores[i] = {name,score, ""};
 				i=i+1;
 			end
-
 
 			table.sort(sortedScores, cmpScore)
 
@@ -1409,8 +1415,12 @@ Report Bugs on LotroInterface.com
 				LT_announceTopThree = LT_announceAll
 			end
 
-			LT_announceAll = "Scores: " .. LT_announceAll
-			LT_announceTopThree = "Top Three Scorers: " .. LT_announceTopThree
+			LT_announceAll = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " Scores: " .. LT_announceAll
+			LT_announceTopThree = LT_channelMethods[lotrivia.config.sendToChannel]["cmd"] .. " Top Three Scorers: " .. LT_announceTopThree
+
+			-- set score window pseudo-button aliases
+			myScores.announceAll:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_announceAll));
+			myScores.top3:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,LT_announceTopThree));
 
 		end
 	end
