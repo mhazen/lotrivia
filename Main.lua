@@ -425,7 +425,7 @@ Report Bugs on LotroInterface.com
 			end
 			-- save questions per round choice
 			if (tonumber(self.questionsPerRound:GetText()) ~= nil) then
-				if ( #usedQuestions > tonumber(self.questionsPerRound) ) then
+				if ( #usedQuestions > tonumber(lotrivia.config.questionsPerRound) ) then
 					self.questionsPerRound:SetText(#usedQuestions+1);
 					ltprint("Increasing questions per round to cover the number of questions already asked.")
 				end
