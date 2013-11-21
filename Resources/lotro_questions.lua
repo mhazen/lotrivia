@@ -532,7 +532,7 @@ LT_Answer[130] = "Gandalf and Durin's Bane (The Balrog of Moria)."
 LT_QuestionCommentary[130] = ""
 
 LT_Question[131] = "The three peaks of the Misty Mountains under which Khazad Dum lies are Zirak-Zigil, Fanuidhiol, and what?"
-LT_Answer[131] = "Caradhras".
+LT_Answer[131] = "Caradhras."
 LT_QuestionCommentary[131] = ""
 
 LT_Question[132] = "What is the largest forest of Middle Earth?"
@@ -557,7 +557,7 @@ LT_QuestionCommentary[136] = ""
 
 LT_Question[137] = "Sambrog is a champion in what 6-man instance?"
 LT_Answer[137] = "The Great Barrow."
-LT_QuestionCommentary[137 = ""
+LT_QuestionCommentary[137] = ""
 
 LT_Question[138] = "During what age did Durin I, Founder of Moria, live and die?"
 LT_Answer[138] = "The First Age."
@@ -597,7 +597,7 @@ LT_QuestionCommentary[146] = ""
 
 LT_Question[147] = "Glaurung was commonly known by what paternal title?"
 LT_Answer[147] = "Father of Dragons."
-LT_QuestionCommentary[147 = ""
+LT_QuestionCommentary[147] = ""
 
 LT_Question[148] = "Slain in the Third Age, by Fram of the Eotheod, what dragon terrorized the Grey Mountains?"
 LT_Answer[148] = "Scatha The Worm."
@@ -623,24 +623,24 @@ LT_Question[153] = "Who wielded the sword Glamdring during the War of the Ring? 
 LT_Answer[153] = "Gandalf."
 LT_QuestionCommentary[153] = ""
 
-LT_Question[154] = ""
-LT_Answer[154] = ""
+LT_Question[154] = "What does \"Gondor\" mean in Sindarin?"
+LT_Answer[154] = "Land of Stone."
 LT_QuestionCommentary[154] = ""
 
-LT_Question[155] = ""
-LT_Answer[155] = ""
+LT_Question[155] = "What monument to the kings of Gondor stands upon the River Anduin?"
+LT_Answer[155] = "The Argonath, or the Pillars of Kings."
 LT_QuestionCommentary[155] = ""
 
-LT_Question[156] = ""
-LT_Answer[156] = ""
+LT_Question[156] = "Who do the giant carvings of The Argonath represent?"
+LT_Answer[156] = "Isildur and Anarion (book), or Anarion and Elendil (film)."
 LT_QuestionCommentary[156] = ""
 
-LT_Question[157] = ""
-LT_Answer[157] = ""
-LT_QuestionCommentary[157 = ""
+LT_Question[157] = "Who was the Steward of Gondor during the War of the Ring?"
+LT_Answer[157] = "Denethor II."
+LT_QuestionCommentary[157] = ""
 
-LT_Question[158] = ""
-LT_Answer[158] = ""
+LT_Question[158] = "Who were the sons of Denethor II, the Stweard of GOndor?"
+LT_Answer[158] = "Boromir and Faramir."
 LT_QuestionCommentary[158] = ""
 
 LT_Question[159] = ""
@@ -677,7 +677,7 @@ LT_QuestionCommentary[166] = ""
 
 LT_Question[167] = ""
 LT_Answer[167] = ""
-LT_QuestionCommentary[167 = ""
+LT_QuestionCommentary[167] = ""
 
 LT_Question[168] = ""
 LT_Answer[168] = ""
@@ -717,7 +717,7 @@ LT_QuestionCommentary[176] = ""
 
 LT_Question[177] = ""
 LT_Answer[177] = ""
-LT_QuestionCommentary[177 = ""
+LT_QuestionCommentary[177] = ""
 
 LT_Question[178] = ""
 LT_Answer[178] = ""
@@ -757,7 +757,7 @@ LT_QuestionCommentary[186] = ""
 
 LT_Question[187] = ""
 LT_Answer[187] = ""
-LT_QuestionCommentary[187 = ""
+LT_QuestionCommentary[187] = ""
 
 LT_Question[188] = ""
 LT_Answer[188] = ""
@@ -797,7 +797,7 @@ LT_QuestionCommentary[196] = ""
 
 LT_Question[197] = ""
 LT_Answer[197] = ""
-LT_QuestionCommentary[197 = ""
+LT_QuestionCommentary[197] = ""
 
 LT_Question[198] = ""
 LT_Answer[198] = ""
@@ -837,7 +837,7 @@ LT_QuestionCommentary[206] = ""
 
 LT_Question[207] = ""
 LT_Answer[207] = ""
-LT_QuestionCommentary[207 = ""
+LT_QuestionCommentary[207] = ""
 
 LT_Question[208] = ""
 LT_Answer[208] = ""
@@ -877,7 +877,7 @@ LT_QuestionCommentary[216] = ""
 
 LT_Question[217] = ""
 LT_Answer[217] = ""
-LT_QuestionCommentary[217 = ""
+LT_QuestionCommentary[217] = ""
 
 LT_Question[218] = ""
 LT_Answer[218] = ""

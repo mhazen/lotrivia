@@ -44,28 +44,8 @@ import "Carentil.LOTRivia.Resources.Questions";
 	-- Local print wrapper
 	--
 	function ltprint(text)
-		Turbine.Shell.WriteLine("<rgb=#A000FF>LOTRivia:</rgb> <rgb=#40FFFF>" .. text .. "</rgb>")
+		Turbine.Shell.WriteLine(ltColor.purple .. "LOTRivia:</rgb> " .. ltColor.cyan .. text .. "</rgb>")
 	end
-
-
-	helpText = [[Commands
- /lt help -- this message
- /lt guesses -- lists the guesses made on the current question
- /lt options -- shows the options window
- /lt resetanswers -- clears answers from all players for the current question
- /lt show -- shows game windows (if you close one by accident)]]
-
-	creditsText = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
-
-Report Bugs on LotroInterface.com
-]]
-
-	rulesText = "<rgb=#A000FF>The Official LOTRivia Rules:</rgb>\n" .. [[
-<rgb=#20A0FF>1. I will ask a question. Answer in this chat.
-2. One answer per player per question. Your first answer is your final answer!
-3. Best-effort spellings will be accepted, subject to the ruling of the quizmaster.
-4. The quizmaster may award extra points for harder questions.</rgb>
-]]
 
 
 	-- Standard add and remove callback functions
@@ -249,8 +229,8 @@ Report Bugs on LotroInterface.com
 	playerScores["Nimdollas"] = 4
 	playerScores["Argonauts"] = 6
 	playerScores["Meriaegar"] = 3
-	playerScores["Versus"] = 7
 	playerScores["OscarMike"] = 4
+	playerScores["Versus"] = 7
 	playerScores["Drudgeoverseer"] = 6
 	playerScores["Fenrithnir"] = 5
 ]]--
@@ -261,7 +241,12 @@ Report Bugs on LotroInterface.com
 	scoreColor[2] = "<rgb=#C0D0FF>"
 	scoreColor[3] = "<rgb=#BF8F2F>"
 	scoreColor[4] = "<rgb=#7F7F7F>"
-	LT_tieColor =  "<rgb=#00D0FF>"
+	tieColor =  "<rgb=#00D0FF>"
+
+	ltColor = {}
+	ltColor.purple = "<rgb=#AF00FF>"
+	ltColor.orange = "<rgb=#FF6F00>"
+	ltColor.cyan = "<rgb=#00CFFF>"
 
 	LT_color_white = Turbine.UI.Color(1,1,1);
 	LT_color_darkgray = Turbine.UI.Color(.1,.1,.1);
@@ -276,6 +261,31 @@ Report Bugs on LotroInterface.com
 			end
 		end
 	end
+
+	ltprint(ltColor.orange .. "mwahaha</rgb>")
+
+	helpText = [[Commands
+ /lt help -- this message
+ /lt guesses -- lists the guesses made on the current question
+ /lt options -- shows the options window
+ /lt resetanswers -- clears answers from all players for the current question
+ /lt show -- shows game windows (if you close one by accident)]]
+
+	creditsText = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
+
+Report Bugs on LotroInterface.com
+]]
+
+	rulesText = ltColor.purple .. "The Official LOTRivia Rules:</rgb>\n" .. [[
+<rgb=#20A0FF>1. I will ask a question. Answer in this chat.
+2. One answer per player per question. Your first answer is your final answer!
+3. Best-effort spellings will be accepted, subject to the ruling of the quizmaster.
+4. The quizmaster may award extra points for harder questions.</rgb>
+]]
+
+
+-- Window Classes
+--
 
 	-- options window class
 	--
@@ -822,6 +832,10 @@ Report Bugs on LotroInterface.com
 				-- Reset the stored answers and the listbox
 				self.guessesListBox:ClearItems();
 				storedAnswers = {}
+
+				-- Set the Reveal Answer alias
+				self.setReveal();
+
 			end
 		end
 
@@ -936,6 +950,8 @@ Report Bugs on LotroInterface.com
 			sc:SetData(self.acceptAlias.ShortcutData);
 			self.acceptAlias:SetShortcut(sc);
 		end
+
+		--[[
 		self.acceptAlias.Backdrop=Turbine.UI.Control(); -- note, if the icon has no transparencies then this backdrop is not needed
 		self.acceptAlias.Backdrop:SetParent(self);
 		self.acceptAlias.Backdrop:SetSize(117,18);
@@ -944,6 +960,7 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/accept.jpg");
 		self.acceptAlias.Backdrop:SetBackColor(Turbine.UI.Color(1,0,0,0))
 		self.acceptAlias.Backdrop:SetMouseVisible(false);
+		--]]
 
 		self.acceptAlias.Icon=Turbine.UI.Control();
 		self.acceptAlias.Icon:SetParent(self);
@@ -952,8 +969,8 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.Icon:SetZOrder(self.acceptAlias:GetZOrder()+2);
 		self.acceptAlias.Icon:SetMouseVisible(false);
 		self.acceptAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
-
 		self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+
 		self.acceptAlias.MouseEnter=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
 		end
@@ -971,9 +988,57 @@ Report Bugs on LotroInterface.com
 					stopCountdown();
 					awardPoints();
 					self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+					-- Clear the reveal text
+					self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 				end
 			end
 		end
+
+		-- pseudo-button for reveal answer
+		--
+		self.revealAlias=Turbine.UI.Lotro.Quickslot();
+		self.revealAlias:SetParent(self);
+		self.revealAlias:SetSize(114,18);
+		self.revealAlias:SetPosition(469,350);
+		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		self.revealAlias.ShortcutData=""; --save the alias text for later
+		self.revealAlias:SetAllowDrop(false); -- turn off drag and drop so the user doesn't accidentally modify our button action
+		self.revealAlias.DragDrop=function()
+			local sc=Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"");
+			sc:SetData(self.revealAlias.ShortcutData);
+			self.revealAlias:SetShortcut(sc);
+		end
+
+		self.revealAlias.Icon=Turbine.UI.Control();
+		self.revealAlias.Icon:SetParent(self);
+		self.revealAlias.Icon:SetSize(114,18);
+		self.revealAlias.Icon:SetPosition(469,350);
+		self.revealAlias.Icon:SetZOrder(self.revealAlias:GetZOrder()+2);
+		self.revealAlias.Icon:SetMouseVisible(false);
+		self.revealAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
+
+		self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+		self.revealAlias.MouseEnter=function()
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal_sel.jpg")
+		end
+		self.revealAlias.MouseLeave=function()
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+		end
+		self.revealAlias.MouseDown=function()
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+		end
+		self.revealAlias.MouseUp=function()
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal_sel.jpg")
+			if (gameActive and questionActive) then
+				stopCountdown();
+				-- Since we're revealing the current question, pick a new question
+				pickQuestion();
+				questionActive=false;
+				self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+			end
+		end
+
+
 
 		-- questions Remaining text
 		self.questionsRemainingLabel = Turbine.UI.Label()
@@ -1184,6 +1249,7 @@ Report Bugs on LotroInterface.com
 				-- clear pseudo button aliases
 				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 				self.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+				self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 				self.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 			end
 		end
@@ -1194,10 +1260,21 @@ Report Bugs on LotroInterface.com
 			self.guessesListBox:ClearItems();
 		end
 
+		-- function to set up the reveal Answer alias
+		--
+		self.setReveal = function()
+-- DEBUG
+			local sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+--			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			-- Bind to reveal button
+			self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
+		end
 
 		self:SetResizable(false);
 		self:SetVisible(true);
 	end
+
+
 
 	-- function to compare scores when sorting out the top ranks
 	--
@@ -1252,7 +1329,7 @@ Report Bugs on LotroInterface.com
 		-- Update the countdown clock
 		countdownTime = countdownTime-1;
 		myGame.timeRemaining:SetText(countdownTime);
-		local timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#A000FF>LOTRivia: </rgb><rgb=#20FFFF>" .. countdownTime .. " seconds remain!</rgb>"
+		local timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
 		myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
 
 		-- If we've hit zero, we need to do a number of things.
@@ -1301,8 +1378,7 @@ Report Bugs on LotroInterface.com
 
 	-- Announce load to chat window
 
-	Turbine.Shell.WriteLine("<rgb=#A000FF>LOTRivia Version ".. lotrivia.version .. " loaded.</rgb>")
-	ltprint("/lt help for commands")
+	ltprint("Version ".. lotrivia.version .. " loaded. Use /lt help for commands.")
 
 	myCommand = Turbine.ShellCommand()
 
@@ -1582,8 +1658,8 @@ Report Bugs on LotroInterface.com
 			-- Add tie markers to the table as well
 			for i=1,#sortedScores do
 				if (i>1 and i<#sortedScores and sortedScores[i][2]==sortedScores[i+1][2]) then
-					 sortedScores[i][3] = LT_tieColor .. " (tie)</rgb>"
-					 sortedScores[i+1][3] = LT_tieColor .. " (tie)</rgb>"
+					 sortedScores[i][3] = tieColor .. " (tie)</rgb>"
+					 sortedScores[i+1][3] = tieColor .. " (tie)</rgb>"
 				end
 			end
 
@@ -1631,6 +1707,7 @@ Report Bugs on LotroInterface.com
 		end
 	end
 
+
 	-- function to stop countdown
 	--
 	function stopCountdown()
@@ -1656,9 +1733,8 @@ Report Bugs on LotroInterface.com
 		-- Set up the alias for the "accept answer" quickslot faux button
 		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 -- DEBUGGING
-		local sendText = "/say <rgb=#00FFC0>" .. name .. " got the right answer!</rgb>\n" .. "<rgb=#A000FF> >> " .. LT_Answer[questionId] .. " << </rgb>"
---		local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#00FFC0>" .. name ..
---		" got the right answer!</rgb>\n" .. "<rgb=#A000FF> >> " .. LT_Answer[questionId] .. " << </rgb>"
+		local sendText = "/say " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+--		local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 	end
