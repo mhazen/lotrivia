@@ -483,3 +483,407 @@ LT_Question[118] = "What is the capital of the Shire?"
 LT_Answer[118] = "Michel Delving"
 LT_QuestionCommentary[118] = ""
 
+LT_Question[119] = "What is the language of the dwarves?"
+LT_Answer[119] = "Khudzul"
+LT_QuestionCommentary[119] = ""
+
+LT_Question[120] = "Dwarves use a runic writing system that they are loathe to teach to outsiders. What is it called?"
+LT_Answer[120] = "Angerthas"
+LT_QuestionCommentary[120] = ""
+
+LT_Question[121] = "What does the Dwarvish warcry \"Baruk Khazad\" mean?"
+LT_Answer[121] = "Axes of the Dwarves"
+LT_QuestionCommentary[121] = ""
+
+LT_Question[122] = "What does the name \"Khazad Dum\" mean?"
+LT_Answer[122] = "Dwarven Halls"
+LT_QuestionCommentary[122] = ""
+
+LT_Question[123] = "The Chamber of Records in Moria is also known as the Chamber of.... what?"
+LT_Answer[123] = "Mazarbul"
+LT_QuestionCommentary[123] = ""
+
+LT_Question[124] = "What mountain chain does Moria lie under?"
+LT_Answer[124] = "The Misty Mountains"
+LT_QuestionCommentary[124] = ""
+
+LT_Question[125] = "What does the Elvish name Ered Luin mean?"
+LT_Answer[125] = "Blue Mountains."
+LT_QuestionCommentary[125] = ""
+
+LT_Question[126] = "What is the Dwarvish word Khazad, In Sindarin?"
+LT_Answer[126] = "Hadhodrim."
+LT_QuestionCommentary[126] = ""
+
+LT_Question[127] = "The Sindar usually referred to the Dwarves as the \"Naugrim\". What does that mean?"
+LT_Answer[127] = "The Stunted People."
+LT_QuestionCommentary[127] = ""
+
+LT_Question[128] = "\"Far over the Misty Mountains cold, To dungeons deep and caverns old, We must away, ere break of day, To seek our\"... what?"
+LT_Answer[128] = "\"pale enchanted gold\" (Dwarf Song, from \"The Hobbit\")."
+LT_QuestionCommentary[128] = ""
+
+LT_Question[129] = "What is the place named \"Zirak-zigil\" called in the language of Men?"
+LT_Answer[129] = "The Silvertine."
+LT_QuestionCommentary[129] = ""
+
+LT_Question[130] = "Who fought on the peak of Zirak-Zigil?"
+LT_Answer[130] = "Gandalf and Durin's Bane (The Balrog of Moria)."
+LT_QuestionCommentary[130] = ""
+
+LT_Question[131] = "The three peaks of the Misty Mountains under which Khazad Dum lies are Zirak-Zigil, Fanuidhiol, and what?"
+LT_Answer[131] = "Caradhras".
+LT_QuestionCommentary[131] = ""
+
+LT_Question[132] = "What is the largest forest of Middle Earth?"
+LT_Answer[132] = "Mirkwood Forest."
+LT_QuestionCommentary[132] = ""
+
+LT_Question[133] = "After being run from their home by Smaug, where did Thorin Oakenshield and his companions reside?"
+LT_Answer[133] = "Ered Luin (The Blue Mountains)."
+LT_QuestionCommentary[133] = ""
+
+LT_Question[134] = "The Lonely Mountain is also known as what?"
+LT_Answer[134] = "Erebor."
+LT_QuestionCommentary[134] = ""
+
+LT_Question[135] = "Who fired the arrow that killed Smaug, in \"The Hobbit?\""
+LT_Answer[135] = "Bard the Bowman."
+LT_QuestionCommentary[135] = ""
+
+LT_Question[136] = "What year and month did Lord of the Rings Online launch?"
+LT_Answer[136] = "April, 2007."
+LT_QuestionCommentary[136] = ""
+
+LT_Question[137] = "Sambrog is a champion in what 6-man instance?"
+LT_Answer[137] = "The Great Barrow."
+LT_QuestionCommentary[137 = ""
+
+LT_Question[138] = "During what age did Durin I, Founder of Moria, live and die?"
+LT_Answer[138] = "The First Age."
+LT_QuestionCommentary[138] = ""
+
+LT_Question[139] = "Which Durin ruled over Moria when the Balrog was unearthed?"
+LT_Answer[139] = "Durin VII, also known as \"Durin, The Last\""
+LT_QuestionCommentary[139] = ""
+
+LT_Question[140] = "What title was Durin I later called by?"
+LT_Answer[140] = "Durin, The Deathless."
+LT_QuestionCommentary[140] = ""
+
+LT_Question[141] = "Who was the Dwarven King of The Lonely Mountain during the War of the Ring?"
+LT_Answer[141] = "Dain II, Ironfoot."
+LT_QuestionCommentary[141] = ""
+
+LT_Question[142] = "Whose body did Dain II, Ironfoot defend until his own death, during the Battle of Dale?"
+LT_Answer[142] = "King Brand, of Dale (grandson of Bard the Bowman)."
+LT_QuestionCommentary[142] = ""
+
+LT_Question[143] = "He could turn into a bear at will. WHo was he?"
+LT_Answer[143] = "Beorn"
+LT_QuestionCommentary[143] = ""
+
+LT_Question[144] = "Who was the Chief of the Easterlings, "
+LT_Answer[144] = ""
+LT_QuestionCommentary[144] = ""
+
+LT_Question[145] = "What Easterling seized the lands of Hurin during the First Age?"
+LT_Answer[145] = "Brodda"
+LT_QuestionCommentary[145] = ""
+
+LT_Question[146] = "This first of the dragons could not fly, and instead slithered through Moria."
+LT_Answer[146] = "Glaurung"
+LT_QuestionCommentary[146] = ""
+
+LT_Question[147] = "Glaurung was commonly known by what paternal title?"
+LT_Answer[147] = "Father of Dragons."
+LT_QuestionCommentary[147 = ""
+
+LT_Question[148] = "Slain in the Third Age, by Fram of the Eotheod, what dragon terrorized the Grey Mountains?"
+LT_Answer[148] = "Scatha The Worm."
+LT_QuestionCommentary[148] = ""
+
+LT_Question[149] = "Whose armour is like tenfold shields, his teeth are swords, his claws spears, the shock of his tail a thunderbolt?"
+LT_Answer[149] = "Smaug the Golden"
+LT_QuestionCommentary[149] = ""
+
+LT_Question[150] = "Who told Bard the Bowman of Smaug's weakness?"
+LT_Answer[150] = "A thrush, who overheard Bilbo."
+LT_QuestionCommentary[150] = ""
+
+LT_Question[151] = "What heirloom of the Lords of Dale, was crafted by the dwarves of the Lonely Mountain?"
+LT_Answer[151] = "The Black Arrow."
+LT_QuestionCommentary[151] = ""
+
+LT_Question[152] = "What sword, forged in the First Age, was once wielded by Turgon, King of Gondolin?"
+LT_Answer[152] = "Glamdring."
+LT_QuestionCommentary[152] = ""
+
+LT_Question[153] = "Who wielded the sword Glamdring during the War of the Ring? "
+LT_Answer[153] = "Gandalf."
+LT_QuestionCommentary[153] = ""
+
+LT_Question[154] = ""
+LT_Answer[154] = ""
+LT_QuestionCommentary[154] = ""
+
+LT_Question[155] = ""
+LT_Answer[155] = ""
+LT_QuestionCommentary[155] = ""
+
+LT_Question[156] = ""
+LT_Answer[156] = ""
+LT_QuestionCommentary[156] = ""
+
+LT_Question[157] = ""
+LT_Answer[157] = ""
+LT_QuestionCommentary[157 = ""
+
+LT_Question[158] = ""
+LT_Answer[158] = ""
+LT_QuestionCommentary[158] = ""
+
+LT_Question[159] = ""
+LT_Answer[159] = ""
+LT_QuestionCommentary[159] = ""
+
+LT_Question[160] = ""
+LT_Answer[160] = ""
+LT_QuestionCommentary[160] = ""
+
+LT_Question[161] = ""
+LT_Answer[161] = ""
+LT_QuestionCommentary[161] = ""
+
+LT_Question[162] = ""
+LT_Answer[162] = ""
+LT_QuestionCommentary[162] = ""
+
+LT_Question[163] = ""
+LT_Answer[163] = ""
+LT_QuestionCommentary[163] = ""
+
+LT_Question[164] = ""
+LT_Answer[164] = ""
+LT_QuestionCommentary[164] = ""
+
+LT_Question[165] = ""
+LT_Answer[165] = ""
+LT_QuestionCommentary[165] = ""
+
+LT_Question[166] = ""
+LT_Answer[166] = ""
+LT_QuestionCommentary[166] = ""
+
+LT_Question[167] = ""
+LT_Answer[167] = ""
+LT_QuestionCommentary[167 = ""
+
+LT_Question[168] = ""
+LT_Answer[168] = ""
+LT_QuestionCommentary[168] = ""
+
+LT_Question[169] = ""
+LT_Answer[169] = ""
+LT_QuestionCommentary[169] = ""
+
+LT_Question[170] = ""
+LT_Answer[170] = ""
+LT_QuestionCommentary[170] = ""
+
+LT_Question[171] = ""
+LT_Answer[171] = ""
+LT_QuestionCommentary[171] = ""
+
+LT_Question[172] = ""
+LT_Answer[172] = ""
+LT_QuestionCommentary[172] = ""
+
+LT_Question[173] = ""
+LT_Answer[173] = ""
+LT_QuestionCommentary[173] = ""
+
+LT_Question[174] = ""
+LT_Answer[174] = ""
+LT_QuestionCommentary[174] = ""
+
+LT_Question[175] = ""
+LT_Answer[175] = ""
+LT_QuestionCommentary[175] = ""
+
+LT_Question[176] = ""
+LT_Answer[176] = ""
+LT_QuestionCommentary[176] = ""
+
+LT_Question[177] = ""
+LT_Answer[177] = ""
+LT_QuestionCommentary[177 = ""
+
+LT_Question[178] = ""
+LT_Answer[178] = ""
+LT_QuestionCommentary[178] = ""
+
+LT_Question[179] = ""
+LT_Answer[179] = ""
+LT_QuestionCommentary[179] = ""
+
+LT_Question[180] = ""
+LT_Answer[180] = ""
+LT_QuestionCommentary[180] = ""
+
+LT_Question[181] = ""
+LT_Answer[181] = ""
+LT_QuestionCommentary[181] = ""
+
+LT_Question[182] = ""
+LT_Answer[182] = ""
+LT_QuestionCommentary[182] = ""
+
+LT_Question[183] = ""
+LT_Answer[183] = ""
+LT_QuestionCommentary[183] = ""
+
+LT_Question[184] = ""
+LT_Answer[184] = ""
+LT_QuestionCommentary[184] = ""
+
+LT_Question[185] = ""
+LT_Answer[185] = ""
+LT_QuestionCommentary[185] = ""
+
+LT_Question[186] = ""
+LT_Answer[186] = ""
+LT_QuestionCommentary[186] = ""
+
+LT_Question[187] = ""
+LT_Answer[187] = ""
+LT_QuestionCommentary[187 = ""
+
+LT_Question[188] = ""
+LT_Answer[188] = ""
+LT_QuestionCommentary[188] = ""
+
+LT_Question[189] = ""
+LT_Answer[189] = ""
+LT_QuestionCommentary[189] = ""
+
+LT_Question[190] = ""
+LT_Answer[190] = ""
+LT_QuestionCommentary[190] = ""
+
+LT_Question[191] = ""
+LT_Answer[191] = ""
+LT_QuestionCommentary[191] = ""
+
+LT_Question[192] = ""
+LT_Answer[192] = ""
+LT_QuestionCommentary[192] = ""
+
+LT_Question[193] = ""
+LT_Answer[193] = ""
+LT_QuestionCommentary[193] = ""
+
+LT_Question[194] = ""
+LT_Answer[194] = ""
+LT_QuestionCommentary[194] = ""
+
+LT_Question[195] = ""
+LT_Answer[195] = ""
+LT_QuestionCommentary[195] = ""
+
+LT_Question[196] = ""
+LT_Answer[196] = ""
+LT_QuestionCommentary[196] = ""
+
+LT_Question[197] = ""
+LT_Answer[197] = ""
+LT_QuestionCommentary[197 = ""
+
+LT_Question[198] = ""
+LT_Answer[198] = ""
+LT_QuestionCommentary[198] = ""
+
+LT_Question[199] = ""
+LT_Answer[199] = ""
+LT_QuestionCommentary[199] = ""
+
+LT_Question[200] = ""
+LT_Answer[200] = ""
+LT_QuestionCommentary[200] = ""
+
+LT_Question[201] = ""
+LT_Answer[201] = ""
+LT_QuestionCommentary[201] = ""
+
+LT_Question[202] = ""
+LT_Answer[202] = ""
+LT_QuestionCommentary[202] = ""
+
+LT_Question[203] = ""
+LT_Answer[203] = ""
+LT_QuestionCommentary[203] = ""
+
+LT_Question[204] = ""
+LT_Answer[204] = ""
+LT_QuestionCommentary[204] = ""
+
+LT_Question[205] = ""
+LT_Answer[205] = ""
+LT_QuestionCommentary[205] = ""
+
+LT_Question[206] = ""
+LT_Answer[206] = ""
+LT_QuestionCommentary[206] = ""
+
+LT_Question[207] = ""
+LT_Answer[207] = ""
+LT_QuestionCommentary[207 = ""
+
+LT_Question[208] = ""
+LT_Answer[208] = ""
+LT_QuestionCommentary[208] = ""
+
+LT_Question[209] = ""
+LT_Answer[209] = ""
+LT_QuestionCommentary[209] = ""
+
+LT_Question[210] = ""
+LT_Answer[210] = ""
+LT_QuestionCommentary[210] = ""
+
+LT_Question[211] = ""
+LT_Answer[211] = ""
+LT_QuestionCommentary[211] = ""
+
+LT_Question[212] = ""
+LT_Answer[212] = ""
+LT_QuestionCommentary[212] = ""
+
+LT_Question[213] = ""
+LT_Answer[213] = ""
+LT_QuestionCommentary[213] = ""
+
+LT_Question[214] = ""
+LT_Answer[214] = ""
+LT_QuestionCommentary[214] = ""
+
+LT_Question[215] = ""
+LT_Answer[215] = ""
+LT_QuestionCommentary[215] = ""
+
+LT_Question[216] = ""
+LT_Answer[216] = ""
+LT_QuestionCommentary[216] = ""
+
+LT_Question[217] = ""
+LT_Answer[217] = ""
+LT_QuestionCommentary[217 = ""
+
+LT_Question[218] = ""
+LT_Answer[218] = ""
+LT_QuestionCommentary[218] = ""
+
+LT_Question[219] = ""
+LT_Answer[219] = ""
+LT_QuestionCommentary[219] = ""
+
