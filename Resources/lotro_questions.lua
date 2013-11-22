@@ -12,7 +12,7 @@ _G.LT_Answer = {}
 _G.LT_QuestionCommentary = {}
 
 LT_Question[1] = "Gandalf, Radagast, and Saruman. What are the names of the remaining two wizards of Middle Earth?"
-LT_Answer[1] = "Alatar and Pallando"
+LT_Answer[1] = "Morinehtar (Alatar) and Romestamo (Pallando)."
 LT_QuestionCommentary[1] = ""
 
 LT_Question[2] = "What was the name of the battering ram used in the siege of Minas Tirith?"
@@ -804,7 +804,7 @@ LT_Answer[198] = "Luthien"
 LT_QuestionCommentary[198] = ""
 
 LT_Question[199] = "In the books, Frodo has hidden his task by telling his friends he was moving where?"
-LT_Answer[199] = "Crickhollow"
+LT_Answer[199] = "Crickhollow (a village in Buckland)"
 LT_QuestionCommentary[199] = ""
 
 LT_Question[200] = "In the books, what hobbit stayed behind in The Shire to keep people thinking Frodo has merely moved away?"
@@ -875,15 +875,735 @@ LT_Question[216] = "What lies beyond the Deeping Wall in Helms Deep?"
 LT_Answer[216] = "The Glittering Caves"
 LT_QuestionCommentary[216] = ""
 
-LT_Question[217] = ""
-LT_Answer[217] = ""
+LT_Question[217] = "Which dwarf from The Hobbit has a son in The Lord Of the Rings?"
+LT_Answer[217] = "Gloin (father of Gimli)"
 LT_QuestionCommentary[217] = ""
 
-LT_Question[218] = ""
-LT_Answer[218] = ""
+LT_Question[218] = "At the battle of Helm's Deep, Gandalf arrived when he had told Aragorn that he would, at the dawn of which day?"
+LT_Answer[218] = "The fifth"
 LT_QuestionCommentary[218] = ""
 
-LT_Question[219] = ""
-LT_Answer[219] = ""
+LT_Question[219] = "What ranger, leader of The Grey Company, guarded The Shire?"
+LT_Answer[219] = "Halbarad"
 LT_QuestionCommentary[219] = ""
+
+LT_Question[220] = "How many Dunedain Raingers rode in The Grey Company to aid Aragorn?"
+LT_Answer[220] = "Thirty"
+LT_QuestionCommentary[220] = ""
+
+LT_Question[221] = "Who rode forth at the Battle of Pellenor with the Standard of Aragorn, only to be killed?"
+LT_Answer[221] = "The Ranger Halbarad"
+LT_QuestionCommentary[221] = ""
+
+LT_Question[222] = "In Lord of the Rings Online, who appears first as the commander of Esteldin?"
+LT_Answer[222] = "Halbarad"
+LT_QuestionCommentary[222] = ""
+
+LT_Question[223] = "What land lies west of the Misty Mountains, and north of Rivendell?"
+LT_Answer[223] = "Ettenmoors"
+LT_QuestionCommentary[223] = ""
+
+LT_Question[224] = "What does \"Nazgul\" mean in the language of men?"
+LT_Answer[224] = "Ringwraith"
+LT_QuestionCommentary[224] = ""
+
+LT_Question[225] = "The second in command of the Nazgul was, in life, called what?"
+LT_Answer[225] = "Khamul, the Easterling"
+LT_QuestionCommentary[225] = ""
+
+LT_Question[226] = "Which Nazgul chased the hobbits near Bucklebury Ferry?"
+LT_Answer[226] = "The Witch-King of Angmar"
+LT_QuestionCommentary[226] = ""
+
+LT_Question[227] = "The capital city of the ancient kingdom of Arnor was what city?"
+LT_Answer[227] = "Annuminas"
+LT_QuestionCommentary[227] = ""
+
+LT_Question[228] = "What fallen realm of Middle Earth was bordered on the west by the Brandywine, and on the east by the river Mitheithel?"
+LT_Answer[228] = "Cardolan"
+LT_QuestionCommentary[228] = ""
+
+LT_Question[229] = "The Dunedain of Cardolan settled deeply into what area, making it their capital?"
+LT_Answer[229] = "The Barrow-downs"
+LT_QuestionCommentary[229] = ""
+
+LT_Question[230] = "Who came to the rescue of Frodo, Sam, Pippin and Merry in the Barrow-downs?"
+LT_Answer[230] = "Tom Bombadil"
+LT_QuestionCommentary[230] = ""
+
+LT_Question[231] = "What was \"The Red Book of Westmarch\" originally called by the first author to chronicle events in it?"
+LT_Answer[231] = "There and Back Again (Bilbo Baggins)"
+LT_QuestionCommentary[231] = ""
+
+LT_Question[232] = "Who purportedly wrote the portion of \"The Red Book of Westmarch\" entitled \" The Adventures of Tom Bombadil\"?"
+LT_Answer[232] = "Sam Gamgee"
+LT_QuestionCommentary[232] = ""
+
+LT_Question[233] = "What book did J.R.R. Tolkien purport to be translating into English, which tells the tale of The Lord of The Rings?"
+LT_Answer[233] = "The Red Book of Westmarch"
+LT_QuestionCommentary[233] = ""
+
+LT_Question[234] = "What is Arda?"
+LT_Answer[234] = "Earth (the one where Men, Hobbits, Dwarves and Elves live)"
+LT_QuestionCommentary[234] = ""
+
+LT_Question[235] = "Where was Frodo Baggins born and raised until the age of 12?"
+LT_Answer[235] = "Buckland"
+LT_QuestionCommentary[235] = ""
+
+LT_Question[236] = "What happened to Bag End when Frodo left the Shire?"
+LT_Answer[236] = "Frodo sold it to the Sackville-Baggins"
+LT_QuestionCommentary[236] = ""
+
+LT_Question[237] = "Tolkien's notes state that Sauron was originally known by what name?"
+LT_Answer[237] = "Mairon the Admirable"
+LT_QuestionCommentary[237] = ""
+
+LT_Question[238] = "What kind of being was Sauron?"
+LT_Answer[238] = "A Maiar (a spirit who descended to help the Valar shape the earth)"
+LT_QuestionCommentary[238] = ""
+
+LT_Question[239] = "Saruman was a Maiar who belonged to which Valar?"
+LT_Answer[239] = "Aule, the Smith"
+LT_QuestionCommentary[239] = ""
+
+LT_Question[240] = "Who was the King of the Valar?"
+LT_Answer[240] = "Manwe"
+LT_QuestionCommentary[240] = ""
+
+LT_Question[241] = "Who was the most powerful of the Valar?"
+LT_Answer[241] = "Melkor, later known as Morgoth"
+LT_QuestionCommentary[241] = ""
+
+LT_Question[242] = "The lieutenant of the Tower of Barad-Dur was known as what?"
+LT_Answer[242] = "The Mouth of Sauron"
+LT_QuestionCommentary[242] = ""
+
+LT_Question[243] = "What is the name of the great tower upon the spire of which burned the great Eye of Sauron?"
+LT_Answer[243] = "Barad-dur"
+LT_QuestionCommentary[243] = ""
+
+LT_Question[244] = "Which Valar created the stars?"
+LT_Answer[244] = "Varda"
+LT_QuestionCommentary[244] = ""
+
+LT_Question[245] = "Varda, the Vala who created the stars and set the sun and moon on their courses, is called what, in Sindarin?"
+LT_Answer[245] = "Elbereth"
+LT_QuestionCommentary[245] = ""
+
+LT_Question[246] = "In the myths of the elves, what mariner carried a star across the sky?"
+LT_Answer[246] = "Earendil"
+LT_QuestionCommentary[246] = ""
+
+LT_Question[247] = "Who slew the great dragon Ancalagon?"
+LT_Answer[247] = "Earendil"
+LT_QuestionCommentary[247] = ""
+
+LT_Question[248] = "What stronghold did Melkor (Morgoth) raise in The Iron Mountains?"
+LT_Answer[248] = "Angband"
+LT_QuestionCommentary[248] = ""
+
+LT_Question[249] = "What does the name of the ancient stronghold, Angband, mean?"
+LT_Answer[249] = "Iron Prison"
+LT_QuestionCommentary[249] = ""
+
+LT_Question[250] = "What color are the flights (feathers) of Red Arrows, used by Gondor to summon aid from its allies?"
+LT_Answer[250] = "Black. The tips have a streak of blood red, giving them their name."
+LT_QuestionCommentary[250] = ""
+
+LT_Question[251] = "What is the name of the ancestral home of the Took family, in Tookland?"
+LT_Answer[251] = "The Great Smials"
+LT_QuestionCommentary[251] = ""
+
+LT_Question[252] = "Who was Lotho Sackville-Baggins working for, during The War of The Ring?"
+LT_Answer[252] = "Saruman"
+LT_QuestionCommentary[252] = ""
+
+LT_Question[253] = "What was the real name of Sharkey, a small-time criminal mastermind of the Shire?"
+LT_Answer[253] = "Saruman"
+LT_QuestionCommentary[253] = ""
+
+LT_Question[254] = "Who killed Saruman on the steps of Bag End, slitting his throat?"
+LT_Answer[254] = "Grima Wormtongue. In the films, Wormtongue stabs Saruman at Orthanc, instead."
+LT_QuestionCommentary[254] = ""
+
+LT_Question[255] = "In the Peter Jackson films, Who does Legolas kill at Isengard?"
+LT_Answer[255] = "Grima Wormtongue, in an attempt to keep Wormtongue from stabbing Saruman."
+LT_QuestionCommentary[255] = ""
+
+LT_Question[256] = "What does the name \"Annuminas\" mean?"
+LT_Answer[256] = "Tower of the West"
+LT_QuestionCommentary[256] = ""
+
+LT_Question[257] = "Where were the heirlooms of the Dunedain people kept?"
+LT_Answer[257] = "Rivendell"
+LT_QuestionCommentary[257] = ""
+
+LT_Question[258] = "After the War of the Ring, what lands were men forbidden to enter?"
+LT_Answer[258] = "The Shire"
+LT_QuestionCommentary[258] = ""
+
+LT_Question[259] = "In the books, who leads a thousand foootmen with Gandalf to turn the tide at the Battle of the Hornburg, at Helm's Deep?"
+LT_Answer[259] = "Erkenbrand"
+LT_QuestionCommentary[259] = ""
+
+LT_Question[260] = "What ancient capital of Gondor served as a crossing point at the River Anduin during The War of the Ring?"
+LT_Answer[260] = "Osgiliath"
+LT_QuestionCommentary[260] = ""
+
+LT_Question[261] = "In Lord of the Rings Online, what inn was inspired by a real-world tavern frequented by J.R.R. and Christopher Tolkien in Oxford, England?"
+LT_Answer[261] = "The Bird and Baby, in Michel Delving"
+LT_QuestionCommentary[261] = ""
+
+LT_Question[262] = "What were the two most common languages of the Elves?"
+LT_Answer[262] = "Quenya and Sindarin"
+LT_QuestionCommentary[262] = ""
+
+LT_Question[263] = "What ore is found in the regions The Wold, Norcrofts, Sutcrofts, and Entwash Vale?"
+LT_Answer[263] = "Riddermark Skarn"
+LT_QuestionCommentary[263] = ""
+
+LT_Question[264] = "What area of Mirkwood is home to Blackvenom Spiders?"
+LT_Answer[264] = "Scuttledells (Gorogrod, specifically)"
+LT_QuestionCommentary[264] = ""
+
+LT_Question[265] = "What central fortress in Mirkwood acts as a strategic planning center for The Malledhrim?"
+LT_Answer[265] = "Ost Galadh"
+LT_QuestionCommentary[265] = ""
+
+LT_Question[266] = "What faction of elves from Lothlorien fight the evils of Southern Mirkwood?"
+LT_Answer[266] = "The Malledhrim"
+LT_QuestionCommentary[266] = ""
+
+LT_Question[267] = "What reputation faction is located in the Shire?"
+LT_Answer[267] = "The Mathom Society"
+LT_QuestionCommentary[267] = ""
+
+LT_Question[268] = "\"Melodies of the Valar\" is a quest item for which class?"
+LT_Answer[268] = "Minstrel"
+LT_QuestionCommentary[268] = ""
+
+LT_Question[269] = "\"The Furthest Charge\" is a quest item for which class?"
+LT_Answer[269] = "Hunter"
+LT_QuestionCommentary[269] = ""
+
+LT_Question[270] = "\"The Joy of Battle\"  is a quest item for which class?"
+LT_Answer[270] = "Champion"
+LT_QuestionCommentary[270] = ""
+
+LT_Question[271] = "\"Whispers in the Dark\" is a quest item for which class?"
+LT_Answer[271] = "Rune-keeper"
+LT_QuestionCommentary[271] = ""
+
+LT_Question[272] = "\"Bullroarer's Boy\" is a quest item for which class?"
+LT_Answer[272] = "Warden"
+LT_QuestionCommentary[272] = ""
+
+LT_Question[273] = "\"The Final Word\" is a quest item for which class?"
+LT_Answer[273] = "Guardian"
+LT_QuestionCommentary[273] = ""
+
+LT_Question[274] = "\"Lore of the Blade\" is a quest item for which class?"
+LT_Answer[274] = "Lore-master"
+LT_QuestionCommentary[274] = ""
+
+LT_Question[275] = "\"The Expert's Guide to Dirty Fighting\" is a quest item for which class?"
+LT_Answer[275] = "Burglar"
+LT_QuestionCommentary[275] = ""
+
+LT_Question[276] = "\"The Book of Oaths\" is a quest item for which class?"
+LT_Answer[276] = "Captain"
+LT_QuestionCommentary[276] = ""
+
+LT_Question[277] = "Who is the final champion in Warg-pens of Dol Guldur?"
+LT_Answer[277] = "Kranklob"
+LT_QuestionCommentary[277] = ""
+
+LT_Question[278] = "Gaerdring and Gaerthel are the final champions of what instance?"
+LT_Answer[278] = "Great Barrow: The Maze"
+LT_QuestionCommentary[278] = ""
+
+LT_Question[279] = "What two settlements lie Southeast and Northeast of Bree?"
+LT_Answer[279] = "Staddle and Combe"
+LT_QuestionCommentary[279] = ""
+
+LT_Question[280] = "Where do you have to go to learn to ride a horse at level 20?"
+LT_Answer[280] = "Hengstacer Farms"
+LT_QuestionCommentary[280] = ""
+
+LT_Question[281] = "What hobbit village lies on the Bree-side of the Brandywine Bridge?"
+LT_Answer[281] = "Crickhollow"
+LT_QuestionCommentary[281] = ""
+
+LT_Question[282] = "In Lord of the Rings Online, what is the minimum number of members a kinship must have to avoid being disbanded?"
+LT_Answer[282] = "8"
+LT_QuestionCommentary[282] = ""
+
+LT_Question[283] = "How many Riddermark Skarn Ores does it take to craft one High Quality Riddermark Ingot?"
+LT_Answer[283] = "8"
+LT_QuestionCommentary[283] = ""
+
+LT_Question[284] = "The studio which produced the 1977 animated film \"The Hobbit\" also produced what classic stop-motion holiday animation?"
+LT_Answer[284] = "Rudolph the Red-Nosed Reindeer"
+LT_QuestionCommentary[284] = ""
+
+LT_Question[285] = "What two cities house two stables, each?"
+LT_Answer[285] = "Caras Galadhon and Bree"
+LT_QuestionCommentary[285] = ""
+
+LT_Question[286] = "What land lies to the north of Evendim?"
+LT_Answer[286] = "Forochel"
+LT_QuestionCommentary[286] = ""
+
+LT_Question[287] = "In the books, what gifts does Samwise Gamgee receive from Galadriel?"
+LT_Answer[287] = "A box of earth (from Galadriel's orchard) and a mallorn seed"
+LT_QuestionCommentary[287] = ""
+
+LT_Question[288] = "What member of The Fellowship os The Ring received no gift from Galadriel?"
+LT_Answer[288] = "Gandalf (as he was presumed dead)"
+LT_QuestionCommentary[288] = ""
+
+LT_Question[289] = "In the books, Grima Wormtongue did what to Lotho Sackville-Baggins?"
+LT_Answer[289] = "Killed and ate him."
+LT_QuestionCommentary[289] = ""
+
+LT_Question[290] = "What sword did Fingolfin wield, wounding Mortgoth seven times?"
+LT_Answer[290] = "Ringil"
+LT_QuestionCommentary[290] = ""
+
+LT_Question[291] = "In the books, who called the flood at the Ford of Bruinen, to kill the Ringwraiths and their mounts?"
+LT_Answer[291] = "Gandalf and Elrond"
+LT_QuestionCommentary[291] = ""
+
+LT_Question[292] = "In the books, who helped Frodo to the House of Elrond, evading the Black Riders?"
+LT_Answer[292] = "Glorfindel"
+LT_QuestionCommentary[292] = ""
+
+LT_Question[293] = "Who was the first of the Elves to be awakened by Eru Iluvatar?"
+LT_Answer[293] = "Imin"
+LT_QuestionCommentary[293] = ""
+
+LT_Question[294] = "Who created the Dwarves?"
+LT_Answer[294] = "Aule"
+LT_QuestionCommentary[294] = ""
+
+LT_Question[295] = "Who created Men and Elves?"
+LT_Answer[295] = "Iluvatar (Eru)"
+LT_QuestionCommentary[295] = ""
+
+LT_Question[296] = "Where did Tolkien say hobbits originated from?"
+LT_Answer[296] = "He never specified their origin."
+LT_QuestionCommentary[296] = ""
+
+LT_Question[297] = "What was the first and smallest of the Kindreds of the Eldar?"
+LT_Answer[297] = "Vanyar"
+LT_QuestionCommentary[297] = ""
+
+LT_Question[298] = ""
+LT_Answer[298] = ""
+LT_QuestionCommentary[298] = ""
+
+LT_Question[299] = ""
+LT_Answer[299] = ""
+LT_QuestionCommentary[299] = ""
+
+LT_Question[300] = ""
+LT_Answer[300] = ""
+LT_QuestionCommentary[300] = ""
+
+LT_Question[301] = ""
+LT_Answer[301] = ""
+LT_QuestionCommentary[301] = ""
+
+LT_Question[302] = ""
+LT_Answer[302] = ""
+LT_QuestionCommentary[302] = ""
+
+LT_Question[303] = ""
+LT_Answer[303] = ""
+LT_QuestionCommentary[303] = ""
+
+LT_Question[304] = ""
+LT_Answer[304] = ""
+LT_QuestionCommentary[304] = ""
+
+LT_Question[305] = ""
+LT_Answer[305] = ""
+LT_QuestionCommentary[305] = ""
+
+LT_Question[306] = ""
+LT_Answer[306] = ""
+LT_QuestionCommentary[306] = ""
+
+LT_Question[307] = ""
+LT_Answer[307] = ""
+LT_QuestionCommentary[307] = ""
+
+LT_Question[308] = ""
+LT_Answer[308] = ""
+LT_QuestionCommentary[308] = ""
+
+LT_Question[309] = ""
+LT_Answer[309] = ""
+LT_QuestionCommentary[309] = ""
+
+LT_Question[310] = ""
+LT_Answer[310] = ""
+LT_QuestionCommentary[310] = ""
+
+LT_Question[311] = ""
+LT_Answer[311] = ""
+LT_QuestionCommentary[311] = ""
+
+LT_Question[312] = ""
+LT_Answer[312] = ""
+LT_QuestionCommentary[312] = ""
+
+LT_Question[313] = ""
+LT_Answer[313] = ""
+LT_QuestionCommentary[313] = ""
+
+LT_Question[314] = ""
+LT_Answer[314] = ""
+LT_QuestionCommentary[314] = ""
+
+LT_Question[315] = ""
+LT_Answer[315] = ""
+LT_QuestionCommentary[315] = ""
+
+LT_Question[316] = ""
+LT_Answer[316] = ""
+LT_QuestionCommentary[316] = ""
+
+LT_Question[317] = ""
+LT_Answer[317] = ""
+LT_QuestionCommentary[317] = ""
+
+LT_Question[318] = ""
+LT_Answer[318] = ""
+LT_QuestionCommentary[318] = ""
+
+LT_Question[319] = ""
+LT_Answer[319] = ""
+LT_QuestionCommentary[319] = ""
+
+LT_Question[320] = ""
+LT_Answer[320] = ""
+LT_QuestionCommentary[320] = ""
+
+LT_Question[321] = ""
+LT_Answer[321] = ""
+LT_QuestionCommentary[321] = ""
+
+LT_Question[322] = ""
+LT_Answer[322] = ""
+LT_QuestionCommentary[322] = ""
+
+LT_Question[323] = ""
+LT_Answer[323] = ""
+LT_QuestionCommentary[323] = ""
+
+LT_Question[324] = ""
+LT_Answer[324] = ""
+LT_QuestionCommentary[324] = ""
+
+LT_Question[325] = ""
+LT_Answer[325] = ""
+LT_QuestionCommentary[325] = ""
+
+LT_Question[326] = ""
+LT_Answer[326] = ""
+LT_QuestionCommentary[326] = ""
+
+LT_Question[327] = ""
+LT_Answer[327] = ""
+LT_QuestionCommentary[327] = ""
+
+LT_Question[328] = ""
+LT_Answer[328] = ""
+LT_QuestionCommentary[328] = ""
+
+LT_Question[329] = ""
+LT_Answer[329] = ""
+LT_QuestionCommentary[329] = ""
+
+LT_Question[330] = ""
+LT_Answer[330] = ""
+LT_QuestionCommentary[330] = ""
+
+LT_Question[331] = ""
+LT_Answer[331] = ""
+LT_QuestionCommentary[331] = ""
+
+LT_Question[332] = ""
+LT_Answer[332] = ""
+LT_QuestionCommentary[332] = ""
+
+LT_Question[333] = ""
+LT_Answer[333] = ""
+LT_QuestionCommentary[333] = ""
+
+LT_Question[334] = ""
+LT_Answer[334] = ""
+LT_QuestionCommentary[334] = ""
+
+LT_Question[335] = ""
+LT_Answer[335] = ""
+LT_QuestionCommentary[335] = ""
+
+LT_Question[336] = ""
+LT_Answer[336] = ""
+LT_QuestionCommentary[336] = ""
+
+LT_Question[337] = ""
+LT_Answer[337] = ""
+LT_QuestionCommentary[337] = ""
+
+LT_Question[338] = ""
+LT_Answer[338] = ""
+LT_QuestionCommentary[338] = ""
+
+LT_Question[339] = ""
+LT_Answer[339] = ""
+LT_QuestionCommentary[339] = ""
+
+LT_Question[340] = ""
+LT_Answer[340] = ""
+LT_QuestionCommentary[340] = ""
+
+LT_Question[341] = ""
+LT_Answer[341] = ""
+LT_QuestionCommentary[341] = ""
+
+LT_Question[342] = ""
+LT_Answer[342] = ""
+LT_QuestionCommentary[342] = ""
+
+LT_Question[343] = ""
+LT_Answer[343] = ""
+LT_QuestionCommentary[343] = ""
+
+LT_Question[344] = ""
+LT_Answer[344] = ""
+LT_QuestionCommentary[344] = ""
+
+LT_Question[345] = ""
+LT_Answer[345] = ""
+LT_QuestionCommentary[345] = ""
+
+LT_Question[346] = ""
+LT_Answer[346] = ""
+LT_QuestionCommentary[346] = ""
+
+LT_Question[347] = ""
+LT_Answer[347] = ""
+LT_QuestionCommentary[347] = ""
+
+LT_Question[348] = ""
+LT_Answer[348] = ""
+LT_QuestionCommentary[348] = ""
+
+LT_Question[349] = ""
+LT_Answer[349] = ""
+LT_QuestionCommentary[349] = ""
+
+LT_Question[350] = ""
+LT_Answer[350] = ""
+LT_QuestionCommentary[350] = ""
+
+LT_Question[351] = ""
+LT_Answer[351] = ""
+LT_QuestionCommentary[351] = ""
+
+LT_Question[352] = ""
+LT_Answer[352] = ""
+LT_QuestionCommentary[352] = ""
+
+LT_Question[353] = ""
+LT_Answer[353] = ""
+LT_QuestionCommentary[353] = ""
+
+LT_Question[354] = ""
+LT_Answer[354] = ""
+LT_QuestionCommentary[354] = ""
+
+LT_Question[355] = ""
+LT_Answer[355] = ""
+LT_QuestionCommentary[355] = ""
+
+LT_Question[356] = ""
+LT_Answer[356] = ""
+LT_QuestionCommentary[356] = ""
+
+LT_Question[357] = ""
+LT_Answer[357] = ""
+LT_QuestionCommentary[357] = ""
+
+LT_Question[358] = ""
+LT_Answer[358] = ""
+LT_QuestionCommentary[358] = ""
+
+LT_Question[359] = ""
+LT_Answer[359] = ""
+LT_QuestionCommentary[359] = ""
+
+LT_Question[360] = ""
+LT_Answer[360] = ""
+LT_QuestionCommentary[360] = ""
+
+LT_Question[361] = ""
+LT_Answer[361] = ""
+LT_QuestionCommentary[361] = ""
+
+LT_Question[362] = ""
+LT_Answer[362] = ""
+LT_QuestionCommentary[362] = ""
+
+LT_Question[363] = ""
+LT_Answer[363] = ""
+LT_QuestionCommentary[363] = ""
+
+LT_Question[364] = ""
+LT_Answer[364] = ""
+LT_QuestionCommentary[364] = ""
+
+LT_Question[365] = ""
+LT_Answer[365] = ""
+LT_QuestionCommentary[365] = ""
+
+LT_Question[366] = ""
+LT_Answer[366] = ""
+LT_QuestionCommentary[366] = ""
+
+LT_Question[367] = ""
+LT_Answer[367] = ""
+LT_QuestionCommentary[367] = ""
+
+LT_Question[368] = ""
+LT_Answer[368] = ""
+LT_QuestionCommentary[368] = ""
+
+LT_Question[369] = ""
+LT_Answer[369] = ""
+LT_QuestionCommentary[369] = ""
+
+LT_Question[370] = ""
+LT_Answer[370] = ""
+LT_QuestionCommentary[370] = ""
+
+LT_Question[371] = ""
+LT_Answer[371] = ""
+LT_QuestionCommentary[371] = ""
+
+LT_Question[372] = ""
+LT_Answer[372] = ""
+LT_QuestionCommentary[372] = ""
+
+LT_Question[373] = ""
+LT_Answer[373] = ""
+LT_QuestionCommentary[373] = ""
+
+LT_Question[374] = ""
+LT_Answer[374] = ""
+LT_QuestionCommentary[374] = ""
+
+LT_Question[375] = ""
+LT_Answer[375] = ""
+LT_QuestionCommentary[375] = ""
+
+LT_Question[376] = ""
+LT_Answer[376] = ""
+LT_QuestionCommentary[376] = ""
+
+LT_Question[377] = ""
+LT_Answer[377] = ""
+LT_QuestionCommentary[377] = ""
+
+LT_Question[378] = ""
+LT_Answer[378] = ""
+LT_QuestionCommentary[378] = ""
+
+LT_Question[379] = ""
+LT_Answer[379] = ""
+LT_QuestionCommentary[379] = ""
+
+LT_Question[380] = ""
+LT_Answer[380] = ""
+LT_QuestionCommentary[380] = ""
+
+LT_Question[381] = ""
+LT_Answer[381] = ""
+LT_QuestionCommentary[381] = ""
+
+LT_Question[382] = ""
+LT_Answer[382] = ""
+LT_QuestionCommentary[382] = ""
+
+LT_Question[383] = ""
+LT_Answer[383] = ""
+LT_QuestionCommentary[383] = ""
+
+LT_Question[384] = ""
+LT_Answer[384] = ""
+LT_QuestionCommentary[384] = ""
+
+LT_Question[385] = ""
+LT_Answer[385] = ""
+LT_QuestionCommentary[385] = ""
+
+LT_Question[386] = ""
+LT_Answer[386] = ""
+LT_QuestionCommentary[386] = ""
+
+LT_Question[387] = ""
+LT_Answer[387] = ""
+LT_QuestionCommentary[387] = ""
+
+LT_Question[388] = ""
+LT_Answer[388] = ""
+LT_QuestionCommentary[388] = ""
+
+LT_Question[389] = ""
+LT_Answer[389] = ""
+LT_QuestionCommentary[389] = ""
+
+LT_Question[390] = ""
+LT_Answer[390] = ""
+LT_QuestionCommentary[390] = ""
+
+LT_Question[391] = ""
+LT_Answer[391] = ""
+LT_QuestionCommentary[391] = ""
+
+LT_Question[392] = ""
+LT_Answer[392] = ""
+LT_QuestionCommentary[392] = ""
+
+LT_Question[393] = ""
+LT_Answer[393] = ""
+LT_QuestionCommentary[393] = ""
+
+LT_Question[394] = ""
+LT_Answer[394] = ""
+LT_QuestionCommentary[394] = ""
+
+LT_Question[395] = ""
+LT_Answer[395] = ""
+LT_QuestionCommentary[395] = ""
+
+LT_Question[396] = ""
+LT_Answer[396] = ""
+LT_QuestionCommentary[396] = ""
+
+LT_Question[397] = ""
+LT_Answer[397] = ""
+LT_QuestionCommentary[397] = ""
+
+LT_Question[398] = ""
+LT_Answer[398] = ""
+LT_QuestionCommentary[398] = ""
+
+LT_Question[399] = ""
+LT_Answer[399] = ""
+LT_QuestionCommentary[399] = ""
 
