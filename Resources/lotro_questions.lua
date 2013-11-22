@@ -191,11 +191,11 @@ LT_Question[45] = "What class acquires the title \"Invincible\"?"
 LT_Answer[45] = "Champion"
 LT_QuestionCommentary[45] = ""
 
-LT_Question[46] = "What class acquires the title \"Stalwart Protector\"?"
+LT_Question[46] = "What class acquires the title \"King's Justice\"?"
 LT_Answer[46] = "Guardian"
 LT_QuestionCommentary[46] = ""
 
-LT_Question[47] = "What class acquires the title \"Earthborn\"?"
+LT_Question[47] = "What class acquires the title \"Righteous Bow\"?"
 LT_Answer[47] = "Hunter"
 LT_QuestionCommentary[47] = ""
 
@@ -207,11 +207,11 @@ LT_Question[49] = "What class acquires the title \"Healing Spirit\"?"
 LT_Answer[49] = "Minstrel"
 LT_QuestionCommentary[49] = ""
 
-LT_Question[50] = "What class acquires the title \"Harbinger of Peace\"?"
-LT_Answer[50] = "Rune-Keeper"
+LT_Question[50] = "Who acquires the title \"Rune-crafter\"?"
+LT_Answer[50] = "Rune-keepers"
 LT_QuestionCommentary[50] = ""
 
-LT_Question[51] = "What class acquires the title \"Ward of Justice\"?"
+LT_Question[51] = "What class acquires the title \"Gambit Master\"?"
 LT_Answer[51] = "Warden"
 LT_QuestionCommentary[51] = ""
 
@@ -1199,411 +1199,814 @@ LT_Question[297] = "What was the first and smallest of the Kindreds of the Eldar
 LT_Answer[297] = "Vanyar"
 LT_QuestionCommentary[297] = ""
 
-LT_Question[298] = ""
-LT_Answer[298] = ""
+LT_Question[298] = "What three jewels were crafted by Feanor from the essence of the Two Trees of Valinor?"
+LT_Answer[298] = "The Silmarils"
 LT_QuestionCommentary[298] = ""
 
-LT_Question[299] = ""
-LT_Answer[299] = ""
+LT_Question[299] = "Many years after Frodo and Bilbo, one more Hobbit travelled to The Undying Lands. Who?"
+LT_Answer[299] = "Samwise Gamgee"
 LT_QuestionCommentary[299] = ""
 
-LT_Question[300] = ""
-LT_Answer[300] = ""
+LT_Question[300] = "In the language of Men, what does \"Lothlorien\" mean?"
+LT_Answer[300] = "Dream Flower"
 LT_QuestionCommentary[300] = ""
 
-LT_Question[301] = ""
-LT_Answer[301] = ""
+LT_Question[301] = "Lothlorien was located between the rivers Andiun, and what?"
+LT_Answer[301] = "Silverlode (Celebrant)"
 LT_QuestionCommentary[301] = ""
 
-LT_Question[302] = ""
-LT_Answer[302] = ""
+LT_Question[302] = "Who was Vilya, The Ring of Power carried by Elrond, was originally given to?"
+LT_Answer[302] = "Giil-Galad, last High King of the Noldor Elves."
 LT_QuestionCommentary[302] = ""
 
-LT_Question[303] = ""
-LT_Answer[303] = ""
+LT_Question[303] = "The mallorn trees of Lothlorien were a gift from Tar-Aldarion, a king of the Numenor, to who?"
+LT_Answer[303] = "Gil-Galad"
 LT_QuestionCommentary[303] = ""
 
-LT_Question[304] = ""
-LT_Answer[304] = ""
+LT_Question[304] = "What do mallorn trees not do, that most other broadleaf trees do?"
+LT_Answer[304] = "Lose their leaves"
 LT_QuestionCommentary[304] = ""
 
-LT_Question[305] = ""
-LT_Answer[305] = ""
+LT_Question[305] = "Hobbits originally lived in the valley of what great river, before migrating?"
+LT_Answer[305] = "The River Anduin. Some Stoor Hobbits remained until late in the Third Age."
 LT_QuestionCommentary[305] = ""
 
-LT_Question[306] = ""
-LT_Answer[306] = ""
+LT_Question[306] = "What does the Vala Irmo, commonly called Lorien, possess power over?"
+LT_Answer[306] = "Dreams and Visions"
 LT_QuestionCommentary[306] = ""
 
-LT_Question[307] = ""
-LT_Answer[307] = ""
+LT_Question[307] = "What two ores make up the first tier of prospecting?"
+LT_Answer[307] = "Copper and Tin"
 LT_QuestionCommentary[307] = ""
 
-LT_Question[308] = ""
-LT_Answer[308] = ""
+LT_Question[308] = "What kind of hides come from the large herd-beasts in the North Downs?"
+LT_Answer[308] = "Sturdy"
 LT_QuestionCommentary[308] = ""
 
-LT_Question[309] = ""
-LT_Answer[309] = ""
+LT_Question[309] = "The beasts of Great River provide what kind of hides?"
+LT_Answer[309] = "Large"
 LT_QuestionCommentary[309] = ""
 
-LT_Question[310] = ""
-LT_Answer[310] = ""
+LT_Question[310] = "What type of ore is found throughout Dunland?"
+LT_Answer[310] = "Skarn"
 LT_QuestionCommentary[310] = ""
 
-LT_Question[311] = ""
-LT_Answer[311] = ""
+LT_Question[311] = "Scholars craft what items of Battle and Warding?"
+LT_Answer[311] = "Scrolls"
 LT_QuestionCommentary[311] = ""
 
-LT_Question[312] = ""
-LT_Answer[312] = ""
+LT_Question[312] = "Scholars make Legendary class items for Minstrels, and what other class?"
+LT_Answer[312] = "Lore-masters"
 LT_QuestionCommentary[312] = ""
 
-LT_Question[313] = ""
-LT_Answer[313] = ""
+LT_Question[313] = "Who makes oils that hunters and wardens can use on their weapons?"
+LT_Answer[313] = "Scholars"
 LT_QuestionCommentary[313] = ""
 
-LT_Question[314] = ""
-LT_Answer[314] = ""
+LT_Question[314] = "I am the bane of Drakes, Worms, Salamanders, Cave-claws. What damage type am I?"
+LT_Answer[314] = "Ancient Dwarf"
 LT_QuestionCommentary[314] = ""
 
-LT_Question[315] = ""
-LT_Answer[315] = ""
+LT_Question[315] = "What damage type is most effective against Half-orcs, Spiders, Insects, Neekers, Crawlers, Ancient Evil, Morroval, Nameless, and Gaunts?"
+LT_Answer[315] = "Beleriand"
 LT_QuestionCommentary[315] = ""
 
-LT_Question[316] = ""
-LT_Answer[316] = ""
+LT_Question[316] = "What greatly damages Trees, Roots, Lurker and Binder Vines, Beasts, Slugs, Snowbeasts, Wolves, Darkwater and Trolls?"
+LT_Answer[316] = "Fire"
 LT_QuestionCommentary[316] = ""
 
-LT_Question[317] = ""
-LT_Answer[317] = ""
+LT_Question[317] = "What type of damage should you bring to a fight with Goblins, Orcs, Trolls, and Spiders?"
+LT_Answer[317] = "Light"
 LT_QuestionCommentary[317] = ""
 
-LT_Question[318] = ""
-LT_Answer[318] = ""
+LT_Question[318] = "The Dead and Unseen fear me, including Gaunts and Wights, as well as Darkwater and The Decayed. What damage type am I?"
+LT_Answer[318] = "Westernesse"
 LT_QuestionCommentary[318] = ""
 
-LT_Question[319] = ""
-LT_Answer[319] = ""
+LT_Question[319] = "What type of attack does extra damage to Orcs, Goblins and Uruks?"
+LT_Answer[319] = "Cries"
 LT_QuestionCommentary[319] = ""
 
-LT_Question[320] = ""
-LT_Answer[320] = ""
+LT_Question[320] = "Dragon-kind are resistant to what type of attacks?"
+LT_Answer[320] = "Song"
 LT_QuestionCommentary[320] = ""
 
-LT_Question[321] = ""
-LT_Answer[321] = ""
+LT_Question[321] = "Prospector. Metalsmith. Tailor. I'm your guy. What sort of professional crafter am I?"
+LT_Answer[321] = "Armourer"
 LT_QuestionCommentary[321] = ""
 
-LT_Question[322] = ""
-LT_Answer[322] = ""
+LT_Question[322] = "Digging at ores or making a blade, add woodcutting and thus this crafter is made. What am I?"
+LT_Answer[322] = "Armsman"
 LT_QuestionCommentary[322] = ""
 
-LT_Question[323] = ""
-LT_Answer[323] = ""
+LT_Question[323] = "Logcutter, Ore-digger, Leather to Stich. I'll scout the lands for them, making me rich! Who am I?"
+LT_Answer[323] = "Explorer"
 LT_QuestionCommentary[323] = ""
 
-LT_Question[324] = ""
-LT_Answer[324] = ""
+LT_Question[324] = "At home in a field or a forge, or a book. When it's potions you need, it's to me that you look. Who am I?"
+LT_Answer[324] = "Scholar"
 LT_QuestionCommentary[324] = ""
 
-LT_Question[325] = ""
-LT_Answer[325] = ""
+LT_Question[325] = "Ores or a Campfire over which I can cook. If you need new sparklies, it's to me that you look. What am I?"
+LT_Answer[325] = "Tinker"
 LT_QuestionCommentary[325] = ""
 
-LT_Question[326] = ""
-LT_Answer[326] = ""
+LT_Question[326] = "Tilling the soil or chopping a tree, if you need a bow made, you'd best come to me. What am I?"
+LT_Answer[326] = "Woodsman"
 LT_QuestionCommentary[326] = ""
 
-LT_Question[327] = ""
-LT_Answer[327] = ""
+LT_Question[327] = "From the earth to the plate, and a stitch or two thrown. I'm the only one who can cook what I've just grown! Who am I?"
+LT_Answer[327] = "Yeoman"
 LT_QuestionCommentary[327] = ""
 
-LT_Question[328] = ""
-LT_Answer[328] = ""
+LT_Question[328] = "What crafting tier comes before all others?"
+LT_Answer[328] = "Apprentice"
 LT_QuestionCommentary[328] = ""
 
-LT_Question[329] = ""
-LT_Answer[329] = ""
+LT_Question[329] = "What crafting tier comes before Expert?"
+LT_Answer[329] = "Journeyman"
 LT_QuestionCommentary[329] = ""
 
-LT_Question[330] = ""
-LT_Answer[330] = ""
+LT_Question[330] = "What crafting tier comes before Artisan?"
+LT_Answer[330] = "Expert"
 LT_QuestionCommentary[330] = ""
 
-LT_Question[331] = ""
-LT_Answer[331] = ""
+LT_Question[331] = "What crafting tier comes before Master?"
+LT_Answer[331] = "Supreme"
 LT_QuestionCommentary[331] = ""
 
-LT_Question[332] = ""
-LT_Answer[332] = ""
+LT_Question[332] = "What crafting tier comes before Supreme?"
+LT_Answer[332] = "Master"
 LT_QuestionCommentary[332] = ""
 
-LT_Question[333] = ""
-LT_Answer[333] = ""
+LT_Question[333] = "What crafting tier comes before Westfold?"
+LT_Answer[333] = "Supreme"
 LT_QuestionCommentary[333] = ""
 
-LT_Question[334] = ""
-LT_Answer[334] = ""
+LT_Question[334] = "What crafting tier comes before Eastemnet"
+LT_Answer[334] = "Westfold"
 LT_QuestionCommentary[334] = ""
 
-LT_Question[335] = ""
-LT_Answer[335] = ""
+LT_Question[335] = "What crafting tier comes before Westemnet?"
+LT_Answer[335] = "Eastemnet"
 LT_QuestionCommentary[335] = ""
 
-LT_Question[336] = ""
-LT_Answer[336] = ""
+LT_Question[336] = "What class uses horns as a consumable item?"
+LT_Answer[336] = "Champion"
 LT_QuestionCommentary[336] = ""
 
-LT_Question[337] = ""
-LT_Answer[337] = ""
+LT_Question[337] = "What class uses consumable enamels?"
+LT_Answer[337] = "Rune-keeper"
 LT_QuestionCommentary[337] = ""
 
-LT_Question[338] = ""
-LT_Answer[338] = ""
+LT_Question[338] = "What class uses consumable strings?"
+LT_Answer[338] = "Minstrel"
 LT_QuestionCommentary[338] = ""
 
-LT_Question[339] = ""
-LT_Answer[339] = ""
+LT_Question[339] = "What class uses Triple, String, and Quick varieties of consumable items?"
+LT_Answer[339] = "Hunter"
 LT_QuestionCommentary[339] = ""
 
-LT_Question[340] = ""
-LT_Answer[340] = ""
+LT_Question[340] = "Consumable thrown weapons are staples of what class?"
+LT_Answer[340] = "Burglar"
 LT_QuestionCommentary[340] = ""
 
-LT_Question[341] = ""
-LT_Answer[341] = ""
+LT_Question[341] = "What class uses crests as a consumable item?"
+LT_Answer[341] = "Captain"
 LT_QuestionCommentary[341] = ""
 
-LT_Question[342] = ""
-LT_Answer[342] = ""
+LT_Question[342] = "What class uses crumbs as a consumable item?"
+LT_Answer[342] = "Lore-master"
 LT_QuestionCommentary[342] = ""
 
-LT_Question[343] = ""
-LT_Answer[343] = ""
+LT_Question[343] = "What class uses Battle Hymns as a consumable item?"
+LT_Answer[343] = "Warden"
 LT_QuestionCommentary[343] = ""
 
-LT_Question[344] = ""
-LT_Answer[344] = ""
+LT_Question[344] = "What class uses consumable tactics leaflets?"
+LT_Answer[344] = "Guardian"
 LT_QuestionCommentary[344] = ""
 
-LT_Question[345] = ""
-LT_Answer[345] = ""
+LT_Question[345] = "Who is the leader of the people of Aughaire, in Angmar?"
+LT_Answer[345] = "Crannog"
 LT_QuestionCommentary[345] = ""
 
-LT_Question[346] = ""
-LT_Answer[346] = ""
+LT_Question[346] = "Setting foot in seven locations passed by The Fellowship of the Ring in Moria grants you what Explorer Deed Title?"
+LT_Answer[346] = "Friend of the Nine"
 LT_QuestionCommentary[346] = ""
 
-LT_Question[347] = ""
-LT_Answer[347] = ""
+LT_Question[347] = "The leader of the Dwarves at Durin's Threshold, what dwarf grants you your first quest in Moria?"
+LT_Answer[347] = "Thormoth"
 LT_QuestionCommentary[347] = ""
 
-LT_Question[348] = ""
-LT_Answer[348] = ""
+LT_Question[348] = "What dwarf at The Chamber of Crossroads in Moria later seeks you out in Lothlorien to plead for help?"
+LT_Answer[348] = "Bosi"
 LT_QuestionCommentary[348] = ""
 
-LT_Question[349] = ""
-LT_Answer[349] = ""
+LT_Question[349] = "Where do you find class trainers and a Vault Keeper in Moria?"
+LT_Answer[349] = "The Twenty-First Hall"
 LT_QuestionCommentary[349] = ""
 
-LT_Question[350] = ""
-LT_Answer[350] = ""
+LT_Question[350] = "Where is the Vault-keeper in Eregion?"
+LT_Answer[350] = "Nowhere. There are none."
 LT_QuestionCommentary[350] = ""
 
-LT_Question[351] = ""
-LT_Answer[351] = ""
+LT_Question[351] = "What two cities in Eastern Rohan have Vault Keepers?"
+LT_Answer[351] = "Harwick and Snowbourn"
 LT_QuestionCommentary[351] = ""
 
-LT_Question[352] = ""
-LT_Answer[352] = ""
+LT_Question[352] = "In Evendim, where can you find a vault keeper?"
+LT_Answer[352] = "Tinnudir"
 LT_QuestionCommentary[352] = ""
 
-LT_Question[353] = ""
-LT_Answer[353] = ""
+LT_Question[353] = "The only vault keeper in the towns of The Shire is found here."
+LT_Answer[353] = "Michel Delving"
 LT_QuestionCommentary[353] = ""
 
-LT_Question[354] = ""
-LT_Answer[354] = ""
+LT_Question[354] = "These providers of services are found only in Bree, Galtrev, Thorin's Hall, Michel Delving, and Rivendell. What are they?"
+LT_Answer[354] = "Barbers"
 LT_QuestionCommentary[354] = ""
 
-LT_Question[355] = ""
-LT_Answer[355] = ""
+LT_Question[355] = "What reputation faction in Moria lets you purchase Goats, Guides, or Gauntlets?"
+LT_Answer[355] = "Iron Garrison Miners"
 LT_QuestionCommentary[355] = ""
 
-LT_Question[356] = ""
-LT_Answer[356] = ""
+LT_Question[356] = "What reputation faction in Moria lets you buy Traits, Shields, and Scones?"
+LT_Answer[356] = "Iron Garrison Guards"
 LT_QuestionCommentary[356] = ""
 
-LT_Question[357] = ""
-LT_Answer[357] = ""
+LT_Question[357] = "First Age Relics provide reputation with what faction?"
+LT_Answer[357] = "Thorin's Hall"
 LT_QuestionCommentary[357] = ""
 
-LT_Question[358] = ""
-LT_Answer[358] = ""
+LT_Question[358] = "Dourhand Crests provide reputation with what faction?"
+LT_Answer[358] = "Thorin's Hall"
 LT_QuestionCommentary[358] = ""
 
-LT_Question[359] = ""
-LT_Answer[359] = ""
+LT_Question[359] = "Tomb-Raiders Sases are reputation items with whom?"
+LT_Answer[359] = "Wardens of Annuminas"
 LT_QuestionCommentary[359] = ""
 
-LT_Question[360] = ""
-LT_Answer[360] = ""
+LT_Question[360] = "Who do Black Badges provide faction rep with?"
+LT_Answer[360] = "Wardens of Annuminas"
 LT_QuestionCommentary[360] = ""
 
-LT_Question[361] = ""
-LT_Answer[361] = ""
+LT_Question[361] = "Bands of Numenor give how many reputation points with the Wardens of Annuminas?"
+LT_Answer[361] = "700"
 LT_QuestionCommentary[361] = ""
 
-LT_Question[362] = ""
-LT_Answer[362] = ""
+LT_Question[362] = "The Mathom Society gives 700 points of reputation for two different types of mathom, Well-Kept and what?"
+LT_Answer[362] = "Gift"
 LT_QuestionCommentary[362] = ""
 
-LT_Question[363] = ""
-LT_Answer[363] = ""
+LT_Question[363] = "A black and white-dappled steed is a reputation item from what faction?"
+LT_Answer[363] = "The Mathom Society"
 LT_QuestionCommentary[363] = ""
 
-LT_Question[364] = ""
-LT_Answer[364] = ""
+LT_Question[364] = "What drinking society was founded by Hobbits?"
+LT_Answer[364] = "The Inn League"
 LT_QuestionCommentary[364] = ""
 
-LT_Question[365] = ""
-LT_Answer[365] = ""
+LT_Question[365] = "What race founded The Ale Association?"
+LT_Answer[365] = "Dwarves"
 LT_QuestionCommentary[365] = ""
 
-LT_Question[366] = ""
-LT_Answer[366] = ""
+LT_Question[366] = "What travelling faction do you gain reputation with by questing in Enedwaith?"
+LT_Answer[366] = "The Grey Company"
 LT_QuestionCommentary[366] = ""
 
-LT_Question[367] = ""
-LT_Answer[367] = ""
+LT_Question[367] = "Silver Tokens of the Wild are a reputation barter item with what faction?"
+LT_Answer[367] = "The Grey Company"
 LT_QuestionCommentary[367] = ""
 
-LT_Question[368] = ""
-LT_Answer[368] = ""
+LT_Question[368] = "What faction uses silver leaves and gold leaves as barter items?"
+LT_Answer[368] = "The Galadhrim of Lothlorien"
 LT_QuestionCommentary[368] = ""
 
-LT_Question[369] = ""
-LT_Answer[369] = ""
+LT_Question[369] = "Questing in the Rift of Nurz Ghashu grants you reputation with what faction?"
+LT_Answer[369] = "The Eldgang"
 LT_QuestionCommentary[369] = ""
 
-LT_Question[370] = ""
-LT_Answer[370] = ""
+LT_Question[370] = "The Lone-Lands provides reputation with what faction, for completing quests and killing enemies?"
+LT_Answer[370] = "The Eglain"
 LT_QuestionCommentary[370] = ""
 
-LT_Question[371] = ""
-LT_Answer[371] = ""
+LT_Question[371] = "What regions' reputation faction are \"Survivors\"?"
+LT_Answer[371] = "Wildermore"
 LT_QuestionCommentary[371] = ""
 
-LT_Question[372] = ""
-LT_Answer[372] = ""
+LT_Question[372] = "The reputation faction in North Downs is known as the what of Esteldin?"
+LT_Answer[372] = "Rangers"
 LT_QuestionCommentary[372] = ""
 
-LT_Question[373] = ""
-LT_Answer[373] = ""
+LT_Question[373] = "What region is Rohan's northern-most border march?"
+LT_Answer[373] = "The Wold"
 LT_QuestionCommentary[373] = ""
 
-LT_Question[374] = ""
-LT_Answer[374] = ""
+LT_Question[374] = "To gain reputation with factions of Eastern Rohan after completing their quests, what must you do?"
+LT_Answer[374] = "Rebuild Hytbold"
 LT_QuestionCommentary[374] = ""
 
-LT_Question[375] = ""
-LT_Answer[375] = ""
+LT_Question[375] = "What reputation faction offers a Ring of the Falcon as a barter reward?"
+LT_Answer[375] = "Men of Dunland"
 LT_QuestionCommentary[375] = ""
 
-LT_Question[376] = ""
-LT_Answer[376] = ""
+LT_Question[376] = "Treasures and trinkets give reputation with this faction. Who are they?"
+LT_Answer[376] = "Men of Bree"
 LT_QuestionCommentary[376] = ""
 
-LT_Question[377] = ""
-LT_Answer[377] = ""
+LT_Question[377] = "This faction of warrior elves has no reputation items, only quests. Who are they?"
+LT_Answer[377] = "The Malledhrim"
 LT_QuestionCommentary[377] = ""
 
-LT_Question[378] = ""
-LT_Answer[378] = ""
+LT_Question[378] = "Crafted Spears and Viols give reputation with what faction?"
+LT_Answer[378] = "Men of Bree"
 LT_QuestionCommentary[378] = ""
 
-LT_Question[379] = ""
-LT_Answer[379] = ""
+LT_Question[379] = "What faction gives reputation for Spear-heads?"
+LT_Answer[379] = "The Lossoth of Forochel"
 LT_QuestionCommentary[379] = ""
 
-LT_Question[380] = ""
-LT_Answer[380] = ""
+LT_Question[380] = "What faction gives reputation points for Luistins?"
+LT_Answer[380] = "The Lossoth of Forochel"
 LT_QuestionCommentary[380] = ""
 
-LT_Question[381] = ""
-LT_Answer[381] = ""
+LT_Question[381] = "How many reputation points with the Lossoth of Forochel do Gauradan Claws grant?"
+LT_Answer[381] = "50"
 LT_QuestionCommentary[381] = ""
 
-LT_Question[382] = ""
-LT_Answer[382] = ""
+LT_Question[382] = "What is the Lossoth of Forochel reputation item called a Luistin?"
+LT_Answer[382] = "A shoe, for running on ice"
 LT_QuestionCommentary[382] = ""
 
-LT_Question[383] = ""
-LT_Answer[383] = ""
+LT_Question[383] = "Parth Celebrant is located in which region?"
+LT_Answer[383] = "Great River"
 LT_QuestionCommentary[383] = ""
 
-LT_Question[384] = ""
-LT_Answer[384] = ""
+LT_Question[384] = "Limlight Gorge is an untamed wilderness in what land of Rhovanion?"
+LT_Answer[384] = "Great River"
 LT_QuestionCommentary[384] = ""
 
-LT_Question[385] = ""
-LT_Answer[385] = ""
+LT_Question[385] = "What faction barters items for Bronze Feathers and Gold Stars?"
+LT_Answer[385] = "The Malledhrim"
 LT_QuestionCommentary[385] = ""
 
-LT_Question[386] = ""
-LT_Answer[386] = ""
+LT_Question[386] = "What Malledhrim stronghold in Mirkwood is home to both the tower Nothgar, and a skirmish involving ballistae?"
+LT_Answer[386] = "Thangulhad"
 LT_QuestionCommentary[386] = ""
 
-LT_Question[387] = ""
-LT_Answer[387] = ""
+LT_Question[387] = "What faction has a quest that involves singing to trees?"
+LT_Answer[387] = "The Galadhrim"
 LT_QuestionCommentary[387] = ""
 
-LT_Question[388] = ""
-LT_Answer[388] = ""
+LT_Question[388] = "What faction do Elvish Relics give 700 reputation points for?"
+LT_Answer[388] = "The Elves of Rivendell"
 LT_QuestionCommentary[388] = ""
 
-LT_Question[389] = ""
-LT_Answer[389] = ""
+LT_Question[389] = "What crafting profession makes reputation items for The Elves of Rivendell?"
+LT_Answer[389] = "Scholar"
 LT_QuestionCommentary[389] = ""
 
-LT_Question[390] = ""
-LT_Answer[390] = ""
+LT_Question[390] = "What crafting profession makes reputation items for The Rangers of Esteldin?"
+LT_Answer[390] = "Tailor"
 LT_QuestionCommentary[390] = ""
 
-LT_Question[391] = ""
-LT_Answer[391] = ""
+LT_Question[391] = "What crafting profession makes reputation items for The Men of Bree?"
+LT_Answer[391] = "Woodworker"
 LT_QuestionCommentary[391] = ""
 
-LT_Question[392] = ""
-LT_Answer[392] = ""
+LT_Question[392] = "What faction do Signets of Rhudaur and Gobli-town Tabards give you reputation with?"
+LT_Answer[392] = "The Elves of Rivendell"
 LT_QuestionCommentary[392] = ""
 
-LT_Question[393] = ""
-LT_Answer[393] = ""
+LT_Question[393] = "Which crafting profession makes reputation items accepted by The Mathom Society? "
+LT_Answer[393] = "Cook"
 LT_QuestionCommentary[393] = ""
 
-LT_Question[394] = ""
-LT_Answer[394] = ""
+LT_Question[394] = "How much reputation with The Mathom Society would a Strawberry Dessert-wine get you?"
+LT_Answer[394] = "100 points"
 LT_QuestionCommentary[394] = ""
 
-LT_Question[395] = ""
-LT_Answer[395] = ""
+LT_Question[395] = "What faction do you get reputation from by using Bone Amulets?"
+LT_Answer[395] = "Council of the North"
 LT_QuestionCommentary[395] = ""
 
-LT_Question[396] = ""
-LT_Answer[396] = ""
+LT_Question[396] = "What faction do you get reputation from by using a War Dispatch?"
+LT_Answer[396] = "Council of the North"
 LT_QuestionCommentary[396] = ""
 
-LT_Question[397] = ""
-LT_Answer[397] = ""
+LT_Question[397] = "How many reputation points with Council of the North do you get by using a Wicked Dagger?"
+LT_Answer[397] = "50"
 LT_QuestionCommentary[397] = ""
 
-LT_Question[398] = ""
-LT_Answer[398] = ""
+LT_Question[398] = "Questing in Carn Dum increases yoru reputation with which faction?"
+LT_Answer[398] = "Council of the North"
 LT_QuestionCommentary[398] = ""
 
-LT_Question[399] = ""
-LT_Answer[399] = ""
+LT_Question[399] = "What is the name of the hidden refuge in the Himbar Mountains, in the northeast part of Angmar?"
+LT_Answer[399] = "Gath Forthnir"
 LT_QuestionCommentary[399] = ""
 
+LT_Question[400] = "What great spider lurks in Himbar, her hatchlings trained by the Angmarim to fight for Darkness?"
+LT_Answer[400] = "Bogbereth"
+LT_QuestionCommentary[400] = ""
+
+LT_Question[401] = "What resident faction do you gain reputation with by questing in Enedwaith?"
+LT_Answer[401] = "Algraig, Men of Enedwaith"
+LT_QuestionCommentary[401] = ""
+
+LT_Question[402] = "What level do you need to survive until to gain the title \"The Wary\"?"
+LT_Answer[402] = "Five"
+LT_QuestionCommentary[402] = ""
+
+LT_Question[403] = "What level do you need to survive until to gain the title \"The Undefeated\"?"
+LT_Answer[403] = "Ten"
+LT_QuestionCommentary[403] = ""
+
+LT_Question[404] = "What level do you need to survive until to gain the title \"The Indomitable\"?"
+LT_Answer[404] = "Fourteen"
+LT_QuestionCommentary[404] = ""
+
+LT_Question[405] = "What level do you need to survive until to gain the title \"The Unscathed\"?"
+LT_Answer[405] = "Seventeen"
+LT_QuestionCommentary[405] = ""
+
+LT_Question[406] = "What level do you need to survive until to gain the title \"The Undying\"?"
+LT_Answer[406] = "Twenty"
+LT_QuestionCommentary[406] = ""
+
+LT_Question[407] = "To get the Fishing title \"Trout-Master\", how many kinds of rare trout do you have to catch?"
+LT_Answer[407] = "Nine"
+LT_QuestionCommentary[407] = ""
+
+LT_Question[408] = "To get the title \"Breakfast Connoissuer\" you have to eat how many each of Eggs and Onions, Complete Hobbit Breakfasts, Delicious Crispy Bacons, and Hobbiton Omlets?"
+LT_Answer[408] = "Nine"
+LT_QuestionCommentary[408] = ""
+
+LT_Question[409] = "What title do you get if you eat six each of Fried Mushrooms, Mushroom Pies, Cooked Carrots, Stuffed Cabbages, Vegetable Medleys, and Ultimate Carrot Cakes?"
+LT_Answer[409] = "Vegetarian"
+LT_QuestionCommentary[409] = ""
+
+LT_Question[410] = "How many Lembas do you have to eat to get the title \"Cake-eater\"?"
+LT_Answer[410] = "100"
+LT_QuestionCommentary[410] = ""
+
+LT_Question[411] = "What food item nets you the title \"The Unwise\"? You really should have known better."
+LT_Answer[411] = "Barrow-brie"
+LT_QuestionCommentary[411] = ""
+
+LT_Question[412] = "What race has kinships with officers given the title \"Caun\"?"
+LT_Answer[412] = "Elves"
+LT_QuestionCommentary[412] = ""
+
+LT_Question[413] = "The leader of a Hobbit Kinship is given what title?"
+LT_Answer[413] = "Chief"
+LT_QuestionCommentary[413] = ""
+
+LT_Question[414] = "An officer in a Kinship of Men is given what title?"
+LT_Answer[414] = "Provost"
+LT_QuestionCommentary[414] = ""
+
+LT_Question[415] = "What deed would you complete in The Warg-pens of Dol Guldur to get the title \"Warg-butcher\"?"
+LT_Answer[415] = "Leader of the Pack"
+LT_QuestionCommentary[415] = ""
+
+LT_Question[416] = "Defeating 60 trolls in Urugarth gets you what burly title?"
+LT_Answer[416] = "The Strong"
+LT_QuestionCommentary[416] = ""
+
+LT_Question[417] = "The title \"Lady/Lord of the Ashen Wastes\" is granted by defeating five champions in what place?"
+LT_Answer[417] = "Carn Dum"
+LT_QuestionCommentary[417] = ""
+
+LT_Question[418] = "\"Facing your Fears\" is a title granted for beating the three champions in which instance?"
+LT_Answer[418] = "The Halls of Night"
+LT_QuestionCommentary[418] = ""
+
+LT_Question[419] = "The title \"The Crate-collector\" is given by collecting five boxes within what instance?"
+LT_Answer[419] = "The Halls of Crafting"
+LT_QuestionCommentary[419] = ""
+
+LT_Question[420] = "Defeating ten trolls in the Dar Narbugud Raid gains you what title?"
+LT_Answer[420] = "Troll-tipper"
+LT_QuestionCommentary[420] = ""
+
+LT_Question[421] = "In Dar Narbugud, what must you collect five of to get the title \"Seeker of Toadstools\"?"
+LT_Answer[421] = "Mushrooms"
+LT_QuestionCommentary[421] = ""
+
+LT_Question[422] = "Collecting five plants in the waterworks of Nala-Dum grants you what title?"
+LT_Answer[422] = "Gardener of the Deep"
+LT_QuestionCommentary[422] = ""
+
+LT_Question[423] = "There is only one title given by the Rise of Isengard Expansion. What is it?"
+LT_Answer[423] = "Bathed in Fire"
+LT_QuestionCommentary[423] = ""
+
+LT_Question[424] = "The title \"Bathed in Fire\" comes from defeating what foe?"
+LT_Answer[424] = "Draigoch the Red"
+LT_QuestionCommentary[424] = ""
+
+LT_Question[425] = "In the instance Skumfil, what do you have to kill 100 of, in order to get the title \"Shell-smasher\"?"
+LT_Answer[425] = "Gredbyg"
+LT_QuestionCommentary[425] = ""
+
+LT_Question[426] = "What title do you get for defeating 60 of the spawn of Ungoliant in Skumfil?"
+LT_Answer[426] = "Web-shredder"
+LT_QuestionCommentary[426] = ""
+
+LT_Question[427] = "Defeating 20 trolls in what instance grants you the title \"The Resilient\"?"
+LT_Answer[427] = "Forges of Khazad-dum"
+LT_QuestionCommentary[427] = ""
+
+LT_Question[428] = "Defeating 60 orcs in what instance grants you the title \"The Hearty\"?"
+LT_Answer[428] = "The Sixteenth Hall"
+LT_QuestionCommentary[428] = ""
+
+LT_Question[429] = "The discovery of all seven items in Enedwaith pointing to the existence of hobbits dwelling there gives you what title?"
+LT_Answer[429] = "Little Wonder"
+LT_QuestionCommentary[429] = ""
+
+LT_Question[430] = "Finding all eight locations for the Moria deed \"Bulwarks of the Enemy\" gets you what title?"
+LT_Answer[430] = "Deep-delver"
+LT_QuestionCommentary[430] = ""
+
+LT_Question[431] = "You are sure you have fallen in every pit from the Hollin Gate to the East Gate of Moria. What title did you get?"
+LT_Answer[431] = "Blind Leaper"
+LT_QuestionCommentary[431] = ""
+
+LT_Question[432] = "From the depths of Moria to the peak of Weathertop, what pair do you have to find seven times in Middle-earth to get the title \"The Wanderer\"?"
+LT_Answer[432] = "Floid and Dewitt"
+LT_QuestionCommentary[432] = ""
+
+LT_Question[433] = "How many times do the traveling pair Floid and Dewitt make an appearance in Lord of the Rings Online?"
+LT_Answer[433] = "Fourteen"
+LT_QuestionCommentary[433] = ""
+
+LT_Question[434] = "A level 15 class quest grants the title \"Spearman of the March\" to whom?"
+LT_Answer[434] = "Wardens"
+LT_QuestionCommentary[434] = ""
+
+LT_Question[435] = "A level 15 class quest grants the title \"Eye of the Storm\" to whom?"
+LT_Answer[435] = "Rune-keepers"
+LT_QuestionCommentary[435] = ""
+
+LT_Question[436] = "A level 15 class quest grants the title \"Song Warrior\" to whom?"
+LT_Answer[436] = "Minstrels"
+LT_QuestionCommentary[436] = ""
+
+LT_Question[437] = "A level 15 class quest grants the title \"Well-Ordered Mind\" to whom?"
+LT_Answer[437] = "Lore-masters"
+LT_QuestionCommentary[437] = ""
+
+LT_Question[438] = "A level 15 class quest grants the title \"Swift Arrow\" to whom?"
+LT_Answer[438] = "HUnters"
+LT_QuestionCommentary[438] = ""
+
+LT_Question[439] = "What class gets the title \"Shield against Adversity\" from a level 15 quest?"
+LT_Answer[439] = "Guardian"
+LT_QuestionCommentary[439] = ""
+
+LT_Question[440] = "What class gets the title \"Blade of Renown\" from a level 15 quest?"
+LT_Answer[440] = "Champion"
+LT_QuestionCommentary[440] = ""
+
+LT_Question[441] = "You are an \"Inspiration to Men\". What class are you, to have gotten this title from a level 15 quest?"
+LT_Answer[441] = "Captain"
+LT_QuestionCommentary[441] = ""
+
+LT_Question[442] = "What class gets the title \"Thief in the Night\" from a level 15 quest?"
+LT_Answer[442] = "Burglar"
+LT_QuestionCommentary[442] = ""
+
+LT_Question[443] = "A level 30 quest gives members of this class the title \Ward of Justice\"."
+LT_Answer[443] = ""
+LT_QuestionCommentary[443] = ""
+
+LT_Question[444] = "A level 30 quest gives members of this class the title \"Harbinger of Peace\"."
+LT_Answer[444] = "Rune-keeper"
+LT_QuestionCommentary[444] = ""
+
+LT_Question[445] = "Who can use the title \"Ballad Master\", given by a level 30 class quest?"
+LT_Answer[445] = "Minstrels"
+LT_QuestionCommentary[445] = ""
+
+LT_Question[446] = "Who can use the title \"Nature's Fury\", given by a level 30 class quest?"
+LT_Answer[446] = "Lore-masters"
+LT_QuestionCommentary[446] = ""
+
+LT_Question[447] = "Who can use the title \"Earthborn\", given by a level 30 class quest?"
+LT_Answer[447] = "Hunters"
+LT_QuestionCommentary[447] = ""
+
+LT_Question[448] = "Who can use the title \"Stalwart Protector\", given by a level 30 class quest?"
+LT_Answer[448] = "Guardian"
+LT_QuestionCommentary[448] = ""
+
+LT_Question[449] = "You're not Bruce Lee, but you're still a \"Martial Artist\". You've completed a level 30 quest for which class?"
+LT_Answer[449] = "Champion"
+LT_QuestionCommentary[449] = ""
+
+LT_Question[450] = "You're a tried-and-true sort of person, and known as an \"Oath-keeper\". Who gets this title from a level 30 class quest?"
+LT_Answer[450] = "Captain"
+LT_QuestionCommentary[450] = ""
+
+LT_Question[451] = "At level 30, a class quest lets who take the moniker \"Trickster\"?"
+LT_Answer[451] = "Burglars"
+LT_QuestionCommentary[451] = ""
+
+LT_Question[452] = "What crafting vocation grants you the title \"Apprentice of Blades\"?"
+LT_Answer[452] = "Armsman"
+LT_QuestionCommentary[452] = ""
+
+LT_Question[453] = "What crafting vocation grants you the title \"Drudger\"?"
+LT_Answer[453] = "Yeoman"
+LT_QuestionCommentary[453] = ""
+
+LT_Question[454] = "What crafting vocation grants you the title \"Easily Lost\"?"
+LT_Answer[454] = "Explorer"
+LT_QuestionCommentary[454] = ""
+
+LT_Question[455] = "What crafting vocation grants you the title \"Handyman\"?"
+LT_Answer[455] = "Tinker"
+LT_QuestionCommentary[455] = ""
+
+LT_Question[456] = "What's your crafting profession, if they can call you \"Student of Metalwork\"?"
+LT_Answer[456] = "Armourer"
+LT_QuestionCommentary[456] = ""
+
+LT_Question[457] = "What's your crafting profession, if they can call you \"Student of the Past\"?"
+LT_Answer[457] = "Historian"
+LT_QuestionCommentary[457] = ""
+
+LT_Question[458] = "What's your crafting profession, if they can call you \"Student of the Woods\"?"
+LT_Answer[458] = "Woodsman"
+LT_QuestionCommentary[458] = ""
+
+LT_Question[459] = "When crafting within a tier, there are two ranks. Name the second."
+LT_Answer[459] = "Master"
+LT_QuestionCommentary[459] = ""
+
+LT_Question[460] = "Receiving what emote eventually grants you the title \"The Adorable\"?"
+LT_Answer[460] = "hug"
+LT_QuestionCommentary[460] = ""
+
+LT_Question[461] = "Receiving what emote eventually grants you the title \"The Befuddling\"?"
+LT_Answer[461] = "confused"
+LT_QuestionCommentary[461] = ""
+
+LT_Question[462] = "Receiving what emote eventually grants you the title \"The Alluring\"?"
+LT_Answer[462] = "flirt"
+LT_QuestionCommentary[462] = ""
+
+LT_Question[463] = "Receiving what emote eventually grants you the title \"The Beloved\"?"
+LT_Answer[463] = "kiss"
+LT_QuestionCommentary[463] = ""
+
+LT_Question[464] = "Receiving what emote eventually grants you the title \"The Dull\"?"
+LT_Answer[464] = "bored"
+LT_QuestionCommentary[464] = ""
+
+LT_Question[465] = "Receiving what emote eventually grants you the title \"The Harassed\"?"
+LT_Answer[465] = "beg"
+LT_QuestionCommentary[465] = ""
+
+LT_Question[466] = "They've done this to you a hundred times, and you're now \"The Helpful\". What emote did they perform?"
+LT_Answer[466] = "thank"
+LT_QuestionCommentary[466] = ""
+
+LT_Question[467] = "They've done this to you a hundred times, and you're now \"The Infuriating\". What emote did they perform?"
+LT_Answer[467] = "angry"
+LT_QuestionCommentary[467] = ""
+
+LT_Question[468] = "You're called \"The Insulted\". What emote did they perform?"
+LT_Answer[468] = "rude"
+LT_QuestionCommentary[468] = ""
+
+LT_Question[469] = "You're known as \"The Intimidating\"! What emote did they perform to get you that title?"
+LT_Answer[469] = "cower"
+LT_QuestionCommentary[469] = ""
+
+LT_Question[470] = "You're known as \"The Naughty\"! What emote did they perform to get you that title?"
+LT_Answer[470] = "scold"
+LT_QuestionCommentary[470] = ""
+
+LT_Question[471] = "You're known as \"The Ridiculed\"! What emote did they perform to get you that title?"
+LT_Answer[471] = "mock"
+LT_QuestionCommentary[471] = ""
+
+LT_Question[472] = "All hail \"The Victorius\"! What emote got you that title?"
+LT_Answer[472] = "surrender"
+LT_QuestionCommentary[472] = ""
+
+LT_Question[473] = "Most emote titles require receiving a hundred emotes, five per day. This one is offended at requiring TWO hundred. What is it?"
+LT_Answer[473] = "The Insulted"
+LT_QuestionCommentary[473] = ""
+
+LT_Question[474] = "Two emote titles only require receiving forty displays, but only two per day, each. What are they?"
+LT_Answer[474] = "The Intimidating, The Victorius"
+LT_QuestionCommentary[474] = ""
+
+LT_Question[475] = "What have you done to acquire the title \"Fruit-hucker\"?"
+LT_Answer[475] = "Thrown rotten fruit at actors"
+LT_QuestionCommentary[475] = ""
+
+LT_Question[476] = "Where can you become a Villain, a Protagonist, an Extra, or a Laughing-stock?"
+LT_Answer[476] = "Frostbluff Theater"
+LT_QuestionCommentary[476] = ""
+
+LT_Question[477] = "You've performed in a play as a Villain, the Protagonist, and the Extra. What title did you get for playing all three?"
+LT_Answer[477] = "Thespian"
+LT_QuestionCommentary[477] = ""
+
+LT_Question[478] = "How did you get the title \"Petal Pusher\"?"
+LT_Answer[478] = "Thrown Flower Petals"
+LT_QuestionCommentary[478] = ""
+
+LT_Question[479] = "Fortunes are found in cookies during what festival?"
+LT_Answer[479] = "Spring Festival"
+LT_QuestionCommentary[479] = ""
+
+LT_Question[480] = "How many different fortunes are there in Extra Deliciously Tasty Biscuits?"
+LT_Answer[480] = "Fifty"
+LT_QuestionCommentary[480] = ""
+
+LT_Question[481] = "You're a \"Creep\". Who have you become Kindred with to get that title?"
+LT_Answer[481] = "The Ale Association"
+LT_QuestionCommentary[481] = ""
+
+LT_Question[482] = "You became an acquantaince, and got called \"The Sinister\". An acquaintance of whom?"
+LT_Answer[482] = "The Ale Association"
+LT_QuestionCommentary[482] = ""
+
+LT_Question[483] = "What is the minimum number of boars you have to kill in order to get the title \"Pork-chopper\"?"
+LT_Answer[483] = "Seven"
+LT_QuestionCommentary[483] = ""
+
+LT_Question[484] = "You're such a \"Do-Gooder\". Who have you been completing quests for, to get called that?"
+LT_Answer[484] = "The Inn League"
+LT_QuestionCommentary[484] = ""
+
+LT_Question[485] = "After much rigorous beverage endurance testing *hic* you are now a \"Sage of Fine Spirits\" according to what faction?"
+LT_Answer[485] = "The Inn League"
+LT_QuestionCommentary[485] = ""
+
+LT_Question[486] = "Ka-BOOM! How many fireworks did you launch to get the title \"Master Blaster\"?"
+LT_Answer[486] = "Three Hundred! Fifty each of Blue, Green, Orange, Purple, Red, and Yellow."
+LT_QuestionCommentary[486] = ""
+
+LT_Question[487] = "Plauing through the entire Chicken Play quest series nets you what title?"
+LT_Answer[487] = "Crosser of Roads"
+LT_QuestionCommentary[487] = ""
+
+LT_Question[488] = "You are known in LOTRO as \"_________ of the Lonely Mountain\". What race are you?"
+LT_Answer[488] = "Dwarf"
+LT_QuestionCommentary[488] = ""
+
+LT_Question[489] = "You are known in LOTRO as \"_________ of Lindon\". What race are you?"
+LT_Answer[489] = "Elf"
+LT_QuestionCommentary[489] = ""
+
+LT_Question[490] = "You are known in LOTRO as \"_________ of The Fallohides\". What race are you?"
+LT_Answer[490] = "Hobbit"
+LT_QuestionCommentary[490] = ""
+
+LT_Question[491] = "You are known in LOTRO as \"_________ of Dale\". What race are you?"
+LT_Answer[491] = "Man"
+LT_QuestionCommentary[491] = ""
+
+LT_Question[492] = "Receiving 200 laugh emotes grants you the ability to do.... what?"
+LT_Answer[492] = "juggle"
+LT_QuestionCommentary[492] = ""
+
+LT_Question[493] = "It is only possible to become an enemy of two factions in the game. Who are they?"
+LT_Answer[493] = "The Ale Association, and the Inn League"
+LT_QuestionCommentary[493] = ""
+
+LT_Question[494] = "What two classes are availble to play as an Orc, in Monster Play?"
+LT_Answer[494] = "Reaver and Defiler"
+LT_QuestionCommentary[494] = ""
+
+LT_Question[495] = "What is the only class can you play as a spider in Monster Play?"
+LT_Answer[495] = "Weaver"
+LT_QuestionCommentary[495] = ""
+
+LT_Question[496] = "What type of monster can be a Blackarrow, in Monster Play?"
+LT_Answer[496] = "Uruk"
+LT_QuestionCommentary[496] = ""
+
+LT_Question[497] = "What type of monster can be a Warleader, in Monster Play?"
+LT_Answer[497] = "Uruk"
+LT_QuestionCommentary[497] = ""
+
+LT_Question[498] = "In Monster Play, Wargs can play as what class?"
+LT_Answer[498] = "Stalker"
+LT_QuestionCommentary[498] = ""
+
+LT_Question[499] = "Heathfells is an area within what region of southern Eriador?"
+LT_Answer[499] = "The Gap of Rohan"
+LT_QuestionCommentary[499] = ""
+
+LT_Question[500] = "What day is Bilbo's Birthday?"
+LT_Answer[500] = "September 22nd"
+LT_QuestionCommentary[500] = ""
