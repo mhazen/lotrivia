@@ -13,19 +13,19 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 	A Plug In for hosting trivia games in
 	Lord Of The Rings Online
+--]]
 
-  ]]--
 
-
-  --[[
+--[[
 
 	To-Do List:
 
 	Known Bugs:
 
-  ]]--
+--]]
 
-	-- Debug flag
+	-- Debug flag: Prevents asking of questions and announcing answer accepts in chat
+	--
 	debug = true
 
 	-- Initialize plugin constants
@@ -1316,7 +1316,10 @@ Report Bugs on LotroInterface.com
 	end
 
 
+
+
 	-- Instantiate Windows
+	--
 	myOptions = optionsWindow();
 	populateOptions();
 	myScores = scoresWindow();
@@ -1326,7 +1329,11 @@ Report Bugs on LotroInterface.com
 	-- Set up timer
 	myTimer = Timer();
 
-	-- Set up the countdown timer events
+
+
+
+
+	-- countdown timer event
 	--
 	timerEvent = function()
 		if (countdownTime == nil) then
