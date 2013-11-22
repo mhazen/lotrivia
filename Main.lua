@@ -25,7 +25,8 @@ import "Carentil.LOTRivia.Resources.Questions";
 
   ]]--
 
-
+	-- Debug flag
+	debug = true
 
 	-- Initialize plugin constants
 	--
@@ -1263,11 +1264,16 @@ Report Bugs on LotroInterface.com
 		-- function to set up the reveal Answer alias
 		--
 		self.setReveal = function()
--- DEBUG
-			local sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
---			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
-			-- Bind to reveal button
-			self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
+
+		local sendText=""
+
+		if (debug) then
+			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		else
+			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		end
+		-- Bind to reveal button
+		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 		end
 
 		self:SetResizable(false);
@@ -1547,14 +1553,18 @@ Report Bugs on LotroInterface.com
 		-- Update the alias for sending the question
 		--
 		if (gameActive) then
+
 			sendQuestion = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
--- Debugging
---		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
-		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say testing"))
+			if (debug) then
+				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say testing"))
+			else
+				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))			end
+			end
 
 		else
 			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 		end
+
 	end
 
 	function nextFree(x)
@@ -1732,9 +1742,13 @@ Report Bugs on LotroInterface.com
 
 		-- Set up the alias for the "accept answer" quickslot faux button
 		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
--- DEBUGGING
-		local sendText = "/say " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
---		local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+
+		if (debug) then
+			local sendText = "/say " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		else
+			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		end
+
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 	end
