@@ -263,14 +263,16 @@ import "Carentil.LOTRivia.Resources.Questions";
 		end
 	end
 
-	ltprint(ltColor.orange .. "mwahaha</rgb>")
+
+
 
 	helpText = [[Commands
  /lt help -- this message
  /lt guesses -- lists the guesses made on the current question
  /lt options -- shows the options window
  /lt resetanswers -- clears answers from all players for the current question
- /lt show -- shows game windows (if you close one by accident)]]
+ /lt show -- shows game windows (if you close one by accident)
+ Plugin can be unloaded with /plugins "unload lotrivia"]]
 
 	creditsText = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
 
@@ -431,18 +433,46 @@ Report Bugs on LotroInterface.com
 			lotrivia.config.timed = self.timedCheckbox:IsChecked();
 
 			-- save timer length choice
-			if (tonumber(self.timePerQuestion:GetText()) ~= nil) then
+			if isPositiveNumber( self.timePerQuestion:GetText() ) then
 				lotrivia.config.timePerQuestion = tonumber( self.timePerQuestion:GetText() );
+			else
+				ltprint(ltColor.orange .. "That's not a valid number of seconds per question.")
+				return;
 			end
+
 			-- save questions per round choice
-			if (tonumber(self.questionsPerRound:GetText()) ~= nil) then
-				if ( #usedQuestions > tonumber(lotrivia.config.questionsPerRound) ) then
-					self.questionsPerRound:SetText(#usedQuestions+1);
-					ltprint("Increasing questions per round to cover the number of questions already asked.")
+			if isPositiveNumber(self.questionsPerRound:GetText()) then
+
+				if ( tonumber( self.questionsPerRound:GetText() ) > #LT_Question ) then
+					ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions loaded. "  )
+					return false
 				end
+
+				-- Don't allow setting the questions per round to less than we've already asked in the current game
+				--
+				if ( #usedQuestions > tonumber( self.questionsPerRound:GetText() ) ) then
+					self.questionsPerRound:SetText(#usedQuestions);
+					ltprint("Increasing questions per round to cover the number of questions already asked.")
+
+					-- Complete the game
+					myGame.resetGameWindow();
+					ltprint("Game completed!");
+					gameActive = false;
+					questionActive = false;
+
+					-- reset the Start Game button TextBox
+					myGame.gamestateButton:SetText("Start Game");
+				end
+
+
 				lotrivia.config.questionsPerRound = tonumber( self.questionsPerRound:GetText() );
+
 				-- Also update the panel
 				myGame.questionsRemaining:SetText( lotrivia.config.questionsPerRound-#usedQuestions );
+
+			else
+				ltprint(ltColor.orange .. "That's not a valid number of questions per round.")
+				return;
 			end
 
 			-- save channel choice option
@@ -1215,21 +1245,27 @@ Report Bugs on LotroInterface.com
 		self.gamestateButton.MouseUp = function(sender,args)
 
 			if ( not gameActive ) then
-				ltprint("Starting a new game!")
-				self.gamestateButton:SetText("Finish Game")
 
-				-- reset game data
-				setUpDataStores();
+				if (haveEnoughQuestions()) then
+					ltprint("Starting a new game!")
+					self.gamestateButton:SetText("Finish Game")
 
-				-- clear the questions and guesses
-				self.resetGameWindow();
-				myScores:updateList();
+					-- reset game data
+					setUpDataStores();
 
-				-- Set the game state
-				gameActive = true
+					-- clear the questions and guesses
+					self.resetGameWindow();
+					myScores:updateList();
 
-				-- Pick the first question
-				pickQuestion();
+					-- Set the game state
+					gameActive = true
+
+					-- Pick the first question
+					pickQuestion();
+				else
+					ltprint("Game not started.");
+					return
+				end
 
 			else
 				ltprint("Ending the current game.");
@@ -1242,6 +1278,9 @@ Report Bugs on LotroInterface.com
 				if (questionActive) then
 					stopCountdown();
 				end
+
+				-- Update the scores, so that we can report them to the channel accurately if desired
+				myScores:updateList()
 
 				-- set game and question state
 				gameActive = false
@@ -1268,7 +1307,7 @@ Report Bugs on LotroInterface.com
 		local sendText=""
 
 		if (debug) then
-			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
 			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
@@ -1330,9 +1369,6 @@ Report Bugs on LotroInterface.com
 	myTimer = Timer();
 
 
-
-
-
 	-- countdown timer event
 	--
 	timerEvent = function()
@@ -1342,7 +1378,15 @@ Report Bugs on LotroInterface.com
 		-- Update the countdown clock
 		countdownTime = countdownTime-1;
 		myGame.timeRemaining:SetText(countdownTime);
-		local timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
+
+		if (debug) then
+			timeAnnounce = "/say"
+		else
+			timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"]
+		end
+
+		timeAnnounce = timeAnnounce .. " " .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
+
 		myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
 
 		-- If we've hit zero, we need to do a number of things.
@@ -1408,10 +1452,8 @@ Report Bugs on LotroInterface.com
 		if (args == "help") then
 			ltprint(helpText)
 
-
 		elseif (args == "") then
 			ltprint(helpText)
-
 
 		elseif (args == "guesses") then
 
@@ -1431,7 +1473,6 @@ Report Bugs on LotroInterface.com
 			resetAnswers()
 			ltprint("Current question answers cleared.")
 
-
 		elseif (args=="options") then
 			LT_setOptions()
 			myOptions:SetVisible(not myOptions:IsVisible())
@@ -1446,6 +1487,7 @@ Report Bugs on LotroInterface.com
 			Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", LT_loadOptions)
 
 		elseif (args=="show") then
+			-- Unhide the game windows
 			myScores:SetVisible(true);
 			myGame:SetVisible(true);
 
@@ -1453,11 +1495,13 @@ Report Bugs on LotroInterface.com
 			myScores:updateList();
 
 		else
-			ltprint( "\"" .. args .. "\" not a valid command, Try /lt help." )
+			ltprint( "\"" .. args .. "\" is not a recognized command. Try /lt help." )
 		end
 
 	end
 
+	-- Add the shell command
+	--
 	Turbine.Shell.AddCommand( "lotrivia;lt", myCommand)
 
 
@@ -1562,10 +1606,11 @@ Report Bugs on LotroInterface.com
 		if (gameActive) then
 
 			sendQuestion = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
+
 			if (debug) then
 				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say testing"))
 			else
-				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))			end
+				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
 			end
 
 		else
@@ -1683,12 +1728,13 @@ Report Bugs on LotroInterface.com
 			announceAllText = ""
 			announceTopThreeText = ""
 
-			if (#sortedScores) then
+			if (#sortedScores ~= nil and #sortedScores > 0 ) then
 				for i=1,#sortedScores do
 					announceAllText = announceAllText ..
 					scoreColor[1] ..  "[" .. sortedScores[i][1] .. ":"  .. sortedScores[i][2] .. "]</rgb> "
 				end
 			else
+
 				announceAllText = "No points awarded."
 			end
 
@@ -1714,8 +1760,13 @@ Report Bugs on LotroInterface.com
 				announceTopThreeText = announceAllText
 			end
 
-			announceAllText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Scores: " .. announceAllText
-			announceTopThreeText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Top Three Scorers: " .. announceTopThreeText
+			if (debug) then
+				announceAllText = "/say Scores: " .. announceAllText
+				announceTopThreeText = "/say Top Three Scorers: " .. announceTopThreeText
+			else
+				announceAllText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Scores: " .. announceAllText
+				announceTopThreeText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Top Three Scorers: " .. announceTopThreeText
+			end
 
 			-- set score window pseudo-button aliases
 			myScores.announceAllText:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,announceAllText));
@@ -1725,7 +1776,7 @@ Report Bugs on LotroInterface.com
 	end
 
 
-	-- function to stop countdown
+	-- function to stop countdown timer and reset game window time display
 	--
 	function stopCountdown()
 		RemoveCallback(myTimer,"TimeReached",timerEvent);
@@ -1734,7 +1785,7 @@ Report Bugs on LotroInterface.com
 		countdownTime = nil
 	end
 
-	-- function to handle events when a guess is clicked in the guessesListBox
+	-- function to handle events when a guess is clicked in the guesses ListBox
 	--
 	function selectPlayer(sender,args,name)
 		for i=1,myGame.guessesListBox:GetItemCount() do
@@ -1753,9 +1804,42 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			local sendText = "/say " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
-			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
 
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
+	end
+
+	-- Make sure we have enough questions loaded to play a game of the desired length
+	--
+	function haveEnoughQuestions()
+		if (#LT_Question == nil) then
+			ltprint(ltColor.orange .. "Uh oh! No questions loaded!")
+			return false
+		elseif (lotrivia.config.questionsPerRound > #LT_Question) then
+			ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions loaded. "  )
+			return false
+		end
+		return true
+	end
+
+
+	-- Some options require positive numbers to be valid. This function tests that.
+	--
+	function isPositiveNumber(val)
+		if (val == nil) then
+			return false
+		end
+
+		val = tonumber(val)
+
+		-- Non-numbers come back as nil
+		if (val == nil) then return false end
+
+		if (val < 1) then
+			return false
+		end
+
+		return true
 	end
