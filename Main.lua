@@ -134,7 +134,6 @@ debug = false
 	-- handler for plugin unload event
 	--
 	function unloadHandler()
-		ltprint("Unloading.")
 		-- Clear out global data
 		_G.LT_Question = nil;
 		_G.LT_Answer = nil;
