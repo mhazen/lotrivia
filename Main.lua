@@ -865,7 +865,8 @@ Report Bugs on LotroInterface.com
 
 				-- Set the Reveal Answer alias
 				self.setReveal();
-
+			else
+				ltprint(ltColor.orange .. "You need to start a game before you can send a question.")
 			end
 		end
 
