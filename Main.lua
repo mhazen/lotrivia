@@ -560,18 +560,18 @@ Report Bugs on LotroInterface.com
 		self.announceAllText.Icon:SetMouseVisible(false);
 		self.announceAllText.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/announceAll.jpg")
+		self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announceAll.jpg")
 		self.announceAllText.MouseEnter=function()
-			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/announceAll_sel.jpg")
+			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announceAll_sel.jpg")
 		end
 		self.announceAllText.MouseLeave=function()
-			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/announceAll.jpg")
+			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announceAll.jpg")
 		end
 		self.announceAllText.MouseDown=function()
-			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/announceAll.jpg")
+			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announceAll.jpg")
 		end
 		self.announceAllText.MouseUp=function()
-			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/announceAll_sel.jpg")
+			self.announceAllText.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announceAll_sel.jpg")
 		end
 
 
@@ -598,18 +598,18 @@ Report Bugs on LotroInterface.com
 		self.top3.Icon:SetMouseVisible(false);
 		self.top3.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+		self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/img/top3.jpg")
 		self.top3.MouseEnter=function()
-			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3_sel.jpg")
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/img/top3_sel.jpg")
 		end
 		self.top3.MouseLeave=function()
-			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/img/top3.jpg")
 		end
 		self.top3.MouseDown=function()
-			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3.jpg")
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/img/top3.jpg")
 		end
 		self.top3.MouseUp=function()
-			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/top3_sel.jpg")
+			self.top3.Icon:SetBackground("Carentil/LOTRivia/Resources/img/top3_sel.jpg")
 		end
 
 
@@ -698,7 +698,7 @@ Report Bugs on LotroInterface.com
 		-- Increment control
 		self.increment_button = Turbine.UI.Control();
 		self.increment_button:SetParent(self);
-		self.increment_button:SetBackground("Carentil/LOTRivia/Resources/inc.jpg");
+		self.increment_button:SetBackground("Carentil/LOTRivia/Resources/img/inc.jpg");
 		self.increment_button:SetSize(19,18);
 		self.increment_button:SetPosition(245,64);
 		self.increment_button:SetVisible(true)
@@ -706,7 +706,7 @@ Report Bugs on LotroInterface.com
 		-- Decrement control
 		self.decrement_button = Turbine.UI.Control();
 		self.decrement_button:SetParent(self);
-		self.decrement_button:SetBackground("Carentil/LOTRivia/Resources/dec.jpg");
+		self.decrement_button:SetBackground("Carentil/LOTRivia/Resources/img/dec.jpg");
 		self.decrement_button:SetSize(19,18);
 		self.decrement_button:SetPosition(270,64);
 		self.decrement_button:SetVisible(true)
@@ -835,18 +835,18 @@ Report Bugs on LotroInterface.com
 		self.askAlias.Icon:SetMouseVisible(false);
 		self.askAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+		self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion.jpg")
 		self.askAlias.MouseEnter=function()
-			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion_sel.jpg")
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion_sel.jpg")
 		end
 		self.askAlias.MouseLeave=function()
-			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion.jpg")
 		end
 		self.askAlias.MouseDown=function()
-			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion.jpg")
 		end
 		self.askAlias.MouseUp=function()
-			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/askquestion.jpg")
+			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion.jpg")
 			if (gameActive) then
 				questionActive=true;
 
@@ -988,7 +988,7 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.Backdrop:SetSize(117,18);
 		self.acceptAlias.Backdrop:SetPosition(467,320);
 		self.acceptAlias.Backdrop:SetZOrder(self.acceptAlias:GetZOrder()+1); -- force the icon to be displayed above the quickslot
-		self.acceptAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/accept.jpg");
+		self.acceptAlias.Backdrop:SetBackground("Carentil/LOTRivia/Resources/img/accept.jpg");
 		self.acceptAlias.Backdrop:SetBackColor(Turbine.UI.Color(1,0,0,0))
 		self.acceptAlias.Backdrop:SetMouseVisible(false);
 		--]]
@@ -1000,19 +1000,19 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.Icon:SetZOrder(self.acceptAlias:GetZOrder()+2);
 		self.acceptAlias.Icon:SetMouseVisible(false);
 		self.acceptAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
-		self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+		self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept.jpg")
 
 		self.acceptAlias.MouseEnter=function()
-			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept_sel.jpg")
 		end
 		self.acceptAlias.MouseLeave=function()
-			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept.jpg")
 		end
 		self.acceptAlias.MouseDown=function()
-			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept.jpg")
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept.jpg")
 		end
 		self.acceptAlias.MouseUp=function()
-			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
+			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept_sel.jpg")
 
 --[[			ltprint("game active: " .. string.format("%s\n", tostring(gameActive)))
 			ltprint("question active: " .. string.format("%s\n", tostring(questionActive)))
@@ -1052,18 +1052,18 @@ Report Bugs on LotroInterface.com
 		self.revealAlias.Icon:SetMouseVisible(false);
 		self.revealAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+		self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/reveal.jpg")
 		self.revealAlias.MouseEnter=function()
-			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal_sel.jpg")
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/reveal_sel.jpg")
 		end
 		self.revealAlias.MouseLeave=function()
-			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/reveal.jpg")
 		end
 		self.revealAlias.MouseDown=function()
-			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal.jpg")
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/reveal.jpg")
 		end
 		self.revealAlias.MouseUp=function()
-			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/reveal_sel.jpg")
+			self.revealAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/reveal_sel.jpg")
 			if (gameActive and questionActive) then
 				stopCountdown();
 				-- Since we're revealing the current question, pick a new question
@@ -1156,18 +1156,18 @@ Report Bugs on LotroInterface.com
 		self.announceTimeAlias.Icon:SetMouseVisible(false);
 		self.announceTimeAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+		self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announcetime.jpg")
 		self.announceTimeAlias.MouseEnter=function()
-			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime_sel.jpg")
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announcetime_sel.jpg")
 		end
 		self.announceTimeAlias.MouseLeave=function()
-			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announcetime.jpg")
 		end
 		self.announceTimeAlias.MouseDown=function()
-			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime.jpg")
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announcetime.jpg")
 		end
 		self.announceTimeAlias.MouseUp=function()
-			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/announcetime_sel.jpg")
+			self.announceTimeAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/announcetime_sel.jpg")
 		end
 
 		-- Bottom panel buttons
@@ -1214,18 +1214,18 @@ Report Bugs on LotroInterface.com
 		self.sendRulesAlias.Icon:SetMouseVisible(false);
 		self.sendRulesAlias.Icon:SetBlendMode(Turbine.UI.BlendMode.Overlay);
 
-		self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+		self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/sendrules.jpg")
 		self.sendRulesAlias.MouseEnter=function()
-			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules_sel.jpg")
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/sendrules_sel.jpg")
 		end
 		self.sendRulesAlias.MouseLeave=function()
-			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/sendrules.jpg")
 		end
 		self.sendRulesAlias.MouseDown=function()
-			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules.jpg")
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/sendrules.jpg")
 		end
 		self.sendRulesAlias.MouseUp=function()
-			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/sendrules_sel.jpg")
+			self.sendRulesAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/sendrules_sel.jpg")
 		end
 
 
