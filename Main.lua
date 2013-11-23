@@ -26,7 +26,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
-debug = true
+debug = false
 
 	-- Initialize plugin constants
 	--
@@ -808,7 +808,7 @@ Report Bugs on LotroInterface.com
 		self.questionText:SetTextAlignment( Turbine.UI.ContentAlignment.TopLeft)
 		self.questionText:SetMultiline( true )
 		self.questionText:SetBackColor( Turbine.UI.Color(0, 0, .3) )
-		self.questionText:SetText( "The questions will be shown here before sending them to the channel. " )
+		self.questionText:SetText( "The questions will be shown here before sending them to the channel. Use \"Start Game\" below to begin!" )
 		self.questionText:SetVisible( true )
 		self.questionText:SetParent( self )
 
@@ -1433,8 +1433,15 @@ Report Bugs on LotroInterface.com
 	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
 
 	-- Announce load to chat window
-	questionCount = (#LT_Question == nil) and "No " or #LT_Question
-	ltprint("Version ".. lotrivia.version .. ", Loaded " .. questionCount .. " questions. Use /lt help for commands.")
+	questionCount = "No questions loaded!"
+
+	if (LT_Question ~= nil) then
+		if (#LT_Question ~= nil) then
+			questionCount = "Loaded " .. #LT_Question .. " questions."
+		end
+	end
+
+	ltprint("Version ".. lotrivia.version .. " -- " .. questionCount .. "  -- /lt help for commands.")
 
 	if debug then
 		ltprint(ltColor.orange .. "Debugging Mode Active")
