@@ -42,6 +42,10 @@ debug = false
 	lotrivia.config.timed = true
 	lotrivia.config.showRules = true
 
+
+	-- Early functions are defined here.
+	--
+
 	-- Local print wrapper
 	--
 	function ltprint(text)
@@ -177,9 +181,21 @@ debug = false
 		countdownTime = 0;
 	end
 
+	-- returns a sorted list of channel names
+	--
+	function channelNames()
+		local tmpTable= {}
+		for k,v in pairs(channels) do
+		tmpTable[#tmpTable+1] = k
+		end
+		table.sort(tmpTable)
+		return tmpTable
+	end
+
 	setUpDataStores();
 
-	channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
+--	channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
+
 	channels = {
 		["Kinship"] = {
 					["to"] = "[To Kinship]",
@@ -218,22 +234,10 @@ debug = false
 					}
 		}
 
+
 	announceAllText = ""
 	announceTopThreeText = ""
---[[
-	playerScores["Joeschmoe"] = 9
-	playerScores["KimiaKane"] = 7
-	playerScores["Carentil"] = 1
-	playerScores["Rotifano"] = 4
-	playerScores["KonaKona"] = 6
-	playerScores["Nimdollas"] = 4
-	playerScores["Argonauts"] = 6
-	playerScores["Meriaegar"] = 3
-	playerScores["OscarMike"] = 4
-	playerScores["Versus"] = 7
-	playerScores["Drudgeoverseer"] = 6
-	playerScores["Fenrithnir"] = 5
-]]--
+
 	-- Set up a table of color codes for colorizing ordered results
 	--
 	scoreColor = {}
@@ -254,17 +258,6 @@ debug = false
 	LT_color_gold = Turbine.UI.Color(1,.8,.4);
 	LT_color_goldOutline = Turbine.UI.Color( .7, .5, 0 );
 
-	function getChannelIndex(x)
-		for k, v in pairs(channelNames) do
-			if v == x then
-				return k
-			end
-		end
-	end
-
-
-
-
 	helpText = [[Commands
  /lt help -- this message
  /lt guesses -- lists the guesses made on the current question
@@ -284,6 +277,9 @@ Report Bugs on LotroInterface.com
 3. Accepting abbreviations or mispellings is up to the quizmaster's discretion.
 4. The quizmaster may award extra points for harder questions.</rgb>
 ]]
+
+
+
 
 
 -- Window Classes
@@ -358,7 +354,7 @@ Report Bugs on LotroInterface.com
 
 
 		-- Channel Selection Control
-		self.channelSelection = DropDown.Create(channelNames,lotrivia.config.sendToChannel);
+		self.channelSelection = DropDown.Create(channelNames(),lotrivia.config.sendToChannel);
 		self.channelSelection:SetParent(self);
 		self.channelSelection:SetPosition(20,144)
 		self.channelSelection:SetVisible(true);
@@ -1313,7 +1309,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
-			sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
 		-- Bind to reveal button
 		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
@@ -1601,7 +1597,8 @@ Report Bugs on LotroInterface.com
 		myGame.guessesListBox:AddItem(tmpItem)
 	end
 
-
+	-- reset the answers stored during the current question
+	--
 	function resetAnswers()
 		storedAnswers = {}
 		haveStoredAnswers = false
@@ -1821,17 +1818,27 @@ Report Bugs on LotroInterface.com
 		local acceptText = ""
 
 		if (debug) then
-			acceptText = "/say "
+			acceptText = "/say"
 		else
 			acceptText = channels[lotrivia.config.sendToChannel]["cmd"]
 		end
 
-		acceptText = acceptText .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		acceptText = acceptText .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,acceptText))
 	end
 
+--[[~ 	-- Gets the numerical index of a specific channel in the channelNames list
+~~~~~ 	--
+~~~~~ 	function getChannelIndex(x)
+~~~~~ 		for k, v in pairs(channelNames) do
+~~~~~ 			if v == x then
+~~~~~ 				return k
+~~~~~ 			end
+~~~~~ 		end
+~~~~~ 	end
+~--]]
 
 	-- Make sure we have enough questions loaded to play a game of the desired length
 	--
@@ -1865,3 +1872,4 @@ Report Bugs on LotroInterface.com
 
 		return true
 	end
+

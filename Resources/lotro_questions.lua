@@ -96,7 +96,7 @@ LT_Answer[21] = "Orthanc"
 LT_QuestionCommentary[21] = ""
 
 LT_Question[22] = "What did Bilbo give to the Elvenking in The Hobbit?"
-LT_Answer[22] = "Arkenstone"
+LT_Answer[22] = "The Arkenstone of Thrain"
 LT_QuestionCommentary[22] = ""
 
 LT_Question[23] = "What ancient forge is rediscovered in The Way of the Smiths in Moria?"
@@ -123,7 +123,7 @@ LT_Question[28] = "Finish this password: Speak _______ and Enter"
 LT_Answer[28] = "Friend"
 LT_QuestionCommentary[28] = ""
 
-LT_Question[29] = "What actor protrayed Bilbo Baggins in the LOTR Trilogy, and aged Bilbo in The Hobbit Trilogy?"
+LT_Question[29] = "What actor portrayed Bilbo Baggins in the LOTR Trilogy, and aged Bilbo in The Hobbit Trilogy?"
 LT_Answer[29] = "Sir Ian Holm"
 LT_QuestionCommentary[29] = ""
 
@@ -279,7 +279,7 @@ LT_Question[67] = "Who is the husband of Galadriel?"
 LT_Answer[67] = "Lord Celeborn"
 LT_QuestionCommentary[67] = ""
 
-LT_Question[68] = "Who is known as the Lord of the Waters?"
+LT_Question[68] = "What Valar is known as the Lord of the Waters?"
 LT_Answer[68] = "Ulmo"
 LT_QuestionCommentary[68] = ""
 
@@ -307,7 +307,7 @@ LT_Question[74] = "Who wielded the sword Orcrist?"
 LT_Answer[74] = "Thorin Oakenshield"
 LT_QuestionCommentary[74] = ""
 
-LT_Question[75] = "Who is our server, Windfola, named after?"
+LT_Question[75] = "Who is Windfola, in \"The Lord of the Rings\"?"
 LT_Answer[75] = "The horse that carried Eowyn, disguised as a man, and Merry, to Pellenor Fields where Eowyn slew the Witch-King of Angmar."
 LT_QuestionCommentary[75] = ""
 
@@ -475,7 +475,7 @@ LT_Question[116] = "What major, singing sylvan spirit was not included in the mo
 LT_Answer[116] = "Tom Bombadil"
 LT_QuestionCommentary[116] = ""
 
-LT_Question[117] = "This dwarf, who witnessed the fall of Thorin's grandfater Thror, has lost his mind and now resides in the mountains of Enedwaith."
+LT_Question[117] = "This dwarf, who witnessed the fall of Thorin's grandfather Thror, has lost his mind and now resides in the mountains of Enedwaith."
 LT_Answer[117] = "Nar"
 LT_QuestionCommentary[117] = ""
 
@@ -752,7 +752,7 @@ LT_Answer[185] = "\"Sweet Dreams\""
 LT_QuestionCommentary[185] = ""
 
 LT_Question[186] = "How do you say \"Greetings!\" in Sindarin?"
-LT_Answer[186] = "\"Suillod!\""
+LT_Answer[186] = "\"Suillad!\""
 LT_QuestionCommentary[186] = ""
 
 LT_Question[187] = "What is the name of the Blessed Realm which lay to the west of Middle Earth?"
@@ -1043,7 +1043,7 @@ LT_Question[258] = "After the War of the Ring, what lands were men forbidden to 
 LT_Answer[258] = "The Shire"
 LT_QuestionCommentary[258] = ""
 
-LT_Question[259] = "In the books, who leads a thousand foootmen with Gandalf to turn the tide at the Battle of the Hornburg, at Helm's Deep?"
+LT_Question[259] = "In the books, who leads a thousand footmen with Gandalf to turn the tide at the Battle of the Hornburg, at Helm's Deep?"
 LT_Answer[259] = "Erkenbrand"
 LT_QuestionCommentary[259] = ""
 
@@ -1443,7 +1443,7 @@ LT_Question[358] = "Dourhand Crests provide reputation with what faction?"
 LT_Answer[358] = "Thorin's Hall"
 LT_QuestionCommentary[358] = ""
 
-LT_Question[359] = "Tomb-Raiders Sases are reputation items with whom?"
+LT_Question[359] = "Tomb-Raiders Sashes are reputation items with whom?"
 LT_Answer[359] = "Wardens of Annuminas"
 LT_QuestionCommentary[359] = ""
 
@@ -2010,3 +2010,800 @@ LT_QuestionCommentary[499] = ""
 LT_Question[500] = "What day is Bilbo's Birthday?"
 LT_Answer[500] = "September 22nd"
 LT_QuestionCommentary[500] = ""
+
+LT_Question[501] = "What does the Sindarin phrase \"Mae Govannen\" mean?"
+LT_Answer[501] = "Well Met"
+LT_QuestionCommentary[501] = ""
+
+LT_Question[502] = "What does the Sindarin phrase \"Pedo mellon a minno\" mean?"
+LT_Answer[502] = "Speak Friend and Enter"
+LT_QuestionCommentary[502] = ""
+
+LT_Question[503] = "What does \"Galu!\" mean in Sindarin?"
+LT_Answer[503] = "Good Bye/Good Luck"
+LT_QuestionCommentary[503] = ""
+
+LT_Question[504] = "What King under the Mountain did Smaug force into exile?"
+LT_Answer[504] = "Thror"
+LT_QuestionCommentary[504] = ""
+
+LT_Question[505] = "Although there are some noted issues, what book by Karen Wynn Fonstad is considered the best compendium of maps of Middle-earth?"
+LT_Answer[505] = "The Atlas of Middle-earth"
+LT_QuestionCommentary[505] = ""
+
+LT_Question[506] = "The Tolkien Society (UK) publishes what bi-monthly periodical?"
+LT_Answer[506] = "Amon Hen"
+LT_QuestionCommentary[506] = ""
+
+LT_Question[507] = "What is the annual journal of The Tolkien Society (UK) called?"
+LT_Answer[507] = "Mallorn"
+LT_QuestionCommentary[507] = ""
+
+LT_Question[508] = "What was the first book published by J.R.R. Tolkien?"
+LT_Answer[508] = " A Middle English Vocabulary, published in 1922 By Clarendon Press, OXford"
+LT_QuestionCommentary[508] = ""
+
+LT_Question[509] = "What work did Tolkien begin to components of first, but was published after he died?"
+LT_Answer[509] = "The Silmarillion"
+LT_QuestionCommentary[509] = ""
+
+LT_Question[510] = "In the books, Frodo jumps on a table at The Prancing Pony and recites a poem. What is it called?"
+LT_Answer[510] = "The Man in the Moon Stayed Up Too Late"
+LT_QuestionCommentary[510] = ""
+
+LT_Question[511] = "(Books) At the Prancing Pony, Frodo recites the poem \"The Man in the Moon Stayed Up Too Late\". But who wrote it?"
+LT_Answer[511] = "Bilbo Baggins"
+LT_QuestionCommentary[511] = ""
+
+LT_Question[512] = "(Books) According to a poem written by Bilbo and recited by Frodo, who came down to drink his fill at the merry old in beneath an old grey hill?"
+LT_Answer[512] = "The Man In The Moon"
+LT_QuestionCommentary[512] = ""
+
+LT_Question[513] = "What parody of \"The Lord of the Rings\" was published in 1969 by The Harvard Lampoon?"
+LT_Answer[513] = "\"Bored of the Rings\""
+LT_QuestionCommentary[513] = ""
+
+LT_Question[514] = "In the parody \"Bored of the Rings\", what are hobbits renamed as?"
+LT_Answer[514] = "Boggies"
+LT_QuestionCommentary[514] = ""
+
+LT_Question[515] = "In the parody \"Bored of the Rings\", where do the events take place?"
+LT_Answer[515] = "Lower-Middle Earth"
+LT_QuestionCommentary[515] = ""
+
+LT_Question[516] = "In the parody \"Bored of the Rings\", what is the name of the Wizard?"
+LT_Answer[516] = "Goodgulf Greyteeth"
+LT_QuestionCommentary[516] = ""
+
+LT_Question[517] = "In the parody \"Bored of the Rings\", what is the ring-bearer named?"
+LT_Answer[517] = "Frito Bugger"
+LT_QuestionCommentary[517] = ""
+
+LT_Question[518] = "In the parody \"Bored of the Rings\", what is the name of the elf in the fellowship?"
+LT_Answer[518] = "Legolam"
+LT_QuestionCommentary[518] = ""
+
+LT_Question[519] = "In the parody \"Bored of the Rings\", what names are used for Gondor and Mordor?"
+LT_Answer[519] = "\"Twodor\" and \"Fordor\""
+LT_QuestionCommentary[519] = ""
+
+LT_Question[520] = "According to Tolkien, what color hair did Legolas have?"
+LT_Answer[520] = "Tolkien never said, deliberately avoiding description."
+LT_QuestionCommentary[520] = ""
+
+LT_Question[521] = "Tolkien described which character as \"the spirit of the (vanishing) Oxford and Berkshire countryside\"?"
+LT_Answer[521] = "Tom Bombadil"
+LT_QuestionCommentary[521] = ""
+
+LT_Question[522] = "Which character in \"The Lord of the Rings\" does not seem to be affected at all by the ring being in close proximity?"
+LT_Answer[522] = "Tom Bombadil"
+LT_QuestionCommentary[522] = ""
+
+LT_Question[523] = "What river runs through The Old Forest?"
+LT_Answer[523] = "The Withywindle"
+LT_QuestionCommentary[523] = ""
+
+LT_Question[524] = "Who is the \"wife\" of Tom Bombadil?"
+LT_Answer[524] = "Goldberry"
+LT_QuestionCommentary[524] = ""
+
+LT_Question[525] = "Tom Bombadil's wife, Goldberry, is thought to be whose daughter?"
+LT_Answer[525] = "The River Withywindle"
+LT_QuestionCommentary[525] = ""
+
+LT_Question[526] = "Who directed the 1978 animated film version of \"The Lord of the Rings\"?"
+LT_Answer[526] = "Ralph Bakshi"
+LT_QuestionCommentary[526] = ""
+
+LT_Question[527] = "What name did TOlkien have engraved on his wife's tombstone?"
+LT_Answer[527] = "Luthien"
+LT_QuestionCommentary[527] = ""
+
+LT_Question[528] = "Who was the Huntsman of the Valar, that first found the Elves upon their awakening in Middle-earth?"
+LT_Answer[528] = "Orome"
+LT_QuestionCommentary[528] = ""
+
+LT_Question[529] = "What Valar was the Judge of the Dead, and keeper of the souls of Elves?"
+LT_Answer[529] = "Mandos"
+LT_QuestionCommentary[529] = ""
+
+LT_Question[530] = "Which Valar, known as \"The Strong\", tipped the scales agains Melkor?"
+LT_Answer[530] = "Tulkas"
+LT_QuestionCommentary[530] = ""
+
+LT_Question[531] = "What Valar was the tutor of Gandalf?"
+LT_Answer[531] = "Nienna"
+LT_QuestionCommentary[531] = ""
+
+LT_Question[532] = "What Valar was known as \"The Lady of Mercy\"?"
+LT_Answer[532] = "Nienna"
+LT_QuestionCommentary[532] = ""
+
+LT_Question[533] = "What does the Valar Nienna constantly do, that helps explain the deep compassion of her student, Gandalf?"
+LT_Answer[533] = "Weep (tears of healing and pity)"
+LT_QuestionCommentary[533] = ""
+
+LT_Question[534] = "Which Valar, called \"Queen of the Stars\", was the spouse of Manwe?"
+LT_Answer[534] = "Varda"
+LT_QuestionCommentary[534] = ""
+
+LT_Question[535] = "Who called Melkor by the name \"Morgoth\", by which he was forever-after known?"
+LT_Answer[535] = "Feanor"
+LT_QuestionCommentary[535] = ""
+
+LT_Question[536] = "What does \"Morgoth Bauglir\", as Melkor became named, mean?"
+LT_Answer[536] = "The Great Enemy"
+LT_QuestionCommentary[536] = ""
+
+LT_Question[537] = "What language did Orome try to teach to the speechless Elves he found after their awakening?"
+LT_Answer[537] = "Valarin"
+LT_QuestionCommentary[537] = ""
+
+LT_Question[538] = "Why did Orome eventually teach the Elves Quenya instead of the language of the Valar?"
+LT_Answer[538] = "Valarin was too difficult to understand"
+LT_QuestionCommentary[538] = ""
+
+LT_Question[539] = "Who devised the language of the Dwarves?"
+LT_Answer[539] = "The Vala Aule, their creator"
+LT_QuestionCommentary[539] = ""
+
+LT_Question[540] = "According to Tolkien, what is the real \"historical\" plural of \"Dwarf\"?"
+LT_Answer[540] = "\"Dwarrows\" or \"Dwerrows\""
+LT_QuestionCommentary[540] = ""
+
+LT_Question[541] = "Which race did the rings of power have the most difficulty corrupting?"
+LT_Answer[541] = "Dwarves, whose greed was merely amplified"
+LT_QuestionCommentary[541] = ""
+
+LT_Question[542] = "In all of his writings, Tolkien only mentions the name of one female Dwarf. What is it?"
+LT_Answer[542] = "Dis"
+LT_QuestionCommentary[542] = ""
+
+LT_Question[543] = "In all of his writings, Tolkien only mentions the name of one female Dwarf. Who was she?"
+LT_Answer[543] = "The mother of Fili and Kili, from \"The Hobbit\""
+LT_QuestionCommentary[543] = ""
+
+LT_Question[544] = "Elwe, one of the First Elves, became an Elven King, under what name?"
+LT_Answer[544] = "Thingol"
+LT_QuestionCommentary[544] = ""
+
+LT_Question[545] = "Thingol built a massive city and fortress named Menegroth,under a great hill in Doriath. What does \"Menegroth\" mean?"
+LT_Answer[545] = "Thousand Caves"
+LT_QuestionCommentary[545] = ""
+
+LT_Question[546] = "Whose realm in Beleriand was named \"Doriath\"?"
+LT_Answer[546] = "The Sindar, Grey Elves of King Thingol."
+LT_QuestionCommentary[546] = ""
+
+LT_Question[547] = "What nickname is given to the realm of Doriath, due to an enchantment placed by its queen?"
+LT_Answer[547] = "\"The Fenced Land\", as afterwards, none could enter without the leave of King Thingol."
+LT_QuestionCommentary[547] = ""
+
+LT_Question[548] = "Who was the Queen of Doriath, spouse of Thingol?"
+LT_Answer[548] = "Melian"
+LT_QuestionCommentary[548] = ""
+
+LT_Question[549] = "Where did Numenor lay, in relation to the lands of Eriador and Rhovanion?"
+LT_Answer[549] = "To the West"
+LT_QuestionCommentary[549] = ""
+
+LT_Question[550] = "What sunken lands lie west of Eriador and Rhovanion?"
+LT_Answer[550] = "Beleriand"
+LT_QuestionCommentary[550] = ""
+
+LT_Question[551] = "What river begins as two different streams near where the Misty Mountains met the Grey?"
+LT_Answer[551] = "The River Anduin"
+LT_QuestionCommentary[551] = ""
+
+LT_Question[552] = "What is the proper name of The Great Sea, to the west of Rohan?"
+LT_Answer[552] = "Belegaer"
+LT_QuestionCommentary[552] = ""
+
+LT_Question[553] = "In the First Age, what river separated Eastern Beleriand from Western?"
+LT_Answer[553] = "Sirion"
+LT_QuestionCommentary[553] = ""
+
+LT_Question[554] = "What was the name of the feast held by Fingolfin, which all Elves in Beleriand attended?"
+LT_Answer[554] = "The Feast of Reuniting"
+LT_QuestionCommentary[554] = ""
+
+LT_Question[555] = "Who killed Brodda, The Easterling?"
+LT_Answer[555] = "Turin"
+LT_QuestionCommentary[555] = ""
+
+LT_Question[556] = "Who slew the father of dragons, Glaurung?"
+LT_Answer[556] = "Turin"
+LT_QuestionCommentary[556] = ""
+
+LT_Question[557] = "Who was the largest of all dragons of Middle-earth?"
+LT_Answer[557] = "Ancalagon, The Black"
+LT_QuestionCommentary[557] = ""
+
+LT_Question[558] = "What was unusual about Earendil's ship, \"Vingilot\"?"
+LT_Answer[558] = "It flew through the skies."
+LT_QuestionCommentary[558] = ""
+
+LT_Question[559] = "What consumed four of the Dwarven Rings of Power, but was not hot enough to consume The One Ring?"
+LT_Answer[559] = "Dragon fire"
+LT_QuestionCommentary[559] = ""
+
+LT_Question[560] = "The Fire Drakes, or Uruloki, were brought forth in what fortress deep in the earth?"
+LT_Answer[560] = "Angband"
+LT_QuestionCommentary[560] = ""
+
+LT_Question[561] = "Who crushed Thangorodrim, a group of three volcanic mountains in Beleriand?"
+LT_Answer[561] = "Ancalgon The Black"
+LT_QuestionCommentary[561] = ""
+
+LT_Question[562] = "Who was the father of Elrond?"
+LT_Answer[562] = "Earendil"
+LT_QuestionCommentary[562] = ""
+
+LT_Question[563] = "When is Half-elven, not half-elven?"
+LT_Answer[563] = "When it's Elrond. His last name \"Half-elven\" was from his father, but at the end of the First Age he chose to be counted among the Elves."
+LT_QuestionCommentary[563] = ""
+
+LT_Question[564] = "Who was Elrond's twin brother?"
+LT_Answer[564] = "Elros, First king of Numenor."
+LT_QuestionCommentary[564] = ""
+
+LT_Question[565] = "Two of the same, but twice-wise cleft. One life remains, one life bereft. Who are they?"
+LT_Answer[565] = "Elrond and Elros. First, taken from their parents, later, one chose Elven path and the other the Path of Man."
+LT_QuestionCommentary[565] = ""
+
+LT_Question[566] = "Hey! Come derry dol! Hop along, my hearties! Who am I?"
+LT_Answer[566] = "Tom Bombadil"
+LT_QuestionCommentary[566] = ""
+
+LT_Question[567] = "\"All that is gold does not glitter, Not all those who wander are lost.\" Who is this riddle about?"
+LT_Answer[567] = "Aragorn (Strider)."
+LT_QuestionCommentary[567] = ""
+
+LT_Question[568] = "Who sang \"The Road goes ever on and on, Down from the door where it began, Now far ahead the Road has gone, And I must follow if I can\"?"
+LT_Answer[568] = "Bilbo Baggins (The Old Walking Song)"
+LT_QuestionCommentary[568] = ""
+
+LT_Question[569] = "The words \"Snow-white! Snow-white! O Lady clear! O Queen beyond the Western Seas!\" are sung about whom?"
+LT_Answer[569] = "Elbereth Glithoniel"
+LT_QuestionCommentary[569] = ""
+
+LT_Question[570] = "While still in The Shire, Sam and Frodo hear wood elves singing a hymn about whom?"
+LT_Answer[570] = "Elbereth Glithoniel"
+LT_QuestionCommentary[570] = ""
+
+LT_Question[571] = "What does the name \"Glithoniel\" mean?"
+LT_Answer[571] = "Star-kindler"
+LT_QuestionCommentary[571] = ""
+
+LT_Question[572] = "Within 100 years, what was the year when Isildur defeated Sauron during the first War of the Ring?"
+LT_Answer[572] = "Second Age, 3441"
+LT_QuestionCommentary[572] = ""
+
+LT_Question[573] = "In \"The Lord of the Rings\", what was Aragorn's battle-cry?"
+LT_Answer[573] = "\"Elendil!\""
+LT_QuestionCommentary[573] = ""
+
+LT_Question[574] = "What is this called? \"Out of the Great Sea to Middle-earth I am come. In this place I will abide, and my heirs, unto the ending of the world.\""
+LT_Answer[574] = "The Oath of Isildur, translated to Westron."
+LT_QuestionCommentary[574] = ""
+
+LT_Question[575] = "What did Aragorn sing in Quenya during his crowning as the new King of Gondor?"
+LT_Answer[575] = "The Oath of Isildur"
+LT_QuestionCommentary[575] = ""
+
+LT_Question[576] = "Who was the brother of Isildur, who jointly ruled Rohan with his brother?"
+LT_Answer[576] = "Anarion"
+LT_QuestionCommentary[576] = ""
+
+LT_Question[577] = "How many known \"Heirs of Isildur\" were there?"
+LT_Answer[577] = "Thirty-nine"
+LT_QuestionCommentary[577] = ""
+
+LT_Question[578] = "Direct descendants of the man who defeated Sauron in the first War of the Ring are known by what title?"
+LT_Answer[578] = "Heirs of Isildur"
+LT_QuestionCommentary[578] = ""
+
+LT_Question[579] = "Before Aragorn II, who was the last Heir of Isildur to rule as a King of the North-kingdom?"
+LT_Answer[579] = "Arvedui, From TA 1964-1975"
+LT_QuestionCommentary[579] = ""
+
+LT_Question[580] = "What title did the line of Isildur's Heirs continue under after the fall of the North-kingdom?"
+LT_Answer[580] = "Chieftain of the Dunedain"
+LT_QuestionCommentary[580] = ""
+
+LT_Question[581] = "Who was the last Chieftain of the Dunedain?"
+LT_Answer[581] = "Aragorn II"
+LT_QuestionCommentary[581] = ""
+
+LT_Question[582] = "What was the kingdom of Aragorn II called, following the War of the Ring?"
+LT_Answer[582] = "The Reunited Kingdom"
+LT_QuestionCommentary[582] = ""
+
+LT_Question[583] = "What two kingdoms were established by Elendil and his sons at the end of the second age?"
+LT_Answer[583] = "Arnor and Gondor"
+LT_QuestionCommentary[583] = ""
+
+LT_Question[584] = "The North-kingdom of the Dunedain was called what?"
+LT_Answer[584] = "Arnor"
+LT_QuestionCommentary[584] = ""
+
+LT_Question[585] = "What two kingdoms were brought together by Aragorn as The Reunited Kingdom?"
+LT_Answer[585] = "Arnor and Gondor"
+LT_QuestionCommentary[585] = ""
+
+LT_Question[586] = "In TA 1944, who played a chief role in rejecting Arvedui's claim to the throne, thwarting the re-unification of Arnor and Gondor?"
+LT_Answer[586] = "Pelendur"
+LT_QuestionCommentary[586] = ""
+
+LT_Question[587] = "What land lies east of the Fords of Isen?"
+LT_Answer[587] = "The Westemnet"
+LT_QuestionCommentary[587] = ""
+
+LT_Question[588] = "North of The Wold, what part of Great River is the great untamed wilderness?"
+LT_Answer[588] = ""
+LT_QuestionCommentary[588] = ""
+
+LT_Question[589] = "What land lies to the west of Eriador?"
+LT_Answer[589] = "Lindon"
+LT_QuestionCommentary[589] = ""
+
+LT_Question[590] = "What land lies east of Rhovanion?"
+LT_Answer[590] = "Rhun"
+LT_QuestionCommentary[590] = ""
+
+LT_Question[591] = "What land, south-east of Mordor, supplied SDauron with steeds?"
+LT_Answer[591] = "Khand"
+LT_QuestionCommentary[591] = ""
+
+LT_Question[592] = "Our lands are called both Near and Far, but Gondor knows just what we are. What are we?"
+LT_Answer[592] = "Near Harad and Far Harad, the lands southeast of Gondor."
+LT_QuestionCommentary[592] = ""
+
+LT_Question[593] = "What people hail from the lands southeast of Gondor?"
+LT_Answer[593] = "The Haraddrim, or Southrons"
+LT_QuestionCommentary[593] = ""
+
+LT_Question[594] = "What land is covered mostly by jungles, from whence giant Mumakil come?"
+LT_Answer[594] = "Far Harad"
+LT_QuestionCommentary[594] = ""
+
+LT_Question[595] = "What land, far to the south of Gondor, was the home of the sea-faring corsairs?"
+LT_Answer[595] = "Umbar"
+LT_QuestionCommentary[595] = ""
+
+LT_Question[596] = "What outlying land did Gollum describe as \"Where the yellow face is bright and terrible\"?"
+LT_Answer[596] = "Near Harad"
+LT_QuestionCommentary[596] = ""
+
+LT_Question[597] = "What great-grandson of Castamir The Usurper became an important figure among the Haradrim?"
+LT_Answer[597] = "Sangahyando"
+LT_QuestionCommentary[597] = ""
+
+LT_Question[598] = "The NUmenorians who survived the fall of Numenor were divided into what two factions?"
+LT_Answer[598] = "The Faithful, and Black NUmenorians"
+LT_QuestionCommentary[598] = ""
+
+LT_Question[599] = "During what war was Beleriand destroyed, soon to fall beneath the waves?"
+LT_Answer[599] = "The War of Wrath"
+LT_QuestionCommentary[599] = ""
+
+LT_Question[600] = "What haven in Beleriand were Elrond and his brother Elros born in?"
+LT_Answer[600] = "Arvernien"
+LT_QuestionCommentary[600] = ""
+
+LT_Question[601] = "Who were the three trolls encountered by Bilbo in \"The Hobbit\"?"
+LT_Answer[601] = "Tom, Bert, and Bill"
+LT_QuestionCommentary[601] = ""
+
+LT_Question[602] = "Who called out \"Slash them! Beat them! Bite them! Gnash them!\"?"
+LT_Answer[602] = "The Goblin King"
+LT_QuestionCommentary[602] = ""
+
+LT_Question[603] = "What was the fairest treasure from under the Lonely Mountain?"
+LT_Answer[603] = "The Arkenstone of Thrain"
+LT_QuestionCommentary[603] = ""
+
+LT_Question[604] = "Where is Smaug's weak spot?"
+LT_Answer[604] = "In the shell of his left breast"
+LT_QuestionCommentary[604] = ""
+
+LT_Question[605] = "Who had \"a Waistcoat of Diamonds\"?"
+LT_Answer[605] = "Smaug, according to Bilbo's flattery"
+LT_QuestionCommentary[605] = ""
+
+LT_Question[606] = "What actor, when invited by Peter Jackson to the premiere of \"The Hobbit: An Unexpected Journey\" asked \"Am I still in the movie?\""
+LT_Answer[606] = "Christopher Lee"
+LT_QuestionCommentary[606] = ""
+
+LT_Question[607] = "In the Peter Jackson Hobbit films, Gandalf says he can't remember the names of two wizards and calls the \"the blue ones\". Why?"
+LT_Answer[607] = "Alatar and Pallando are from \"Unfinished Tales\", but the filmmakers don't have rights to that work."
+LT_QuestionCommentary[607] = ""
+
+LT_Question[608] = "How many cast members, including extras, used their natural hair in \"The Hobbit: An Unexpected Journey\"?"
+LT_Answer[608] = "None. Every single one of them is wearing a wig."
+LT_QuestionCommentary[608] = ""
+
+LT_Question[609] = "Although she was in all three films of the Peter Jackson Hobbit trilogy, what actress was only on set for eight days?"
+LT_Answer[609] = "Cate Blanchett"
+LT_QuestionCommentary[609] = ""
+
+LT_Question[610] = "What director left \"The Hobbit: An Unexpected Journey\" after years spent stuck in pre-production, putting Peter Jackson back in the director's chair?"
+LT_Answer[610] = "Guillermo del Toro"
+LT_QuestionCommentary[610] = ""
+
+LT_Question[611] = "Who never speaks, in \"The Hobbit: An Unexpected Journey\"?"
+LT_Answer[611] = "Humans."
+LT_QuestionCommentary[611] = ""
+
+LT_Question[612] = "Who provides the voice of Smaug the Golden in Peter Jackson's Hobbit trilogy?"
+LT_Answer[612] = "Benedict  Cumberbatch"
+LT_QuestionCommentary[612] = ""
+
+LT_Question[613] = "The actor who plays Bilbo and the actor who voices Smaug in the Peter Jackson Hobbit Trilogy, played the two lead character in what BBC series?"
+LT_Answer[613] = "Sherlock"
+LT_QuestionCommentary[613] = ""
+
+LT_Question[614] = "in the Peter Jackson Hobbit trilogy, what character was originally an actor in prosthetics, but was digitally replaced after the director felt he lacked presence?"
+LT_Answer[614] = "Azog"
+LT_QuestionCommentary[614] = ""
+
+LT_Question[615] = "Whcih dwarf never utters a word during the movie \"The Hobbit: An Unexpected Journey\"?"
+LT_Answer[615] = "Bombur"
+LT_QuestionCommentary[615] = ""
+
+LT_Question[616] = "What didn't \"The Hobbit: An Unexpected Journey\" do, that all three of Jackson's Lord of the Rings trilogy did?"
+LT_Answer[616] = "Get nominated for a Best Picture Oscar"
+LT_QuestionCommentary[616] = ""
+
+LT_Question[617] = "What earlier movie featured \"The Hobbit: An Unexpected Journey\"'s Martin Freeman, and had acting cameos from the actress playing Galadriel, as well as the director?"
+LT_Answer[617] = "Hot Fuzz"
+LT_QuestionCommentary[617] = ""
+
+LT_Question[618] = "In one film trilogy, it's a meeting place between the orcs and Azog. In another, it's the location of a fateful fight. Where is it?"
+LT_Answer[618] = "Weathertop (Amon Sul)"
+LT_QuestionCommentary[618] = ""
+
+LT_Question[619] = "In \"The Hobbit: An Unexpected Journey\", who is the ghost that attacks Radagast the Brown?"
+LT_Answer[619] = "The Witch-king of Angmar"
+LT_QuestionCommentary[619] = ""
+
+LT_Question[620] = "How many volumes does \"The History of Middle-earth\" consist of?"
+LT_Answer[620] = "Twelve"
+LT_QuestionCommentary[620] = ""
+
+LT_Question[621] = "Who compiled, edited, and wrote large swaths of \"The History of Middle-earth\"?"
+LT_Answer[621] = "Christopher Tolkien, J.R.R. Tolkien's son"
+LT_QuestionCommentary[621] = ""
+
+LT_Question[622] = "How long did the First Age last (approximately)?"
+LT_Answer[622] = "590 years"
+LT_QuestionCommentary[622] = ""
+
+LT_Question[623] = "The overthrow of Morgoth by the combined forces of Beleriand and Valinor signalled.... what?"
+LT_Answer[623] = "The end of the First Age"
+LT_QuestionCommentary[623] = ""
+
+LT_Question[624] = "What was the time before The First Age known as?"
+LT_Answer[624] = "The Years of the Trees"
+LT_QuestionCommentary[624] = ""
+
+LT_Question[625] = "Who was the first High King of the Noldor?"
+LT_Answer[625] = "Finwe"
+LT_QuestionCommentary[625] = ""
+
+LT_Question[626] = "Who were the rival sons of Finwe, the first High King of the Noldor?"
+LT_Answer[626] = "Feanor and Fingolfin"
+LT_QuestionCommentary[626] = ""
+
+LT_Question[627] = "What relation were Feanor and Fingolfin to one another?"
+LT_Answer[627] = "Half brothers"
+LT_QuestionCommentary[627] = ""
+
+LT_Question[628] = "What was the name of the city of the Noldor in Valinor, in the realm of Aman?"
+LT_Answer[628] = "Tirion"
+LT_QuestionCommentary[628] = ""
+
+LT_Question[629] = "When Elves head into the west and decline, what is their destination?"
+LT_Answer[629] = "Valinor, in Aman, also called the Blessed Lands."
+LT_QuestionCommentary[629] = ""
+
+LT_Question[630] = "What mystical route peels away from the earth, and is used by Elves to reach Aman?"
+LT_Answer[630] = "The Straight Road"
+LT_QuestionCommentary[630] = ""
+
+LT_Question[631] = "What realm was cleaved away from Middle-earth so that mortals could no longer travel there?"
+LT_Answer[631] = "Aman, the Blessed Realm of the Valar and Elves"
+LT_QuestionCommentary[631] = ""
+
+LT_Question[632] = "What two races in \"The Lord of the Rings\" have pointed ears?"
+LT_Answer[632] = "Elves and Hobbits"
+LT_QuestionCommentary[632] = ""
+
+LT_Question[633] = "The name of the crafters of the rings of power, Gwaith-i-Mírdain, means what?"
+LT_Answer[633] = "Brotherhood of Jewel-smiths"
+LT_QuestionCommentary[633] = ""
+
+LT_Question[634] = "What was the name of the Lord of the Balrogs?"
+LT_Answer[634] = "Gothmog"
+LT_QuestionCommentary[634] = ""
+
+LT_Question[635] = "Who lost his life to kill Gothmog, the Lord of the Balrogs, in THe Fall of Gondolin?"
+LT_Answer[635] = "Ecthelion"
+LT_QuestionCommentary[635] = ""
+
+LT_Question[636] = "The High Captain of Angband was of what race?"
+LT_Answer[636] = "Balrog (Gothmog, Lord of The Balrogs)"
+LT_QuestionCommentary[636] = ""
+
+LT_Question[637] = "Who did the balrog Gothmog mortally wound at Dagor-nuin-Giliath?"
+LT_Answer[637] = "Feanor"
+LT_QuestionCommentary[637] = ""
+
+LT_Question[638] = "The battle where Feanor was mortally wounded was called \"Dagor-nuin-Giliath\". What does this name mean?"
+LT_Answer[638] = "Battle under the Stars"
+LT_QuestionCommentary[638] = ""
+
+LT_Question[639] = "Whose fiery spirit burned his body to ashes, as he thrice cursed the fortress Angband?"
+LT_Answer[639] = "Feanor"
+LT_QuestionCommentary[639] = ""
+
+LT_Question[640] = "What sort of lamps of ancient days \"sent forth a clear blue light from a flame imprisoned in white crystal\"?"
+LT_Answer[640] = "Feanorian lamps"
+LT_QuestionCommentary[640] = ""
+
+LT_Question[641] = "Tauremorna, Ambarona, and Aldalome are all names of the forest called what, in the language of men?"
+LT_Answer[641] = "Fangorn Forest"
+LT_QuestionCommentary[641] = ""
+
+LT_Question[642] = "Elves depart Middle-earth for Valinor from The Grey Havens, a seaport at the mouth of what river in western Eriador?"
+LT_Answer[642] = "The River Lhun"
+LT_QuestionCommentary[642] = ""
+
+LT_Question[643] = "\"The Grey Havens\", where elves depart from middle-earth, is also called by what name?"
+LT_Answer[643] = "Mithlond"
+LT_QuestionCommentary[643] = ""
+
+LT_Question[644] = "The entrance to Moria from Lothlorien is known by what name?"
+LT_Answer[644] = "The Great Gates, Dimrill Gate, or East Gates"
+LT_QuestionCommentary[644] = ""
+
+LT_Question[645] = "\"Farmer Giles of Ham\" was a short stroy written by J.R.R. Tolkien, about encounters between Farmer Giles and a dragon named what?"
+LT_Answer[645] = "Chrysophylax"
+LT_QuestionCommentary[645] = ""
+
+LT_Question[646] = "This name is a family of hobbits, an alias taken during travels, and a village. What is it?"
+LT_Answer[646] = "Underhill"
+LT_QuestionCommentary[646] = ""
+
+LT_Question[647] = "I carried a burden that too long did linger; and sending it home, well, that cost me a finger. Who am I?"
+LT_Answer[647] = "Frodo Baggins"
+LT_QuestionCommentary[647] = ""
+
+LT_Question[648] = "This thing that I stole, I had not a clue... what its true nature was, but then neither did you! What was it?"
+LT_Answer[648] = "The One Ring"
+LT_QuestionCommentary[648] = ""
+
+LT_Question[649] = "Lost in the dark as the centuries passed, I prefer a wriggling, scaly repast. Who am I?"
+LT_Answer[649] = "Gollum"
+LT_QuestionCommentary[649] = ""
+
+LT_Question[650] = "Come into my parlor, and please don't be rude! For Frodo and Sam will one day, meet my brood. Who am I?"
+LT_Answer[650] = "Ungoliant"
+LT_QuestionCommentary[650] = ""
+
+LT_Question[651] = "I'm his right hand, his protector, his cook... I'm simpler than Merry, and stronger than Took. Who am I?"
+LT_Answer[651] = "Sam Gamgee"
+LT_QuestionCommentary[651] = ""
+
+LT_Question[652] = "I'm braver than smart, though I had to get there. I'm the fool whose mistakes poor Gandalf had to bear. Who am I"
+LT_Answer[652] = "Peregrin (Pippin) Took"
+LT_QuestionCommentary[652] = ""
+
+LT_Question[653] = "I'm smarter than you'd ever tell at one look, even if my best of friends is a fool of a Took. Who am I?"
+LT_Answer[653] = "Meriadoc (Merry) Brandybuck"
+LT_QuestionCommentary[653] = ""
+
+LT_Question[654] = "I protected the hobbits though my cost was quite dear; my sword took down foes as my horn sounded clear. Who am I?"
+LT_Answer[654] = "Boromir"
+LT_QuestionCommentary[654] = ""
+
+LT_Question[655] = "I started out dingy and ended up bright; it didn't take bleach to turn gray into white. Who am I?"
+LT_Answer[655] = "Gandalf"
+LT_QuestionCommentary[655] = ""
+
+LT_Question[656] = "My eyes, sharper than any blade in the land; but it's arrows I choose to drop foes where they stand. Who am I?"
+LT_Answer[656] = "Legolas"
+LT_QuestionCommentary[656] = ""
+
+LT_Question[657] = "As a young boy I grew up as an elf, though now I must stand and proclaim my true self. Who am I?"
+LT_Answer[657] = "Aragorn II (Strider)"
+LT_QuestionCommentary[657] = ""
+
+LT_Question[658] = "I'm fierce and I'm sturdy, and sure of my self. I joined up to keep a close eye on that elf. Who am I?"
+LT_Answer[658] = "Gimli"
+LT_QuestionCommentary[658] = ""
+
+LT_Question[659] = "They say I'm a witch but I'm Nenya's best friend. I see many paths but don't know which is the end. Who am I?"
+LT_Answer[659] = "Galadriel"
+LT_QuestionCommentary[659] = ""
+
+LT_Question[660] = "What Easterling chieftain's betrayal of Feanor was \"The Treachery of Men\"?"
+LT_Answer[660] = "Ulfang, the Black"
+LT_QuestionCommentary[660] = ""
+
+--~ LT_Question[661] = ""
+--~ LT_Answer[661] = ""
+--~ LT_QuestionCommentary[661] = ""
+
+--~ LT_Question[662] = ""
+--~ LT_Answer[662] = ""
+--~ LT_QuestionCommentary[662] = ""
+
+--~ LT_Question[663] = ""
+--~ LT_Answer[663] = ""
+--~ LT_QuestionCommentary[663] = ""
+
+--~ LT_Question[664] = ""
+--~ LT_Answer[664] = ""
+--~ LT_QuestionCommentary[664] = ""
+
+--~ LT_Question[665] = ""
+--~ LT_Answer[665] = ""
+--~ LT_QuestionCommentary[665] = ""
+
+--~ LT_Question[666] = ""
+--~ LT_Answer[666] = ""
+--~ LT_QuestionCommentary[666] = ""
+
+--~ LT_Question[667] = ""
+--~ LT_Answer[667] = ""
+--~ LT_QuestionCommentary[667] = ""
+
+--~ LT_Question[668] = ""
+--~ LT_Answer[668] = ""
+--~ LT_QuestionCommentary[668] = ""
+
+--~ LT_Question[669] = ""
+--~ LT_Answer[669] = ""
+--~ LT_QuestionCommentary[669] = ""
+
+--~ LT_Question[670] = ""
+--~ LT_Answer[670] = ""
+--~ LT_QuestionCommentary[670] = ""
+
+--~ LT_Question[671] = ""
+--~ LT_Answer[671] = ""
+--~ LT_QuestionCommentary[671] = ""
+
+--~ LT_Question[672] = ""
+--~ LT_Answer[672] = ""
+--~ LT_QuestionCommentary[672] = ""
+
+--~ LT_Question[673] = ""
+--~ LT_Answer[673] = ""
+--~ LT_QuestionCommentary[673] = ""
+
+--~ LT_Question[674] = ""
+--~ LT_Answer[674] = ""
+--~ LT_QuestionCommentary[674] = ""
+
+--~ LT_Question[675] = ""
+--~ LT_Answer[675] = ""
+--~ LT_QuestionCommentary[675] = ""
+
+--~ LT_Question[676] = ""
+--~ LT_Answer[676] = ""
+--~ LT_QuestionCommentary[676] = ""
+
+--~ LT_Question[677] = ""
+--~ LT_Answer[677] = ""
+--~ LT_QuestionCommentary[677] = ""
+
+--~ LT_Question[678] = ""
+--~ LT_Answer[678] = ""
+--~ LT_QuestionCommentary[678] = ""
+
+--~ LT_Question[679] = ""
+--~ LT_Answer[679] = ""
+--~ LT_QuestionCommentary[679] = ""
+
+--~ LT_Question[680] = ""
+--~ LT_Answer[680] = ""
+--~ LT_QuestionCommentary[680] = ""
+
+--~ LT_Question[681] = ""
+--~ LT_Answer[681] = ""
+--~ LT_QuestionCommentary[681] = ""
+
+--~ LT_Question[682] = ""
+--~ LT_Answer[682] = ""
+--~ LT_QuestionCommentary[682] = ""
+
+--~ LT_Question[683] = ""
+--~ LT_Answer[683] = ""
+--~ LT_QuestionCommentary[683] = ""
+
+--~ LT_Question[684] = ""
+--~ LT_Answer[684] = ""
+--~ LT_QuestionCommentary[684] = ""
+
+--~ LT_Question[685] = ""
+--~ LT_Answer[685] = ""
+--~ LT_QuestionCommentary[685] = ""
+
+--~ LT_Question[686] = ""
+--~ LT_Answer[686] = ""
+--~ LT_QuestionCommentary[686] = ""
+
+--~ LT_Question[687] = ""
+--~ LT_Answer[687] = ""
+--~ LT_QuestionCommentary[687] = ""
+
+--~ LT_Question[688] = ""
+--~ LT_Answer[688] = ""
+--~ LT_QuestionCommentary[688] = ""
+
+--~ LT_Question[689] = ""
+--~ LT_Answer[689] = ""
+--~ LT_QuestionCommentary[689] = ""
+
+--~ LT_Question[690] = ""
+--~ LT_Answer[690] = ""
+--~ LT_QuestionCommentary[690] = ""
+
+--~ LT_Question[691] = ""
+--~ LT_Answer[691] = ""
+--~ LT_QuestionCommentary[691] = ""
+
+--~ LT_Question[692] = ""
+--~ LT_Answer[692] = ""
+--~ LT_QuestionCommentary[692] = ""
+
+--~ LT_Question[693] = ""
+--~ LT_Answer[693] = ""
+--~ LT_QuestionCommentary[693] = ""
+
+--~ LT_Question[694] = ""
+--~ LT_Answer[694] = ""
+--~ LT_QuestionCommentary[694] = ""
+
+--~ LT_Question[695] = ""
+--~ LT_Answer[695] = ""
+--~ LT_QuestionCommentary[695] = ""
+
+--~ LT_Question[696] = ""
+--~ LT_Answer[696] = ""
+--~ LT_QuestionCommentary[696] = ""
+
+--~ LT_Question[697] = ""
+--~ LT_Answer[697] = ""
+--~ LT_QuestionCommentary[697] = ""
+
+--~ LT_Question[698] = ""
+--~ LT_Answer[698] = ""
+--~ LT_QuestionCommentary[698] = ""
+
+--~ LT_Question[699] = ""
+--~ LT_Answer[699] = ""
+--~ LT_QuestionCommentary[699] = ""
+
