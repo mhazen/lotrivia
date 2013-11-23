@@ -24,9 +24,9 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --]]
 
-	-- Debug flag: Prevents asking of questions and announcing answer accepts in chat
-	--
-	debug = true
+-- Debug flag: Prevents asking of questions and announcing answer accepts in chat
+--
+debug = true
 
 	-- Initialize plugin constants
 	--
@@ -47,7 +47,6 @@ import "Carentil.LOTRivia.Resources.Questions";
 	function ltprint(text)
 		Turbine.Shell.WriteLine(ltColor.purple .. "LOTRivia:</rgb> " .. ltColor.cyan .. text .. "</rgb>")
 	end
-
 
 	-- Standard add and remove callback functions
 	--
@@ -444,7 +443,7 @@ Report Bugs on LotroInterface.com
 			if isPositiveNumber(self.questionsPerRound:GetText()) then
 
 				if ( tonumber( self.questionsPerRound:GetText() ) > #LT_Question ) then
-					ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions loaded. "  )
+					ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
 					return false
 				end
 
@@ -1434,8 +1433,12 @@ Report Bugs on LotroInterface.com
 	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
 
 	-- Announce load to chat window
+	questionCount = (#LT_Question == nil) and "No " or #LT_Question
+	ltprint("Version ".. lotrivia.version .. ", Loaded " .. questionCount .. " questions. Use /lt help for commands.")
 
-	ltprint("Version ".. lotrivia.version .. " loaded. Use /lt help for commands.")
+	if debug then
+		ltprint(ltColor.orange .. "Debugging Mode Active")
+	end
 
 	myCommand = Turbine.ShellCommand()
 
@@ -1818,7 +1821,7 @@ Report Bugs on LotroInterface.com
 			ltprint(ltColor.orange .. "Uh oh! No questions loaded!")
 			return false
 		elseif (lotrivia.config.questionsPerRound > #LT_Question) then
-			ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions loaded. "  )
+			ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
 			return false
 		end
 		return true
