@@ -1235,8 +1235,8 @@ LT_Question[306] = "What does the Vala Irmo, commonly called Lorien, possess pow
 LT_Answer[306] = "Dreams and Visions"
 LT_QuestionCommentary[306] = ""
 
-LT_Question[307] = "What two ores make up the first tier of prospecting?"
-LT_Answer[307] = "Copper and Tin"
+LT_Question[307] = "What ore is mined and smelted for the first tier of prospecting?"
+LT_Answer[307] = "Copper"
 LT_QuestionCommentary[307] = ""
 
 LT_Question[308] = "What kind of hides come from the large herd-beasts in the North Downs?"
@@ -1244,11 +1244,11 @@ LT_Answer[308] = "Sturdy"
 LT_QuestionCommentary[308] = ""
 
 LT_Question[309] = "The beasts of Great River provide what kind of hides?"
-LT_Answer[309] = "Large"
+LT_Answer[309] = "Calenard"
 LT_QuestionCommentary[309] = ""
 
 LT_Question[310] = "What type of ore is found throughout Dunland?"
-LT_Answer[310] = "Skarn"
+LT_Answer[310] = "Calenard Skarn"
 LT_QuestionCommentary[310] = ""
 
 LT_Question[311] = "Scholars craft what items of Battle and Warding?"
@@ -1291,11 +1291,11 @@ LT_Question[320] = "Dragon-kind are resistant to what type of attacks?"
 LT_Answer[320] = "Song"
 LT_QuestionCommentary[320] = ""
 
-LT_Question[321] = "Prospector. Metalsmith. Tailor. I'm your guy. What sort of professional crafter am I?"
+LT_Question[321] = "Prospector. Metalsmith. Tailor. I'm your guy. What sort of profession of crafter am I?"
 LT_Answer[321] = "Armourer"
 LT_QuestionCommentary[321] = ""
 
-LT_Question[322] = "Digging at ores or making a blade, add woodcutting and thus this crafter is made. What am I?"
+LT_Question[322] = "Digging at ores or making a blade, add woodcutting and thus this profession is made. What am I?"
 LT_Answer[322] = "Armsman"
 LT_QuestionCommentary[322] = ""
 

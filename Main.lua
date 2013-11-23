@@ -19,7 +19,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 --[[
 
 	To-Do List:
-
+		add a timer to clear the acceptAlias text after a few Updates
 	Known Bugs:
 
 --]]
@@ -278,10 +278,10 @@ debug = false
 Report Bugs on LotroInterface.com
 ]]
 
-	rulesText = ltColor.purple .. "The Official LOTRivia Rules:</rgb>\n" .. [[
-<rgb=#20A0FF>1. I will ask a question. Answer in this chat.
+	rulesText = ltColor.purple .. "The Official LOTRivia Rules:</rgb>\n" .. ltColor.cyan ..
+[[1. The quizmaster will ask a question. You must answer in this chat.
 2. One answer per player per question. Your first answer is your final answer!
-3. Best-effort spellings will be accepted, subject to the ruling of the quizmaster.
+3. Accepting abbreviations or mispellings is up to the quizmaster's discretion.
 4. The quizmaster may award extra points for harder questions.</rgb>
 ]]
 
@@ -1014,6 +1014,10 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/accept_sel.jpg")
 
+--[[			ltprint("game active: " .. string.format("%s\n", tostring(gameActive)))
+			ltprint("question active: " .. string.format("%s\n", tostring(questionActive)))
+--]]
+
 			if (gameActive and questionActive) then
 				if (answeringPlayer ~= nil) then
 					stopCountdown();
@@ -1309,7 +1313,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
-			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
 		-- Bind to reveal button
 		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
@@ -1670,7 +1674,8 @@ Report Bugs on LotroInterface.com
 		answeringPlayer = nil
 
 		-- Clear the accept answer button alias text
-		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+		-- BUG  race condition here, alias gets cleared before the engine processes it. I need a timer to clear it
+		--myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 
 		-- Set question state to inactive
 		questionActive = false;
@@ -1796,6 +1801,7 @@ Report Bugs on LotroInterface.com
 		countdownTime = nil
 	end
 
+
 	-- function to handle events when a guess is clicked in the guesses ListBox
 	--
 	function selectPlayer(sender,args,name)
@@ -1812,15 +1818,20 @@ Report Bugs on LotroInterface.com
 		-- Set up the alias for the "accept answer" quickslot faux button
 		myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 
+		local acceptText = ""
+
 		if (debug) then
-			local sendText = "/say " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			acceptText = "/say "
 		else
-			local sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb>\n" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			acceptText = channels[lotrivia.config.sendToChannel]["cmd"]
 		end
 
+		acceptText = acceptText .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+
 		-- Bind to alias button
-		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
+		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,acceptText))
 	end
+
 
 	-- Make sure we have enough questions loaded to play a game of the desired length
 	--
