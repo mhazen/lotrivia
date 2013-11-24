@@ -2215,7 +2215,7 @@ LT_Question[551] = "What river begins as two different streams near where the Mi
 LT_Answer[551] = "The River Anduin"
 LT_QuestionCommentary[551] = ""
 
-LT_Question[552] = "What is the proper name of The Great Sea, to the west of Rohan?"
+LT_Question[552] = "What is the proper name of The Great Sea, to the west of Middle-earth?"
 LT_Answer[552] = "Belegaer"
 LT_QuestionCommentary[552] = ""
 
@@ -2651,159 +2651,563 @@ LT_Question[660] = "What Easterling chieftain's betrayal of Feanor was \"The Tre
 LT_Answer[660] = "Ulfang, the Black"
 LT_QuestionCommentary[660] = ""
 
---~ LT_Question[661] = ""
---~ LT_Answer[661] = ""
---~ LT_QuestionCommentary[661] = ""
+LT_Question[661] = "What character inspired the Warden class?"
+LT_Answer[661] = "Haldir, marchwarden of Lothlorien"
+LT_QuestionCommentary[661] = ""
 
---~ LT_Question[662] = ""
---~ LT_Answer[662] = ""
---~ LT_QuestionCommentary[662] = ""
+LT_Question[662] = "What character inspired the Guardian class?"
+LT_Answer[662] = "Samwise Gamgee"
+LT_QuestionCommentary[662] = ""
 
---~ LT_Question[663] = ""
---~ LT_Answer[663] = ""
---~ LT_QuestionCommentary[663] = ""
+LT_Question[663] = "What character inspired the Captain class?"
+LT_Answer[663] = "Earnur (the final king of Gondor)"
+LT_QuestionCommentary[663] = ""
 
---~ LT_Question[664] = ""
---~ LT_Answer[664] = ""
---~ LT_QuestionCommentary[664] = ""
+LT_Question[664] = "What character inspired the Minstrel class?"
+LT_Answer[664] = "Luthien Tinuviel"
+LT_QuestionCommentary[664] = ""
 
---~ LT_Question[665] = ""
---~ LT_Answer[665] = ""
---~ LT_QuestionCommentary[665] = ""
+LT_Question[665] = "What character inspired the RUne-keeper class?"
+LT_Answer[665] = "Celebrimbor"
+LT_QuestionCommentary[665] = ""
 
---~ LT_Question[666] = ""
---~ LT_Answer[666] = ""
---~ LT_QuestionCommentary[666] = ""
+LT_Question[666] = "What character inspired the Lore-master class?"
+LT_Answer[666] = "Elrond Half-elven"
+LT_QuestionCommentary[666] = ""
 
---~ LT_Question[667] = ""
---~ LT_Answer[667] = ""
---~ LT_QuestionCommentary[667] = ""
+LT_Question[667] = "What character inspired the Hunter class?"
+LT_Answer[667] = "Legolas"
+LT_QuestionCommentary[667] = ""
 
---~ LT_Question[668] = ""
---~ LT_Answer[668] = ""
---~ LT_QuestionCommentary[668] = ""
+LT_Question[668] = "What character inspired the Burglar class?"
+LT_Answer[668] = "Bilbo Baggins"
+LT_QuestionCommentary[668] = ""
 
---~ LT_Question[669] = ""
---~ LT_Answer[669] = ""
---~ LT_QuestionCommentary[669] = ""
+LT_Question[669] = "What character inspired the Champion class?"
+LT_Answer[669] = "Gimli"
+LT_QuestionCommentary[669] = ""
 
---~ LT_Question[670] = ""
---~ LT_Answer[670] = ""
---~ LT_QuestionCommentary[670] = ""
+LT_Question[670] = "What is the name of Elvish Ring of Power known as the Ring of Air?"
+LT_Answer[670] = "Vilya"
+LT_QuestionCommentary[670] = ""
 
---~ LT_Question[671] = ""
---~ LT_Answer[671] = ""
---~ LT_QuestionCommentary[671] = ""
+LT_Question[671] = "What is the name of Elvish Ring of Power known as the Ring of Fire?"
+LT_Answer[671] = "Narya"
+LT_QuestionCommentary[671] = ""
 
---~ LT_Question[672] = ""
---~ LT_Answer[672] = ""
---~ LT_QuestionCommentary[672] = ""
+LT_Question[672] = "What is the name of Elvish Ring of Power known as the Ring of Adamant?"
+LT_Answer[672] = "Nenya"
+LT_QuestionCommentary[672] = ""
 
---~ LT_Question[673] = ""
---~ LT_Answer[673] = ""
---~ LT_QuestionCommentary[673] = ""
+LT_Question[673] = "These three are of Fire, Adamant, and Air; what are they?"
+LT_Answer[673] = "Elven Rings of Power"
+LT_QuestionCommentary[673] = ""
 
---~ LT_Question[674] = ""
---~ LT_Answer[674] = ""
---~ LT_QuestionCommentary[674] = ""
+LT_Question[674] = "Durin's Folk, a clan of Dwarves were also called what?"
+LT_Answer[674] = "Longbeards"
+LT_QuestionCommentary[674] = ""
 
---~ LT_Question[675] = ""
---~ LT_Answer[675] = ""
---~ LT_QuestionCommentary[675] = ""
+LT_Question[675] = "Which clan of Dwarves held Mount Gundabad in defiance of Durin's Folk, leading to a siege by Durin II?"
+LT_Answer[675] = "Ironfists"
+LT_QuestionCommentary[675] = ""
 
---~ LT_Question[676] = ""
---~ LT_Answer[676] = ""
---~ LT_QuestionCommentary[676] = ""
+LT_Question[676] = "Who was the eldest Dwarf of all?"
+LT_Answer[676] = "Durin"
+LT_QuestionCommentary[676] = ""
 
---~ LT_Question[677] = ""
---~ LT_Answer[677] = ""
---~ LT_QuestionCommentary[677] = ""
+LT_Question[677] = "Where was Durin laid, to be awoken after the awakening of the First Elves?"
+LT_Answer[677] = "Mount Gundabad"
+LT_QuestionCommentary[677] = ""
 
---~ LT_Question[678] = ""
---~ LT_Answer[678] = ""
---~ LT_QuestionCommentary[678] = ""
+LT_Question[678] = "How many Dwarvish clans were there in Middle-earth?"
+LT_Answer[678] = "Seven"
+LT_QuestionCommentary[678] = ""
 
---~ LT_Question[679] = ""
---~ LT_Answer[679] = ""
---~ LT_QuestionCommentary[679] = ""
+LT_Question[679] = "Out of all of the Dwarves created by Aule, why was Durin different?"
+LT_Answer[679] = "No mate was created for him."
+LT_QuestionCommentary[679] = ""
 
---~ LT_Question[680] = ""
---~ LT_Answer[680] = ""
---~ LT_QuestionCommentary[680] = ""
+LT_Question[680] = "Where did the Dwarf Clans of Firebeards and Broadbeams reside?"
+LT_Answer[680] = "The Blue Mountains"
+LT_QuestionCommentary[680] = ""
 
---~ LT_Question[681] = ""
---~ LT_Answer[681] = ""
---~ LT_QuestionCommentary[681] = ""
+LT_Question[681] = "Legolas said \"If Gondor has such men still in these days of fading, great must have been its glory in the days of its rising\" about whom?"
+LT_Answer[681] = "Imrahil, Prince of Dol Amroth"
+LT_QuestionCommentary[681] = ""
 
---~ LT_Question[682] = ""
---~ LT_Answer[682] = ""
---~ LT_QuestionCommentary[682] = ""
+LT_Question[682] = "Who briefly served as Steward of Gondor at the insistence of Aragorn after the death of Denethor?"
+LT_Answer[682] = "Imrahil, Prince of Dol Amroth"
+LT_QuestionCommentary[682] = ""
 
---~ LT_Question[683] = ""
---~ LT_Answer[683] = ""
---~ LT_QuestionCommentary[683] = ""
+LT_Question[683] = "Legolas called him \"a fair lord and a great captain of men\". Who was he?"
+LT_Answer[683] = "Imrahil, Prince of Dol Amroth"
+LT_QuestionCommentary[683] = ""
 
---~ LT_Question[684] = ""
---~ LT_Answer[684] = ""
---~ LT_QuestionCommentary[684] = ""
+LT_Question[684] = " Not a nasty, dirty, wet hole... nor yet a dry, bare, sandy hole... it was a hobbit-hole, and that means\"... what?"
+LT_Answer[684] = "Confort"
+LT_QuestionCommentary[684] = ""
 
---~ LT_Question[685] = ""
---~ LT_Answer[685] = ""
---~ LT_QuestionCommentary[685] = ""
+LT_Question[685] = "Who tells Gimli \"Let him not vow to walk in the dark, who has not seen the nightfall\"?"
+LT_Answer[685] = "Elrond Half-elven"
+LT_QuestionCommentary[685] = ""
 
---~ LT_Question[686] = ""
---~ LT_Answer[686] = ""
---~ LT_QuestionCommentary[686] = ""
+LT_Question[686] = "What was the name of Morgoth's mighty mace which he wielded against Fingolfin?"
+LT_Answer[686] = "Grond, Hammer of the Underworld"
+LT_QuestionCommentary[686] = ""
 
---~ LT_Question[687] = ""
---~ LT_Answer[687] = ""
---~ LT_QuestionCommentary[687] = ""
+LT_Question[687] = "Who says \"I am glad you are here with me. Here at the end of all things\"?"
+LT_Answer[687] = "Frodo Baggins"
+LT_QuestionCommentary[687] = ""
 
---~ LT_Question[688] = ""
---~ LT_Answer[688] = ""
---~ LT_QuestionCommentary[688] = ""
+LT_Question[688] = "What is the name of the steed of Eomer, who bore Eomer and Gimli to Helm's Deep?"
+LT_Answer[688] = "Firefoot"
+LT_QuestionCommentary[688] = ""
 
---~ LT_Question[689] = ""
---~ LT_Answer[689] = ""
---~ LT_QuestionCommentary[689] = ""
+LT_Question[689] = "Brother of Gwaihir the Lord of the Eagles, this great eagle was claimed by Gandalf to be the fastest of the eagles of the Misty Mountains."
+LT_Answer[689] = "Landroval"
+LT_QuestionCommentary[689] = ""
 
---~ LT_Question[690] = ""
---~ LT_Answer[690] = ""
---~ LT_QuestionCommentary[690] = ""
+LT_Question[690] = "What jewel, worn by Elendil and his heirs, and later the Chieftains of the Dunedain, was recovered from Saruman's treasure at Orthanc by Aragorn?"
+LT_Answer[690] = "Elendilmir"
+LT_QuestionCommentary[690] = ""
 
---~ LT_Question[691] = ""
---~ LT_Answer[691] = ""
---~ LT_QuestionCommentary[691] = ""
+LT_Question[691] = "What name did Aragorn's mother give him when she took him with her to live with the Elves of Rivendell?"
+LT_Answer[691] = "Estel"
+LT_QuestionCommentary[691] = ""
 
---~ LT_Question[692] = ""
---~ LT_Answer[692] = ""
---~ LT_QuestionCommentary[692] = ""
+LT_Question[692] = "What does the Rohirrim term \"Riddermark\" mean?"
+LT_Answer[692] = "Land of the Riders"
+LT_QuestionCommentary[692] = ""
 
---~ LT_Question[693] = ""
---~ LT_Answer[693] = ""
---~ LT_QuestionCommentary[693] = ""
+LT_Question[693] = "Where was Smeagol born and raised?"
+LT_Answer[693] = "Gladden Fields"
+LT_QuestionCommentary[693] = ""
 
---~ LT_Question[694] = ""
---~ LT_Answer[694] = ""
---~ LT_QuestionCommentary[694] = ""
+LT_Question[694] = "What river was the site of Isildur's ambush by orcs?"
+LT_Answer[694] = "Gladden River"
+LT_QuestionCommentary[694] = ""
 
---~ LT_Question[695] = ""
---~ LT_Answer[695] = ""
---~ LT_QuestionCommentary[695] = ""
+LT_Question[695] = "What is the name of the cold, shallow stream that runs from the Misty Mountains to the river Silverlode on the western borders of Lothlorien?"
+LT_Answer[695] = "Nimrodel"
+LT_QuestionCommentary[695] = ""
 
---~ LT_Question[696] = ""
---~ LT_Answer[696] = ""
---~ LT_QuestionCommentary[696] = ""
+LT_Question[696] = "What was the name of the Elven Maiden who loved the Sindarin Amroth, the King of the Wood of Lorien, but whose love ended in tragedy?"
+LT_Answer[696] = "Nimrodel"
+LT_QuestionCommentary[696] = ""
 
---~ LT_Question[697] = ""
---~ LT_Answer[697] = ""
---~ LT_QuestionCommentary[697] = ""
+LT_Question[697] = "The name of the Elven maiden Nimrodel means what?"
+LT_Answer[697] = "\"Maiden of the White Grotto\""
+LT_QuestionCommentary[697] = ""
 
---~ LT_Question[698] = ""
---~ LT_Answer[698] = ""
---~ LT_QuestionCommentary[698] = ""
+LT_Question[698] = "\"Fangorn\" is Sindarin for what?"
+LT_Answer[698] = "\"Treebeard\""
+LT_QuestionCommentary[698] = ""
 
---~ LT_Question[699] = ""
---~ LT_Answer[699] = ""
---~ LT_QuestionCommentary[699] = ""
+LT_Question[699] = "What was the name given to a meeting of Ents?"
+LT_Answer[699] = "Entmoot"
+LT_QuestionCommentary[699] = ""
+
+LT_Question[700] = "How long did the Entmoot (Ent meeting) regarding Saruman's treachery, last?"
+LT_Answer[700] = "Three days"
+LT_QuestionCommentary[700] = ""
+
+LT_Question[701] = "What name was Aragorn given by the people of Minas Tirith, reflecting the name of his gift from Galadriel (in the Books)?"
+LT_Answer[701] = "\"Elessar\""
+LT_QuestionCommentary[701] = ""
+
+LT_Question[702] = "What does the name \"Elessar\" mean?"
+LT_Answer[702] = "Elfstone"
+LT_QuestionCommentary[702] = ""
+
+LT_Question[703] = "What gem of legend, green as the leaves but with the light of the sun trapped within, may have been carried from Middle-earth to Valinor and back?"
+LT_Answer[703] = "Elessar, the Elfstone"
+LT_QuestionCommentary[703] = ""
+
+LT_Question[704] = "What was Elrond's wife named?"
+LT_Answer[704] = "Celebrian"
+LT_QuestionCommentary[704] = ""
+
+LT_Question[705] = "Where was Elrond's wife at the time of the second War of the Ring?"
+LT_Answer[705] = "Valinor"
+LT_QuestionCommentary[705] = ""
+
+LT_Question[706] = "What flag had a black field, with seven stars wrought of gems, a white tree for Gondor, and a crown wrought of mithril and gold?"
+LT_Answer[706] = "The Standard of Elendil"
+LT_QuestionCommentary[706] = ""
+
+LT_Question[707] = "Its seven stars represent the stars on the flags of the seven of the nine ships that escaped the fall of Numenor, which carried Palantiri. What is it?"
+LT_Answer[707] = "The Standard of Elendil "
+LT_QuestionCommentary[707] = ""
+
+LT_Question[708] = "Who made the Palantiri?"
+LT_Answer[708] = "The Elves  of Valinor"
+LT_QuestionCommentary[708] = ""
+
+LT_Question[709] = "What river, also called Loudwater, once formed the southern border of the Kingdom of Arnor?"
+LT_Answer[709] = "Bruinen"
+LT_QuestionCommentary[709] = ""
+
+LT_Question[710] = "What is the ford of the Bruinen called near Rivendell?"
+LT_Answer[710] = "The Edge of the Wild"
+LT_QuestionCommentary[710] = ""
+
+LT_Question[711] = "What river of Rohan flows out of the Glittering Caves and past the Hornburg?"
+LT_Answer[711] = "The Deeping Stream"
+LT_QuestionCommentary[711] = ""
+
+LT_Question[712] = "What does the Sindarin name \"Ered Nimrais\" mean?"
+LT_Answer[712] = "White Mountains"
+LT_QuestionCommentary[712] = ""
+
+LT_Question[713] = "What mountains is Helm's Deep a large valley in?"
+LT_Answer[713] = "The White Mountains"
+LT_QuestionCommentary[713] = ""
+
+LT_Question[714] = "What is the keep at Helm's Deep named?"
+LT_Answer[714] = "The Hornburg"
+LT_QuestionCommentary[714] = ""
+
+LT_Question[715] = "Where did Gimli establish a colony of Durin's Folk, following the second wWar of the Ring?"
+LT_Answer[715] = "The Glittering Caves"
+LT_QuestionCommentary[715] = ""
+
+LT_Question[716] = "Who was known as \"The Lord of the Glittering Caves\"?"
+LT_Answer[716] = "Gimli"
+LT_QuestionCommentary[716] = ""
+
+LT_Question[717] = "What stood atop the tower of the Hornburg?"
+LT_Answer[717] = "The Great Horn of Helm Hammerhand"
+LT_QuestionCommentary[717] = ""
+
+LT_Question[718] = "Who is Helm's Deep named after?"
+LT_Answer[718] = "Helm Hammerhand, ninth king of Rohan and the last of the first line."
+LT_QuestionCommentary[718] = ""
+
+LT_Question[719] = "What was the first House to rule Rohan?"
+LT_Answer[719] = "The House of Eorl"
+LT_QuestionCommentary[719] = ""
+
+LT_Question[720] = "The founder of Rohan was what youthful Lord?"
+LT_Answer[720] = "Eorl the Young"
+LT_QuestionCommentary[720] = ""
+
+LT_Question[721] = "What age was Rohan founded in?"
+LT_Answer[721] = "The Third Age, 2510"
+LT_QuestionCommentary[721] = ""
+
+LT_Question[722] = "What second king of Rohan built the Meduseld, making Edoras the capital of Rohan?"
+LT_Answer[722] = "Brego"
+LT_QuestionCommentary[722] = ""
+
+LT_Question[723] = "What is the capital city of Rohan?"
+LT_Answer[723] = "Edoras"
+LT_QuestionCommentary[723] = ""
+
+LT_Question[724] = "What is the name of the Golden Hall of the King of Rohan?"
+LT_Answer[724] = "Meduseld"
+LT_QuestionCommentary[724] = ""
+
+LT_Question[725] = "What does the name \"Meduseld\" mean?"
+LT_Answer[725] = "It's Anglo-Saxon for \"Mead Hall\"."
+LT_QuestionCommentary[725] = ""
+
+LT_Question[726] = "Who was the doorward of Meduseld and captain of the guard for King Theoden?"
+LT_Answer[726] = "Hama"
+LT_QuestionCommentary[726] = ""
+
+LT_Question[727] = "In the Peter Jackson films, the young boy being outfitted to fight at Helm's Deep who speaks with Aragorn is who?"
+LT_Answer[727] = "Haleth, son of Hama"
+LT_QuestionCommentary[727] = ""
+
+LT_Question[728] = "In the films, how does Hama, captain of Theoden's guard, die?"
+LT_Answer[728] = "His head is bitten off by a warg-rider scout, which is in turn killed by Legolas."
+LT_QuestionCommentary[728] = ""
+
+LT_Question[729] = "What is the name of the river that the Elven maiden Nimrodel walked as she left the White Mountains?"
+LT_Answer[729] = "Gilrain"
+LT_QuestionCommentary[729] = ""
+
+LT_Question[730] = "The Morthrond is a river in which region?"
+LT_Answer[730] = "Gondor"
+LT_QuestionCommentary[730] = ""
+
+LT_Question[731] = "Gwaihir, Landroval, and which eagle saved Frodo and Sam from Mount Doom?"
+LT_Answer[731] = "Meneldor"
+LT_QuestionCommentary[731] = ""
+
+LT_Question[732] = "What dark region of the Great Sea does Bilbo write about in his \"Song of Earendil\"?"
+LT_Answer[732] = "Evernight"
+LT_QuestionCommentary[732] = ""
+
+LT_Question[733] = "What jewel does Aragorn persuade Bilbo to feature in his \"Song of Earendil\"?"
+LT_Answer[733] = "Elessar, the Elfstone"
+LT_QuestionCommentary[733] = ""
+
+LT_Question[734] = "What is the name of the public test server for Lord of the Rings Online?"
+LT_Answer[734] = "Bullroarer"
+LT_QuestionCommentary[734] = ""
+
+LT_Question[735] = "What is the name of the private preview server for Lord of the Rings Online?"
+LT_Answer[735] = "Palantir"
+LT_QuestionCommentary[735] = ""
+
+LT_Question[736] = "What does \"Emnet\" (as in \"Eastemnet\") mean in Rohhric?"
+LT_Answer[736] = "\"plain\""
+LT_QuestionCommentary[736] = ""
+
+LT_Question[737] = "What spearates Eastemnet from Westemnet?"
+LT_Answer[737] = "The River Entwash"
+LT_QuestionCommentary[737] = ""
+
+LT_Question[738] = "Where are Eastfold and Westfold located?"
+LT_Answer[738] = "In the Westemnet, in Rohan."
+LT_QuestionCommentary[738] = ""
+
+LT_Question[739] = "What does \"Fold\" (as in \"Westfold\") mean?"
+LT_Answer[739] = "\"land\""
+LT_QuestionCommentary[739] = ""
+
+LT_Question[740] = "Dunharrow was a  refuge of the Rohirrim hidden in what mountains?"
+LT_Answer[740] = "The White Mountains"
+LT_QuestionCommentary[740] = ""
+
+LT_Question[741] = "\"The Paths of the Dead\" lay near to what Rohirrim refuge?"
+LT_Answer[741] = "Dunharrow"
+LT_QuestionCommentary[741] = ""
+
+LT_Question[742] = "Where do Calenard hides and ore take their name from?"
+LT_Answer[742] = "Calenardhon, a region of Anorien in the north of Gondor."
+LT_QuestionCommentary[742] = ""
+
+LT_Question[743] = "What does the Sindarin name \"Calenardhon\" mean?"
+LT_Answer[743] = "Green Province, or Green Region"
+LT_QuestionCommentary[743] = ""
+
+LT_Question[744] = "What is the highest rank within the Rohhric Military?"
+LT_Answer[744] = "First Marshal"
+LT_QuestionCommentary[744] = ""
+
+LT_Question[745] = "What does the First Marshal of Rohan command?"
+LT_Answer[745] = "The Muster of Edoras, made up of riders of Edoras and the surrounding lands."
+LT_QuestionCommentary[745] = ""
+
+LT_Question[746] = "What does the name \"Rohan\" mean?"
+LT_Answer[746] = "It is a debased form of the Sindarin \"Rochan\", meaning \"Horse Country\"."
+LT_QuestionCommentary[746] = ""
+
+LT_Question[747] = "Who did Tolkien intend to represent with the tribes of the Dunlending?"
+LT_Answer[747] = "The Celts"
+LT_QuestionCommentary[747] = ""
+
+LT_Question[748] = "What does the kingdom name \"Arnor\" mean in Sindarin?"
+LT_Answer[748] = "\"Land of the King\"."
+LT_QuestionCommentary[748] = ""
+
+LT_Question[749] = "What branch of hobbits in the Third Age, the first to cross the Misty Mountains, settled in the South Downs in the West of Cardolan?"
+LT_Answer[749] = "Harfoots"
+LT_QuestionCommentary[749] = ""
+
+LT_Question[750] = "What does \"Cardolan\" mean in Sindarin?"
+LT_Answer[750] = "Red Hill Country"
+LT_QuestionCommentary[750] = ""
+
+LT_Question[751] = "What region included the area covered by the Barrow Downs, the Old Forest, and Buckland?"
+LT_Answer[751] = "Cardolan"
+LT_QuestionCommentary[751] = ""
+
+LT_Question[752] = "What was once housed in the fortress atop Amon Sul?"
+LT_Answer[752] = "A palantir"
+LT_QuestionCommentary[752] = ""
+
+LT_Question[753] = "Where did the fell spirits haunting the Barrow Downs come from?"
+LT_Answer[753] = "Angmar"
+LT_QuestionCommentary[753] = ""
+
+LT_Question[754] = "The lake called \"Nenuial\" in Sindarin, meaning \"Lake of Twilight\", is called what, by Men?"
+LT_Answer[754] = "Lake Evendim"
+LT_QuestionCommentary[754] = ""
+
+LT_Question[755] = "What does the name \"Annuminas\" mean in Sindarin>"
+LT_Answer[755] = "Tower of the West"
+LT_QuestionCommentary[755] = ""
+
+LT_Question[756] = "Why was the name \"Gondor\", meaning \"Land of Stone\", thought to have been chosen for the region?"
+LT_Answer[756] = "Becuase of the advanced skill of their stonemasons"
+LT_QuestionCommentary[756] = ""
+
+LT_Question[757] = "The river Gwathlo is named what, in the language of men?"
+LT_Answer[757] = "Greyflood"
+LT_QuestionCommentary[757] = ""
+
+LT_Question[758] = "What defines the border between Rohan and Gondor?"
+LT_Answer[758] = "The Mering Stream, between the provinces Eastfold and Anorien."
+LT_QuestionCommentary[758] = ""
+
+LT_Question[759] = "What mountain peak stands at the head of the valley of Harrowdale, where Dwarrowdelf is situated?"
+LT_Answer[759] = "Dwimorberg"
+LT_QuestionCommentary[759] = ""
+
+LT_Question[760] = "What paths lie under the mountain Dwimorberg?"
+LT_Answer[760] = "The Paths of the Dead"
+LT_QuestionCommentary[760] = ""
+
+LT_Question[761] = "What is the name of the craggy highlands surrounding the lake Nen Hithoel, in which Sam and Frodo were lost for days?"
+LT_Answer[761] = "Emyn Muil"
+LT_QuestionCommentary[761] = ""
+
+LT_Question[762] = "Where does Gollum lead Frodo and Sam, wouth of Emyn Muil?"
+LT_Answer[762] = "The Dead Marshes"
+LT_QuestionCommentary[762] = ""
+
+LT_Question[763] = "The Dead Marshes hold the images of the fallen from what battle?"
+LT_Answer[763] = "The Battle of Dagorlad, at the end of the Second Age"
+LT_QuestionCommentary[763] = ""
+
+LT_Question[764] = "What was begun by the banishment of Morgoth into the Void by the Lords of the West?"
+LT_Answer[764] = "The Second Age."
+LT_QuestionCommentary[764] = ""
+
+LT_Question[765] = "The Awakening of the Elves began what in Middle-earth?"
+LT_Answer[765] = "The First Age."
+LT_QuestionCommentary[765] = ""
+
+LT_Question[766] = "The defeat of Sauron by Isildur heralds what, in Middle-earth?"
+LT_Answer[766] = "The Third Age."
+LT_QuestionCommentary[766] = ""
+
+LT_Question[767] = "The Shire was founded in what year of the Third Age?"
+LT_Answer[767] = "TA 1601"
+LT_QuestionCommentary[767] = ""
+
+LT_Question[768] = "How old does Aragorn II live to be?"
+LT_Answer[768] = "210"
+LT_QuestionCommentary[768] = ""
+
+LT_Question[769] = "Who is the heir of Aragorn, King of the Reunited Kingdom?"
+LT_Answer[769] = "His son, Eldarion"
+LT_QuestionCommentary[769] = ""
+
+LT_Question[770] = "Whose bodies are laid to rest beside Aragorn, King of the Reunited Kingdom?"
+LT_Answer[770] = "Pippin and Merry"
+LT_QuestionCommentary[770] = ""
+
+LT_Question[771] = "What did the departure of the bearers of the three rings for Valinor signify?"
+LT_Answer[771] = "End of the Third Age/Start of the Fourth Age"
+LT_QuestionCommentary[771] = ""
+
+LT_Question[772] = "Who beheld Sauron's intent, and hid their rings of power from his corruption?"
+LT_Answer[772] = "The Elves"
+LT_QuestionCommentary[772] = ""
+
+LT_Question[773] = "What does the Sindarin name \"Ered Mithrin\" mean?"
+LT_Answer[773] = "Grey Mountains"
+LT_QuestionCommentary[773] = ""
+
+LT_Question[774] = "What pub, in Hobbiton in LOTRO but in Bywater in the books, is named after a pub near to where J.R.R. Tolkien lived, in Edgbaston?"
+LT_Answer[774] = "The Ivy Bush"
+LT_QuestionCommentary[774] = ""
+
+LT_Question[775] = "What is the name of the bridge over the river Mitheithel, between The Lone Lands and Trollshaws?"
+LT_Answer[775] = "The Last Bridge"
+LT_QuestionCommentary[775] = ""
+
+LT_Question[776] = "The northern border of Mordor is formed by Ered Lithui, which means what?"
+LT_Answer[776] = "Mountains of Ash"
+LT_QuestionCommentary[776] = ""
+
+LT_Question[777] = "In Lord of the Rings online, you have to take a ferry across, but in the books it's crossed at The Old Ford. What River is it?"
+LT_Answer[777] = "The Anduin"
+LT_QuestionCommentary[777] = ""
+
+LT_Question[778] = "What is the name of the road that runs east-west through Mirkwood?"
+LT_Answer[778] = "Old Forest Road"
+LT_QuestionCommentary[778] = ""
+
+LT_Question[779] = "What road ran from Beleriand, through Ered Luin, all the way to the Misty Mountains?"
+LT_Answer[779] = "The Great East Road"
+LT_QuestionCommentary[779] = ""
+
+LT_Question[780] = "Who was the last king of the second line of Rohan?"
+LT_Answer[780] = "Theoden"
+LT_QuestionCommentary[780] = ""
+
+LT_Question[781] = "Who was the last king of the first line of Rohan?"
+LT_Answer[781] = "Helm Hammerhand"
+LT_QuestionCommentary[781] = ""
+
+LT_Question[782] = "Who was the first king of the third line of Rohan?"
+LT_Answer[782] = "Eomer"
+LT_QuestionCommentary[782] = ""
+
+LT_Question[783] = "This section of the North-South road got its name because it was used so little in the Third Age, it had become overgrown with grass."
+LT_Answer[783] = "The Greenway"
+LT_QuestionCommentary[783] = ""
+
+LT_Question[784] = "What is the farmland of Farmer Maggot called?"
+LT_Answer[784] = "Bamfurlong"
+LT_QuestionCommentary[784] = ""
+
+LT_Question[785] = "The fertile, but marshy farmlands along the Brandywine River are called what?"
+LT_Answer[785] = "The Marish"
+LT_QuestionCommentary[785] = ""
+
+LT_Question[786] = "What does the name \"Michel Delving\" mean?"
+LT_Answer[786] = "\"Large Excavation\""
+LT_QuestionCommentary[786] = ""
+
+LT_Question[787] = "What lands, added to the Shire in the Fourth Age, ran from the Shire's former western border, to the Tower Hills?"
+LT_Answer[787] = "The Westmarch"
+LT_QuestionCommentary[787] = ""
+
+LT_Question[788] = "Who granted ownership of the Westmarch to the hobbits of the shire?"
+LT_Answer[788] = "Aragorn (Elessar), King of the Reunited Kingdom."
+LT_QuestionCommentary[788] = ""
+
+LT_Question[789] = "Who granted the Hobbits of the Shire self-rule?"
+LT_Answer[789] = "Aragorn (Elessar), King of the Reunited Kingdom."
+LT_QuestionCommentary[789] = ""
+
+LT_Question[790] = "One point of Vitality increases the Morale of tank classes by how much?"
+LT_Answer[790] = "5 points"
+LT_QuestionCommentary[790] = ""
+
+LT_Question[791] = "One point of Vitality increases the Morale of non-tank classes by how much?"
+LT_Answer[791] = "3 points"
+LT_QuestionCommentary[791] = ""
+
+LT_Question[792] = "What stat increases your In-Combat Morale Regeneration?"
+LT_Answer[792] = "Fate"
+LT_QuestionCommentary[792] = ""
+
+LT_Question[793] = "What stat increases your Non-Combat Morale Regeneration?"
+LT_Answer[793] = "Vitality"
+LT_QuestionCommentary[793] = ""
+
+LT_Question[794] = "How many points of Power do non-Will classes gain per level?"
+LT_Answer[794] = "50"
+LT_QuestionCommentary[794] = ""
+
+LT_Question[795] = "How many points of Power do Will classes (Lore-master, Rune-keeper, and Minstrel) gain per level?"
+LT_Answer[795] = "65"
+LT_QuestionCommentary[795] = ""
+
+LT_Question[796] = "What stat increases both your non-combat, and combat, Power regeneration?"
+LT_Answer[796] = "Fate"
+LT_QuestionCommentary[796] = ""
+
+LT_Question[797] = "What stat increases your Evade, Parry, and Critical ratings?"
+LT_Answer[797] = "Agility"
+LT_QuestionCommentary[797] = ""
+
+LT_Question[798] = "What stat increases your Block, Parry, and Physical Mitigation ratings?"
+LT_Answer[798] = "Might"
+LT_QuestionCommentary[798] = ""
+
+LT_Question[799] = "What ratings-based stat directly reduces the resistance of monsters?"
+LT_Answer[799] = "Finesse"
+LT_QuestionCommentary[799] = ""
+
+LT_Question[800] = "What race and class has the highest morale at level one?"
+LT_Answer[800] = "Hobbit Guardian (252)."
+LT_QuestionCommentary[800] = ""
 
