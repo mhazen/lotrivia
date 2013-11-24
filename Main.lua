@@ -19,6 +19,8 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 	To-Do List:
+		- See if I can use the Turbine.ChatType.UserChat1 sort of enumerations along
+		  with the received args from messages to parse chat differently, in order to get userchats working
 
 	Known Bugs:
 
@@ -882,7 +884,7 @@ Report Bugs on LotroInterface.com
 			elseif (not gameActive) then
 				return;
 			else
-				preparekQuestion();
+				prepareQuestion();
 			end
 		end
 
@@ -1788,10 +1790,10 @@ Report Bugs on LotroInterface.com
 
 			if (debug) then
 				announceAllText = "/say Scores: " .. announceAllText
-				announceTopThreeText = "/say Top Three Scorers: " .. announceTopThreeText
+				announceTopThreeText = "/say Top Scorers: " .. announceTopThreeText
 			else
 				announceAllText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Scores: " .. announceAllText
-				announceTopThreeText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Top Three Scorers: " .. announceTopThreeText
+				announceTopThreeText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Top Scorers: " .. announceTopThreeText
 			end
 
 			-- set score window pseudo-button aliases

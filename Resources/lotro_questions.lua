@@ -3211,3 +3211,399 @@ LT_Question[800] = "What race and class has the highest Morale at level one?"
 LT_Answer[800] = "Hobbit Guardian (252 Morale)."
 LT_QuestionCommentary[800] = ""
 
+LT_Question[801] = "What mounted combat discipline is focused purely on damaging foes?"
+LT_Answer[801] = "Red Dawn"
+LT_QuestionCommentary[801] = ""
+
+LT_Question[802] = "What mounted combat discipline is focused solidly on healing and support?"
+LT_Answer[802] = "Rohhirim"
+LT_QuestionCommentary[802] = ""
+
+LT_Question[803] = "What mounted combat discipline is a balance between damage and support? "
+LT_Answer[803] = "Riddermark"
+LT_QuestionCommentary[803] = ""
+
+--~ LT_Question[804] = ""
+--~ LT_Answer[804] = ""
+--~ LT_QuestionCommentary[804] = ""
+
+--~ LT_Question[805] = ""
+--~ LT_Answer[805] = ""
+--~ LT_QuestionCommentary[805] = ""
+
+--~ LT_Question[806] = ""
+--~ LT_Answer[806] = ""
+--~ LT_QuestionCommentary[806] = ""
+
+--~ LT_Question[807] = ""
+--~ LT_Answer[807] = ""
+--~ LT_QuestionCommentary[807] = ""
+
+--~ LT_Question[808] = ""
+--~ LT_Answer[808] = ""
+--~ LT_QuestionCommentary[808] = ""
+
+--~ LT_Question[809] = ""
+--~ LT_Answer[809] = ""
+--~ LT_QuestionCommentary[809] = ""
+
+--~ LT_Question[810] = ""
+--~ LT_Answer[810] = ""
+--~ LT_QuestionCommentary[810] = ""
+
+--~ LT_Question[811] = ""
+--~ LT_Answer[811] = ""
+--~ LT_QuestionCommentary[811] = ""
+
+--~ LT_Question[812] = ""
+--~ LT_Answer[812] = ""
+--~ LT_QuestionCommentary[812] = ""
+
+--~ LT_Question[813] = ""
+--~ LT_Answer[813] = ""
+--~ LT_QuestionCommentary[813] = ""
+
+--~ LT_Question[814] = ""
+--~ LT_Answer[814] = ""
+--~ LT_QuestionCommentary[814] = ""
+
+--~ LT_Question[815] = ""
+--~ LT_Answer[815] = ""
+--~ LT_QuestionCommentary[815] = ""
+
+--~ LT_Question[816] = ""
+--~ LT_Answer[816] = ""
+--~ LT_QuestionCommentary[816] = ""
+
+--~ LT_Question[817] = ""
+--~ LT_Answer[817] = ""
+--~ LT_QuestionCommentary[817] = ""
+
+--~ LT_Question[818] = ""
+--~ LT_Answer[818] = ""
+--~ LT_QuestionCommentary[818] = ""
+
+--~ LT_Question[819] = ""
+--~ LT_Answer[819] = ""
+--~ LT_QuestionCommentary[819] = ""
+
+--~ LT_Question[820] = ""
+--~ LT_Answer[820] = ""
+--~ LT_QuestionCommentary[820] = ""
+
+--~ LT_Question[821] = ""
+--~ LT_Answer[821] = ""
+--~ LT_QuestionCommentary[821] = ""
+
+--~ LT_Question[822] = ""
+--~ LT_Answer[822] = ""
+--~ LT_QuestionCommentary[822] = ""
+
+--~ LT_Question[823] = ""
+--~ LT_Answer[823] = ""
+--~ LT_QuestionCommentary[823] = ""
+
+--~ LT_Question[824] = ""
+--~ LT_Answer[824] = ""
+--~ LT_QuestionCommentary[824] = ""
+
+--~ LT_Question[825] = ""
+--~ LT_Answer[825] = ""
+--~ LT_QuestionCommentary[825] = ""
+
+--~ LT_Question[826] = ""
+--~ LT_Answer[826] = ""
+--~ LT_QuestionCommentary[826] = ""
+
+--~ LT_Question[827] = ""
+--~ LT_Answer[827] = ""
+--~ LT_QuestionCommentary[827] = ""
+
+--~ LT_Question[828] = ""
+--~ LT_Answer[828] = ""
+--~ LT_QuestionCommentary[828] = ""
+
+--~ LT_Question[829] = ""
+--~ LT_Answer[829] = ""
+--~ LT_QuestionCommentary[829] = ""
+
+--~ LT_Question[830] = ""
+--~ LT_Answer[830] = ""
+--~ LT_QuestionCommentary[830] = ""
+
+--~ LT_Question[831] = ""
+--~ LT_Answer[831] = ""
+--~ LT_QuestionCommentary[831] = ""
+
+--~ LT_Question[832] = ""
+--~ LT_Answer[832] = ""
+--~ LT_QuestionCommentary[832] = ""
+
+--~ LT_Question[833] = ""
+--~ LT_Answer[833] = ""
+--~ LT_QuestionCommentary[833] = ""
+
+--~ LT_Question[834] = ""
+--~ LT_Answer[834] = ""
+--~ LT_QuestionCommentary[834] = ""
+
+--~ LT_Question[835] = ""
+--~ LT_Answer[835] = ""
+--~ LT_QuestionCommentary[835] = ""
+
+--~ LT_Question[836] = ""
+--~ LT_Answer[836] = ""
+--~ LT_QuestionCommentary[836] = ""
+
+--~ LT_Question[837] = ""
+--~ LT_Answer[837] = ""
+--~ LT_QuestionCommentary[837] = ""
+
+--~ LT_Question[838] = ""
+--~ LT_Answer[838] = ""
+--~ LT_QuestionCommentary[838] = ""
+
+--~ LT_Question[839] = ""
+--~ LT_Answer[839] = ""
+--~ LT_QuestionCommentary[839] = ""
+
+--~ LT_Question[840] = ""
+--~ LT_Answer[840] = ""
+--~ LT_QuestionCommentary[840] = ""
+
+--~ LT_Question[841] = ""
+--~ LT_Answer[841] = ""
+--~ LT_QuestionCommentary[841] = ""
+
+--~ LT_Question[842] = ""
+--~ LT_Answer[842] = ""
+--~ LT_QuestionCommentary[842] = ""
+
+--~ LT_Question[843] = ""
+--~ LT_Answer[843] = ""
+--~ LT_QuestionCommentary[843] = ""
+
+--~ LT_Question[844] = ""
+--~ LT_Answer[844] = ""
+--~ LT_QuestionCommentary[844] = ""
+
+--~ LT_Question[845] = ""
+--~ LT_Answer[845] = ""
+--~ LT_QuestionCommentary[845] = ""
+
+--~ LT_Question[846] = ""
+--~ LT_Answer[846] = ""
+--~ LT_QuestionCommentary[846] = ""
+
+--~ LT_Question[847] = ""
+--~ LT_Answer[847] = ""
+--~ LT_QuestionCommentary[847] = ""
+
+--~ LT_Question[848] = ""
+--~ LT_Answer[848] = ""
+--~ LT_QuestionCommentary[848] = ""
+
+--~ LT_Question[849] = ""
+--~ LT_Answer[849] = ""
+--~ LT_QuestionCommentary[849] = ""
+
+--~ LT_Question[850] = ""
+--~ LT_Answer[850] = ""
+--~ LT_QuestionCommentary[850] = ""
+
+--~ LT_Question[851] = ""
+--~ LT_Answer[851] = ""
+--~ LT_QuestionCommentary[851] = ""
+
+--~ LT_Question[852] = ""
+--~ LT_Answer[852] = ""
+--~ LT_QuestionCommentary[852] = ""
+
+--~ LT_Question[853] = ""
+--~ LT_Answer[853] = ""
+--~ LT_QuestionCommentary[853] = ""
+
+--~ LT_Question[854] = ""
+--~ LT_Answer[854] = ""
+--~ LT_QuestionCommentary[854] = ""
+
+--~ LT_Question[855] = ""
+--~ LT_Answer[855] = ""
+--~ LT_QuestionCommentary[855] = ""
+
+--~ LT_Question[856] = ""
+--~ LT_Answer[856] = ""
+--~ LT_QuestionCommentary[856] = ""
+
+--~ LT_Question[857] = ""
+--~ LT_Answer[857] = ""
+--~ LT_QuestionCommentary[857] = ""
+
+--~ LT_Question[858] = ""
+--~ LT_Answer[858] = ""
+--~ LT_QuestionCommentary[858] = ""
+
+--~ LT_Question[859] = ""
+--~ LT_Answer[859] = ""
+--~ LT_QuestionCommentary[859] = ""
+
+--~ LT_Question[860] = ""
+--~ LT_Answer[860] = ""
+--~ LT_QuestionCommentary[860] = ""
+
+--~ LT_Question[861] = ""
+--~ LT_Answer[861] = ""
+--~ LT_QuestionCommentary[861] = ""
+
+--~ LT_Question[862] = ""
+--~ LT_Answer[862] = ""
+--~ LT_QuestionCommentary[862] = ""
+
+--~ LT_Question[863] = ""
+--~ LT_Answer[863] = ""
+--~ LT_QuestionCommentary[863] = ""
+
+--~ LT_Question[864] = ""
+--~ LT_Answer[864] = ""
+--~ LT_QuestionCommentary[864] = ""
+
+--~ LT_Question[865] = ""
+--~ LT_Answer[865] = ""
+--~ LT_QuestionCommentary[865] = ""
+
+--~ LT_Question[866] = ""
+--~ LT_Answer[866] = ""
+--~ LT_QuestionCommentary[866] = ""
+
+--~ LT_Question[867] = ""
+--~ LT_Answer[867] = ""
+--~ LT_QuestionCommentary[867] = ""
+
+--~ LT_Question[868] = ""
+--~ LT_Answer[868] = ""
+--~ LT_QuestionCommentary[868] = ""
+
+--~ LT_Question[869] = ""
+--~ LT_Answer[869] = ""
+--~ LT_QuestionCommentary[869] = ""
+
+--~ LT_Question[870] = ""
+--~ LT_Answer[870] = ""
+--~ LT_QuestionCommentary[870] = ""
+
+--~ LT_Question[871] = ""
+--~ LT_Answer[871] = ""
+--~ LT_QuestionCommentary[871] = ""
+
+--~ LT_Question[872] = ""
+--~ LT_Answer[872] = ""
+--~ LT_QuestionCommentary[872] = ""
+
+--~ LT_Question[873] = ""
+--~ LT_Answer[873] = ""
+--~ LT_QuestionCommentary[873] = ""
+
+--~ LT_Question[874] = ""
+--~ LT_Answer[874] = ""
+--~ LT_QuestionCommentary[874] = ""
+
+--~ LT_Question[875] = ""
+--~ LT_Answer[875] = ""
+--~ LT_QuestionCommentary[875] = ""
+
+--~ LT_Question[876] = ""
+--~ LT_Answer[876] = ""
+--~ LT_QuestionCommentary[876] = ""
+
+--~ LT_Question[877] = ""
+--~ LT_Answer[877] = ""
+--~ LT_QuestionCommentary[877] = ""
+
+--~ LT_Question[878] = ""
+--~ LT_Answer[878] = ""
+--~ LT_QuestionCommentary[878] = ""
+
+--~ LT_Question[879] = ""
+--~ LT_Answer[879] = ""
+--~ LT_QuestionCommentary[879] = ""
+
+--~ LT_Question[880] = ""
+--~ LT_Answer[880] = ""
+--~ LT_QuestionCommentary[880] = ""
+
+--~ LT_Question[881] = ""
+--~ LT_Answer[881] = ""
+--~ LT_QuestionCommentary[881] = ""
+
+--~ LT_Question[882] = ""
+--~ LT_Answer[882] = ""
+--~ LT_QuestionCommentary[882] = ""
+
+--~ LT_Question[883] = ""
+--~ LT_Answer[883] = ""
+--~ LT_QuestionCommentary[883] = ""
+
+--~ LT_Question[884] = ""
+--~ LT_Answer[884] = ""
+--~ LT_QuestionCommentary[884] = ""
+
+--~ LT_Question[885] = ""
+--~ LT_Answer[885] = ""
+--~ LT_QuestionCommentary[885] = ""
+
+--~ LT_Question[886] = ""
+--~ LT_Answer[886] = ""
+--~ LT_QuestionCommentary[886] = ""
+
+--~ LT_Question[887] = ""
+--~ LT_Answer[887] = ""
+--~ LT_QuestionCommentary[887] = ""
+
+--~ LT_Question[888] = ""
+--~ LT_Answer[888] = ""
+--~ LT_QuestionCommentary[888] = ""
+
+--~ LT_Question[889] = ""
+--~ LT_Answer[889] = ""
+--~ LT_QuestionCommentary[889] = ""
+
+--~ LT_Question[890] = ""
+--~ LT_Answer[890] = ""
+--~ LT_QuestionCommentary[890] = ""
+
+--~ LT_Question[891] = ""
+--~ LT_Answer[891] = ""
+--~ LT_QuestionCommentary[891] = ""
+
+--~ LT_Question[892] = ""
+--~ LT_Answer[892] = ""
+--~ LT_QuestionCommentary[892] = ""
+
+--~ LT_Question[893] = ""
+--~ LT_Answer[893] = ""
+--~ LT_QuestionCommentary[893] = ""
+
+--~ LT_Question[894] = ""
+--~ LT_Answer[894] = ""
+--~ LT_QuestionCommentary[894] = ""
+
+--~ LT_Question[895] = ""
+--~ LT_Answer[895] = ""
+--~ LT_QuestionCommentary[895] = ""
+
+--~ LT_Question[896] = ""
+--~ LT_Answer[896] = ""
+--~ LT_QuestionCommentary[896] = ""
+
+--~ LT_Question[897] = ""
+--~ LT_Answer[897] = ""
+--~ LT_QuestionCommentary[897] = ""
+
+--~ LT_Question[898] = ""
+--~ LT_Answer[898] = ""
+--~ LT_QuestionCommentary[898] = ""
+
+--~ LT_Question[899] = ""
+--~ LT_Answer[899] = ""
+--~ LT_QuestionCommentary[899] = ""
+
