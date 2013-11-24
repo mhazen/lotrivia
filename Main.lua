@@ -13,21 +13,20 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 	A Plug In for hosting trivia games in
 	Lord Of The Rings Online
+
 --]]
 
 
 --[[
-
 	To-Do List:
+
 	Known Bugs:
-		When Ask Question, clear Accept Answer aliases
-		Ask question after end of game, crash client
 
 --]]
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
-debug = true
+debug = false
 
 	-- Initialize plugin constants
 	--
@@ -260,9 +259,7 @@ debug = true
 
 	helpText = [[Commands
  /lt help -- this message
- /lt guesses -- lists the guesses made on the current question
  /lt options -- shows the options window
- /lt resetanswers -- clears answers from all players for the current question
  /lt show -- shows game windows (if you close one by accident)
  Plugin can be unloaded with /plugins "unload lotrivia".
  ----
@@ -847,6 +844,9 @@ Report Bugs on LotroInterface.com
 			if (gameActive) then
 				questionActive=true;
 
+				-- Clear any residual accept answer aliases
+				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+
 				-- Add the current question to the used questions pile
 				usedQuestions[#usedQuestions+1] = questionId;
 
@@ -882,7 +882,7 @@ Report Bugs on LotroInterface.com
 			elseif (not gameActive) then
 				return;
 			else
-				pickQuestion();
+				preparekQuestion();
 			end
 		end
 
@@ -1011,10 +1011,6 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept_sel.jpg")
 
---[[			ltprint("game active: " .. string.format("%s\n", tostring(gameActive)))
-			ltprint("question active: " .. string.format("%s\n", tostring(questionActive)))
---]]
-
 			if (gameActive and questionActive) then
 				if (answeringPlayer ~= nil) then
 					stopCountdown();
@@ -1064,7 +1060,7 @@ Report Bugs on LotroInterface.com
 			if (gameActive and questionActive) then
 				stopCountdown();
 				-- Since we're revealing the current question, pick a new question
-				pickQuestion();
+				prepareQuestion();
 				questionActive=false;
 				self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
 			end
@@ -1414,7 +1410,8 @@ Report Bugs on LotroInterface.com
 
 
 	-- prepares another question, unless we don't need more questions
-	-- (end of game)
+	-- (i.e. end of game)
+	--
 	function prepareQuestion()
 		if (#usedQuestions < lotrivia.config.questionsPerRound) then
 			pickQuestion();
@@ -1424,6 +1421,11 @@ Report Bugs on LotroInterface.com
 			ltprint("Game completed!");
 			gameActive = false;
 			questionActive = false;
+
+			-- Clear aliases
+			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- reset the Start Game button TextBox
 			myGame.gamestateButton:SetText("Start Game");
@@ -1517,10 +1519,8 @@ Report Bugs on LotroInterface.com
 	Turbine.Shell.AddCommand( "lotrivia;lt", myCommand)
 
 
-
-
 	-- Parse received chat
-
+	--
 	function Turbine.Chat.Received(chatfunc, chatargs)
 		local msgKey = ""
 		local msgVal = ""
@@ -1608,9 +1608,16 @@ Report Bugs on LotroInterface.com
 	-- Function to pick a question we haven't used yet
 	--
 	function pickQuestion()
+
+		-- sanity check to avoid an infinite loop
+		if (#LT_Question == #usedQuestions) then
+			ltprint("Uh Oh! You have used all your questions but somehow the the game thinks you should be picking another.")
+			return;
+		end
+
 		local q = math.random(#LT_Question)
 		questionId = nextFree(q)
-	ltprint("Going with " ..questionId)
+
 		-- Update the game window
 		myGame.questionText:SetText(LT_Question[questionId]);
 		myGame.answerText:SetText(LT_Answer[questionId]);
@@ -1633,12 +1640,10 @@ Report Bugs on LotroInterface.com
 
 	end
 
+	-- Get the next free question following the passed index.
+	-- If the search surpasses the question pool length, it will wrap around.
+	--
 	function nextFree(x)
-		-- Get the next free question from a passed number.
-		-- If the question has been used, the index will be incremented.
-		-- If the index surpasses the question pool length, it will wrap around.
-		ltprint("Checking " .. x);
-
 		for _,v in pairs(usedQuestions) do
 			if v==x then
 				-- We've already seen x
@@ -1685,6 +1690,8 @@ Report Bugs on LotroInterface.com
 	end
 
 
+	-- Sort, redraw the scores
+	--
 	function scoresWindow:updateList()
 
 		local scoreRL = {}
@@ -1736,7 +1743,7 @@ Report Bugs on LotroInterface.com
 
 			table.sort(sortedScores, cmpScore)
 
-			-- Add tie markers to the table as well
+			-- Add "tie" markers to the table as well
 			for i=1,#sortedScores do
 				if (i>1 and i<#sortedScores and sortedScores[i][2]==sortedScores[i+1][2]) then
 					 sortedScores[i][3] = tieColor .. " (tie)</rgb>"
@@ -1775,7 +1782,7 @@ Report Bugs on LotroInterface.com
 				end
 
 			else
-				-- Less than three scores, so use all
+				-- Less than three scores, so use all scores in top 3
 				announceTopThreeText = announceAllText
 			end
 
@@ -1835,16 +1842,6 @@ Report Bugs on LotroInterface.com
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,acceptText))
 	end
 
---[[~ 	-- Gets the numerical index of a specific channel in the channelNames list
-~~~~~ 	--
-~~~~~ 	function getChannelIndex(x)
-~~~~~ 		for k, v in pairs(channelNames) do
-~~~~~ 			if v == x then
-~~~~~ 				return k
-~~~~~ 			end
-~~~~~ 		end
-~~~~~ 	end
-~--]]
 
 	-- Make sure we have enough questions loaded to play a game of the desired length
 	--
