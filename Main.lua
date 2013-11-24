@@ -7,7 +7,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 
-	LOTrivia 1.0.18
+	LOTrivia 1.0.19
 	Written by Carentil of Windfola
 	email: lotrocare@gmail.com
 
@@ -19,23 +19,20 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 	To-Do List:
-		- See if I can use the Turbine.ChatType.UserChat1 sort of enumerations along
-		  with the received args from messages to parse chat differently, in order to get userchats working
 		- Add a clickable icon to hide and show the game and scores windows
-			- close Scores when closing game window
 	Known Bugs:
 
 --]]
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
-debug = true
+debug = false
 
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
 	lotrivia.config = {}
-	lotrivia.version = "1.0.18"
+	lotrivia.version = "1.0.19"
 	lotrivia.majorVersion = "1.0"
 
 	-- configuration defaults
@@ -1351,6 +1348,16 @@ Report Bugs on LotroInterface.com
 			self.answerText:SetText( "Answers will be shown here." )
 			self.guessesListBox:ClearItems();
 		end
+
+
+		-- function to handle things when closed by the "x"
+		--
+		function self:Closed( sender, args )
+			-- hide other windows if closed
+			myOptions:SetVisible( false );
+			myScores:SetVisible( false );
+		end
+
 
 		-- function to set up the reveal Answer alias
 		--
