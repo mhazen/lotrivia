@@ -7,7 +7,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 
-	LOTrivia 1.0.14
+	LOTrivia 1.0.15
 	Written by Carentil of Windfola
 	email: lotrocare@gmail.com
 
@@ -21,24 +21,26 @@ import "Carentil.LOTRivia.Resources.Questions";
 	To-Do List:
 		- See if I can use the Turbine.ChatType.UserChat1 sort of enumerations along
 		  with the received args from messages to parse chat differently, in order to get userchats working
-
+		- Add a clickable icon to hide and show the game and scores windows
+			- close Scores when closing game window
 	Known Bugs:
 
 --]]
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
-debug = false
+debug = true
 
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
 	lotrivia.config = {}
-	lotrivia.version = "1.0.14"
+	lotrivia.version = "1.0.15"
+	lotrivia.majorVersion = "1.0"
 
 	-- configuration defaults
 	--
-	lotrivia.config.sendToChannel = "Kinship"
+	lotrivia.config.channel = "Kinship"
 	lotrivia.config.questionsPerRound = 15
 	lotrivia.config.timePerQuestion = 30
 	lotrivia.config.timed = true
@@ -136,6 +138,7 @@ debug = false
 	-- handler for plugin unload event
 	--
 	function unloadHandler()
+		RemoveCallback(Turbine.Chat, "Received", parseChat)
 		-- Clear out global data
 		_G.LT_Question = nil;
 		_G.LT_Answer = nil;
@@ -150,7 +153,7 @@ debug = false
 			return
 		end
 
-		lotrivia.config.sendToChannel = LT_loaded[1]
+		lotrivia.config.channel = LT_loaded[1]
 		lotrivia.config.questionsPerRound = LT_loaded[2]
 		lotrivia.config.timePerQuestion = LT_loaded[3]
 		lotrivia.config.timed = LT_loaded[4]
@@ -159,7 +162,7 @@ debug = false
 
 	function LT_saveOptions()
 		local LT_saveData = {
-			lotrivia.config.sendToChannel,
+			lotrivia.config.channel,
 			lotrivia.config.questionsPerRound,
 			lotrivia.config.timePerQuestion,
 			lotrivia.config.timed,
@@ -197,41 +200,82 @@ debug = false
 
 --	channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
 
+--[[~ 	channels = {
+~~~~~ 		["Kinship"] = {
+~~~~~ 					["to"] = "[To Kinship]",
+~~~~~ 					["from"] = "[Kinship]",
+~~~~~ 					["cmd"] = "/k",
+~~~~~ 					["match"] = "%[Kinship%]",
+~~~~~ 					["to_match"] = "%[To Kinship%]"
+~~~~~ 					},
+~~~~~ 		["Fellowship"] = {
+~~~~~ 					["to"] = "[To Fellowship]",
+~~~~~ 					["from"] = "[Fellowship]",
+~~~~~ 					["cmd"] = "/f",
+~~~~~ 					["to_match"] = "%[To Fellowship%]",
+~~~~~ 					["match"] = "%[Fellowship%]"
+~~~~~ 					},
+~~~~~ 		["Raid"] = {
+~~~~~ 					["to"] = "[To Raid]",
+~~~~~ 					["from"] = "[Raid]",
+~~~~~ 					["cmd"] = "/ra",
+~~~~~ 					["to_match"] = "%[To Raid%]",
+~~~~~ 					["match"] = "%[Raid%]"
+~~~~~ 					},
+~~~~~ 		["Officer"] = {
+~~~~~ 					["to"] = "[To Officer]",
+~~~~~ 					["from"] = "[Officer]",
+~~~~~ 					["cmd"] = "/o",
+~~~~~ 					["to_match"] = "%[To Officer%]",
+~~~~~ 					["match"] = "%[Officer%]"
+~~~~~ 					},
+~~~~~ 		["Regional"] = {
+~~~~~ 					["to"] = "[To Regional]",
+~~~~~ 					["from"] = "[Regional]",
+~~~~~ 					["cmd"] = "/regional",
+~~~~~ 					["to_match"] = "%[To Regional%]",
+~~~~~ 					["match"] = "%[Regional%]"
+~~~~~ 					}
+~~~~~ 		}
+~~~~~
+~--]]
+
 	channels = {
 		["Kinship"] = {
-					["to"] = "[To Kinship]",
-					["from"] = "[Kinship]",
-					["cmd"] = "/k",
-					["match"] = "%[Kinship%]",
-					["to_match"] = "%[To Kinship%]"
+					["channelId"] = Turbine.ChatType.Kinship ,
+					["cmd"] = "/k ",
 					},
 		["Fellowship"] = {
-					["to"] = "[To Fellowship]",
-					["from"] = "[Fellowship]",
-					["cmd"] = "/f",
-					["to_match"] = "%[To Fellowship%]",
-					["match"] = "%[Fellowship%]"
+					["cmd"] = "/f ",
+					["channelId"] = Turbine.ChatType.Fellowship ,
 					},
 		["Raid"] = {
-					["to"] = "[To Raid]",
-					["from"] = "[Raid]",
-					["cmd"] = "/ra",
-					["to_match"] = "%[To Raid%]",
-					["match"] = "%[Raid%]"
+					["cmd"] = "/ra ",
+					["channelId"] = Turbine.ChatType.Raid ,
 					},
 		["Officer"] = {
-					["to"] = "[To Officer]",
-					["from"] = "[Officer]",
-					["cmd"] = "/o",
-					["to_match"] = "%[To Officer%]",
-					["match"] = "%[Officer%]"
+					["cmd"] = "/o ",
+					["channelId"] = Turbine.ChatType.Officer ,
 					},
 		["Regional"] = {
-					["to"] = "[To Regional]",
-					["from"] = "[Regional]",
-					["cmd"] = "/regional",
-					["to_match"] = "%[To Regional%]",
-					["match"] = "%[Regional%]"
+					["cmd"] = "/regional ",
+					["channelId"] = Turbine.ChatType.Regional ,
+					},
+		["UserChat 1"] = {
+					["cmd"] = "/1 ",
+					["channelId"] = Turbine.ChatType.UserChat1 ,
+					},
+		["UserChat 2"] = {
+					["cmd"] = "/2 ",
+					["channelId"] = Turbine.ChatType.UserChat2 ,
+					},
+		["UserChat 3"] = {
+					["cmd"] = "/3 ",
+					["channelId"] = Turbine.ChatType.UserChat3 ,
+					},
+		["UserChat 4"] = {
+					["cmd"] = "/4 ",
+					["channelId"] = Turbine.ChatType.UserChat4 ,
 					}
 		}
 
@@ -354,11 +398,11 @@ Report Bugs on LotroInterface.com
 
 
 		-- Channel Selection Control
-		self.channelSelection = DropDown.Create(channelNames(),lotrivia.config.sendToChannel);
+		self.channelSelection = DropDown.Create(channelNames(),lotrivia.config.channel);
 		self.channelSelection:SetParent(self);
 		self.channelSelection:SetPosition(20,144)
 		self.channelSelection:SetVisible(true);
-		self.channelSelection:SetText(lotrivia.config.sendToChannel);
+		self.channelSelection:SetText(lotrivia.config.channel);
 
 		-- Channel Selection Label
 		self.channelSelection_label = Turbine.UI.Label();
@@ -471,10 +515,10 @@ Report Bugs on LotroInterface.com
 			end
 
 			-- save channel choice option
-			lotrivia.config.sendToChannel = self.channelSelection:GetText();
+			lotrivia.config.channel = self.channelSelection:GetText();
 
 			-- update the game panel's Send Rules action to match the saved channel
-			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. rulesText))
+			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.channel]["cmd"] .. " " .. rulesText))
 
 
 
@@ -759,7 +803,7 @@ Report Bugs on LotroInterface.com
 		Turbine.UI.Lotro.Window.Constructor(self);
 
 		self:SetPosition(Turbine.UI.Display:GetWidth()/2-300,Turbine.UI.Display:GetHeight()/2-400);
-		self:SetText("LOTRivia " .. lotrivia.version);
+		self:SetText("LOTRivia " .. lotrivia.majorVersion);
 		self:SetSize(600, 600);
 
 		-- plugin unload handler
@@ -1013,7 +1057,11 @@ Report Bugs on LotroInterface.com
 		self.acceptAlias.MouseUp=function()
 			self.acceptAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/accept_sel.jpg")
 
-			if (gameActive and questionActive) then
+		-- disabled the next check for the time being, so that points can be awarded after the timer is done
+		-- or the game is over. The check for answeringPlayer will prevent double point awards, but not
+		-- reannouncing the player who got it.
+		--
+		--	if (gameActive and questionActive) then
 				if (answeringPlayer ~= nil) then
 					stopCountdown();
 					awardPoints();
@@ -1021,7 +1069,7 @@ Report Bugs on LotroInterface.com
 					-- Clear the reveal text
 					self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 				end
-			end
+		--	end -- end of disabled gameActive/questionActive test
 		end
 
 		-- pseudo-button for reveal answer
@@ -1234,7 +1282,12 @@ Report Bugs on LotroInterface.com
 		self.gamestateButton:SetVisible(true)
 
 		self.optionsButton.MouseUp = function(sender,args)
-			myOptions:SetVisible(not myOptions:IsVisible())
+			-- No changing the options during a question
+			if (questionActive) then
+				ltprint(ltColor.orange .. "You cannot edit options while a question is active.</rgb>")
+			else
+				myOptions:SetVisible(not myOptions:IsVisible())
+			end
 		end
 
 		self.scoresButton.MouseUp = function(sender,args)
@@ -1308,7 +1361,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
-			sendText = channels[lotrivia.config.sendToChannel]["cmd"] .. " " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			sendText = channels[lotrivia.config.channel]["cmd"] .. " " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
 		-- Bind to reveal button
 		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
@@ -1346,7 +1399,7 @@ Report Bugs on LotroInterface.com
 		myOptions.timePerQuestion:SetText( lotrivia.config.timePerQuestion );
 		myOptions.questionsPerRound:SetText( lotrivia.config.questionsPerRound );
 
-		myOptions.channelSelection:SetText( lotrivia.config.sendToChannel )
+		myOptions.channelSelection:SetText( lotrivia.config.channel )
 
 		if (not lotrivia.config.timed) then
 				myOptions.timePerQuestion:SetEnabled(false)
@@ -1381,7 +1434,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			timeAnnounce = "/say"
 		else
-			timeAnnounce = channels[lotrivia.config.sendToChannel]["cmd"]
+			timeAnnounce = channels[lotrivia.config.channel]["cmd"]
 		end
 
 		timeAnnounce = timeAnnounce .. " " .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
@@ -1436,7 +1489,7 @@ Report Bugs on LotroInterface.com
 	end
 
 	-- Set up Send Rules alias
-	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.sendToChannel]["cmd"] .. " " ..rulesText))
+	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.channel]["cmd"] .. " " ..rulesText))
 
 	-- Announce load to chat window
 	questionCount = "No questions loaded!"
@@ -1520,66 +1573,76 @@ Report Bugs on LotroInterface.com
 	--
 	Turbine.Shell.AddCommand( "lotrivia;lt", myCommand)
 
-
-	-- Parse received chat
+	-- Event handler for incoming chat. If the message is for the channel we're playing on
+	-- and isn't extraneous (login/logpff messages, things sent from this user) then
+	-- we call addToGuesses() to make the player's answer available to accept.
 	--
-	function Turbine.Chat.Received(chatfunc, chatargs)
-		local msgKey = ""
-		local msgVal = ""
-		local currMessage = ""
-		local currType = 0
-		local currSender = ""
+	function parseChat(chatfunc, received)
 
-		for msgKey,msgVal in pairs(chatargs) do
-
-			if (msgKey=="Message") then
-
-				-- Remove XML elements
-				msgVal = string.gsub(tostring(msgVal), "<[^>]+>",'')
-
-
-				-- Note: Kinship messages  also include login notifications which do
-				-- NOT start with "[Kinship]", hence we have to search for the entire
-				-- format from a normal message.
-
-				local channelNameStart,channelNameEnd = string.find(msgVal,channels[lotrivia.config.sendToChannel]["match"])
-
-				if (channelNameStart ~= nil ) then
-					-- The current text was from our trivia channel
-
-
-					-- Strip out any leading text (timestamps, if there) the channel name, and eol
-					local channelStrippedMessage = string.sub(msgVal,channelNameEnd+2)
-					channelStrippedMessage = string.gsub(channelStrippedMessage,"\n",'')
-
-					-- Now, the message looks something like this:
-					-- <Select:IID:0x0206000000FFFFFFF>Joeschmoe<\Select>: Message Text Here"
-
-					-- Grab sender and message
-					currSender,currMessage = string.match(channelStrippedMessage,"(%a+):%s(.+)")
-
-					-- Save the sender's message but only if they don't currently have one stored
-					if (storedAnswers[currSender] == nil) then
-						storedAnswers[currSender] = currMessage
-						haveStoredAnswers = true
-						-- push the answer to the answers listbox, but only if there's an active question
-						--
-						if (questionActive) then
-							addToGuesses(currSender,currMessage);
-						end
-					end
-
-				end
-
-
-			elseif (msgKey=="ChatType") then
-				currType=tonumber(msgVal)
-			end
-
-
+		-- Continue only for the current channel we're watching
+		--
+		if (received["ChatType"] ~= channels[lotrivia.config.channel]["channelId"]) then
+			return;
 		end
 
-	end
+		-- Strip out any leading text (timestamps, if there) the channel name, and EOLs
+		--
+		-- [11/24 01:35:15 PM] [glff] Forestgreenthumb: blah blah blah
+		-- first, find the start and end positions of the channel name
+
+		-- Strip off a leading timestamp, if there is one
+		local pattern = "^[%d+/%d+%s+[%d:%s]+%a%a] "
+
+		_ = string.gsub(tostring(received["Message"]), "<[^>]+>",'')
+
+		-- grab the positions of the channel header
+		--
+		pattern = "%[%a+%] "
+		local channelHeaderStart,channelHeaderEnd = string.find(_,pattern)
+
+		-- Skip any "gone offline" or "come online" messages. These do not have the channel banner,
+		-- so they won't have a start and end. This will also bypass messages sent from the player.
+		-- The latter works because s apce ("To Kinship") isn't included in the pattern. If Turbine
+		-- ever changes this, I hope they give us a method to retrieve a channel's name or I can't
+		-- do user channels easily.
+		--
+		if (channelHeaderStart == nil ) then
+			if (debug) then
+				ltprint("skipping extraneous in-channel message")
+			end
+			return;
+		end
+
+		-- Chop the header out
+		_ = string.sub( _, channelHeaderEnd )
+
+		-- Strip XML and color formatting
+		_ = string.gsub(_, "<[^>]+>",'')
+
+		-- Strip linefeeds
+		_ = string.gsub(_, "\n",'')
+
+		-- get the sender and the chat text
+		local sender,message = string.match(_,"(%a+):%s(.+)")
+
+		-- Save the sender's message but only if they don't currently have one stored
+		--
+		if (storedAnswers[sender] == nil) then
+			storedAnswers[sender] = message
+			haveStoredAnswers = true
+			-- push the answer to the answers listbox, but only if there's an active question
+			--
+			if (questionActive) then
+				addToGuesses(sender,message);
+			end
+		end
+
+	end -- end of function parseChat()
+
+
+	-- Add in our chat processing callback
+	--
+	AddCallback(Turbine.Chat, "Received", parseChat)
 
 
 	-- Add an item to the game guesses listbox
@@ -1628,7 +1691,7 @@ Report Bugs on LotroInterface.com
 		--
 		if (gameActive) then
 
-			sendQuestion = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
+			sendQuestion = channels[lotrivia.config.channel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
 
 			if (debug) then
 				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say " ..sendQuestion))
@@ -1792,8 +1855,8 @@ Report Bugs on LotroInterface.com
 				announceAllText = "/say Scores: " .. announceAllText
 				announceTopThreeText = "/say Top Scorers: " .. announceTopThreeText
 			else
-				announceAllText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Scores: " .. announceAllText
-				announceTopThreeText = channels[lotrivia.config.sendToChannel]["cmd"] .. " Top Scorers: " .. announceTopThreeText
+				announceAllText = channels[lotrivia.config.channel]["cmd"] .. " Scores: " .. announceAllText
+				announceTopThreeText = channels[lotrivia.config.channel]["cmd"] .. " Top Scorers: " .. announceTopThreeText
 			end
 
 			-- set score window pseudo-button aliases
@@ -1835,7 +1898,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			acceptText = "/say"
 		else
-			acceptText = channels[lotrivia.config.sendToChannel]["cmd"]
+			acceptText = channels[lotrivia.config.channel]["cmd"]
 		end
 
 		acceptText = acceptText .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
