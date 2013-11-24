@@ -639,7 +639,7 @@ LT_Question[157] = "Who was the Steward of Gondor during the War of the Ring?"
 LT_Answer[157] = "Denethor II"
 LT_QuestionCommentary[157] = ""
 
-LT_Question[158] = "Who were the sons of Denethor II, the Stweard of GOndor?"
+LT_Question[158] = "Who were the sons of Denethor II, the Steward of GOndor?"
 LT_Answer[158] = "Boromir and Faramir"
 LT_QuestionCommentary[158] = ""
 
@@ -3207,7 +3207,7 @@ LT_Question[799] = "What ratings-based stat directly reduces the resistance of m
 LT_Answer[799] = "Finesse"
 LT_QuestionCommentary[799] = ""
 
-LT_Question[800] = "What race and class has the highest morale at level one?"
-LT_Answer[800] = "Hobbit Guardian (252)."
+LT_Question[800] = "What race and class has the highest Morale at level one?"
+LT_Answer[800] = "Hobbit Guardian (252 Morale)."
 LT_QuestionCommentary[800] = ""
 

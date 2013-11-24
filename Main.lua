@@ -19,14 +19,15 @@ import "Carentil.LOTRivia.Resources.Questions";
 --[[
 
 	To-Do List:
-		add a timer to clear the acceptAlias text after a few Updates
 	Known Bugs:
+		When Ask Question, clear Accept Answer aliases
+		Ask question after end of game, crash client
 
 --]]
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
-debug = false
+debug = true
 
 	-- Initialize plugin constants
 	--
@@ -180,6 +181,8 @@ debug = false
 		countdownTime = 0;
 	end
 
+	setUpDataStores();
+
 	-- returns a sorted list of channel names
 	--
 	function channelNames()
@@ -190,8 +193,6 @@ debug = false
 		table.sort(tmpTable)
 		return tmpTable
 	end
-
-	setUpDataStores();
 
 --	channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
 
@@ -263,7 +264,11 @@ debug = false
  /lt options -- shows the options window
  /lt resetanswers -- clears answers from all players for the current question
  /lt show -- shows game windows (if you close one by accident)
- Plugin can be unloaded with /plugins "unload lotrivia"]]
+ Plugin can be unloaded with /plugins "unload lotrivia".
+ ----
+ To play: Click "Start Game", and either Ask the chosen question, or skip it.
+ To accept an answer from a player, click it in the "Current Guesses" panel and then click "Accept Answer."
+ If no one answers in time, or you wish to cut a question short, click "Reveal Answer".]]
 
 	creditsText = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
 
@@ -276,9 +281,6 @@ Report Bugs on LotroInterface.com
 3. Accepting abbreviations or mispellings is up to the quizmaster's discretion.
 4. The quizmaster may award extra points for harder questions.</rgb>
 ]]
-
-
-
 
 
 -- Window Classes
@@ -1608,6 +1610,7 @@ Report Bugs on LotroInterface.com
 	function pickQuestion()
 		local q = math.random(#LT_Question)
 		questionId = nextFree(q)
+	ltprint("Going with " ..questionId)
 		-- Update the game window
 		myGame.questionText:SetText(LT_Question[questionId]);
 		myGame.answerText:SetText(LT_Answer[questionId]);
@@ -1619,7 +1622,7 @@ Report Bugs on LotroInterface.com
 			sendQuestion = channels[lotrivia.config.sendToChannel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
 
 			if (debug) then
-				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say testing"))
+				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say " ..sendQuestion))
 			else
 				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendQuestion))
 			end
@@ -1632,17 +1635,21 @@ Report Bugs on LotroInterface.com
 
 	function nextFree(x)
 		-- Get the next free question from a passed number.
-		-- If the question has been used, it will be incremented.
-		-- If the increment surpasses the question pool, it will wrap around.
-		if (usedQuestions[x] ~= nil) then
-			x = x+1
-			if ( x > #LT_Question ) then
-				x = 1
+		-- If the question has been used, the index will be incremented.
+		-- If the index surpasses the question pool length, it will wrap around.
+		ltprint("Checking " .. x);
+
+		for _,v in pairs(usedQuestions) do
+			if v==x then
+				-- We've already seen x
+				x = x+1
+
+				if ( x > #LT_Question ) then
+					x = 1
+				end
+				x=nextFree(x)
 			end
-		else
-			return x
 		end
-		nextFree(x)
 		return x
 	end
 
