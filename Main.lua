@@ -283,7 +283,7 @@ debug = false
  To accept an answer from a player, click it in the "Current Guesses" panel and then click "Accept Answer."
  If no one answers in time, or you wish to cut a question short, click "Reveal Answer".]]
 
-	creditsText = [[written by Carentil of Windfola. Uses Galuhad's Dropdown Library. Thanks go to the members of LotroInterface.com for all of the feedback. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
+	creditsText = [[written by Carentil of Windfola. Uses Galuhad's Dropdown Library. Thanks to the members of LotroInterface.com for all of the feedback. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
 
 Report Bugs on LotroInterface.com
 ]]
