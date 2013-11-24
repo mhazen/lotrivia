@@ -7,7 +7,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 
-	LOTrivia 1.0
+	LOTrivia 1.0.14
 	Written by Carentil of Windfola
 	email: lotrocare@gmail.com
 
@@ -32,7 +32,7 @@ debug = false
 	--
 	lotrivia = {}
 	lotrivia.config = {}
-	lotrivia.version = "1.0"
+	lotrivia.version = "1.0.14"
 
 	-- configuration defaults
 	--
