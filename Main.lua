@@ -3,11 +3,12 @@ import "Turbine.UI.Lotro";
 import "Carentil.LOTRivia.DropDown";
 import "Carentil.LOTRivia.Type";
 import "Carentil.LOTRivia.Class";
+import "Carentil.LOTRivia.ToggleWindow";
 import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 
-	LOTrivia 1.0.19
+	LOTrivia
 	Written by Carentil of Windfola
 	email: lotrocare@gmail.com
 
@@ -19,33 +20,22 @@ import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
 	To-Do List:
-		- Add a clickable icon to hide and show the game and scores windows
-	Known Bugs:
 
+	Known Bugs:
 --]]
+
 
 -- Debug flag: Prevents asking of questions and announcing answer accepts in chat
 --
 debug = false
 
+
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
-	lotrivia.config = {}
-	lotrivia.version = "1.0.19"
+	lotrivia.version = "1.0.24"
 	lotrivia.majorVersion = "1.0"
 
-	-- configuration defaults
-	--
-	lotrivia.config.channel = "Kinship"
-	lotrivia.config.questionsPerRound = 15
-	lotrivia.config.timePerQuestion = 30
-	lotrivia.config.timed = true
-	lotrivia.config.showRules = true
-
-
-	-- Early functions are defined here.
-	--
 
 	-- Local print wrapper
 	--
@@ -136,6 +126,10 @@ debug = false
 	--
 	function unloadHandler()
 		RemoveCallback(Turbine.Chat, "Received", parseChat)
+
+		-- save the options
+		saveOptions();
+
 		-- Clear out global data
 		_G.LT_Question = nil;
 		_G.LT_Answer = nil;
@@ -144,31 +138,52 @@ debug = false
 
 	-- Load saved configuration
 	--
-	function LT_loadOptions(LT_loaded)
+	function loadOptions(LT_loaded)
 
-		if (LT_loaded == nil) then
-			return
-		end
+		local gwl = Turbine.UI.Display:GetWidth()/2-300
+		local gwt= Turbine.UI.Display:GetHeight()/2-400
 
-		lotrivia.config.channel = LT_loaded[1]
-		lotrivia.config.questionsPerRound = LT_loaded[2]
-		lotrivia.config.timePerQuestion = LT_loaded[3]
-		lotrivia.config.timed = LT_loaded[4]
-		lotrivia.config.showRules = LT_loaded[5]
+		-- configuration defaults
+		--
+		settingsDefaults = {
+			channel = "Kinship",
+			questionsPerRound = 15,
+			timePerQuestion = 30,
+			gameVisible = true,
+			timed = true,
+			showRules = true,
+			gameWindowLeft = gwl,
+			gameWindowTop = gwt,
+			scoresWindowLeft = gwl+620,
+			scoresWindowTop = gwt+10,
+			ToggleTop = 400,
+			ToggleLeft = Turbine.UI.Display.GetWidth()-55
+		}
+
+		Settings = Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings") or settingsDefaults
 	end
 
-	function LT_saveOptions()
-		local LT_saveData = {
-			lotrivia.config.channel,
-			lotrivia.config.questionsPerRound,
-			lotrivia.config.timePerQuestion,
-			lotrivia.config.timed,
-			lotrivia.config.showRules }
-		Turbine.PluginData.Save( Turbine.DataScope.Account, "LOTRiviaSettings", LT_saveData )
-		ltprint("Options saved.")
+	loadOptions();
+
+	function saveOptions()
+		-- Get the window positions
+		Settings.gameVisible = myGame:IsVisible();
+		Settings.gameWindowLeft = tonumber(myGame:GetLeft());
+		Settings.gameWindowTop = tonumber(myGame:GetTop());
+		Settings.scoresWindowLeft = tonumber(myScores:GetLeft());
+		Settings.scoresWindowTop = tonumber(myScores:GetTop());
+		Settings.ToggleTop = tonumber(myToggle:GetTop());
+		Settings.ToggleLeft = tonumber(myToggle:GetLeft());
+
+		Turbine.PluginData.Save( Turbine.DataScope.Account, "LOTRiviaSettings", Settings, function( status, errmsg )
+			if ( status ) then
+				ltprint("Options saved.");
+			else
+				ltprint("Options could not be saved: " .. errmsg )
+			end
+		end)
 	end
 
-	Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", LT_loadOptions)
 
 	function setUpDataStores()
 		storedAnswers = {}
@@ -194,48 +209,6 @@ debug = false
 		table.sort(tmpTable)
 		return tmpTable
 	end
-
---	channelNames = {"Kinship","Fellowship","Raid","Officer","Regional"}
-
---[[~ 	channels = {
-~~~~~ 		["Kinship"] = {
-~~~~~ 					["to"] = "[To Kinship]",
-~~~~~ 					["from"] = "[Kinship]",
-~~~~~ 					["cmd"] = "/k",
-~~~~~ 					["match"] = "%[Kinship%]",
-~~~~~ 					["to_match"] = "%[To Kinship%]"
-~~~~~ 					},
-~~~~~ 		["Fellowship"] = {
-~~~~~ 					["to"] = "[To Fellowship]",
-~~~~~ 					["from"] = "[Fellowship]",
-~~~~~ 					["cmd"] = "/f",
-~~~~~ 					["to_match"] = "%[To Fellowship%]",
-~~~~~ 					["match"] = "%[Fellowship%]"
-~~~~~ 					},
-~~~~~ 		["Raid"] = {
-~~~~~ 					["to"] = "[To Raid]",
-~~~~~ 					["from"] = "[Raid]",
-~~~~~ 					["cmd"] = "/ra",
-~~~~~ 					["to_match"] = "%[To Raid%]",
-~~~~~ 					["match"] = "%[Raid%]"
-~~~~~ 					},
-~~~~~ 		["Officer"] = {
-~~~~~ 					["to"] = "[To Officer]",
-~~~~~ 					["from"] = "[Officer]",
-~~~~~ 					["cmd"] = "/o",
-~~~~~ 					["to_match"] = "%[To Officer%]",
-~~~~~ 					["match"] = "%[Officer%]"
-~~~~~ 					},
-~~~~~ 		["Regional"] = {
-~~~~~ 					["to"] = "[To Regional]",
-~~~~~ 					["from"] = "[Regional]",
-~~~~~ 					["cmd"] = "/regional",
-~~~~~ 					["to_match"] = "%[To Regional%]",
-~~~~~ 					["match"] = "%[Regional%]"
-~~~~~ 					}
-~~~~~ 		}
-~~~~~
-~--]]
 
 	channels = {
 		["Kinship"] = {
@@ -310,7 +283,7 @@ debug = false
  To accept an answer from a player, click it in the "Current Guesses" panel and then click "Accept Answer."
  If no one answers in time, or you wish to cut a question short, click "Reveal Answer".]]
 
-	creditsText = [[written by Carentil of Windfola. Dropdown Library by Galuhad, and thanks to Garan for troubleshooting. Questions collected by members of The Oathsworn of Windfola. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
+	creditsText = [[written by Carentil of Windfola. Uses Galuhad's Dropdown Library. Thanks go to the members of LotroInterface.com for all of the feedback. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
 
 Report Bugs on LotroInterface.com
 ]]
@@ -395,11 +368,11 @@ Report Bugs on LotroInterface.com
 
 
 		-- Channel Selection Control
-		self.channelSelection = DropDown.Create(channelNames(),lotrivia.config.channel);
+		self.channelSelection = DropDown.Create(channelNames(), Settings.channel);
 		self.channelSelection:SetParent(self);
 		self.channelSelection:SetPosition(20,144)
 		self.channelSelection:SetVisible(true);
-		self.channelSelection:SetText(lotrivia.config.channel);
+		self.channelSelection:SetText(Settings.channel);
 
 		-- Channel Selection Label
 		self.channelSelection_label = Turbine.UI.Label();
@@ -466,11 +439,11 @@ Report Bugs on LotroInterface.com
 		self.saveOptionsButton.MouseUp = function(sender,args)
 
 			-- save timed option
-			lotrivia.config.timed = self.timedCheckbox:IsChecked();
+			Settings.timed = self.timedCheckbox:IsChecked();
 
 			-- save timer length choice
 			if isPositiveNumber( self.timePerQuestion:GetText() ) then
-				lotrivia.config.timePerQuestion = tonumber( self.timePerQuestion:GetText() );
+				Settings.timePerQuestion = tonumber( self.timePerQuestion:GetText() );
 			else
 				ltprint(ltColor.orange .. "That's not a valid number of seconds per question.")
 				return;
@@ -480,7 +453,7 @@ Report Bugs on LotroInterface.com
 			if isPositiveNumber(self.questionsPerRound:GetText()) then
 
 				if ( tonumber( self.questionsPerRound:GetText() ) > #LT_Question ) then
-					ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
+					ltprint(ltColor.orange .. "You have set " .. Settings.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
 					return false
 				end
 
@@ -501,10 +474,10 @@ Report Bugs on LotroInterface.com
 				end
 
 
-				lotrivia.config.questionsPerRound = tonumber( self.questionsPerRound:GetText() );
+				Settings.questionsPerRound = tonumber( self.questionsPerRound:GetText() );
 
 				-- Also update the panel
-				myGame.questionsRemaining:SetText( lotrivia.config.questionsPerRound-#usedQuestions );
+				myGame.questionsRemaining:SetText( Settings.questionsPerRound-#usedQuestions );
 
 			else
 				ltprint(ltColor.orange .. "That's not a valid number of questions per round.")
@@ -512,15 +485,13 @@ Report Bugs on LotroInterface.com
 			end
 
 			-- save channel choice option
-			lotrivia.config.channel = self.channelSelection:GetText();
+			Settings.channel = self.channelSelection:GetText();
 
 			-- update the game panel's Send Rules action to match the saved channel
-			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.channel]["cmd"] .. " " .. rulesText))
-
-
+			myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[Settings.channel]["cmd"] .. rulesText))
 
 			self:SetVisible(false)
-			LT_saveOptions();
+			saveOptions();
 		end
 
 		function self:Closed( sender, args )
@@ -541,7 +512,7 @@ Report Bugs on LotroInterface.com
 	function scoresWindow:Constructor()
 		Turbine.UI.Lotro.Window.Constructor(self);
 
-		self:SetPosition(Turbine.UI.Display:GetWidth()-350,Turbine.UI.Display:GetHeight()/2-300);
+		self:SetPosition( Settings.scoresWindowLeft, Settings.scoresWindowTop );
 		self:SetText("LOTRivia Scores");
 
 		-- define child Elements
@@ -650,7 +621,7 @@ Report Bugs on LotroInterface.com
 		end
 
 
-		self:SetVisible(true);
+		self:SetVisible( Settings.gameVisible );
 		self:SetSize(270, 400);
 		self:SetMaximumSize(400,800);
 		self:SetMinimumSize(270,200);
@@ -799,7 +770,7 @@ Report Bugs on LotroInterface.com
 	function gameWindow:Constructor()
 		Turbine.UI.Lotro.Window.Constructor(self);
 
-		self:SetPosition(Turbine.UI.Display:GetWidth()/2-300,Turbine.UI.Display:GetHeight()/2-400);
+		self:SetPosition(Settings.gameWindowLeft, Settings.gameWindowTop )
 		self:SetText("LOTRivia " .. lotrivia.majorVersion);
 		self:SetSize(600, 600);
 
@@ -894,7 +865,7 @@ Report Bugs on LotroInterface.com
 				usedQuestions[#usedQuestions+1] = questionId;
 
 				-- Set up and start the countdown
-				countdownTime = tonumber(lotrivia.config.timePerQuestion);
+				countdownTime = tonumber(Settings.timePerQuestion);
 				AddCallback(myTimer,"TimeReached",timerEvent);
 				myTimer:SetTime(1,true);
 				self.timeRemaining:SetText(countdownTime);
@@ -1062,7 +1033,7 @@ Report Bugs on LotroInterface.com
 				if (answeringPlayer ~= nil) then
 					stopCountdown();
 					awardPoints();
-					self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+					self.questionsRemaining:SetText(Settings.questionsPerRound - #usedQuestions );
 					-- Clear the reveal text
 					self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
 				end
@@ -1109,7 +1080,7 @@ Report Bugs on LotroInterface.com
 				-- Since we're revealing the current question, pick a new question
 				prepareQuestion();
 				questionActive=false;
-				self.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+				self.questionsRemaining:SetText(Settings.questionsPerRound - #usedQuestions );
 			end
 		end
 
@@ -1139,7 +1110,7 @@ Report Bugs on LotroInterface.com
 		self.questionsRemaining:SetTextAlignment( Turbine.UI.ContentAlignment.MiddleCenter)
 		self.questionsRemaining:SetMultiline( true )
 		self.questionsRemaining:SetBackColor( Turbine.UI.Color(.1, .1, .1) )
-		self.questionsRemaining:SetText( lotrivia.config.questionsPerRound )
+		self.questionsRemaining:SetText( Settings.questionsPerRound )
 		self.questionsRemaining:SetVisible( true )
 		self.questionsRemaining:SetParent( self )
 
@@ -1368,16 +1339,15 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		else
-			sendText = channels[lotrivia.config.channel]["cmd"] .. " " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			sendText = channels[Settings.channel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
 		end
 		-- Bind to reveal button
 		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 		end
 
 		self:SetResizable(false);
-		self:SetVisible(true);
+		self:SetVisible( Settings.gameVisible );
 	end
-
 
 
 	-- function to compare scores when sorting out the top ranks
@@ -1402,30 +1372,16 @@ Report Bugs on LotroInterface.com
 	-- populate option controls to match config
 	--
 	function populateOptions()
-		myOptions.timedCheckbox:SetChecked( lotrivia.config.timed )
-		myOptions.timePerQuestion:SetText( lotrivia.config.timePerQuestion );
-		myOptions.questionsPerRound:SetText( lotrivia.config.questionsPerRound );
+		myOptions.timedCheckbox:SetChecked( Settings.timed )
+		myOptions.timePerQuestion:SetText( Settings.timePerQuestion );
+		myOptions.questionsPerRound:SetText( Settings.questionsPerRound );
 
-		myOptions.channelSelection:SetText( lotrivia.config.channel )
+		myOptions.channelSelection:SetText( Settings.channel )
 
-		if (not lotrivia.config.timed) then
+		if (not Settings.timed) then
 				myOptions.timePerQuestion:SetEnabled(false)
 		end
 	end
-
-
-
-
-	-- Instantiate Windows
-	--
-	myOptions = optionsWindow();
-	populateOptions();
-	myScores = scoresWindow();
-	myEdit = editWindow();
-	myGame = gameWindow()
-
-	-- Set up timer
-	myTimer = Timer();
 
 
 	-- countdown timer event
@@ -1439,12 +1395,12 @@ Report Bugs on LotroInterface.com
 		myGame.timeRemaining:SetText(countdownTime);
 
 		if (debug) then
-			timeAnnounce = "/say"
+			timeAnnounce = "/say "
 		else
-			timeAnnounce = channels[lotrivia.config.channel]["cmd"]
+			timeAnnounce = channels[Settings.channel]["cmd"]
 		end
 
-		timeAnnounce = timeAnnounce .. " " .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
+		timeAnnounce = timeAnnounce .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. countdownTime .. " seconds left!</rgb>"
 
 		myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
 
@@ -1466,37 +1422,11 @@ Report Bugs on LotroInterface.com
 			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- Update the question count
-			myGame.questionsRemaining:SetText(lotrivia.config.questionsPerRound - #usedQuestions );
+			myGame.questionsRemaining:SetText(Settings.questionsPerRound - #usedQuestions );
 		end
 	end
 
 
-	-- prepares another question, unless we don't need more questions
-	-- (i.e. end of game)
-	--
-	function prepareQuestion()
-		if (#usedQuestions < lotrivia.config.questionsPerRound) then
-			pickQuestion();
-		else
-			-- If we ARE at the max questions, reset the game window
-			myGame.resetGameWindow();
-			ltprint("Game completed!");
-			gameActive = false;
-			questionActive = false;
-
-			-- Clear aliases
-			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
-			myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
-			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
-
-			-- reset the Start Game button TextBox
-			myGame.gamestateButton:SetText("Start Game");
-
-		end
-	end
-
-	-- Set up Send Rules alias
-	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[lotrivia.config.channel]["cmd"] .. " " ..rulesText))
 
 	-- Announce load to chat window
 	questionCount = "No questions loaded!"
@@ -1557,10 +1487,10 @@ Report Bugs on LotroInterface.com
 			pickQuestion()
 
 		elseif (args=="save") then
-			LT_saveOptions()
+			saveOptions()
 
 		elseif (args=="load") then
-			Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", LT_loadOptions)
+			Settings = Turbine.PluginData.Load( Turbine.DataScope.Account, "LOTRiviaSettings", loadOptions)
 
 		elseif (args=="show") then
 			-- Unhide the game windows
@@ -1576,6 +1506,25 @@ Report Bugs on LotroInterface.com
 
 	end
 
+
+
+
+	-- Instantiate Windows
+	--
+	myOptions = optionsWindow();
+	populateOptions();
+	myScores = scoresWindow();
+	myEdit = editWindow();
+	myGame = gameWindow();
+	myToggle = Toggle();
+
+	-- Set up timer
+	myTimer = Timer();
+
+	-- Set up Send Rules alias
+	myGame.sendRulesAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,channels[Settings.channel]["cmd"] ..rulesText))
+
+
 	-- Add the shell command
 	--
 	Turbine.Shell.AddCommand( "lotrivia;lt", myCommand)
@@ -1588,7 +1537,7 @@ Report Bugs on LotroInterface.com
 
 		-- Continue only for the current channel we're watching
 		--
-		if (received["ChatType"] ~= channels[lotrivia.config.channel]["channelId"]) then
+		if (received["ChatType"] ~= channels[Settings.channel]["channelId"]) then
 			return;
 		end
 
@@ -1698,7 +1647,7 @@ Report Bugs on LotroInterface.com
 		--
 		if (gameActive) then
 
-			sendQuestion = channels[lotrivia.config.channel]["cmd"] .. " <rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
+			sendQuestion = channels[Settings.channel]["cmd"] .. "<rgb=#20FF20>Question " .. (#usedQuestions+1) .. ": </rgb><rgb=#D0A000>" .. LT_Question[questionId] .. "</rgb>"
 
 			if (debug) then
 				myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,"/say " ..sendQuestion))
@@ -1862,8 +1811,8 @@ Report Bugs on LotroInterface.com
 				announceAllText = "/say Scores: " .. announceAllText
 				announceTopThreeText = "/say Top Scorers: " .. announceTopThreeText
 			else
-				announceAllText = channels[lotrivia.config.channel]["cmd"] .. " Scores: " .. announceAllText
-				announceTopThreeText = channels[lotrivia.config.channel]["cmd"] .. " Top Scorers: " .. announceTopThreeText
+				announceAllText = channels[Settings.channel]["cmd"] .. "Scores: " .. announceAllText
+				announceTopThreeText = channels[Settings.channel]["cmd"] .. "Top Scorers: " .. announceTopThreeText
 			end
 
 			-- set score window pseudo-button aliases
@@ -1905,7 +1854,7 @@ Report Bugs on LotroInterface.com
 		if (debug) then
 			acceptText = "/say"
 		else
-			acceptText = channels[lotrivia.config.channel]["cmd"]
+			acceptText = channels[Settings.channel]["cmd"]
 		end
 
 		acceptText = acceptText .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
@@ -1921,8 +1870,8 @@ Report Bugs on LotroInterface.com
 		if (#LT_Question == nil) then
 			ltprint(ltColor.orange .. "Uh oh! No questions loaded!")
 			return false
-		elseif (lotrivia.config.questionsPerRound > #LT_Question) then
-			ltprint(ltColor.orange .. "You have set " .. lotrivia.config.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
+		elseif (Settings.questionsPerRound > #LT_Question) then
+			ltprint(ltColor.orange .. "You have set " .. Settings.questionsPerRound .. " questions per round, but you only have " .. #LT_Question .. " questions available. "  )
 			return false
 		end
 		return true
@@ -1948,3 +1897,26 @@ Report Bugs on LotroInterface.com
 		return true
 	end
 
+	-- prepares another question, unless we don't need more questions
+	-- (i.e. end of game)
+	--
+	function prepareQuestion()
+		if (#usedQuestions < Settings.questionsPerRound) then
+			pickQuestion();
+		else
+			-- If we ARE at the max questions, reset the game window
+			myGame.resetGameWindow();
+			ltprint("Game completed!");
+			gameActive = false;
+			questionActive = false;
+
+			-- Clear aliases
+			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+
+			-- reset the Start Game button TextBox
+			myGame.gamestateButton:SetText("Start Game");
+
+		end
+	end
