@@ -7,7 +7,6 @@ import "Carentil.LOTRivia.ToggleWindow";
 import "Carentil.LOTRivia.Resources.Questions";
 
 --[[
-
 	LOTrivia
 	Written by Carentil of Windfola
 	email: lotrocare@gmail.com
@@ -15,6 +14,8 @@ import "Carentil.LOTRivia.Resources.Questions";
 	A Plug In for hosting trivia games in
 	Lord Of The Rings Online
 
+	Thanks to Chiran, Garan, and Galuhad for the code
+	resources they provided which made this work easier.
 --]]
 
 
@@ -25,15 +26,14 @@ import "Carentil.LOTRivia.Resources.Questions";
 --]]
 
 
--- Debug flag: Prevents asking of questions and announcing answer accepts in chat
+-- Debug flag: Just to make my life simpler
 --
 debug = false
-
 
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
-	lotrivia.version = "1.0.24"
+	lotrivia.version = "1.0.26"
 	lotrivia.majorVersion = "1.0"
 
 
@@ -125,7 +125,9 @@ debug = false
 	-- handler for plugin unload event
 	--
 	function unloadHandler()
-		RemoveCallback(Turbine.Chat, "Received", parseChat)
+		if (Settings.timed ) then
+			RemoveCallback(Turbine.Chat, "Received", parseChat)
+		end
 
 		-- save the options
 		saveOptions();
@@ -283,7 +285,7 @@ debug = false
  To accept an answer from a player, click it in the "Current Guesses" panel and then click "Accept Answer."
  If no one answers in time, or you wish to cut a question short, click "Reveal Answer".]]
 
-	creditsText = [[written by Carentil of Windfola. Uses Galuhad's Dropdown Library. Thanks to the members of LotroInterface.com for all of the feedback. Books written by J.R.R. Tolkien. Movies directed by Peter Jackson. Ring forged by Sauron.
+	creditsText = [[written by Carentil of Windfola. Uses Galuhad's Dropdown Library, and ToggleWindow from Chiran. Thanks to the members of LotroInterface.com for all of the feedback. Books written by J.R.R. Tolkien, Movies directed by Peter Jackson, Ring forged by Sauron.
 
 Report Bugs on LotroInterface.com
 ]]
@@ -855,7 +857,10 @@ Report Bugs on LotroInterface.com
 		end
 		self.askAlias.MouseUp=function()
 			self.askAlias.Icon:SetBackground("Carentil/LOTRivia/Resources/img/askquestion.jpg")
+
 			if (gameActive) then
+				-- We're in a game, and we're about to ask the next question.
+				--
 				questionActive=true;
 
 				-- Clear any residual accept answer aliases
@@ -864,11 +869,13 @@ Report Bugs on LotroInterface.com
 				-- Add the current question to the used questions pile
 				usedQuestions[#usedQuestions+1] = questionId;
 
-				-- Set up and start the countdown
-				countdownTime = tonumber(Settings.timePerQuestion);
-				AddCallback(myTimer,"TimeReached",timerEvent);
-				myTimer:SetTime(1,true);
-				self.timeRemaining:SetText(countdownTime);
+				if ( Settings.timed ) then
+					-- Set up and start the countdown
+					countdownTime = tonumber(Settings.timePerQuestion);
+					AddCallback(myTimer,"TimeReached",timerEvent);
+					myTimer:SetTime(1,true);
+					self.timeRemaining:SetText(countdownTime);
+				end
 
 				-- Reset the stored answers and the listbox
 				self.guessesListBox:ClearItems();
@@ -1333,16 +1340,15 @@ Report Bugs on LotroInterface.com
 		-- function to set up the reveal Answer alias
 		--
 		self.setReveal = function()
+			local sendText=""
 
-		local sendText=""
-
-		if (debug) then
-			sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
-		else
-			sendText = channels[Settings.channel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
-		end
-		-- Bind to reveal button
-		self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
+			if (debug) then
+				sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			else
+				sendText = channels[Settings.channel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+			end
+			-- Bind to reveal button
+			self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
 		end
 
 		self:SetResizable(false);
@@ -1702,10 +1708,6 @@ Report Bugs on LotroInterface.com
 		-- Clear the answering player field
 		answeringPlayer = nil
 
-		-- Clear the accept answer button alias text
-		-- BUG  race condition here, alias gets cleared before the engine processes it. I need a timer to clear it
-		--myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
-
 		-- Set question state to inactive
 		questionActive = false;
 	end
@@ -1826,7 +1828,9 @@ Report Bugs on LotroInterface.com
 	-- function to stop countdown timer and reset game window time display
 	--
 	function stopCountdown()
-		RemoveCallback(myTimer,"TimeReached",timerEvent);
+		if ( Settings.timed ) then
+			RemoveCallback(myTimer,"TimeReached",timerEvent);
+		end
 		myTimer.Repeat = false;
 		myGame.timeRemaining:SetText("--");
 		countdownTime = nil

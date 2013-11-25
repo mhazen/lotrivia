@@ -1,4 +1,8 @@
--- This code is by Chiran, written for SOngbook. Permission pending.
+--[[
+	This class (minus minor edits) was the work of by Chiran,
+	written for his excellent plugin Songbook, and used here
+	with his gracious permission.
+--]]
 
 Toggle = class( Turbine.UI.Window )
 

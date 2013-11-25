@@ -10,7 +10,7 @@ text to make it stand out, typing in "so-and-so got it!" and keeping track of sc
 and pretty much anything else I could automate.
 
 What it has:
-    - A library of over 800 trivia questions and riddles covering Tolkien's
+    - A library of over 850 trivia questions and riddles covering Tolkien's
       writing, books and movies based on his works, and Lord of the Rings Online.
       It's pretty easy to extend the list of questions, as well.
     - Pretty colors and formatting, to catch players' eyes.
@@ -51,12 +51,25 @@ you can click their name in the Scores window, and adjust it as needed.
 Scores window, or just the top three by clicking "Top 3".
 
 
+
+
+License: Content rights are reserved, but feel free to use my code for other projects if you find
+it useful, and provide credit where due.
+
+
 Feedback:
 Please report bugs on this plugin's page at lotrointerface.com.
 Please send comments or questions, corrections to questions, or
 any questions/answers you would like me to add to the game to me through
 a private message at the same site. Thanks for your input, and enjoy!
 -Carentil
+
+
+Version History:
+
+11/25/2013: v1.0.25 - First public release to lotrointerface.com
+
+
 
 ----
 Question content is Copyright 2013, Carentil of Windfola.
