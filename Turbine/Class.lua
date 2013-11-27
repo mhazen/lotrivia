@@ -23,16 +23,16 @@ function _G.static_class( ... )
 	-- not marked as final.
 	for i, object in pairs( args ) do
 		local type = Type.StaticGetType( object );
-		
+
 		if ( type:IsClass() ) then
 			if ( baseClass ~= nil ) then
 				error( "A class can only have a single base class. More than one base class was specified." );
 			end
-			
+
 			if ( type:IsFinal() ) then
 				error( "Unable to inherit from final class." );
 			end
-			
+
 			baseClass = object;
 			baseObjects = baseObjects + 1;
 		elseif ( type:IsMixin() ) then
@@ -51,7 +51,7 @@ function _G.static_class( ... )
 		( environmentTable ~= nil ) and
 		( environmentTable._ ~= nil ) and
 		( type( environmentTable._ ) == "table" ) and
-		( environmentTable._.Name ~= nil ) and 
+		( environmentTable._.Name ~= nil ) and
 		( type( environmentTable._.Name ) == "string" ) )
 	then
 		className = getfenv( 0 )._.Name;
@@ -75,17 +75,17 @@ function _G.static_class( ... )
 	elseif ( baseObjects == 1 ) then
 		-- Only once base class so just associate the index directly to the class
 		-- or mixin.
-		classTableMetaTable.__index = baseClass or unpack( mixins ); 
+		classTableMetaTable.__index = baseClass or unpack( mixins );
 	else
 		-- Multiple inheritance will require a search.
 		classTableMetaTable.__index = function( table, key )
 			local i;
 			local mixin;
-			
+
 			if ( baseClass and baseClass[key] ) then
 				return baseClass[key];
 			end
-			
+
 			for i, mixin in pairs( mixins ) do
 				if ( mixin[key] ) then
 					return mixin[key];
@@ -114,7 +114,7 @@ function _G.static_class( ... )
 			setmetatable( self, nil );
 			local tostringValue = tostring( self );
 			setmetatable( self, metatable );
-			
+
 			local id = string.sub( tostringValue, 8 );
 			idTable[self] = id;
 			return id;
@@ -128,30 +128,30 @@ function _G.static_class( ... )
 		-- The default ToString method.
 		classTable.ToString = function( self )
 			local target = self;
-			
+
 			-- If self is the class, this is not an instance.
 			if ( self == self.GetType():GetClass() ) then
 				self = nil;
 			end
-			
+
 			local id = target:GetUniqueID();
 			local className = target.GetType():GetName() or "";
 			local value = "<";
-			
+
 			if ( string.len( className ) > 0 ) then
 				 value =  value .. className .. " ";
 			end
-			
+
 			if ( self ) then
 				value =  value .. "Instance";
 			else
 				value =  value .. "Class";
 			end
-			
+
 			value = value .. ": " .. id .. ">";
-			
+
 			return value;
-		end		
+		end
 	end
 
 	classTableMetaTable.__tostring = function( self )
@@ -196,12 +196,12 @@ function _G.class( ... )
 		-- Create the new class instance.
 		local instance = { };
 		setmetatable( instance, classInstanceMetaTable );
-		
+
 		-- Invoke the constructor if it exists.
 		if ( ( instance.Constructor ~= nil ) and ( type( instance.Constructor ) == 'function' ) ) then
 			instance:Constructor( ... );
 		end
-		
+
 		return instance;
 	end
 
@@ -210,7 +210,7 @@ end
 
 function _G.abstract_class( ... )
 	local staticClass, staticClassMetaTable, staticClassInfo = static_class( ... );
-	
+
 	-- No longer static. Giving it a constructor.
 	staticClassInfo.Static = nil;
 	staticClassInfo.Abstract = true;
@@ -231,4 +231,4 @@ function _G.final_class( ... )
 	return classClass, classMetaTable, classInfo, classInstanceMetaTable;
 end
 
-import "Turbine.Type";
+import "Carentil.LOTRivia.Turbine.Type";

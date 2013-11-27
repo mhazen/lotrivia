@@ -1,5 +1,5 @@
 
-import "Turbine.Class";
+import "Carentil.LOTRivia.Turbine.Class";
 
 --[[
 
@@ -152,7 +152,7 @@ function Type:GetClass()
 	if ( self:IsClass() ) then
 		return self.type;
 	end
-	
+
 	return nil;
 end
 
@@ -219,19 +219,19 @@ function Type.StaticGetType( object )
 		if ( ( object.GetType ~= nil ) and ( type( object.GetType ) == "function" ) ) then
 			return object.GetType();
 		end
-		
+
 		-- Support for built in types.
 		local classTable = object;
-		
+
 		if ( classTable.__implementation ~= nil ) then
 			classTable = getmetatable( classTable ).__index;
 		end
-		
+
 		if ( ( classTable.Constructor ~= nil ) and ( type( classTable.Constructor ) == "function" ) ) then
 			if ( nativeTypeCache[classTable] ~= nil ) then
 				return nativeTypeCache[classTable];
 			end
-			
+
 			local baseClass = Type.StaticGetType( getmetatable( classTable ).__index );
 			local classType = Type( classTable, { Class = true, Base = baseClass } );
 			nativeTypeCache[classTable] = classType;
@@ -257,13 +257,13 @@ function Type.StaticIsA( inputType, target )
 			if ( current == targetType ) then
 				return true;
 			end
-			
+
 			local baseClass = current:GetBaseClass();
-			
+
 			if ( baseClass == nil ) then
 				break;
 			end
-			
+
 			current = current:GetBaseClass().GetType();
 		end
 	elseif ( targetType:IsMixin() ) then

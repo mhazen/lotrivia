@@ -1,8 +1,8 @@
 import "Turbine.UI";
 import "Turbine.UI.Lotro";
 import "Carentil.LOTRivia.DropDown";
-import "Carentil.LOTRivia.Type";
-import "Carentil.LOTRivia.Class";
+import "Carentil.LOTRivia.Turbine.Type";
+import "Carentil.LOTRivia.Turbine.Class";
 import "Carentil.LOTRivia.ToggleWindow";
 import "Carentil.LOTRivia.Resources.Questions";
 
@@ -33,7 +33,7 @@ debug = false
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
-	lotrivia.version = "1.0.26"
+	lotrivia.version = "1.0.28"
 	lotrivia.majorVersion = "1.0"
 
 
