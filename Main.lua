@@ -14,7 +14,7 @@ import "Carentil.LOTRivia.Resources.Questions";
 	A Plug In for hosting trivia games in
 	Lord Of The Rings Online
 
-	Thanks to Chiran, Garan, and Galuhad for the code
+	Thanks to Chiran, Garan, and Galuhad for the
 	resources they provided which made this work easier.
 --]]
 
@@ -33,8 +33,8 @@ debug = false
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
-	lotrivia.version = "1.0.28"
-	lotrivia.majorVersion = "1.0"
+	lotrivia.version = "1.1.3"
+	lotrivia.majorVersion = "1.1"
 
 
 	-- Local print wrapper
@@ -191,6 +191,7 @@ debug = false
 		storedAnswers = {}
 		playerScores = {}
 		questionId = 1
+		askedQuestionId = 1
 		usedQuestions = {}
 		answeringPlayer = nil
 		haveStoredAnswers = false
@@ -291,10 +292,10 @@ Report Bugs on LotroInterface.com
 ]]
 
 	rulesText = ltColor.purple .. "The Official LOTRivia Rules:</rgb>\n" .. ltColor.cyan ..
-[[1. The quizmaster will ask a question. You must answer in this chat.
-2. One answer per player per question. Your first answer is your final answer!
-3. Accepting abbreviations or mispellings is up to the quizmaster's discretion.
-4. The quizmaster may award extra points for harder questions.</rgb>
+[[1. I'll ask a question. You must answer in this channel.
+2. One guess per player, per question!
+3. You can abbreviate your answers.
+4. Reasonable mispellings are acceptable.</rgb>
 ]]
 
 
@@ -863,8 +864,12 @@ Report Bugs on LotroInterface.com
 				--
 				questionActive=true;
 
+				-- save the asked question ID for use in case the timer runs out before clicking
+				-- the accept button
+				askedQuestionId=questionId;
+
 				-- Clear any residual accept answer aliases
-				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""))
+				self.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 				-- Add the current question to the used questions pile
 				usedQuestions[#usedQuestions+1] = questionId;
@@ -1343,9 +1348,9 @@ Report Bugs on LotroInterface.com
 			local sendText=""
 
 			if (debug) then
-				sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+				sendText = "/say " .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.orange .. " >> " .. LT_Answer[askedQuestionId] .. " << </rgb>"
 			else
-				sendText = channels[Settings.channel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+				sendText = channels[Settings.channel]["cmd"] .. ltColor.cyan .. "The correct answer was: </rgb>" .. ltColor.purple .. " >> " .. LT_Answer[askedQuestionId] .. " << </rgb>"
 			end
 			-- Bind to reveal button
 			self.revealAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,sendText))
@@ -1419,13 +1424,23 @@ Report Bugs on LotroInterface.com
 			myTimer.Repeat = false;
 
 			-- Let the user know time has expired
-			ltprint("Time's up!");
+			ltprint("Time's up! Click 'Announce Time' to tell the channel.");
+
+			-- Set the time announcement text to denote that time has expired
+			if (debug) then
+				timeAnnounce = "/say "
+			else
+				timeAnnounce = channels[Settings.channel]["cmd"]
+			end
+
+			timeAnnounce = timeAnnounce .. ltColor.purple .."LOTRivia: </rgb>" .. ltColor.cyan .. " Time's Up!</rgb>"
+			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,timeAnnounce))
 
 			-- pick another question to ask
 			prepareQuestion();
 
 			-- clear the announce time alias
-			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			--myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- Update the question count
 			myGame.questionsRemaining:SetText(Settings.questionsPerRound - #usedQuestions );
@@ -1570,7 +1585,7 @@ Report Bugs on LotroInterface.com
 		--
 		if (channelHeaderStart == nil ) then
 			if (debug) then
-				ltprint("skipping extraneous in-channel message")
+				ltprint("Skipping extraneous chat message");
 			end
 			return;
 		end
@@ -1646,7 +1661,11 @@ Report Bugs on LotroInterface.com
 		questionId = nextFree(q)
 
 		-- Update the game window
-		myGame.questionText:SetText(LT_Question[questionId]);
+		if (debug) then
+			myGame.questionText:SetText(questionId .. ': ' .. LT_Question[questionId]);
+		else
+			myGame.questionText:SetText(LT_Question[questionId]);
+		end
 		myGame.answerText:SetText(LT_Answer[questionId]);
 
 		-- Update the alias for sending the question
@@ -1861,7 +1880,7 @@ Report Bugs on LotroInterface.com
 			acceptText = channels[Settings.channel]["cmd"]
 		end
 
-		acceptText = acceptText .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[questionId] .. " << </rgb>"
+		acceptText = acceptText .. " " .. ltColor.cyan .. name .. " got the right answer!</rgb> " .. ltColor.purple .. " >> " .. LT_Answer[askedQuestionId] .. " << </rgb>"
 
 		-- Bind to alias button
 		myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,acceptText))
@@ -1916,7 +1935,8 @@ Report Bugs on LotroInterface.com
 
 			-- Clear aliases
 			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
-			myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+			-- This should not be cleared until the next question gets asked
+			-- myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- reset the Start Game button TextBox
