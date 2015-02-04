@@ -9,3 +9,4 @@ There's an existing page on the LOTRO Plugins respository, located here:
 http://www.lotrointerface.com/downloads/info863-LOTRivia.html
 
 Have fun!
+-Mark
