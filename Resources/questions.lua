@@ -328,8 +328,8 @@ LT_Question[77] = "What wood type is found alongside Mallorn in Moria?"
 LT_Answer[77] = "Ilex"
 LT_QuestionCommentary[77] = ""
 
-LT_Question[78] = "In skirmishes, what are the two types of usable items encounter foes drop, which do not leave the encounter with you?"
-LT_Answer[78] = "Tokens and Emblems"
+LT_Question[78] = "In skirmishes, two types of usable items encounter foes drop, which do not leave the encounter with you.... Tokens, and what?"
+LT_Answer[78] = "Emblems"
 LT_QuestionCommentary[78] = ""
 
 LT_Question[79] = "Name any of the three Elvish rings and their bearer."
@@ -353,7 +353,7 @@ LT_Answer[83] = "Gwaihir"
 LT_QuestionCommentary[83] = ""
 
 LT_Question[84] = "How many times did the wind lord Gwaihir bear Gandalf?"
-LT_Answer[84] = "Three times; once to escape Isengard, once to escape the Sinvertine after battling the balrog of Moria, and once to rescue the hobbits from the slopes of Mount Doom."
+LT_Answer[84] = "Three times; once to escape Isengard, once to escape the Silvertine after battling the balrog of Moria, and once to rescue the hobbits from the slopes of Mount Doom."
 LT_QuestionCommentary[84] = ""
 
 LT_Question[85] = "What is the most significant feature of Barad-dur?"
@@ -3040,8 +3040,8 @@ LT_Question[755] = "What does the name \"Annuminas\" mean in Sindarin?"
 LT_Answer[755] = "Tower of the West"
 LT_QuestionCommentary[755] = ""
 
-LT_Question[756] = "Why was the name \"Gondor\", meaning \"Land of Stone\", thought to have been chosen for the region?"
-LT_Answer[756] = "Becuase of the advanced skill of their stonemasons"
+LT_Question[756] = "What region  name means \"Land of Stone\", thought to have been chosen for the skill of their stonemasons?"
+LT_Answer[756] = "Gondor"
 LT_QuestionCommentary[756] = ""
 
 LT_Question[757] = "The river Gwathlo is named what, in the language of men?"
@@ -3088,7 +3088,7 @@ LT_Question[767] = "The Shire was founded in what year of the Third Age?"
 LT_Answer[767] = "TA 1601"
 LT_QuestionCommentary[767] = ""
 
-LT_Question[768] = "How old does Aragorn II live to be?"
+LT_Question[768] = "How old does Aragorn II live to be (within 20 years)?"
 LT_Answer[768] = "210"
 LT_QuestionCommentary[768] = ""
 
@@ -3584,35 +3584,435 @@ LT_Question[891] = "What zone does the capital city of Rohan lie within?"
 LT_Answer[891] = "Kingstead"
 LT_QuestionCommentary[891] = ""
 
---~ LT_Question[892] = ""
---~ LT_Answer[892] = ""
---~ LT_QuestionCommentary[892] = ""
+LT_Question[892] = "What dwarf was the only one travelling with Thror, when Thror returned to Moria?"
+LT_Answer[892] = "Nar"
+LT_QuestionCommentary[892] = ""
 
---~ LT_Question[893] = ""
---~ LT_Answer[893] = ""
---~ LT_QuestionCommentary[893] = ""
+LT_Question[893] = "What old dwarf resides in a library in Enedwaith, above Thror's Comb?"
+LT_Answer[893] = "Nar"
+LT_QuestionCommentary[893] = ""
 
---~ LT_Question[894] = ""
---~ LT_Answer[894] = ""
---~ LT_QuestionCommentary[894] = ""
+LT_Question[894] = "Nar thw dwarf was the last one to see which dwarven king alive?"
+LT_Answer[894] = "Thror"
+LT_QuestionCommentary[894] = ""
 
---~ LT_Question[895] = ""
---~ LT_Answer[895] = ""
---~ LT_QuestionCommentary[895] = ""
+LT_Question[895] = "The dwarven king Thror was beheaded and branded by what orcish leader?"
+LT_Answer[895] = "Azog"
+LT_QuestionCommentary[895] = ""
 
---~ LT_Question[896] = ""
---~ LT_Answer[896] = ""
---~ LT_QuestionCommentary[896] = ""
+LT_Question[896] = "Where did Thror, King under the Mountain, venture, never to return?"
+LT_Answer[896] = "Moria"
+LT_QuestionCommentary[896] = ""
 
---~ LT_Question[897] = ""
---~ LT_Answer[897] = ""
---~ LT_QuestionCommentary[897] = ""
+LT_Question[897] = "What river does the town of Dale lie upon?"
+LT_Answer[897] = "The River Celduin"
+LT_QuestionCommentary[897] = ""
 
---~ LT_Question[898] = ""
---~ LT_Answer[898] = ""
---~ LT_QuestionCommentary[898] = ""
+LT_Question[898] = "The dwarven king Thror was the last to escape Erebor with who?"
+LT_Answer[898] = "Thrain (II), his son"
+LT_QuestionCommentary[898] = ""
 
---~ LT_Question[899] = ""
---~ LT_Answer[899] = ""
---~ LT_QuestionCommentary[899] = ""
+LT_Question[899] = "The dwarves who escaped Erebor fled southward and settled in what region?"
+LT_Answer[899] = "Dunland"
+LT_QuestionCommentary[899] = ""
+
+LT_Question[900] = "The Battle of Anzanulbizar was the culmination of the war between Orcs and who?"
+LT_Answer[900] = "Dwarves"
+LT_QuestionCommentary[900] = ""
+
+LT_Question[901] = "Whoo killed Azog?"
+LT_Answer[901] = "Dain Ironfoot"
+LT_QuestionCommentary[901] = ""
+
+LT_Question[902] = "The instance in Lumul-nar in Zirakzigil, within Moria, is known more commonly as what?"
+LT_Answer[902] = "Mirror Halls"
+LT_QuestionCommentary[902] = ""
+
+LT_Question[903] = "What is the first outpost north of the 21st Hall in Moria?"
+LT_Answer[903] = "Jazargund"
+LT_QuestionCommentary[903] = ""
+
+LT_Question[904] = "In skirmishes, two types of usable items encounter foes drop which do not leave the encounter with you. Emblems, and what?"
+LT_Answer[904] = "Tokens"
+LT_QuestionCommentary[904] = ""
+
+LT_Question[905] = "You know me as Hope Tokens, but what is my true name?"
+LT_Answer[905] = "Edhelharn Tokens"
+LT_QuestionCommentary[905] = ""
+
+LT_Question[906] = "What child of Elrond accompanies you on a quest instance in Enedwaith?"
+LT_Answer[906] = "Elladan"
+LT_QuestionCommentary[906] = ""
+
+LT_Question[907] = "Which NPC character slayed a massive gwiber in Enedwaith before being killed by invaders?"
+LT_Answer[907] = "Wadu"
+LT_QuestionCommentary[907] = ""
+
+LT_Question[908] = "Which Dunlending NPC is the sibling of Wadu, and joins your epic quest?"
+LT_Answer[908] = "Nona"
+LT_QuestionCommentary[908] = ""
+
+LT_Question[909] = "What camp which many of the quests in Enedwaith center around, was named after the Ranger summoned from Breeland?"
+LT_Answer[909] = "Echad Saeradan"
+LT_QuestionCommentary[909] = ""
+
+LT_Question[910] = "The wife of Elrond and mother of his children was what relation to Lady Galadriel?"
+LT_Answer[910] = "Her daughter"
+LT_QuestionCommentary[910] = ""
+
+LT_Question[911] = "Arwen is related how, to Lady Galadriel?"
+LT_Answer[911] = "She is Galadriel's Grand-daughter"
+LT_QuestionCommentary[911] = ""
+
+LT_Question[912] = "What building is the only one left standing in Audaghaim?"
+LT_Answer[912] = "The Haunted Inn"
+LT_QuestionCommentary[912] = ""
+
+LT_Question[913] = "In the epic quest Chice of Ways, three paths for travelling with Mazog are presented. Which route is taken?"
+LT_Answer[913] = "Through the Scuttledells"
+LT_QuestionCommentary[913] = ""
+
+LT_Question[914] = "What game mechanic once acted as a gate to allow players to function in 12-man raids without cowering in fear, but was removed from LOTRO?"
+LT_Answer[914] = "Radiance"
+LT_QuestionCommentary[914] = ""
+
+LT_Question[915] = "There's only one vaultkeeper in Mirkwoods. Where??"
+LT_Answer[915] = "Ost Galadh"
+LT_QuestionCommentary[915] = ""
+
+LT_Question[916] = "The reflecting pool in Mirkwoods is located in what landmark?"
+LT_Answer[916] = "Ost Galadh"
+LT_QuestionCommentary[916] = ""
+
+LT_Question[917] = "The elves call it Ost Galadh. What would men have named it in their language?"
+LT_Answer[917] = "Fortress of Trees"
+LT_QuestionCommentary[917] = ""
+
+LT_Question[918] = "The word 'Ost' in Elvish means what, in the language of men?"
+LT_Answer[918] = "Fortress, or Fort"
+LT_QuestionCommentary[918] = ""
+
+LT_Question[919] = "Its name comes from the Quenya phrase meaning 'far-seeing'. What do we call them?"
+LT_Answer[919] = "Palantir"
+LT_QuestionCommentary[919] = ""
+
+LT_Question[920] = "The Quenya word for mountain is.... what?"
+LT_Answer[920] = "Ered"
+LT_QuestionCommentary[920] = ""
+
+LT_Question[921] = "The elvish word Amon means what, in the language of men?"
+LT_Answer[921] = "Hill"
+LT_QuestionCommentary[921] = ""
+
+LT_Question[922] = "What is the elvish word for 'hill'?"
+LT_Answer[922] = "Amon"
+LT_QuestionCommentary[922] = ""
+
+LT_Question[923] = "The elvish word for 'camp' is what?"
+LT_Answer[923] = "Echad"
+LT_QuestionCommentary[923] = ""
+
+LT_Question[924] = "The elvish word 'Echad' means what, in the language of men?"
+LT_Answer[924] = "Camp"
+LT_QuestionCommentary[924] = ""
+
+LT_Question[925] = "What happens ti Issuriel of the Hidden Guard in an instance which takes place in Rad Iorist?"
+LT_Answer[925] = "She is poisoned by a Saewathel spider"
+LT_QuestionCommentary[925] = ""
+
+LT_Question[926] = "How many members of The Hidden Guard live past the Mirkwood epic quest line?"
+LT_Answer[926] = "Two (Issuriel and Cucheron)"
+LT_QuestionCommentary[926] = ""
+
+LT_Question[927] = "Saebereth, Queen of the Saewethil, is what?"
+LT_Answer[927] = "A spider"
+LT_QuestionCommentary[927] = ""
+
+LT_Question[928] = "The group of five elves who travel with the player in the Mirkwood epic are called what?"
+LT_Answer[928] = "The Hidden Guard"
+LT_QuestionCommentary[928] = ""
+
+LT_Question[929] = "What dwarf travels with The Hidden Guard in the epic questline in Mirkwood?"
+LT_Answer[929] = "Broin"
+LT_QuestionCommentary[929] = ""
+
+LT_Question[930] = "Tolkien prominently featured what creatures in his works, because his son feared them?"
+LT_Answer[930] = "Spiders"
+LT_QuestionCommentary[930] = ""
+
+LT_Question[931] = "I stung the bearer of the Ring and wrapped him up to dine, but Samwise came and foiled me, just in the nick of time. Who am I?"
+LT_Answer[931] = "Shelob"
+LT_QuestionCommentary[931] = ""
+
+LT_Question[932] = "Spiders despie this, yet seek to devour it. What is it?"
+LT_Answer[932] = "Light"
+LT_QuestionCommentary[932] = ""
+
+LT_Question[933] = "What Champion skill steadily increases their melee damage every few seconds until it expires?"
+LT_Answer[933] = "Champion's Duel"
+LT_QuestionCommentary[933] = ""
+
+LT_Question[934] = "What champion skill increases damage, power regeneration, and adds fervour every few seconds?"
+LT_Answer[934] = "Slow Burn"
+LT_QuestionCommentary[934] = ""
+
+LT_Question[935] = "What character was separated by death from his brother, from his wife by her capture then later departure, and his daughter, forever, when he travelled to rejoin his wife?"
+LT_Answer[935] = "Elrond"
+LT_QuestionCommentary[935] = ""
+
+LT_Question[936] = "Which Elf of the Hidden Guard is defeated by The Lieutenant of the Tower at Gathburz in the epic quest line?"
+LT_Answer[936] = "Achardor"
+LT_QuestionCommentary[936] = ""
+
+--~ LT_Question[937] = ""
+--~ LT_Answer[937] = ""
+--~ LT_QuestionCommentary[937] = ""
+
+--~ LT_Question[938] = ""
+--~ LT_Answer[938] = ""
+--~ LT_QuestionCommentary[938] = ""
+
+--~ LT_Question[939] = ""
+--~ LT_Answer[939] = ""
+--~ LT_QuestionCommentary[939] = ""
+
+--~ LT_Question[940] = ""
+--~ LT_Answer[940] = ""
+--~ LT_QuestionCommentary[940] = ""
+
+--~ LT_Question[941] = ""
+--~ LT_Answer[941] = ""
+--~ LT_QuestionCommentary[941] = ""
+
+--~ LT_Question[942] = ""
+--~ LT_Answer[942] = ""
+--~ LT_QuestionCommentary[942] = ""
+
+--~ LT_Question[943] = ""
+--~ LT_Answer[943] = ""
+--~ LT_QuestionCommentary[943] = ""
+
+--~ LT_Question[944] = ""
+--~ LT_Answer[944] = ""
+--~ LT_QuestionCommentary[944] = ""
+
+--~ LT_Question[945] = ""
+--~ LT_Answer[945] = ""
+--~ LT_QuestionCommentary[945] = ""
+
+--~ LT_Question[946] = ""
+--~ LT_Answer[946] = ""
+--~ LT_QuestionCommentary[946] = ""
+
+--~ LT_Question[947] = ""
+--~ LT_Answer[947] = ""
+--~ LT_QuestionCommentary[947] = ""
+
+--~ LT_Question[948] = ""
+--~ LT_Answer[948] = ""
+--~ LT_QuestionCommentary[948] = ""
+
+--~ LT_Question[949] = ""
+--~ LT_Answer[949] = ""
+--~ LT_QuestionCommentary[949] = ""
+
+--~ LT_Question[950] = ""
+--~ LT_Answer[950] = ""
+--~ LT_QuestionCommentary[950] = ""
+
+--~ LT_Question[951] = ""
+--~ LT_Answer[951] = ""
+--~ LT_QuestionCommentary[951] = ""
+
+--~ LT_Question[952] = ""
+--~ LT_Answer[952] = ""
+--~ LT_QuestionCommentary[952] = ""
+
+--~ LT_Question[953] = ""
+--~ LT_Answer[953] = ""
+--~ LT_QuestionCommentary[953] = ""
+
+--~ LT_Question[954] = ""
+--~ LT_Answer[954] = ""
+--~ LT_QuestionCommentary[954] = ""
+
+--~ LT_Question[955] = ""
+--~ LT_Answer[955] = ""
+--~ LT_QuestionCommentary[955] = ""
+
+--~ LT_Question[956] = ""
+--~ LT_Answer[956] = ""
+--~ LT_QuestionCommentary[956] = ""
+
+--~ LT_Question[957] = ""
+--~ LT_Answer[957] = ""
+--~ LT_QuestionCommentary[957] = ""
+
+--~ LT_Question[958] = ""
+--~ LT_Answer[958] = ""
+--~ LT_QuestionCommentary[958] = ""
+
+--~ LT_Question[959] = ""
+--~ LT_Answer[959] = ""
+--~ LT_QuestionCommentary[959] = ""
+
+--~ LT_Question[960] = ""
+--~ LT_Answer[960] = ""
+--~ LT_QuestionCommentary[960] = ""
+
+--~ LT_Question[961] = ""
+--~ LT_Answer[961] = ""
+--~ LT_QuestionCommentary[961] = ""
+
+--~ LT_Question[962] = ""
+--~ LT_Answer[962] = ""
+--~ LT_QuestionCommentary[962] = ""
+
+--~ LT_Question[963] = ""
+--~ LT_Answer[963] = ""
+--~ LT_QuestionCommentary[963] = ""
+
+--~ LT_Question[964] = ""
+--~ LT_Answer[964] = ""
+--~ LT_QuestionCommentary[964] = ""
+
+--~ LT_Question[965] = ""
+--~ LT_Answer[965] = ""
+--~ LT_QuestionCommentary[965] = ""
+
+--~ LT_Question[966] = ""
+--~ LT_Answer[966] = ""
+--~ LT_QuestionCommentary[966] = ""
+
+--~ LT_Question[967] = ""
+--~ LT_Answer[967] = ""
+--~ LT_QuestionCommentary[967] = ""
+
+--~ LT_Question[968] = ""
+--~ LT_Answer[968] = ""
+--~ LT_QuestionCommentary[968] = ""
+
+--~ LT_Question[969] = ""
+--~ LT_Answer[969] = ""
+--~ LT_QuestionCommentary[969] = ""
+
+--~ LT_Question[970] = ""
+--~ LT_Answer[970] = ""
+--~ LT_QuestionCommentary[970] = ""
+
+--~ LT_Question[971] = ""
+--~ LT_Answer[971] = ""
+--~ LT_QuestionCommentary[971] = ""
+
+--~ LT_Question[972] = ""
+--~ LT_Answer[972] = ""
+--~ LT_QuestionCommentary[972] = ""
+
+--~ LT_Question[973] = ""
+--~ LT_Answer[973] = ""
+--~ LT_QuestionCommentary[973] = ""
+
+--~ LT_Question[974] = ""
+--~ LT_Answer[974] = ""
+--~ LT_QuestionCommentary[974] = ""
+
+--~ LT_Question[975] = ""
+--~ LT_Answer[975] = ""
+--~ LT_QuestionCommentary[975] = ""
+
+--~ LT_Question[976] = ""
+--~ LT_Answer[976] = ""
+--~ LT_QuestionCommentary[976] = ""
+
+--~ LT_Question[977] = ""
+--~ LT_Answer[977] = ""
+--~ LT_QuestionCommentary[977] = ""
+
+--~ LT_Question[978] = ""
+--~ LT_Answer[978] = ""
+--~ LT_QuestionCommentary[978] = ""
+
+--~ LT_Question[979] = ""
+--~ LT_Answer[979] = ""
+--~ LT_QuestionCommentary[979] = ""
+
+--~ LT_Question[980] = ""
+--~ LT_Answer[980] = ""
+--~ LT_QuestionCommentary[980] = ""
+
+--~ LT_Question[981] = ""
+--~ LT_Answer[981] = ""
+--~ LT_QuestionCommentary[981] = ""
+
+--~ LT_Question[982] = ""
+--~ LT_Answer[982] = ""
+--~ LT_QuestionCommentary[982] = ""
+
+--~ LT_Question[983] = ""
+--~ LT_Answer[983] = ""
+--~ LT_QuestionCommentary[983] = ""
+
+--~ LT_Question[984] = ""
+--~ LT_Answer[984] = ""
+--~ LT_QuestionCommentary[984] = ""
+
+--~ LT_Question[985] = ""
+--~ LT_Answer[985] = ""
+--~ LT_QuestionCommentary[985] = ""
+
+--~ LT_Question[986] = ""
+--~ LT_Answer[986] = ""
+--~ LT_QuestionCommentary[986] = ""
+
+--~ LT_Question[987] = ""
+--~ LT_Answer[987] = ""
+--~ LT_QuestionCommentary[987] = ""
+
+--~ LT_Question[988] = ""
+--~ LT_Answer[988] = ""
+--~ LT_QuestionCommentary[988] = ""
+
+--~ LT_Question[989] = ""
+--~ LT_Answer[989] = ""
+--~ LT_QuestionCommentary[989] = ""
+
+--~ LT_Question[990] = ""
+--~ LT_Answer[990] = ""
+--~ LT_QuestionCommentary[990] = ""
+
+--~ LT_Question[991] = ""
+--~ LT_Answer[991] = ""
+--~ LT_QuestionCommentary[991] = ""
+
+--~ LT_Question[992] = ""
+--~ LT_Answer[992] = ""
+--~ LT_QuestionCommentary[992] = ""
+
+--~ LT_Question[993] = ""
+--~ LT_Answer[993] = ""
+--~ LT_QuestionCommentary[993] = ""
+
+--~ LT_Question[994] = ""
+--~ LT_Answer[994] = ""
+--~ LT_QuestionCommentary[994] = ""
+
+--~ LT_Question[995] = ""
+--~ LT_Answer[995] = ""
+--~ LT_QuestionCommentary[995] = ""
+
+--~ LT_Question[996] = ""
+--~ LT_Answer[996] = ""
+--~ LT_QuestionCommentary[996] = ""
+
+--~ LT_Question[997] = ""
+--~ LT_Answer[997] = ""
+--~ LT_QuestionCommentary[997] = ""
+
+--~ LT_Question[998] = ""
+--~ LT_Answer[998] = ""
+--~ LT_QuestionCommentary[998] = ""
+
+--~ LT_Question[999] = ""
+--~ LT_Answer[999] = ""
+--~ LT_QuestionCommentary[999] = ""
 

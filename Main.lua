@@ -33,8 +33,8 @@ debug = false
 	-- Initialize plugin constants
 	--
 	lotrivia = {}
-	lotrivia.version = "1.1.3"
-	lotrivia.majorVersion = "1.1"
+	lotrivia.version = "1.2.0"
+	lotrivia.majorVersion = "1.2"
 
 
 	-- Local print wrapper
@@ -1424,7 +1424,7 @@ Report Bugs on LotroInterface.com
 			myTimer.Repeat = false;
 
 			-- Let the user know time has expired
-			ltprint("Time's up! Click 'Announce Time' to tell the channel.");
+			ltprint("Time's up! Click 'Reveal Answer' to show the answer to the channel.");
 
 			-- Set the time announcement text to denote that time has expired
 			if (debug) then
@@ -1643,8 +1643,8 @@ Report Bugs on LotroInterface.com
 	-- reset the answers stored during the current question
 	--
 	function resetAnswers()
-		storedAnswers = {}
-		haveStoredAnswers = false
+		storedAnswers = {};
+		haveStoredAnswers = false;
 	end
 
 	-- Function to pick a question we haven't used yet
@@ -1657,14 +1657,16 @@ Report Bugs on LotroInterface.com
 			return;
 		end
 
-		local q = math.random(#LT_Question)
-		questionId = nextFree(q)
+		local q = math.random(#LT_Question);
+		questionId = nextFree(q);
 
 		-- Update the game window
 		if (debug) then
 			myGame.questionText:SetText(questionId .. ': ' .. LT_Question[questionId]);
 		else
-			myGame.questionText:SetText(LT_Question[questionId]);
+			myGame.questionText:SetText(questionId .. ': ' .. LT_Question[questionId]);
+-- for testing
+--			myGame.questionText:SetText(LT_Question[questionId]);
 		end
 		myGame.answerText:SetText(LT_Answer[questionId]);
 
@@ -1935,8 +1937,12 @@ Report Bugs on LotroInterface.com
 
 			-- Clear aliases
 			myGame.askAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
-			-- This should not be cleared until the next question gets asked
+
+			-- !! This might need to be commented out to allow accepts after timer expires on the last question
+			-- but people who answered correctly have not yet been given credit.
+			--
 			-- myGame.acceptAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
+
 			myGame.announceTimeAlias:SetShortcut(Turbine.UI.Lotro.Shortcut(Turbine.UI.Lotro.ShortcutType.Alias,""));
 
 			-- reset the Start Game button TextBox
